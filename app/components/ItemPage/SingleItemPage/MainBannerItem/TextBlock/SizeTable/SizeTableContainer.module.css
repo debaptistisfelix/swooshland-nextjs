@@ -1,0 +1,134 @@
+.card{
+    display: flex;
+    flex-direction: column;
+    margin: 5px 0;
+    margin:  clamp(5px, 0.46vw + 0.12rem, 15px) 0;
+}
+
+.optionBox{
+    display: flex;
+    align-items: center;
+}
+.format{
+    font-size: 16px;
+   font-size:  clamp(16px, 1.37vw + 0.12rem, 18px);;
+    font-weight: 400;
+    color: var(--light-grey);
+    margin:  0;
+    border-right: 1px solid var(--light-grey);
+    padding: 0 5px;
+    cursor: pointer;
+}
+
+.format:hover{
+    color: var(--dark-grey);
+}
+
+.format:last-of-type{
+    border-right: none;
+}
+
+.format.active{
+    color: var(--dark-grey);
+    font-weight: 600;
+}
+.sexCateg{
+    margin: 0;
+    font-size: 14px;
+    color: var(--light-grey);
+}
+
+.sizeTable{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+ 
+    width: 80%;
+    height: fit-content;
+    gap: clamp(5px, 0.46vw + 0.12rem, 10px);
+ 
+  
+    margin:  clamp(5px, 0.46vw + 0.12rem, 10px) 0;
+        box-sizing: border-box;
+}
+
+.sizeBlock{
+    margin: auto;
+    width:90%;
+    font-weight: 600;
+    height: clamp(24px, 2.15vw + 0.12rem, 32px);
+    border: 2px solid var(--dark-grey);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--dark-grey);
+    border-radius: 8px;
+}
+
+.sizeBlock:hover{
+    background-color: var(--thin-grey);
+    cursor: pointer;
+}
+
+@media (max-width:600px){
+
+    .card{
+        margin: 20px 0;
+    }
+    .sizeTable{
+        width: 100%;
+        margin-top: 20px ;
+    }
+
+    .format, .sexCateg{
+        font-size: clamp(16px, 4.72vw + 0.12rem, 18px);
+    }
+
+    .sizeBlock{
+     border: 1px solid var(--dark-grey);
+       height:clamp(28px, 9.29vw + 0.12rem, 32px);
+        font-size: clamp(16px, 4.72vw + 0.12rem, 18px);
+    }
+}
+
+@media (min-width:601px) and (max-width:1023px){
+    .card{
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .format{
+        font-size: 10px;
+        font-size: 16px;
+        font-size: clamp(10px, 1.67vw + 0.12rem, 16px);
+    }
+    .sizeTable{
+        width: 100%;
+        height:fit-content;
+        border: 1px solid black;
+        grid-template-columns: repeat(5, 20%);
+        gap: 0;
+        grid-row-gap: 10px;
+    }
+
+    .sizeBlock{
+        margin: auto;
+        width:90%;
+        height: clamp(20px, 2.997vw + 0.12rem, 36px);
+        border: 1px solid var(--dark-grey);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      
+        border-radius: 8px;
+   
+        font-size: clamp(12px, 1.68vw + 0.12rem, 16px);
+    }
+
+    .sexCateg{
+        margin: 0;
+        font-size: clamp(12px, 1.68vw + 0.12rem, 14px);
+        color: var(--light-grey);
+    }
+}
+
+

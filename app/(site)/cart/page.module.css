@@ -1,0 +1,132 @@
+
+
+.sectionsContainer{
+    display: flex;
+    justify-content: space-between;
+}
+.cartItemsBox{
+   
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.cartTitle{
+    margin: 0;
+    width: 60%;
+    padding-bottom: 10px;
+    color: var(--dark-grey);
+    border-bottom: 2px solid var(--thin-grey);
+
+}
+
+.cartList{
+    width: 100%;
+margin: 20px 0;
+gap: 20px;
+    height:  fit-content;
+    display: flex;
+    flex-direction: column;
+}
+
+.cardBox{
+    width: 100%;
+    height: 150px;
+}
+
+
+
+.summary{
+    width:40%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.checkoutBtn{
+    width: 90%;
+    
+  
+   
+   
+  
+    margin-top: 20px;
+ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease-out;
+}
+
+.checkoutBtn:hover{
+    background-color: var(--dark-grey);
+    color: var(--white-pure);
+   
+}
+
+@media (max-width:600px){
+
+   
+  
+    .sectionsContainer{
+        display: flex;
+        flex-direction: column;
+        height: fit-content;
+    }
+
+    .cartTitle{
+        width: 100%;
+       
+    }
+
+    .cartItemsBox{
+        width: 100%;
+    }
+
+    .cardBox{
+        height: 80px;
+        height: clamp(80px, 27.86vw + 0.12rem, 120px)
+    }
+
+    .summary{
+        width: 100%;
+    }
+    .checkoutBtn{
+        width: 100%;
+        margin-top: 10px;
+      
+    }
+
+  
+}
+
+@media (min-width:601px) and (max-width:1023px){
+.cartItemsBox{
+    width: 50%;
+}
+
+    .cartTitle{
+        width: 50%;
+        
+      
+    }
+    .cardBox{
+        width: 100%;
+        height: 80px;
+        height: clamp(80px, 12.98vw + 0.12rem, 120px)
+    }
+
+    .summary{
+        width: 50%;
+    }
+
+    .checkoutBtn{
+        width: 90%;
+        margin-top: 10px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

@@ -1,0 +1,58 @@
+.list{
+    width: 100%;
+gap: 30px;
+    min-height: 300px;
+    height: fit-content;
+    padding: 10px 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0;
+}
+
+.noAddresses{
+    color: var(--light-grey);
+    font-size: 14px;
+   
+}
+
+.addressFormBox{
+    display: flex;
+    flex-direction: column;
+}
+
+.addAddressTitle{
+    font-size: 16px;
+    color: var(--light-grey);
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.addAddressTitle:hover{
+    color: var(--dark-grey);
+}
+
+.addAddressIcon{
+    width: 16px;
+    height: 16px;
+    margin-right: 5px;
+}
+
+@media (max-width:600px){
+    .list{
+        width: 90%;
+        height: fit-content;
+        min-height: fit-content;
+    }
+}
+
+@media (min-width:601px) and (max-width:1023px){
+    .list{
+        width: 95%;
+    }
+
+    .addAddressTitle{
+        font-size: 14px;
+    }
+}

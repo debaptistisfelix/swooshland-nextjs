@@ -1,0 +1,489 @@
+.block{
+    width: 100%;
+    background-color: var(--thin-grey);
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.info{
+    font-size: 16px;
+    color: var(--dark-grey);
+    font-weight: 600;
+    text-align: left;
+    width: 100%;
+}
+
+.label{
+    display: none;
+}
+
+.dateBox{
+    width: 15%;
+}
+
+.orderNumberBox{
+    width: 30%;
+}
+
+.itemsBox{
+    width: 15%;
+}
+
+.totalBox{
+    width: 20%;
+}
+
+.statusBox{
+    width: 20%;
+}
+
+.icon{
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+    transition: all 0.2s ease-out;
+}
+
+.icon:hover{
+    cursor: pointer;
+    transform:scale(1.05);
+}
+
+.tabletShowDetailBox{
+    display: none;
+}
+
+.tabletIcon{
+    display: none;
+}
+
+.details{
+    width: 100%;
+    height: fit-content;
+
+}
+
+.detailsTitle{
+    font-size: 18x;
+    font-weight: 600;
+    padding:  20px 10px ;
+    margin: 0;
+    box-sizing: border-box;
+    border-bottom: 1px solid var(--thin-grey);
+}
+
+.detailsBox{
+    padding: 10px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+.greyLabel{
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--light-grey);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 30%;
+    text-align: left;
+}
+
+.trackingCode{
+    margin: 0;
+    width: 30%;
+    text-align: left;
+    font-size: 14px;
+}
+
+.trackingBtn{
+    width: 200px;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 14px;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+    font-weight: 600;
+    margin: 0;
+    padding: 0;
+    height: 30px;
+    box-sizing: border-box;
+}
+
+.trackingIcon{
+    color: var(--white-pure);
+    margin-left: 10px;
+    width: 16px;
+    height: 16px;
+}
+
+.addressCard{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.shipInfo{
+    margin: 0;
+    font-size: 14px;
+    color: var(--light-grey);
+    font-weight: 400;
+}
+
+.orderedItemsBox{
+    padding: 20px  10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.amountsBox{
+    display:flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    height: fit-content;
+    background-color: var(--thin-grey);
+    padding: 10px 50px;
+    box-sizing: border-box;
+}
+
+.amounts{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.amounts:nth-of-type(2){
+    margin-bottom: 10px;
+}
+
+.amounts:nth-of-type(3){
+    margin-top: 10px;
+}
+
+
+.amountLabel, .amountPrice{
+    margin: 0;
+}
+
+@media (max-width:600px){
+    .block{
+        flex-direction: column;
+        background-color: transparent;
+     
+        height: fit-content;
+        width: 100%;
+    }
+    .infoBox{
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        min-width: 100%;
+      
+    }
+
+    .label{
+        display: block;
+        text-align: left;
+        width: 40%;
+        margin: 0;
+        font-size: 14px;
+      
+    }
+    .info{
+        text-align: right;
+        width: 100%;
+        margin:0;
+        font-size: 14px;
+    }
+
+    .dateBox, .orderNumberBox, .itemsBox, .totalBox, .statusBox{
+        width: 40%;
+        
+    }
+
+    .icon{
+        display: none;
+    }
+    .tabletShowDetailBox{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 30px;
+        padding: 10px;
+        border-radius: 5px;
+        margin-top: 10px;
+        box-sizing: border-box;
+        background-color: var(--thin-grey);
+    }
+
+    .showDetailsLabel{
+        font-size: 14px;
+        color: var(--dark-grey);
+        font-weight: 600;
+        text-align: center;
+        width: 100%;
+        margin: 0;
+    }
+
+    .tabletIcon{
+        display: block;
+        width: 16px;
+        height: 16px;
+        color: var(--dark-grey);
+    }
+    .details{
+        width: 100%;
+        height: fit-content;
+    
+    }
+
+    .detailsTitle{
+        font-size: 18x;
+        font-weight: 600;
+        padding:  20px 10px ;
+        margin: 0;
+        box-sizing: border-box;
+        border-bottom: 1px solid var(--thin-grey);
+    }
+    
+    .detailsBox{
+        padding: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        justify-content: space-between;
+    }
+    
+    .greyLabel{
+        font-size: 14px;
+        font-weight: 400;
+        color: var(--light-grey);
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        width: 50%;
+        text-align: left;
+    }
+    
+    .trackingCode{
+        margin: 0;
+        width: 50%;
+        text-align: right;
+        font-size: 14px;
+    }
+    
+    .trackingBtn{
+        width: 160px;
+        padding: 10px;
+        box-sizing: border-box;
+        font-size: 14px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+        font-weight: 600;
+        margin: 0;
+        margin-left: auto;
+        margin-top: 10px;
+        padding: 0;
+        height: 30px;
+        box-sizing: border-box;
+    }
+    
+    .trackingIcon{
+        color: var(--white-pure);
+        margin-left: 10px;
+        width: 16px;
+        height: 16px;
+    }
+
+     
+.amountsBox{
+    display:flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    height: fit-content;
+    background-color: var(--thin-grey);
+    padding: 10px 30px;
+    box-sizing: border-box;
+}
+
+.amountsBox{
+    font-size: 14px;
+}
+
+.lineBox{
+    width: 90%;
+}
+}
+
+
+
+@media (min-width:601px) and (max-width:1023px){
+    .block{
+        flex-direction: column;
+        background-color: transparent;
+     
+        height: fit-content;
+        width: 100%;
+    }
+
+    .infoBox{
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        min-width: 100%;
+       
+    }
+
+    .label{
+        display: block;
+        text-align: left;
+        width: 40%;
+        margin: 0;
+        font-size: 14px;
+    }
+
+    .info{
+        text-align: right;
+        width: 100%;
+        margin:0;
+        font-size: 14px;
+    }
+
+    .dateBox, .orderNumberBox, .itemsBox, .totalBox, .statusBox{
+        width: 40%;
+    }
+
+    .icon{
+        display: none;
+    }
+
+    .tabletShowDetailBox{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 30px;
+        padding: 10px;
+        border-radius: 5px;
+        margin-top: 10px;
+        box-sizing: border-box;
+        background-color: var(--thin-grey);
+    }
+
+    .showDetailsLabel{
+        font-size: 14px;
+        color: var(--dark-grey);
+        font-weight: 600;
+        text-align: center;
+        width: 100%;
+        margin: 0;
+    }
+
+    .tabletIcon{
+        display: block;
+        width: 16px;
+        height: 16px;
+        color: var(--dark-grey);
+    }
+    .details{
+        width: 100%;
+        height: fit-content;
+    
+    }
+    
+    .detailsTitle{
+        font-size: 18x;
+        font-weight: 600;
+        padding:  20px 10px ;
+        margin: 0;
+        box-sizing: border-box;
+        border-bottom: 1px solid var(--thin-grey);
+    }
+    
+    .detailsBox{
+        padding: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        justify-content: space-between;
+    }
+    
+    .greyLabel{
+        font-size: 14px;
+        font-weight: 400;
+        color: var(--light-grey);
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        width: 50%;
+        text-align: left;
+    }
+    
+    .trackingCode{
+        margin: 0;
+        width: 50%;
+        text-align: right;
+        font-size: 14px;
+    }
+    
+    .trackingBtn{
+        width: 200px;
+        padding: 10px;
+        box-sizing: border-box;
+        font-size: 14px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+        font-weight: 600;
+        margin: 0;
+        margin-left: auto;
+        margin-top: 10px;
+        padding: 0;
+        height: 30px;
+        box-sizing: border-box;
+    }
+    
+    .trackingIcon{
+        color: var(--white-pure);
+        margin-left: 10px;
+        width: 16px;
+        height: 16px;
+    }
+
+    
+.amountsBox{
+    display:flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    height: fit-content;
+    background-color: var(--thin-grey);
+    padding: 10px 30px;
+    box-sizing: border-box;
+}
+
+.amountsBox{
+    font-size: 14px;
+}
+
+.lineBox{
+    width: 90%;
+}
+    
+}

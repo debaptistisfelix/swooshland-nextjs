@@ -1,0 +1,71 @@
+.unsubscribedUser{
+    display: flex;
+    flex-direction: column;
+}
+.parag{
+    font-size: 16px;
+    color: var(--dark-grey);
+    font-weight: 400;
+
+}
+
+.emailInput{
+    width: 400px;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+}
+
+.privacyBox{
+    display: flex;
+    align-items: baseline;
+    font-size: 12px;
+    color: var(--medium-grey);
+}
+
+.privacyBox input{
+    margin-right: 5px;
+}
+
+.button{
+    width: 400px;
+}
+
+@media (max-width:600px){
+    .unsubscribedUser{
+      
+        width: 90%;
+    }
+    .parag{
+        font-size: 14px;
+        color: var(--dark-grey);
+        font-weight: 400;
+    
+    }
+    
+    .emailInput{
+        width: 100%;
+        font-size: 14px;
+    }
+    .button{
+        width: 100%;
+    }
+}
+
+@media (min-width:601px) and (max-width:1023px){
+    .unsubscribedUser{
+        width: 95%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .parag{
+        font-size: 14px;
+    }
+
+    .button{
+        width: 250px;
+    }
+}

@@ -1,0 +1,118 @@
+.mobileSearch{
+    display: none;
+}
+
+@media (max-width:1023px){
+    .mobileSearch{
+        width: 100vw;
+        height: 100vh;
+        background-color: white;
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       position: fixed;
+        top: 0;
+        left: 100%;
+        z-index: 100;
+    }
+
+    .mobileSearch.active{
+        animation: showSearchBox 0.5s ease-out forwards;  
+    }
+
+    .mobileSearch.notActive{
+        animation: closeSearchBox 0.5s ease-out forwards;
+    }
+    
+    @keyframes showSearchBox {
+        from{
+        left: 100%;
+        }
+        to{
+            left: 0;
+        }
+    }
+    
+    @keyframes closeSearchBox {
+        from{
+        left: 0;
+        }
+        to{
+            left: 100%;
+        }    
+    }
+
+    
+    .searchBox{
+        width: 95%;
+        margin: 10px auto;
+        background-color: transparent;
+        height: 40px;
+        height: clamp(40px, 13.58vw + 0.12rem, 50px);
+        box-sizing: border-box;
+        padding: 0 2%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 10px;
+        gap: 5px;
+    }
+    
+    .searchInput{
+        width: 90%;
+        min-height: 100%;
+        box-sizing: border-box;
+        background-color: transparent;
+        border: none;
+        outline: none;
+     
+        padding-left: 20px;
+        font-size: clamp(16px, 4.72vw + 0.12rem, 18px);
+        border: 1px solid var(--light-grey);
+        border-radius: 10px;
+    }
+
+    .searchInput:focus{
+        border: 1px solid var(--dark-grey);
+    }
+    
+    .searchInput::placeholder{
+        color: var(--medium-grey);
+        font-size: clamp(16px, 4.72vw + 0.12rem, 18px);
+    }
+
+    .iconBox{
+        width: clamp(40px, 13.58vw + 0.12rem, 50px);
+        border-radius: 10px;
+        border: 1px solid var(--dark-grey);
+        box-sizing: border-box;
+        height:clamp(40px, 13.58vw + 0.12rem, 50px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .iconBox:active{
+        background-color: var(--thin-grey);
+    }
+
+    .icon{
+        width: 16px;
+        height: 16px;
+       color: var(--dark-grey);
+    }
+
+    .list{
+        width: 90%;
+        height: 100%;
+      
+        margin: 10px 0;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+      gap: 10px;
+        overflow-y: scroll;
+       
+    }
+}
+

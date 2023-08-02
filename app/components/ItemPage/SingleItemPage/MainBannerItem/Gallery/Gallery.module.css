@@ -1,0 +1,281 @@
+
+.galleryBox{
+    height: 100%;
+    width: 100%;
+ justify-content: space-between;
+    display: flex;
+}
+
+.smallImagesBox{
+    height:100%;
+    width: 20%;
+    gap: 20px;
+display: flex;
+flex-direction: column;
+    overflow-y: scroll;
+    scrollbar-width: none; 
+    -ms-overflow-style: none;
+}
+
+.smallImagesBox::-webkit-scrollbar {
+    display: none;
+}
+
+.smallImgBox{
+    position: relative;
+    width: 100%;
+    min-height: 27%;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.smallImg{
+    border-radius: 8px;
+}
+
+.smallImg.active{
+    filter: brightness(80%);
+}
+
+.mainImageBox{
+    height: 100%;
+    width: 75%;
+    
+    position: relative;
+    border-radius: 8px;
+}
+
+.mainImg{
+    border-radius: 8px;
+    object-fit: cover;
+    cursor: zoom-in;
+}
+
+.discountTag{
+    position: absolute;
+    right: 0;
+    top: 10px;
+    background-color: var(--dark-grey);
+    color: var(--white-pure);
+    padding: 5px 20px;
+    box-sizing: border-box;
+    font-weight: bold;
+    font-size: 16px;
+
+}
+
+.shader{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 101;
+    background-color: rgba(0,0,0,0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 101;
+   
+}
+
+.fullscreenImgBox{
+    position: relative;
+    width: 500px;
+    height: 500px;
+}
+
+.fullscreenImg{
+    object-fit: cover;
+}
+
+.closeIcon{
+    position: absolute;
+    top: 2%;
+    right: 2%;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+
+.zoomIcon{
+    position: absolute;
+   margin: 10px;
+    z-index: 3;
+    color: var(--white-pure);
+    opacity: 0.7;
+  
+    cursor: pointer;
+    display: none;
+}
+
+@media (max-width:600px){
+    .galleryBox{
+        flex-direction: column;
+        height: 300px;
+       height: clamp(300px, 106.43vw + 0.12rem, 600px);
+     
+    }
+    .mainImageBox{
+        width:100%;
+        order: 1;
+        height: 80%;
+        border-radius: 0;
+    }
+
+    .mainImg{
+        border-radius: 0;
+    }
+    .smallImagesBox{
+        order: 2;
+        flex-direction: row;
+        width: 100%;
+       height: 20%;
+       overflow-x: scroll;
+       gap: 0;
+    }
+
+    .smallImgBox{
+        min-width: 25%;
+        border-radius: 0;
+    }
+
+    .smallImg{
+        border-radius: 0;
+    }
+    .shader{
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        z-index: 101;
+        background-color: rgba(0,0,0,0.7);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+       
+    }
+    
+    .fullscreenImgBox{
+        position: relative;
+        width: 90vw;
+        height: 90vw;
+    }
+    
+   
+    .closeIcon{
+        position: absolute;
+        top: 3%;
+    right: 3%;
+        cursor: pointer;
+        width: clamp(18px, 5.72vw + 0.12rem, 22px);
+        height:clamp(18px, 5.72vw + 0.12rem, 22px);
+    }
+
+    .zoomIcon{
+        position: absolute;
+       margin: 0;
+        z-index: 3;
+        color: var(--dark-grey);
+        opacity: 0.5;
+        top: 3%;
+        left: 3%;
+        cursor: pointer;
+        display: block;
+       
+        width: clamp(18px, 5.72vw + 0.12rem, 24px);
+  
+        height: clamp(18px, 5.72vw + 0.12rem, 24px);
+    }
+    .discountTag{
+        position: absolute;
+        right: 0;
+        top: 0px;
+        background-color: var(--dark-grey);
+        color: var(--white-pure);
+        padding: 5px clamp(10px, 2.86vw + 0.12rem, 20px);
+        box-sizing: border-box;
+        font-weight: bold;
+        font-size: clamp(12px, 3.58vw + 0.12rem, 16px);
+    
+    }
+}
+
+@media (min-width:601px) and (max-width:1023px){
+    .galleryBox{
+       flex-direction: column;
+       justify-content: flex-start;
+       gap: 10px;
+    } 
+
+    .smallImagesBox{
+        order: 2;
+        flex-direction: row;
+        width: 100%;
+        height: 19%;
+        gap: 0;
+        overflow-x: scroll;
+    }
+
+    .mainImageBox{
+        order: 1;
+        width: 100%;
+        height: 75%; 
+    }
+
+    .smallImgBox{
+        min-width: 25%;
+        border-radius: 0;
+    }
+
+    .smallImg{
+        border-radius: 0;
+    }
+    .discountTag{
+        position: absolute;
+        right: 0;
+        top: 10px;
+        background-color: var(--dark-grey);
+        color: var(--white-pure);
+        padding: 5px 10px;
+        box-sizing: border-box;
+        font-weight: bold;
+        font-size: 12px;
+    
+    }
+ 
+    
+    .fullscreenImgBox{
+        position: relative;
+        width: 60vw;
+        height: 60vw;
+    }
+    
+    .fullscreenImg{
+        object-fit: cover;
+    }
+    
+    .closeIcon{
+        position: absolute;
+        top: 2%;
+        right: 2%;
+        cursor: pointer;
+    }
+    .zoomIcon{
+        position: absolute;
+       margin: 0;
+        z-index: 3;
+        color: var(--dark-grey);
+        opacity: 0.5;
+        top: 3%;
+        left: 3%;
+        cursor: pointer;
+        display: block;
+        width: 14px;
+        width: clamp(14px, 2vw + 0.12rem, 18px);
+        height: clamp(14px, 2vw + 0.12rem, 18px);
+       
+    }
+}

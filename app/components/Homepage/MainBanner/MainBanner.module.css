@@ -1,0 +1,352 @@
+.banner{
+    width: 80%;
+    height: 500px;
+    height: min(35vw, 500px);
+    margin: 20px 0 ;
+margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    position: relative;
+   /*  border: 1px solid blue; */   
+}
+
+.imgBox{
+    width: 750px;
+    width: 60%;
+ 
+    height: 100%;
+   
+    position: relative;
+}
+
+.textBox{
+    display: flex;
+    flex-direction: column;
+   align-items: center;
+
+   justify-content: space-evenly;
+    height: 80%;
+    width:45%;
+    position:absolute;
+    right:0;
+    top: 0;
+
+}
+
+.brandBox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   
+}
+
+.nike{
+    color: #9d0208;
+    margin: 0;
+    font-size: 20px;
+    font-size: 14px;
+    font-size: clamp(14px, 1.18vw + 0.12rem, 20px);
+}
+
+.jordan{
+    color: #9d0208;
+    margin: 0;
+    font-size: 60px;
+    font-size: 35px;
+   font-size:  clamp(35px, 3.23vw + 0.12rem, 60px);
+}
+
+.rogue{
+    color: rgb(181, 181, 182);
+    margin: 0;
+    font-size: 20px;
+    font-size: 14px;
+    font-size: clamp(14px, 1.18vw + 0.12rem, 20px);
+}
+
+.lustBox{
+    display: flex;
+ align-items: center;
+    flex-direction: column;
+    box-sizing: border-box;
+    margin: 20px 0;
+    margin: 5px 0;
+    margin: clamp(5px, 0.46vw + 0.02rem, 20px) 0px;
+}
+
+.lust{
+    font-style: italic;
+    color: #9d0208;
+    font-weight: 600;
+    font-size: 14px;
+    font-size: clamp(14px, 1.18vw + 0.12rem, 20px);
+}
+
+.mobileParagBox{
+    display: none;
+}
+
+.parag{
+    width: 80%;
+    text-align: center; 
+    font-style: italic;
+    font-weight: 600;
+    font-size: 14px;
+    font-size: clamp(14px, 1.18vw + 0.12rem, 20px);
+}
+
+
+
+.rogueBtn{
+    width: 200px;
+    width: 30%;
+    background-color: #9d0208;
+    color: white;
+    border-radius: 10px;
+    padding: 10px ;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-size: 14px;
+    font-size: clamp(14px, 1.18vw + 0.12rem, 20px);
+   
+}
+
+
+
+@media (max-width:600px){
+    .banner{
+        flex-direction: column;
+        width: 100%;
+       
+        height: fit-content;
+        margin: 20px 0 ;
+        margin-bottom: 0;
+    }
+
+    .imgBox{
+       
+        width: clamp(280px, 99.29vw + 0.12rem, 350px);
+    
+       min-height: clamp(200px, 70.72vw + 0.12rem, 260px);
+    display: flex;
+    order: 2;
+    flex-direction: column;
+        position: relative;
+     
+    }
+    
+    .textBox{
+        display: flex;
+        flex-direction: column;
+       align-items: center;
+        order: 1;
+       justify-content: space-evenly;
+        height: fit-content;
+        width:90%;
+        position:relative;
+        right:unset;
+        top: unset;
+    }
+
+    
+.nike{
+    color: #9d0208;
+    margin: 0;
+    font-size: clamp(12px, 3.58vw + 0.12rem, 16px)
+}
+
+.jordan{
+    color: #9d0208;
+    margin: 0;
+    font-size: clamp(30px, 10vw + 0.12rem, 35px);
+}
+
+.rogue{
+    color: rgb(181, 181, 182);
+    margin: 0;
+    font-size: clamp(14px, 4vw + 0.12rem, 18px)
+}
+
+.lustBox{
+  
+    margin: 0;
+}
+
+.lust{
+    font-style: italic;
+    color: #9d0208;
+    font-weight: 600;
+    font-size: clamp(16px, 4.72vw + 0.12rem, 20px);
+}
+
+.parag{
+    width: 80%;
+    text-align: center; 
+    font-style: italic    ;
+    font-size: 14px;
+    display: none;
+}
+
+.mobileParag{
+    display: block;
+    font-size: clamp(14px, 4vw + 0.12rem, 18px);
+}
+
+.mobileParagBox{
+    display: block;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+ order: 3;
+}
+
+
+
+.rogueBtn{
+    width: 50%;
+    width: 120px;
+    height: 36px;
+    background-color: #9d0208;
+    color: white;
+    border-radius: 10px;
+    padding: 5px ;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-weight: bold;
+    letter-spacing: 2px;
+    filter: brightness(100%);
+    display: none;
+}
+.mobileRogueBtn{
+    display: block;
+}
+
+.rogueBtn:hover{
+    filter: brightness(100%);
+}
+
+}
+
+@media (min-width:601px) and (max-width:1023px){
+    .banner{
+        width: 90%;
+     
+        height: 300px;
+        height: min(40vw, 350px);
+      
+        margin: 20px 0 ;
+        margin-bottom: 0;
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
+
+    .imgBox{
+        width: 450px;
+        width: 60%;
+        height: 100%;
+        position: relative;
+       
+    }
+
+    .textBox{
+        display: flex;
+        flex-direction: column;
+       align-items: center;
+       
+       justify-content: space-evenly;
+        height: 90%;
+        width:40%;
+        position:absolute;
+        right:0;
+        top: 0;
+      
+    }
+
+    
+.nike{
+    color: #9d0208;
+    margin: 0;
+    font-size: 12px;
+    font-size: 10px;
+    font-size: 16px;
+    font-size: clamp(10px, 1.34vw + 0.12rem, 16px);
+}
+
+.jordan{
+    color: #9d0208;
+    margin: 0;
+    font-size: 30px;
+    font-size: 24px;
+    font-size: 40px;
+    font-size: clamp(24px, 3.67vw + 0.12rem, 40px);
+}
+
+.rogue{
+    color: rgb(181, 181, 182);
+    margin: 0;
+    font-size: 14px;
+    font-size: 10px;
+    font-size: 16px;
+    font-size: clamp(10px, 1.34vw + 0.12rem, 16px);
+}
+
+.lustBox{
+    display: flex;
+ align-items: center;
+    flex-direction: column;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.lust{
+    font-style: italic;
+    color: #9d0208;
+    font-weight: 600;
+    font-size: 14px;
+    font-size: 10px;
+    font-size: 16px;
+    font-size: clamp(10px, 1.34vw + 0.12rem, 16px);
+}
+
+.parag{
+    width: 80%;
+    text-align: center; 
+    font-style: italic   ;
+    font-size: 12px;
+    font-size: 10px;
+    font-size: 16px;
+    font-size: clamp(10px, 1.34vw + 0.12rem, 16px);
+}
+
+.rogueBtn{
+    width: 150px;
+    width: 40%;
+    background-color: #9d0208;
+    color: white;
+    border-radius: 10px;
+    padding:10px ;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-weight: bold;
+    letter-spacing: 2px;
+    filter: brightness(100%);
+    font-size: 12px;
+    font-size: 16px;
+    font-size: clamp(10px, 1.34vw + 0.12rem, 16px);
+}
+
+.rogueBtn:hover{
+    filter: brightness(100%);
+}
+
+}

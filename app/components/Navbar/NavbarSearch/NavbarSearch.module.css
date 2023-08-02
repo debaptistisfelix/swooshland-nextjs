@@ -1,0 +1,236 @@
+
+
+
+.searchBox{
+    display: flex;
+    align-items: center;
+    border-radius: 20px;
+    height: 20px;
+    width: 20px;
+    z-index: 100;
+
+    
+}
+
+.searchBox.active{
+   animation: searchBoxAnimationShow 0.75s ease-out forwards;
+}
+
+.searchBox.notActive{
+    animation: searchBoxAnimationCLose 0.75s ease-in-out forwards;
+}
+
+@keyframes searchBoxAnimationShow{
+    0%{
+        width: 20px;
+        height: 20px;
+    }
+    95%{
+        background-color: rgba(222, 226, 230, 0.5);
+    }
+    100%{
+        width: 200px;
+        height: 20px;
+        background-color: rgba(222, 226, 230, 1);
+        gap: 5px;
+       
+        padding: 5px 10px;
+    }
+}
+
+@keyframes searchBoxAnimationCLose {
+    0%{
+        width: 200px;
+        height: 20px;
+        gap: 5px;
+     
+        padding: 5px 10px;
+    }
+    100%{
+        width: 20px;
+        height: 20px;
+    }
+}
+
+.icon{
+    color: var(--dark-grey);
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.searchInput{
+    min-height: 100%;
+    background-color: transparent;
+    width: 90%;
+    outline: none;
+    border: none;
+    opacity: 0;
+    animation: searchInputShow 0.5s 0.75s ease-out forwards;
+}
+
+
+
+@keyframes searchInputShow {
+    0%{
+        opacity: 0;
+        display: none;
+    }
+    100%{
+        opacity: 1;
+        display: block;
+    }
+}
+
+
+
+
+
+
+
+.closeIcon{
+    width: 10px;
+    height: 10px;
+    color: var(--medium-grey);
+    filter: brightness(150%);
+    cursor: pointer;
+    opacity: 0;
+    animation: bounceIn 0.5s 0.75s ease-out forwards;
+}
+
+.closeIcon:hover{
+    color: var(--dark-grey)
+}
+
+
+
+@keyframes bounceIn {
+    
+        0% {
+          opacity: 0;
+          transform: scale(0.3);
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1.05);
+        }
+        70% {
+          transform: scale(0.9);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      
+      
+}
+
+.searchResults{
+    position: fixed;
+    background-color: rgba(0,0,0, 0.5);
+    top: 0;
+   padding: 0;
+    margin-top: 100px;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+ 
+}
+
+.resultsPage{
+    width: 750px;
+    border-radius: 8px;
+    box-sizing: border-box;
+    height: 70vh;
+    margin-top: 40px;
+    background-color: white;
+    display: flex;
+ 
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.brandsBox{
+    width: 40%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+border-right: 2px solid var(--thin-grey);
+  padding:20px;
+  box-sizing: border-box;
+}
+
+.brandTitle, .resultsTitle{
+margin: 0;
+font-size: 16px;
+color: var(--dark-grey);
+}
+
+.brandList{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin:20px 0;
+}
+
+.brandLine{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+}
+
+.brandLine:hover .brandName, .brandLine:hover .brandCount{
+    color: var(--medium-grey);
+}
+
+.brandName, .brandCount{
+    font-size: 14px;
+    margin: 0;
+    color: var(--light-grey);
+    transition: all 0.3s ease-in-out;
+    
+}
+
+.brandName{
+    cursor: pointer;
+}
+
+.brandCount{
+    color: var(--light-grey);
+    font-weight: 400;
+}
+
+.firstResultBox{
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+  padding:20px;
+  box-sizing: border-box;
+}
+
+.resultList{
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: scroll;
+    width: 100%;
+}
+
+@media (max-width:600px){
+.searchBox{
+    display: none;
+}
+}
+
+@media (min-width:601px) and (max-width:1023px){
+.searchBox{
+    display: none;
+}
+}

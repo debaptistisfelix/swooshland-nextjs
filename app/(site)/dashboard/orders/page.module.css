@@ -1,0 +1,185 @@
+.newsletterPage{
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    padding-left: 100px;
+    box-sizing: border-box;
+    width: 90%;
+    min-height: calc(100vh - 100px);
+
+}
+
+.title{
+    font-size: 24px;
+    margin: 10px 0;
+    color: var(--dark-grey);
+    display: none;
+}
+
+.imageBox{
+   
+    width: 100%;
+    height: 250px;
+    position: relative;
+}
+
+.image{
+    object-position: 0px -120px;
+}
+
+.shader{
+    background-color: black;
+    width: 100%;
+    height:100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    opacity: 40%;
+  }
+
+  .bannerTextBox{
+    color: var(--white-pure);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: absolute;
+    z-index: 3;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+  
+  }
+
+  .bannerTitle{
+    font-size: 40px;
+    margin: 0;
+  }
+
+  .bannerSubtitle{
+    font-size: 20px;
+    margin: 0;
+  }
+
+  .labelBox{
+    display: flex;
+    width: 100%;
+    padding: 0 10px;
+    box-sizing: border-box;
+    align-items: center;
+
+  }
+
+  .label{
+
+    font-weight: 200;
+    color: var(--light-grey);
+    font-size: 16px;
+    text-align: left;
+  }
+
+  .label1{
+    width: 150px;
+    width: 15%;
+  }
+
+  .label2{
+    width: 300px;
+    width: 30%;
+  }
+
+  .label3{
+    width: 100px;
+    width: 15%;
+  }
+
+  .label4{
+    width: 200px;
+    width: 20%;
+  }
+
+  .label5{
+    width: 200px;
+    width: 20%;
+  }
+
+  @media (max-width:600px){
+    .newsletterPage{
+      width: 100%;
+      padding-left: 0;
+     align-items: center;
+     height: fit-content;
+    }
+
+    
+.imageBox{
+  width: 100%;
+  height: 130px;
+  height: 170px;
+  position: relative;
+}
+
+.image{
+  object-position: 0px -30px;
+}
+
+.bannerTitle{
+  font-size: 24px;
+  margin: 0;
+  text-align: center;
+}
+
+.bannerSubtitle{
+  font-size: 16px;
+  margin: 0;
+  text-align: center;
+  width: 90%;
+}
+
+.labelBox{display: none;}
+
+  }
+ 
+
+
+@media(min-width:601px) and (max-width:1023px){
+    .newsletterPage{
+        min-height: 70vh;
+        height: fit-content;
+        padding: 20px 0 ;
+        box-sizing: border-box;
+        align-items: flex-end;
+    }
+    .imageBox{
+   
+        width: 95%;
+        height: 155px;
+        position: relative;
+    }
+
+    .parag{
+        width: 95%;
+        font-size: 14px;
+    }
+
+    .image{
+        object-position: 0px -40px;
+    }
+
+    .bannerTitle{
+        font-size: 30px;
+        margin: 0;
+      }
+    
+      .bannerSubtitle{
+        font-size: 16px;
+        margin: 0;
+      }
+
+      .labelBox{
+        display: none;
+      }
+}

@@ -1,0 +1,141 @@
+.card{
+    display: flex;
+    width: 400px;
+    height: 150px;
+   
+}
+
+.imgBox{
+    height: 100%;
+    width: 150px;
+    position: relative;
+}
+
+.textBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 10px;
+}
+
+.product, .price, .name, .size{
+    margin: 0;
+}
+
+.product{
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--dark-grey);
+}
+
+.name{
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--light-grey);
+}
+
+.price{
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--dark-grey);
+    margin: 10px 0;
+}
+
+.size{
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--light-grey); 
+}
+
+.bolder{
+    color: var(--dark-grey);
+}
+
+@media (max-width:600px){
+    .card{
+        display: flex;
+        width: 400px;
+        height: 100px;
+       
+    }
+    
+    .imgBox{
+        height: 100%;
+        width: 100px;
+        position: relative;
+    }
+       
+.product{
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--dark-grey);
+}
+
+.name{
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--light-grey);
+}
+
+.price{
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--dark-grey);
+    margin: 5px 0;
+}
+
+.size{
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--light-grey); 
+}
+
+.bolder{
+    color: var(--dark-grey);
+}
+}
+
+@media (min-width:601px) and (max-width:1023px){
+    .card{
+        display: flex;
+        width: 400px;
+        height: 100px;
+       
+    }
+    
+    .imgBox{
+        height: 100%;
+        width: 100px;
+        position: relative;
+    }
+    
+.product{
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--dark-grey);
+}
+
+.name{
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--light-grey);
+}
+
+.price{
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--dark-grey);
+    margin: 5px 0;
+}
+
+.size{
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--light-grey); 
+}
+
+.bolder{
+    color: var(--dark-grey);
+}
+}
+

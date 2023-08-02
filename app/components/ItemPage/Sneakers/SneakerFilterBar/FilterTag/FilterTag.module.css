@@ -1,0 +1,28 @@
+.tag{
+    border: 1px solid var(--light-grey);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    gap: 5px;
+}
+
+.filterName{
+    color: var(--light-grey);
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.icon{
+    width: 12px;
+    height: 12px;
+    color: var(--light-grey);
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+}
+
+.icon:hover{
+    color:var(--medium-grey)
+}

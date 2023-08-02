@@ -1,0 +1,153 @@
+.navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    height: 100px;
+    border-bottom: 2px solid #f0f0f0;
+    z-index: 99;
+    
+}
+
+.logo{
+    font-weight: bolder;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.navLinks{
+    display: flex;
+    width: fit-content;
+    margin-right: auto;
+    margin-left: 100px;
+    gap: 50px;
+    font-weight: bold;
+}
+
+.navLink{
+    cursor: pointer;
+}
+
+.iconBox{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.icon{
+    color: var(--dark-grey);
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.cartIcon{
+    width: 22px;
+    height: 22px;
+}
+
+.iconGlassMobile{
+    display: none;
+}
+
+
+  .mobileTopIcons{
+    display: none;
+  }
+
+  @media (max-width:600px){
+    .navbar{
+        width: 90%;
+        height: 10vh
+    }
+
+    .logo{
+        font-size: clamp(18px, 5.72vw + 0.12rem, 22px);
+    }
+    .navLinks{
+        display: none;
+    }
+
+    .icon{
+        color: var(--dark-grey);
+        width: clamp(16px, 4.72vw + 0.12rem, 20px);
+        height: clamp(16px, 4.72vw + 0.12rem, 20px);
+        cursor: pointer;
+    }
+
+    .cartIcon{
+        width: clamp(18px, 5.72vw + 0.12rem, 22px);
+        height:clamp(18px, 5.72vw + 0.12rem, 22px);
+    }
+
+    .iconGlassMobile{
+        display: block;
+    }
+
+  }
+
+  @media (min-width:601px) and (max-width:1023px){
+    .navbar{
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        width: 90%;
+        height: fit-content;
+        padding-bottom: 20px;
+        box-sizing: border-box;
+        border-bottom: 2px solid #f0f0f0;
+    }
+
+    .logoLink{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .logo{
+        font-weight: bolder;
+        font-size: 24px;
+        width: 100%;
+        min-width: 90%;
+        text-align: center;
+        text-align: center;
+        cursor: pointer;
+        background-color: var(--dark-grey);
+        color: var(--white-pure);
+        border-radius: 5px;
+    }
+    .navLinks{
+        margin-left: 0;
+        gap: 30px;
+    }
+
+    .iconGlassMobile{
+        display: block;
+    }
+
+    .navLink{
+        cursor: pointer;
+        font-size: 14px;
+    }
+    
+    .iconBox{
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+    
+    .icon{
+        color: var(--dark-grey);
+        width: 16px;
+        height: 16px;
+        cursor: pointer;
+    }
+    
+    .cartIcon{
+        width: 18px;
+        height: 18px;
+    }
+
+    
+  }

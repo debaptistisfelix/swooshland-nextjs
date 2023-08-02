@@ -1,27 +1,411 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+:root{
+  --light-bg: #f5f5f5;
+  --dark-grey: #191919;
+  --star-yellow: #ffd500;
+  --light-grey: #7e7e7e;;
+  --thin-grey: #f0f0f0;
+  --medium-grey: #495057;
+  --white-pure: #fff;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+body{
+  background-color: white;
+  min-width: 100vw;
+  max-width: 100vw;
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* LINK COMPONENT */
+
+.Link{
+  text-decoration: none;
+  color: var(--dark-grey);
+}
+
+.loginLink{
+  text-decoration: underline;
+}
+/* INPUT COMPONENT*/
+
+.input{
+  height: 42px;
+  border-radius: 12px;
+  outline: none;
+  border: 1px solid var(--thin-grey);
+  font-size: 16px;
+  box-sizing: border-box;
+  padding: 0px  10px;
+}
+
+.input:focus{
+  border: 1px solid var(--medium-grey);
+}
+
+
+/* MAIN BUTTON BIG */
+.mainButton{
+  border: 1px solid var(--light-grey);
+  color: var(--light-grey);
+  font-size: 16px;
+  height: 42px;
+  background-color: var(--white-pure);
+  border-radius: 8px;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  font-weight: 700;
+}
+
+.mainButton:hover{
+  background-color: var(--dark-grey);
+  color: var(--white-pure);
+}
+
+/* MAIN FONT SIZES FOR BIG TITLE, SMALLTITLE AND PARAGS */
+
+.bigTitle{
+  font-size: 22px;
+  color: var(--dark-grey);
+  margin: 0;
+}
+
+.smallTitle{
+  font-size: 18px;
+}
+
+.mainParag{
+  font-size: 16px;
+  margin: 0;
+}
+
+/* MODAL TO REMOVE OR LOG OUT */
+
+.modalContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  background-color: rgba(0,0,0,0.5);
+  width:100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 100;
+}
+
+.modal{
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white-pure);
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  align-items: center;
+  min-width: 300px;
+}
+
+.modalTitle{
+  margin: 0;
+  font-size: 16px;
+  color:var(--dark-grey);
+}
+
+.modalParag{
+  font-size: 14px;
+  color: var(--light-grey);
+  margin:20px 0;
+  text-align: center;
+  font-weight: 400;
+}
+
+.modalBtnBox{
+  display: flex;
+  gap: 20px;
+}
+
+.modalButton{
+  margin: 0;
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  width: 100px;
+  font-weight: 400;
+}
+
+.modalLeftButton{
+  background-color: var(--white-pure);
+  color: var(--light-grey);
+  border: 1px solid var(--light-grey);
+}
+
+.modalRightButton{
+  background-color: var(--dark-grey);
+  color: var(--white-pure);
+}
+
+
+/* PAGE LAYOUT */
+
+.pageContainer{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+padding: 0 5%;
+  min-height: calc(100vh - 100px);
+  height: fit-content;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.smallNavBackBtnBox{
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+ 
+}
+
+
+
+.smallNavBackBtn{
+  color: var(--light-grey);
+  font-size: 16px;
+  font-weight: 400;
+  transition: all 0.3s ease-out;
+ 
+}
+
+.smallNavBackBtn:hover{
+  color: var(--medium-grey);
+}
+
+.smallNavLeftArrowIcon{
+  color: var(--light-grey);
+  margin-right: 5px;
+  box-sizing: border-box;
+  width: 16px;
+  height: 16px;
+}
+
+.pageContent{
+  display: flex;
+  flex-direction: column;
+ 
+  width: 100%;
+  height: fit-content;
+  min-height: 500px;
+
+}
+
+
+/* BUTTON COMPONENT */
+
+.blackButton{
+  background-color: var(--dark-grey );
+  color: var(--white-pure);
+  border-radius: 12px;
+  padding: 10px;
+  box-sizing: border-box;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.whiteButton{
+  background-color: var(--white-pure);
+  color: var(--light-grey);
+  border: 1px solid var(--light-grey);
+  border-radius: 12px;
+  padding: 10px;
+  box-sizing: border-box;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+
+
+.DashboardPage{
+  width: 90%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+
+}
+
+@media (max-width:600px){
+
+/* MAIN BUTTON  */
+.mainButton{
+  font-size: clamp(14px, 4vw + 0.12rem, 16px);
+  height: clamp(36px, 12.15vw + 0.12rem, 42px);
+
+}
+
+.mainButton:active{
+  background-color: var(--dark-grey);
+  color: var(--white-pure);
+}
+
+.input{
+  font-size: clamp(14px, 4vw + 0.12rem, 16px);
+}
+
+.input::placeholder{
+  font-size: clamp(14px, 4vw + 0.12rem, 16px);
+}
+
+/* MAIN FONTSIZES FOR BIG TITLE SMALL TITLE AND PARAGS */
+.bigTitle{
+  font-size: clamp(16px, 4.72vw + 0.12rem, 20px);
+}
+
+.smallTitle{
+  font-size: clamp(14px, 4vw + 0.12rem, 16px);
+}
+
+.mainParag{
+  font-size: clamp(12px, 3.58vw + 0.12rem, 16px);
+}
+
+/* -------------------------MODAL FOR REMOVEING AND FOR LOG OUT-------------------- */
+
+.modal{
+  width: 90%;
+  max-width: 350px;
+  min-width: none;
+}
+.modalTitle{
+  margin: 0;
+  font-size: clamp(14px, 4vw + 0.12rem, 18px);
+}
+
+.modalParag{
+
+  font-size: clamp(12px, 3.58vw + 0.12rem, 16px);
+
+}
+
+.modalbtnBox{
+  display: flex;
+  gap: 10px;
+}
+
+.modalButton{
+  margin: 0;
+  border: none;
+  border-radius: 8px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: clamp(14px, 4vw + 0.12rem, 18px);
+  width: 100px;
+}
+.modalLeftButton{
+  background-color: var(--white-pure);
+  color: var(--light-grey);
+  border: 1px solid var(--light-grey);
+}
+
+.modalRightButton{
+  background-color: var(--dark-grey);
+  color: var(--white-pure);
+}
+
+/*------------------------------- PAGE LAYOUT ------------------------------------*/
+
+.pageContainer{
+  margin-bottom: 50px;
+}
+
+.smallNavBackBtnBox{
+    display: flex;
+    align-items: center;
+ 
+   margin: 10px 0;
+   margin-right: auto;
+}
+
+
+
+.smallNavBackBtn{
+    color: var(--light-grey);
+   font-size: clamp(12px, 3.58vw + 0,.12rem, 16px);
+    font-weight: 400;
+   
+}
+
+.smallNavBackBtn:hover{
+    color: var(--medium-grey);
+}
+
+.smallNavLeftArrowIcon{
+    color: var(--light-grey);
+    margin-right: 5px;
+    box-sizing: border-box;
+    width: 14px;
+    height: 14px;
+}
+
+
+  .DashboardPage{
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@media (min-width:601px) and (max-width:1023px){
+  .input{
+    font-size: 14px;
+    height: 36px;
+  }
+
+  .bigTitle{
+    font-size: clamp(16px, 2.34vw + 0.12rem, 18px)
+  }
+
+  .smallTitle{
+    font-size: clamp(14px, 2vw + 0.12rem, 16px);
+  }
+
+  .mainParag{
+    font-size: clamp(12px, 1.67vw + 0.12rem, 16px);
+  }
+
+ 
+
+  /* MAIN BUTTON */
+
+  .mainButton{
+    font-size: clamp(14px, 2vw + 0.12rem, 16px);
+    height: 36px;
+  }
+  .mainButton:active{
+    background-color: var(--dark-grey);
+    color: var(--white-pure);
+  }
+
+  .blackButton, .whiteButton{
+    font-size: 14px;
+  }
 }
+
+

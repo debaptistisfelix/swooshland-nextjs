@@ -1,0 +1,58 @@
+.banner{
+    width: 90%;
+    height: 500px;
+    height: 370px;
+    height: clamp(370px, 35.94vw + 0.12rem, 500px);
+    display: flex;
+}
+
+.galleryBox{
+    height: 100%;
+    width: 60%;
+ justify-content: space-between;
+    display: flex;
+}
+
+.textBox{
+    width: 40%;
+    height: 100%;
+   
+}
+
+@media (max-width:600px){
+    .banner{
+        flex-direction: column;
+        width: 100%;
+        height: fit-content;
+    }
+    .galleryBox{
+        width: 100%;
+    }
+    .textBox{
+        width: 100%;
+    }
+}
+
+@media (min-width:601px) and (max-width:1023px){
+    .banner{
+        width: 100%;
+   
+       
+height: clamp(360px, 59.57vw + 0.12rem, 550px);
+        display: flex;
+    }
+
+    .galleryBox{
+      
+        width: 50%;
+    
+    }
+
+    .textBox{
+        width: 50%;
+    
+       
+    }
+    
+     
+}

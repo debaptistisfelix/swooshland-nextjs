@@ -1,0 +1,286 @@
+.card{
+    width: 200px;
+   
+    height: 230px;
+
+    margin: 10px auto;
+
+}
+
+.card:hover .shade{
+   opacity: 1;
+}
+
+.imageBox{
+    position: relative;
+    width: 100%;
+    height:    75%;
+}
+
+.shade{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.25);
+    background-color: rgba(255, 255, 255,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.button{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+
+.shopBtn{
+    color: var(--dark-grey);
+    background-color: var(--white-pure);
+}
+
+.deleteBtn{
+    background-color: var(--dark-grey);
+    color: var(--white-pure);
+}
+
+
+
+.icon{
+    width: 20px;
+    height: 20px;
+}
+
+
+.textBox{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 5px;
+}
+
+.item{
+    font-size: 14px;
+    text-align: left;
+    width: 50%;
+    margin: 0;
+}
+
+.price{
+    font-size: 14px;
+    text-align: right;width: 50%;
+    margin: 0;
+}
+
+.name{
+    font-size: 14px;
+    text-align: left;
+    width: 50%;
+    font-style: italic;
+    color: var(--light-grey);
+    font-weight: 400;
+    margin: 0;
+}
+
+.starsBox{
+width: 40%;
+display: flex;
+flex-direction: row;
+justify-content: flex-end;
+align-items: flex-start;
+height: fit-content;
+
+margin-left: auto;
+}
+
+.star{
+    width:14px;
+    height: 14px;
+}
+
+
+
+@media (max-width:600px){
+    .card{
+        width: 170px;
+        width: 90%;
+        height: 200px;
+      
+        height: clamp(150px, 52.86vw + 0.12rem, 280px);
+        margin:  10px auto;
+      
+   
+       
+    }
+
+  
+    .imageBox{
+        position: relative;
+        width: 100%;
+        height: 75%;
+    }
+
+    .image{
+        object-fit: cover;
+    }
+      
+.item{
+  
+    font-size: clamp(10px, 2.86vw + 0.12rem, 18px);
+    text-align: left;
+    width: 60%;
+    margin: 0;
+}
+
+.price{
+    font-size: clamp(10px, 2.86vw + 0.12rem, 18px);
+    text-align: right;
+    width: 40%;
+    margin: 0;
+}
+
+.name{
+    font-size: 8px;
+    font-size: 16px;
+    font-size: clamp(8px, 2.15vw + 0.12rem, 16px);
+    text-align: left;
+    width: 50%;
+    font-style: italic;
+    color: var(--light-grey);
+    font-weight: 400;
+    margin: 0;
+}
+
+.starsBox{
+width: 40%;
+display: flex;
+flex-direction: row;
+justify-content: flex-end;
+align-items: flex-start;
+height: fit-content;
+
+margin-left: auto;
+}
+
+.star{
+    width:8px;
+    width: clamp(8px, 2.15vw + 0.12rem, 16px);
+    height: 8px;
+    height: clamp(8px, 2.15vw + 0.12rem, 16px);
+}
+
+.button{
+    width: clamp(30px, 10vw + 0.12rem, 50px);
+    height: clamp(30px, 10vw + 0.12rem, 50px);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.icon{
+    width: clamp(14px, 4vw + 0.12rem, 18px);
+    height: clamp(14px, 4vw + 0.12rem, 18px);
+}
+
+
+}
+
+@media (min-width:601px) and (max-width:1023px){
+    .card{
+        width: 120px;
+      
+        height: 150px;
+    
+    
+    }
+    
+    .card:hover .shade{
+        display: flex;
+    }
+    
+    .imageBox{
+        position: relative;
+        width: 100%;
+        height:    75%;
+    }
+    
+.item{
+    font-size: 10px;
+    text-align: left;
+    width: 60%;
+    margin: 0;
+}
+
+.price{
+    font-size: 10px;
+    text-align: right;
+    width: 40%;
+    margin: 0;
+}
+
+.name{
+    font-size: 10px;
+    text-align: left;
+    width: 50%;
+    font-style: italic;
+    color: var(--light-grey);
+    font-weight: 400;
+    margin: 0;
+}
+
+.starsBox{
+width: 40%;
+display: flex;
+flex-direction: row;
+justify-content: flex-end;
+align-items: flex-start;
+height: fit-content;
+
+margin-left: auto;
+}
+
+.star{
+    width:10px;
+    height: 10px;
+}
+.shade{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    display: none;
+}
+
+.button{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.icon{
+    width: 16px;
+    height: 16px;
+}
+
+
+}

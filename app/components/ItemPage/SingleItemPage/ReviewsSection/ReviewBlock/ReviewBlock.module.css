@@ -1,0 +1,137 @@
+.block{
+    width: 100%;
+    height: fit-content;
+    background-color: var(--thin-grey);
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    color: var(--dark-grey);
+    padding: 10px;
+    box-sizing: border-box;
+ 
+}
+
+.topBox{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.user{
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0;
+}
+
+.star{
+    width: 14px;
+    height: 14px;
+}
+
+.title{
+    font-size: 18px;
+
+    margin: 0;
+}
+
+.reviewText{
+    font-size: 14px;
+    margin: 10px 0
+
+}
+.date{
+    margin: 0;
+    color: var(--light-grey);
+    font-size: 14px;
+}
+
+@media (max-width:600px){
+    .block{
+   
+        background-color: transparent;
+    
+     
+    }
+    
+   
+    
+    .user{
+        font-size: clamp(14px, 4vw + 0.12rem, 18px);
+        font-weight: 400;
+        margin: 0;
+    }
+    
+    .star{
+        width:clamp(14px, 4vw + 0.12rem, 18px);
+        height: clamp(14px, 4vw + 0.12rem, 18px);
+    }
+    
+    .title{
+        font-size:clamp(18px, 5.72vw + 0.12rem, 22px);
+    
+        margin: 0;
+    }
+    
+    .reviewText{
+        font-size:clamp(14px, 4vw + 0.12rem, 18px);
+        margin: 10px 0
+    
+    }
+    .date{
+        margin: 0;
+        color: var(--light-grey);
+        font-size:clamp(14px, 4vw + 0.12rem, 16px);
+    }
+}
+
+@media (min-width:601px) and (max-width:1023px){
+    .block{
+        width: 100%;
+        height: fit-content;
+        background-color: var(--thin-grey);
+        display: flex;
+        flex-direction: column;
+        border-radius: 8px;
+        color: var(--dark-grey);
+        padding: 10px;
+        box-sizing: border-box;
+     
+    }
+    
+    .topBox{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+    
+    .user{
+        font-size: 12px;
+       font-size: clamp(12px, 1.67vw + 0.12rem, 14px);
+        font-weight: 400;
+        margin: 0;
+    }
+    
+    .star{
+        width: clamp(12px, 1.67vw + 0.12rem, 14px);
+        height: clamp(12px, 1.67vw + 0.12rem, 14px);
+    }
+    
+    .title{
+    font-size: clamp(14px, 2vw + 0.12rem, 16px);
+    
+        margin: 0;
+    }
+    
+    .reviewText{
+        font-size: clamp(12px, 1.67vw + 0.12rem, 14px);
+        margin: 10px 0
+    
+    }
+    .date{
+        margin: 0;
+        color: var(--light-grey);
+        font-size: clamp(10px, 1.34vw + 0.12rem, 12px);
+    }
+}

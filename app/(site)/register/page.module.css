@@ -1,0 +1,17 @@
+.registerPage{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
+    width: 100%;
+    height: calc(100vh - 100px);
+}
+
+@media(min-width:601px) and (max-width:1023px){
+    .registerPage{
+        height: 70vh;
+        padding: 50px 0 ;
+        box-sizing: border-box;
+    }
+}
+

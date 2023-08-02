@@ -1,0 +1,299 @@
+.card{
+    width: 100%;
+    height: fit-content;
+  
+    display: flex;
+  
+}
+
+.imgBox{
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border-radius: 8px;
+}
+.img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.textBox{
+    margin-left: 20px;
+    color: var(--dark-grey);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+
+.title, .price{
+font-size: 18px;
+margin: 0;
+}
+
+.name{
+    color: var(--light-grey);
+    margin: 0;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.sizeBox{
+    display: flex;
+    gap:10px
+}
+
+.sizeLabel, .actualSize{
+    color: var(--light-grey);
+    margin: 0;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.xBox{
+   margin-left: auto;
+   margin-right: 10px;
+   margin-top: 10px;
+
+}
+
+.icon{
+    color: var(--thin-grey);
+    filter: brightness(80%);
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+    transition: all 0.3s ease-out;
+}
+
+.icon:hover{
+    color: var(--light-grey);
+}
+
+.removeBox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+background-color: rgba(0,0,0,0.5);
+    width:100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.removeModal{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--white-pure);
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    align-items: center;
+}
+
+.removeTitle{
+    margin: 0;
+    font-size: 16px;
+}
+
+.removeParag{
+    margin: 0;
+    font-size: 14px;
+    color: var(--light-grey);
+    margin:10px 0;
+    text-align: center;
+}
+
+.btnBox{
+    display: flex;
+    gap: 20px;
+}
+
+.cancelBtn, .deleteBtn{
+    margin: 0;
+    border: none;
+    border-radius: 8px;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    width: 100px;
+}
+
+.cancelBtn{
+    background-color: var(--white-pure);
+    color: var(--light-grey);
+    border: 1px solid var(--light-grey);
+}
+
+.deleteBtn{
+    background-color: var(--dark-grey);
+    color: var(--white-pure);
+}
+
+@media (max-width:600px){
+
+  
+    .imgBox{
+    width:clamp(80px, 27.86vw + 0.12rem, 120px);
+     height: clamp(80px, 27.86vw + 0.12rem, 120px)
+ 
+    }
+    .textBox{
+        margin-left: 10px;
+        color: var(--dark-grey);
+        display: flex;
+        flex-direction: column;
+        justify-content:flex-start;
+        gap: 0;
+    }
+
+    .title, .price{
+        font-size: 12px;
+        font-size: clamp(12px, 3.58vw + 0.12rem, 16px);
+     
+    }
+
+    .name{
+        color: var(--light-grey);
+        margin: 0;
+        font-size: 12px;
+        font-size:  clamp(12px, 3.58vw + 0.12rem, 16px);
+        font-weight: 400;
+    }
+
+    .sizeLabel, .actualSize{
+        font-size: 12px;
+        font-size: clamp(12px, 3.58vw + 0.12rem, 16px);
+    }
+
+    .select{
+        display: none;
+    }
+    .xBox{
+        margin: 0;
+        margin-left: auto;
+    
+     
+     }
+     
+     .icon{
+         color: var(--thin-grey);
+         filter: brightness(80%);
+         cursor: pointer;
+         width: 12px;
+        width: clamp(12px, 3.58vw + 0.12rem, 16px);
+         height: 12px;
+         height:  clamp(12px, 3.58vw + 0.12rem, 16px);
+     }
+
+     .removeModal{
+        width: 90%;
+        max-width: 350px;
+     }
+
+     .removeTitle{
+        margin: 0;
+        font-size: clamp(14px, 4vw + 0.12rem, 18px);
+    }
+    
+    .removeParag{
+  
+        font-size: clamp(12px, 3.58vw + 0.12rem, 16px);
+     
+    }
+    
+    .btnBox{
+        display: flex;
+        gap: 10px;
+    }
+    
+    .cancelBtn, .deleteBtn{
+        margin: 0;
+        border: none;
+        border-radius: 8px;
+        padding: 5px 10px;
+        cursor: pointer;
+        font-size: clamp(14px, 4vw + 0.12rem, 18px);
+        width: 100px;
+    }
+    
+    .cancelBtn{
+        background-color: var(--white-pure);
+        color: var(--light-grey);
+        border: 1px solid var(--light-grey);
+    }
+    
+    .deleteBtn{
+        background-color: var(--dark-grey);
+        color: var(--white-pure);
+    }
+
+   
+
+}
+
+@media (min-width:601px) and (max-width:1023px){
+    .imgBox{
+      
+    
+        width: clamp(80px, 12.98vw + 0.12rem, 120px);
+       
+        height: clamp(80px, 12.98vw + 0.12rem, 120px);
+ 
+    }
+
+    
+.textBox{
+    margin-left: 10px;
+    color: var(--dark-grey);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0px;
+}
+
+.title, .price{
+font-size: 12px;
+font-size: clamp(12px, 1.67vw + 0.12rem, 16px);
+margin: 0;
+}
+
+.name{
+    color: var(--light-grey);
+    margin: 0;
+    font-size: clamp(12px, 1.67vw + 0.12rem, 16px);
+    font-weight: 400;
+}
+
+.label{
+    font-size: clamp(12px, 1.67vw + 0.12rem, 16px);
+}
+
+.select{
+    margin-left: 5px;
+    height: 18px;
+    display: none;
+}
+
+
+
+.icon{
+    color: var(--thin-grey);
+    filter: brightness(80%);
+    cursor: pointer;
+    width: clamp(12px, 1.67vw + 0.12rem, 16px);
+    height: clamp(12px, 1.67vw + 0.12rem, 16px);
+}
+
+.icon:hover{
+    color: var(--light-grey);
+}
+
+}
+

@@ -1,0 +1,43 @@
+.box{
+    width: 180px;
+    width: 90%;
+    height: 150px;
+    height: 100px;
+    height: clamp(100px, 9.58vw + 0.12rem, 150px);
+    background-color: var(--thin-grey);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+   
+}
+
+.image{
+  
+    padding: 20px ;
+    box-sizing: border-box;
+}
+
+@media (max-width:600px){
+    .box{
+        width:20vw;
+        width: 30%;
+        height: 25vw;
+        
+    
+       
+       
+    }
+}
+
+@media (min-width:601px) and (max-width:1023px){
+    .box{
+        width: 10vw;
+        width: 90%;
+        height: 10vw;
+        height: 80px;
+        height: 100px;
+        height: clamp(80px, 12.98vw + 0.12rem, 100px);
+    }
+}
