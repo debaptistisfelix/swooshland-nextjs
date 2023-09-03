@@ -5,32 +5,56 @@ import AddressCard from '../AddressCard/AddressCard';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCirclePlus } from '@fortawesome/free-solid-svg-icons';
 import AddressForm from '../AddressesForm/AddressForm';
-import { useState } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { toast } from 'react-hot-toast'
+import ThreeCirclesLoader from '@app/components/Reusables/ThreeCirclesLoader/ThreeCirclesLoader';
+import { UserAddressesContext } from '@app/context/UserAddressesContext';
+
 
 
 export default function AddressesList() {
-  const [showFormToAddAddress, setShowFormToAddAddress] = useState(true)
+  const {
+    showFormToAddAddress,
+    addresses,
+    isLoading,
+    somethingIsLoading,
+    addAddressToAddressList,
+    toggleFormToAddAddress,
+    fetchAddresses,
+    fetchRemoveAddress,
+    selectDefaultAddress
+  } = useContext(UserAddressesContext)
 
-  const toggleFormToAddAddress = () => {
-    setShowFormToAddAddress(!showFormToAddAddress)
-  }
 
-  const addresses = [];
+
+  useEffect(()=>{
+    fetchAddresses()
+  }, [])
+
+  useEffect(()=>{
+    if(addresses.length >0){
+      const defaultAddressChoice = addresses.find((address) => address.default === true)
+      selectDefaultAddress(defaultAddressChoice)
+    }
+  }, [])
+
+ 
 
   return (
    <main className={styles.list}>
-   {/*  {addresses.length === 0 && <p className={styles.noAddresses}>You have no addresses saved.</p>} */}
-    <AddressCard /> 
-    <AddressCard /> 
-    <AddressCard /> 
-  <section className={styles.addressFormBox}>
+    {addresses.length === 0 && isLoading.fetchingAddresses===false && <p className={styles.noAddresses}>You have no addresses saved.</p>}
+    {addresses.length > 0 && isLoading.fetchingAddresses===false &&  addresses.map((address, id)=>{
+      return <AddressCard fetchRemoveAddress={fetchRemoveAddress} key={id} address={address} />
+    })}
+    {somethingIsLoading && <ThreeCirclesLoader  />}
+    {isLoading.fetchingAddresses === false &&  <section className={styles.addressFormBox}>
     <h3 
     onClick={toggleFormToAddAddress}
     className={styles.addAddressTitle}>
       <FontAwesomeIcon className={styles.addAddressIcon} icon={faCirclePlus} />
       Add New Shipping Address</h3>
-     {showFormToAddAddress === true &&  <AddressForm toggleFormToAddAddress={toggleFormToAddAddress} />}
-  </section>
+     {showFormToAddAddress === true &&  <AddressForm addAddressToAddressList={addAddressToAddressList} toggleFormToAddAddress={toggleFormToAddAddress} />}
+  </section>}
    </main>
   )
 }

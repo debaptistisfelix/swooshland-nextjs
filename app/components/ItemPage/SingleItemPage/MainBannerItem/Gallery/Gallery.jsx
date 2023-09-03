@@ -6,22 +6,23 @@ import Image from 'next/image'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faX, faMagnifyingGlassPlus } from '@fortawesome/free-solid-svg-icons'
 import { v4 as uuidv4 } from 'uuid';
+import ThreeCirclesLoader from '@app/components/Reusables/ThreeCirclesLoader/ThreeCirclesLoader'
 
-export default function Gallery() {
-  const [mainImage, setMainImage] = useState("lust1.jpg")
+export default function Gallery({item }) {
+  const [mainImage, setMainImage] = useState(null)
   const [zommedImg, setZommedImg] = useState(false)
+  
   const refElement = useRef(null);
-  const images = [
-    "lust1.jpg",
-    "lust2.jpg",
-    "lust3.jpg",
-    "lust4.jpg",
-    "lust5.jpg",
-    "lust6.jpg",
-    "lust7.jpg",
-    "lust8.jpg",
-    "lust9.jpg",
-  ]
+ 
+
+  useEffect(() => {
+      if(item !== null){
+        setMainImage(item.images[0])
+      } 
+  }, [item])
+
+
+
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -41,23 +42,24 @@ export default function Gallery() {
     setMainImage(img)
   }
   return (
-    <section className={styles.galleryBox}>
-    <section className={styles.smallImagesBox}>
-        {images.map((img, i) =>{
+   <>
+    <section className={`${styles.galleryBox} ${item?.images.length === 1 && styles.oneImageGalleryBox}`}>
+    {item && item.images.length > 1 && <section className={styles.smallImagesBox}>
+        {item !== null && item?.images.map((img, i) =>{
           return <div className={styles.smallImgBox} key={uuidv4()}>
             <Image
             onClick={() => setAsMainImage(img)}
             className={`${styles.smallImg} ${mainImage === img && styles.active}`} alt="small-image" fill={true} src={`/${img}`} />
           </div>
         })}
-    </section>
-    <section className={styles.mainImageBox}>
+    </section>}
+    <section className={`${styles.mainImageBox} ${item?.images.length === 1 && styles.oneImageMainImageBox}`}>
     <FontAwesomeIcon  onClick={() => setZommedImg(true)} className={styles.zoomIcon} icon={faMagnifyingGlassPlus} />
         <Image
         ref={refElement}
          onClick={() => setZommedImg(true)}
         className={styles.mainImg} alt="main-image" fill={true} src={`/${mainImage}`} />
-        <div className={styles.discountTag}>-30%</div>
+       {item && item.onSale === true &&  <div className={styles.discountTag}>-{item.discountPercentage}%</div>}
     </section>
    {zommedImg &&  <div className={styles.shader}>
           <div className={styles.fullscreenImgBox}>
@@ -68,6 +70,7 @@ export default function Gallery() {
         
         </div>}
 </section>
+   </>
   )
 }
 

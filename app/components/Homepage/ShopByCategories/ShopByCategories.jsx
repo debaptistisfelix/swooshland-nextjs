@@ -7,6 +7,7 @@ export default function ShopByCategories() {
     <main className={`${styles.section} ${poppins.className}`}>
        <h2 className={styles.title}>Shop by Category</h2>
        <section className={styles.categBox}>
+
        <div className={styles.boxContainer}>
         <div className={`${styles.box} ${styles.sneakerBox}`}>
             <div className={styles.shader}>
@@ -19,10 +20,19 @@ export default function ShopByCategories() {
                 </div>
             </div>
          </div>
+       
+       </div>
+
+       <Link href="/sneakers" className={`Link ${styles.mobileBoxContainer}`}>
+        <div className={`${styles.box} ${styles.sneakerBox}`}>
+         </div>
          <h3 className={styles.mobileCategTitle}>
                         Sneakers
-                    </h3>
-       </div>
+                    </h3> 
+       </Link>
+
+      
+       
        <div className={styles.boxContainer}>
             <div className={`${styles.box} ${styles.accessoriesBox}`}>
             <div className={styles.shader}>
@@ -35,10 +45,16 @@ export default function ShopByCategories() {
                 </div>
             </div>
         </div>
-        <h3 className={styles.mobileCategTitle}>
-                        Accessories
-                    </h3>
+       
        </div>
+
+       <Link href="/accessories" className={`Link ${styles.mobileBoxContainer}`}>
+        <div className={`${styles.box} ${styles.accessoriesBox}`}>
+         </div>
+         <h3 className={styles.mobileCategTitle}>
+                        Accessories
+                    </h3> 
+       </Link>
        
        </section>
     </main>

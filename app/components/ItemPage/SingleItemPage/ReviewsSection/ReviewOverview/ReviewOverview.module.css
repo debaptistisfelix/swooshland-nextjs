@@ -27,13 +27,33 @@
 
 .starBox{
     display: flex;
+position: relative;
+    align-items: center;
  margin: 10px 0;
+
 
 }
 
+.fullStarBox{
+    position: absolute;
+    display: flex;
+
+        align-items: center;
+
+   
+}
+
 .star{
-    width: 18px;
-    height: 18px;
+    width: clamp(14px, 1.18vw + 0.12rem, 18px);
+    height: clamp(14px, 1.18vw + 0.12rem, 18px);
+    color: var(--dark-grey);
+}
+
+.emptyStar{
+    width: clamp(14px, 1.18vw + 0.12rem, 18px);
+    height: clamp(14px, 1.18vw + 0.12rem, 18px);
+    color: var(--light-grey);
+    opacity: 0.5;
 }
 
 .count{
@@ -87,7 +107,7 @@
     height:100%;
     border-radius: 12px;
     background-color: var(--dark-grey);
-    width: 87%;
+    width:unset;
 }
 
 .starRatingCount{

@@ -19,6 +19,7 @@ export async function GET(request){
                 cartItems: {
                     include: {
                       item: true, // Include the associated Item for each CartItem
+                        availableSize: true,
                     },
                   },
                 address: true,

@@ -4,12 +4,10 @@ import crypto from "crypto";
 
 export async function POST(request, {params}) {
     const body = await request.json();
-    const {password, passwordConfirm} = body;
+    const {password} = body;
     const {token} = params;
 
-    if(password !== passwordConfirm){
-        return new Response("Passwords do not match", {status: 400});
-    }
+  
 
     try{
         const hashedToken = crypto.createHash('sha256').update(token).digest('hex');
@@ -24,7 +22,7 @@ export async function POST(request, {params}) {
         })
 
         if(!user){
-            return new Response("Token is invalid or has expired", {status: 400});
+            return new Response(JSON.stringify("Token is invalid or has expired"), {status: 400});
         }
 
         const hashedPassword = await hash(password, 12);
@@ -40,10 +38,10 @@ export async function POST(request, {params}) {
             }
         });
 
-        return new Response(JSON.stringify({message: "Password reset successful"}), {status: 200});
+        return new Response(JSON.stringify("Password reset successful"), {status: 200});
     }
     catch(error){
         console.log(error);
-        return new Response("Something went wrong", {status: 500});
+        return new Response(JSON.stringify("Something went wrong"), {status: 500});
     }
 }

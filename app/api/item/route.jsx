@@ -4,11 +4,43 @@ import prisma from "@app/libs/prismaDB";
 
 //to get ALL items
 export async function GET(request){
+    const {searchParams} = new URL(request.url);
+    console.log(searchParams)
+    const query = searchParams.get("query");
+    console.log(query)
+ 
   
     try {
-        const items = await prisma.item.findMany({});
+        if(query){
+            const searchResults = await prisma.item.findMany({
+                where:{
+                    OR:[
+                        {name: {contains: query, mode: "insensitive"}},
+                        {brand: {contains: query, mode: "insensitive"}},
+                        {model: {contains: query, mode: "insensitive"}},
+                        {category: {contains: query, mode: "insensitive"}},
+                        {fullName: {contains: query, mode: "insensitive"}},
+                    ]
+                },
+                include:{
+                    availableSizes: true,
+                    reviews: true
+                }
+            })
 
-        return new Response(JSON.stringify(items), {status: 200});
+            return new Response(JSON.stringify(searchResults), {status: 200});
+        } else {
+            const items = await prisma.item.findMany({
+                include:{
+                    availableSizes: true,
+                    reviews: true
+                }
+            });
+    
+            return new Response(JSON.stringify(items), {status: 200});
+        }
+
+       
     } catch (error) {
         console.log(error);
         return new Response("Something went wrong", {status: 500});

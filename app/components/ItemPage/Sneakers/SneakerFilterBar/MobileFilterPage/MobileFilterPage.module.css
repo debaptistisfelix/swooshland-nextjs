@@ -1,0 +1,336 @@
+.page{
+    display: none;
+}
+
+@media (max-width:600px){
+    .page{
+        display: flex;
+        width: 100vw;
+        flex-direction: column;
+        height: 90vh;
+        background-color: var(--white-pure);
+        position: fixed;
+        bottom: 0;
+        left: 100%;;
+        z-index: 101;
+        padding: 0 5%;
+        box-sizing: border-box;
+        overflow-y: scroll;
+    }
+
+    .page.active{
+        animation: moveIn 0.3s ease-out forwards;
+    }
+
+    @keyframes moveIn {
+        0%{
+            /* transform: translateX(100%); */
+            left: 100%;
+        }
+        100%{
+           /*  transform: translateX(0%); */
+           left: 0%;
+        }
+    }
+
+    .page.notActive{
+        animation: moveOut 0.3s ease-out forwards;
+    }
+
+    @keyframes moveOut {
+        0%{
+          /*   transform: translateX(0%); */
+            left: 0%;
+        }
+        100%{
+           /*  transform: translateX(100%); */
+            left: 100%;
+        }
+    }
+    .container{
+        width: 100%;
+        height: fit-content;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 2px solid var(--thin-grey);
+        border-bottom: 2px solid var(--thin-grey);
+        box-sizing: border-box;
+    }
+
+    .filtersIcon{
+        color: var(--light-grey);
+        width: clamp(14px, 4vw + 0.12rem, 18px);
+        height: clamp(14px, 4vw + 0.12rem, 18px);
+    }
+
+    .sortingContainer{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 10px 0;
+        border-bottom: 2px solid var(--thin-grey);
+      
+    }
+
+
+
+    .label{
+        font-size: clamp(14px, 4vw + 0.12rem, 18px);
+        color: var(--light-grey);
+        font-weight: 400;
+        margin: 0;
+    }
+
+    .sortingOptionsList{
+        width: 100%;
+        height: fit-content;
+        overflow: scroll;
+       display: flex;
+      /*  overflow-x: scroll;
+       justify-content: flex-start;
+       gap: 10px; */
+       flex-wrap: wrap;
+         gap: 10px;
+         justify-content: flex-start;
+       
+       
+    }
+
+    .option{
+       min-width: fit-content;
+        margin: 0;
+        font-size: clamp(14px, 4vw + 0.12rem, 16px);
+        border-radius: 8px;
+        border: 1px solid var(--light-grey);
+        color: var(--light-grey);
+        padding: 5px 10px;
+        font-weight: 400;
+        height: fit-content;
+        transition: all 0.3s ease-out;
+    }
+
+    .option.active{
+        background-color: var(--dark-grey);
+        color: var(--white-pure);
+        border: none;
+    }
+    
+    .filteringContainer{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 10px 0;
+        border-bottom: 2px solid var(--thin-grey);
+    }
+
+    .priceInputContainer{
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .priceLabel{
+        margin: 0;
+        font-weight: 400;
+       font-size: clamp(14px, 4vw + 0.12rem, 16px); 
+       color: var(--light-grey);
+    }
+
+    .priceInput{
+        width: 50px;
+        font-size: clamp(14px, 4vw + 0.12rem, 16px); 
+        height: 36px;
+        background-color: var(--thin-grey);
+        border: none;
+        outline: none;
+        border-radius: 5px;
+        text-align: center;
+
+    }
+
+    .priceInput:focus{
+        border: 1px solid var(--light-grey);
+    }
+
+    .priceBtn{
+        background-color: var(--dark-grey);
+        color: var(--white-pure);
+        border-radius: 5px;
+        border: none;
+        outline: none;
+        box-sizing: border-box;
+        width: 50px;
+        height: 36px;
+    }
+}
+
+@media (min-width:601px) and (max-width:1023px){
+    .page{
+        display: flex;
+        width: 100vw;
+        flex-direction: column;
+        height: 90vh;
+        background-color: var(--white-pure);
+        position: fixed;
+        bottom: 0;
+        left: 100%;;
+        z-index: 101;
+        padding: 0 5%;
+        box-sizing: border-box;
+        overflow-y: scroll;
+    }
+
+    .page.active{
+        animation: moveIn 0.3s ease-out forwards;
+    }
+
+    @keyframes moveIn {
+        0%{
+            /* transform: translateX(100%); */
+            left: 100%;
+        }
+        100%{
+           /*  transform: translateX(0%); */
+           left: 0%;
+        }
+    }
+
+    .page.notActive{
+        animation: moveOut 0.3s ease-out forwards;
+    }
+
+    @keyframes moveOut {
+        0%{
+          /*   transform: translateX(0%); */
+            left: 0%;
+        }
+        100%{
+           /*  transform: translateX(100%); */
+            left: 100%;
+        }
+    }
+    .container{
+        width: 100%;
+        height: fit-content;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 2px solid var(--thin-grey);
+        border-bottom: 2px solid var(--thin-grey);
+        box-sizing: border-box;
+    }
+
+    .filtersIcon{
+        color: var(--light-grey);
+        width: clamp(14px, 4vw + 0.12rem, 18px);
+        height: clamp(14px, 4vw + 0.12rem, 18px);
+    }
+
+    .sortingContainer{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 10px 0;
+        border-bottom: 2px solid var(--thin-grey);
+      
+    }
+
+
+
+    .label{
+        font-size: clamp(14px, 2vw + 0.12rem, 16px);
+        color: var(--light-grey);
+        font-weight: 400;
+        margin: 0;
+    }
+
+    .sortingOptionsList{
+        width: 100%;
+        height: fit-content;
+        overflow: scroll;
+       display: flex;
+      /*  overflow-x: scroll;
+       justify-content: flex-start;
+       gap: 10px; */
+       flex-wrap: wrap;
+         gap: 10px;
+         justify-content: flex-start;
+       
+       
+    }
+
+    .option{
+       min-width: fit-content;
+        margin: 0;
+        font-size: clamp(12px, 1.67vw + 0.12rem, 16px);
+        border-radius: 8px;
+        border: 1px solid var(--light-grey);
+        color: var(--light-grey);
+        padding: 5px 10px;
+        font-weight: 400;
+        height: fit-content;
+        transition: all 0.3s ease-out;
+    }
+
+    .option.active{
+        background-color: var(--dark-grey);
+        color: var(--white-pure);
+        border: none;
+    }
+    
+    .filteringContainer{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 10px 0;
+        border-bottom: 2px solid var(--thin-grey);
+    }
+
+    .priceInputContainer{
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .priceLabel{
+        margin: 0;
+        font-weight: 400;
+       font-size:  clamp(12px, 1.67vw + 0.12rem, 16px); 
+       color: var(--light-grey);
+    }
+
+    .priceInput{
+        width: 50px;
+        font-size: clamp(12px, 1.67vw + 0.12rem, 16px);
+        height: 28px;
+        background-color: var(--thin-grey);
+        border: none;
+        outline: none;
+        border-radius: 5px;
+        text-align: center;
+
+    }
+
+    .priceInput:focus{
+        border: 1px solid var(--light-grey);
+    }
+
+    .priceBtn{
+        background-color: var(--dark-grey);
+        color: var(--white-pure);
+        border-radius: 5px;
+        border: none;
+        outline: none;
+        box-sizing: border-box;
+        width: 50px;
+        height: 28px;
+    }
+}
+

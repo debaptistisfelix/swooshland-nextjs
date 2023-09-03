@@ -109,13 +109,13 @@
     .card{
         width: 100%;
         height: fit-content;
-        border-radius: 0px;
+        border-radius: 8px;
         border:none;
         display: flex;
         flex-direction: column;
         box-sizing: border-box;
-        padding: 10px 0px;
-        box-shadow: none
+        padding: 10px;
+  
     }
 
     

@@ -1,0 +1,107 @@
+.paymentParag{
+    margin: 10px 0;
+    color: var(--dark-grey);
+    box-sizing: border-box;
+   }
+
+   .inputsContainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    grid-row-gap: 20px;
+    grid-column-gap: 20px;
+    
+   }
+
+    .input{
+    
+     width: 100%;
+    }
+
+    .confirmed{
+        border: 2px solid #32936f;
+        color: #32936f;
+        background-color: #e6f4f0;
+        font-weight: bold;
+    }
+
+    .confirmed:focus{
+        color: #32936f;
+        background-color: #e6f4f0;
+    }
+
+    .confirmAddressBtn{
+        width: 100%;
+        background-color: var(--dark-grey);
+        color: var(--white-pure);
+        border-radius: 12px;
+        font-weight: 600;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .labelTitleBox{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .downIcon{
+        margin-left: 10px;
+        color: var(--light-grey);
+        cursor: pointer;
+      
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        padding: 3px;
+        border: 2px solid var(--light-grey);
+        transition: all 0.3 ease-in-out;
+    }
+
+    .downIcon:hover{
+        background-color: var(--thin-grey);
+    }
+
+    @media (max-width:600px){
+           
+     
+        
+           .inputsContainer{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            width: 100%;
+            grid-row-gap: 20px;
+            grid-column-gap: 20px;
+            margin-top: clamp(10px, 2.86vw + 0.12rem, 20px);
+            
+           }
+        
+            .input{
+            
+             width: 100%;
+            }
+
+            .confirmAddressBtn{
+                font-size: clamp(14px, 4vw + 0.12rem, 16px);
+            }
+
+            .labelTitleBox{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .downIcon{
+                margin-left: 10px;
+                color: var(--light-grey);
+                cursor: pointer;
+                width: clamp(14px, 4vw + 0.12rem, 18px);
+                height: clamp(14px, 4vw + 0.12rem, 18px);
+                border-radius: 50%;
+                padding: 3px;
+                border: 2px solid var(--light-grey);
+            }
+           
+          
+            }

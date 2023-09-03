@@ -12,8 +12,8 @@ import axios from 'axios'
 import { useRouter } from 'next/navigation'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleCheck } from '@fortawesome/free-solid-svg-icons'
-import CircularLoader from '@app/components/Loaders/CircularLoader/CircularLoader'
-import Image from 'next/image'
+import ThreeCirclesLoader from '@app/components/Reusables/ThreeCirclesLoader/ThreeCirclesLoader'
+import { signIn } from 'next-auth/react'
 
 
 export default function Register() {
@@ -29,17 +29,39 @@ export default function Register() {
 
     const registerUser = async (e)=>{
         e.preventDefault();
+        if(data.email === "" || data.password === "" || data.name === ""){
+            return toast.error("Please fill out all fields")
+        }
         setLoading(true);
        try{
         const response = await axios.post("/api/register", data)
         .then(()=>{
             toast.success("Registration Successful!")
             setLoading(false);
-            setLoggedIn(true);
+            signIn("credentials", {
+                ...data, 
+                redirect:false,
+            })
+            .then((callback)=>{
+            
+                if(callback?.error){
+                    toast.error("Email or Passowrd not valid.")
+                    setData({email: "", password: ""})
+                    setLoading(false);
+                }
+    
+                if(callback?.ok && !callback?.error){
+                    
+                    toast.success("Login Successful!")
+                    setLoggedIn(true);
+                    setLoading(false);
+                }
+            })
+          /*   setLoggedIn(true);
            setTimeout(()=>{
            
             router.push("/")
-           }, 1000)
+           }, 1000)  */
        
         })
        } catch(error){
@@ -55,36 +77,37 @@ export default function Register() {
   return (
     <main className={`${styles.registerPage} ${poppins.className}`}>
         <section className={styles.registerCard}>
-           
-            <div className={styles.titleBox}>
+        {loading && <ThreeCirclesLoader />}
+           {!loading && !loggedIn && <> <div className={styles.titleBox}>
                 <h1 className={styles.title}>Join Swooshland</h1>
                 <p className={styles.subtitle}>Create an account to get started.</p>
             </div>
-            {loading && <CircularLoader />}
-            {!loading && !loggedIn &&  <form className={styles.form} onSubmit={registerUser}>
+            
+            <form className={styles.form} onSubmit={registerUser}>
                 <input
                 onChange={(e)=>{setData({...data, email: e.target.value})}}
-                type="text" placeholder='Email' className={styles.input} />
+                type="text" placeholder='Email' className={`input ${styles.input}`} />
                 <input
                 onChange={(e)=>{setData({...data, name: e.target.value})}}
-                type="text" placeholder='Username' className={styles.input} />
+                type="text" placeholder='Username' className={`input ${styles.input}`} />
                 <div className={styles.passwordBox}>
                     <input
                     onChange={(e)=>{setData({...data, password: e.target.value})}}
-                    type={passwordShown ? "text" : "password"} placeholder='Password' className={styles.passwordInput} />
+                    type={passwordShown ? "text" : "password"} placeholder='Password' className={`input ${styles.passwordInput}`} />
                     <FontAwesomeIcon
                     onClick={togglePasswordVisiblity}
                     icon={passwordShown === true ? faEye : faEyeSlash} className={styles.icon} />
                 </div>
                 <button
                
-                type="submit" className={styles.registerBtn}>
+                type="submit" className={`${styles.registerBtn} mainButton`}>
                    Sign up
                 </button>
                 <p className={styles.alreadyReg}>Already a member?
                 <Link className={`Link ${styles.logInLink}`} href="/login">Log in</Link>
                 </p>
-            </form>}
+            </form></>}
+           
             {!loading && loggedIn && <FontAwesomeIcon icon={faCircleCheck} className={styles.checkIcon} />}
         </section>
     </main>

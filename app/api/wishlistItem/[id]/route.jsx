@@ -12,7 +12,7 @@ export async function GET(request, {params}){
     }
 
     try{
-        const wishlistItem = await prisma.wishlistItem.findUnique({
+        const wishlistItem = await prisma.wishListItem.findUnique({
             where: {
                 id: id,
             },
@@ -41,11 +41,11 @@ export async function PATCH(request, {params}){
     const body = await request.json();
 
     if(!session){
-        return new Response("You are not authorized to update wishlist items", {status: 401});
+        return new Response(JSON.stringify("You are not authorized to update wishlist items"), {status: 401});
     }
 
     try{
-       const updatedWishlistItem = await prisma.wishlistItem.update({
+       const updatedWishlistItem = await prisma.wishListItem.update({
             where: {
                 id: id,
             },
@@ -58,14 +58,14 @@ export async function PATCH(request, {params}){
        });
 
         if(!updatedWishlistItem){
-            return new Response("Wishlist item not found", {status: 404});
+            return new Response(JSON.stringify("Wishlist item not found"), {status: 404});
         }
 
         return new Response(JSON.stringify(updatedWishlistItem), {status: 200});
     }
     catch(error){
         console.log(error);
-        return new Response("Something went wrong", {status: 500});
+        return new Response(JSON.stringify("Something went wrong"), {status: 500});
     }
 }
 
@@ -75,24 +75,24 @@ export async function DELETE(request, {params}){
     const session = await getServerSession(authOptions);
 
     if(!session){
-        return new Response("You are not authorized to delete wishlist items", {status: 401});
+        return new Response(JSON.stringify("You are not authorized to delete wishlist items"), {status: 401});
     }
 
     try{
-       const deletedWishlistItem = await prisma.wishlistItem.delete({
+       const deletedWishlistItem = await prisma.wishListItem.delete({
             where: {
                 id: id,
             },
        });
 
         if(!deletedWishlistItem){
-            return new Response("Wishlist item not found", {status: 404});
+            return new Response(JSON.stringify("Wishlist item not found"), {status: 404});
         }
 
-        return new Response("Wishlist item deleted succesfully", {status: 200});
+        return new Response(JSON.stringify("Wishlist item deleted succesfully"), {status: 200});
     }
     catch(error){
         console.log(error)
-        return new Response("Something went wrong", {status: 500});
+        return new Response(JSON.stringify("Something went wrong"), {status: 500});
     }
 };

@@ -20,6 +20,15 @@
     cursor: pointer;
 }
 
+.onlySizeFormat{
+    font-size: clamp(14px, 1.18vw + 0.12rem, 16px);
+     font-weight: 400;
+     color: var(--light-grey);
+     margin:  0;
+     padding: 0 5px;
+     cursor: pointer;
+}
+
 .format:hover{
     color: var(--dark-grey);
 }
@@ -42,7 +51,7 @@
     display: grid;
     grid-template-columns: repeat(5, 1fr);
  
-    width: 80%;
+    width: 90%;
     height: fit-content;
     gap: clamp(5px, 0.46vw + 0.12rem, 10px);
  
@@ -54,20 +63,42 @@
 .sizeBlock{
     margin: auto;
     width:90%;
-    font-weight: 600;
-    height: clamp(24px, 2.15vw + 0.12rem, 32px);
-    border: 2px solid var(--dark-grey);
+    font-weight: 700;
+    height: clamp(24px, 2.15vw + 0.12rem, 36px);
+    border: 2px solid var(--thin-grey);
+    outline: none;
+    background-color: var(--white-pure);
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--dark-grey);
     border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    box-sizing: border-box;
+    
 }
 
 .sizeBlock:hover{
-    background-color: var(--thin-grey);
-    cursor: pointer;
+    border: 2px solid var(--light-grey);
 }
+
+.sizeBlock.active{
+    color: var(--white-pure);
+    background-color: var(--dark-grey);
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    border: 2px solid var(--dark-grey);
+}
+
+.unavailable{
+    opacity: 0.3;
+    
+}
+
+
+
+
 
 @media (max-width:600px){
 
@@ -77,6 +108,10 @@
     .sizeTable{
         width: 100%;
         margin-top: 20px ;
+    }
+
+    .onlySizeFormat{
+        font-size: clamp(16px, 4.72vw + 0.12rem, 18px);
     }
 
     .format, .sexCateg{
@@ -96,6 +131,8 @@
         margin: 10px 0;
     }
 
+    
+
     .format{
         font-size: 10px;
         font-size: 16px;
@@ -104,7 +141,7 @@
     .sizeTable{
         width: 100%;
         height:fit-content;
-        border: 1px solid black;
+   
         grid-template-columns: repeat(5, 20%);
         gap: 0;
         grid-row-gap: 10px;
@@ -128,6 +165,10 @@
         margin: 0;
         font-size: clamp(12px, 1.68vw + 0.12rem, 14px);
         color: var(--light-grey);
+    }
+    .onlySizeFormat{
+        font-size: clamp(10px, 1.634vw + 0.12rem, 14px);
+       
     }
 }
 

@@ -82,9 +82,10 @@ margin: 20px 0;
     background-color: var(--thin-grey);
 }
 
-.loadingReviews{
+.noReviews{
 color: var(--light-grey);
 font-size: 16px;
+margin: 30px 0;
 
 }
 
@@ -148,6 +149,10 @@ font-size: 16px;
         width: 100%;
         text-align: center;
     
+    }
+
+    .noReviews{
+        font-size: clamp(14px, 4vw + 0.12rem, 16px);
     }
     .list{
        display: none;

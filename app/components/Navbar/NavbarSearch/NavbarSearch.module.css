@@ -128,7 +128,7 @@
 
 .searchResults{
     position: fixed;
-    background-color: rgba(0,0,0, 0.5);
+    background-color: rgba(0,0,0, 0.75);
     top: 0;
    padding: 0;
     margin-top: 100px;
@@ -154,58 +154,44 @@
 }
 
 .brandsBox{
-    width: 40%;
+    width: 50%;
     height: 100%;
     display: flex;
     flex-direction: column;
 border-right: 2px solid var(--thin-grey);
   padding:20px;
   box-sizing: border-box;
+  position: relative;
 }
 
-.brandTitle, .resultsTitle{
-margin: 0;
-font-size: 16px;
-color: var(--dark-grey);
+.img{
+    object-fit: cover;
+    border-radius: 8px 0 0 8px;
+    filter: brightness(80%);
 }
 
-.brandList{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin:20px 0;
+.commercialText{
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box; 
+    color: white;
+    animation: appear 1s ease-in-out forwards;
 }
 
-.brandLine{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 80%;
-}
-
-.brandLine:hover .brandName, .brandLine:hover .brandCount{
-    color: var(--medium-grey);
-}
-
-.brandName, .brandCount{
-    font-size: 14px;
-    margin: 0;
-    color: var(--light-grey);
-    transition: all 0.3s ease-in-out;
-    
-}
-
-.brandName{
-    cursor: pointer;
-}
-
-.brandCount{
-    color: var(--light-grey);
-    font-weight: 400;
+@keyframes appear{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }    
 }
 
 .firstResultBox{
-    width: 60%;
+    width: 50%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -214,14 +200,28 @@ color: var(--dark-grey);
   box-sizing: border-box;
 }
 
+.resultTitle{
+
+margin: 0;
+margin-bottom: 20px;
+}
+
 .resultList{
-    margin: 20px 0;
+    margin:  0;
     display: flex;
     flex-direction: column;
     gap: 10px;
     overflow-y: scroll;
     width: 100%;
+    height:100%;
+    scrollbar-width: none; 
+    -ms-overflow-style: none;
+  
 }
+
+.resultList::-webkit-scrollbar {
+    display: none;
+  }
 
 @media (max-width:600px){
 .searchBox{

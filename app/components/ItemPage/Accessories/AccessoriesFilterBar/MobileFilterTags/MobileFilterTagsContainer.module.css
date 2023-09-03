@@ -1,0 +1,211 @@
+.section{
+    display: none;
+}
+
+@media (max-width:600px){
+    .section{
+        display: flex;
+        overflow-x: scroll;
+        justify-content: flex-start;
+        
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        height: 30px;
+        gap: 5px;
+        margin-top:0px ;
+        border-bottom: 2px solid var(--thin-grey);
+        padding-bottom: 10px;
+  display: none;
+        transform: translateY(calc(-100% - 20px));
+        
+    }
+
+    
+.openChosenFilterBox{
+    display: flex;
+    margin-top:10px ;
+    margin-bottom: 10px;
+    animation: FadeDown 0.3s ease-out forwards;
+}
+
+
+@keyframes FadeDown {
+    0%{
+        opacity: 0;
+        transform: translateY(-100%);
+    
+    }
+    
+    100%{
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
+
+    .closeChosenFilterBox{
+        display: flex;
+        margin-top: 0;
+        animation: FadeUp 0.3s ease-out forwards;
+    }
+
+    
+    @keyframes FadeUp {
+        0%{
+            opacity: 1;
+            transform: translateY(0%);
+        }
+        100%{
+            opacity: 0;
+            transform: translateY(-100%);
+                   
+        }
+    }
+    .removeAllBtn{
+        background-color: var(--white-pure);
+        color: var(--light-grey);
+        border-radius: 8px;
+        padding: 5px 10px;
+        box-sizing: border-box;
+        height: 30px;
+      min-width: fit-content;
+        border: 1px solid var(--light-grey);
+        font-size: clamp(12px, 3.58vw + 0.12rem, 16px); 
+        }
+
+        .tagBox{
+            display:flex;
+          padding: 5px 10px;
+          height: 30px;
+          min-width: fit-content;
+            background-color: var(--dark-grey);
+            color: var(--white-pure);
+            justify-content: center;
+            box-sizing: border-box;
+            border-radius: 8px;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .tagTitle{
+             font-size: clamp(12px, 3.58vw + 0.12rem, 16px);  
+             margin: 0;
+             box-sizing: border-box;
+             font-weight: 400;
+        }
+
+        .icon{
+            width:12px; height: 12px;
+            width: clamp(12px, 3.58vw + 0.12rem, 16px);  ;
+            height: clamp(12px, 3.58vw + 0.12rem, 16px);  ;
+                }
+
+                .starIcon{
+                    width: clamp(12px, 3.58vw + 0.12rem, 16px);  ;
+                    height: clamp(12px, 3.58vw + 0.12rem, 16px);  ;
+                    margin-left: 5px;
+                }
+}
+
+@media (min-width:601px) and (max-width:1023px){
+    .section{
+        display: flex;
+        overflow-x: scroll;
+        justify-content: flex-start;
+        
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        height: 30px;
+        gap: 5px;
+    display: none;
+        margin-top:0px ;
+        border-bottom: 2px solid var(--thin-grey);
+        padding-bottom: 10px;
+        
+    }
+
+    
+.openChosenFilterBox{
+    display: flex;
+    margin-top:20px ;
+    animation: FadeDown 0.3s ease-out forwards;
+ 
+}
+
+
+@keyframes FadeDown {
+    0%{
+        opacity: 0;
+        transform: translateY(-100%);
+    
+    }
+    
+    100%{
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
+
+    .closeChosenFilterBox{
+        display: flex;
+        animation: FadeUp 0.3s ease-out forwards;
+    }
+
+    
+    @keyframes FadeUp {
+        0%{
+            opacity: 1;
+            transform: translateY(0%);
+        }
+        100%{
+            opacity: 0;
+            transform: translateY(-100%);
+                   
+        }
+    }
+    .removeAllBtn{
+        background-color: var(--white-pure);
+        color: var(--light-grey);
+        border-radius: 8px;
+        padding: 5px 10px;
+        box-sizing: border-box;
+        height: 30px;
+      min-width: fit-content;
+        border: 1px solid var(--light-grey);
+        font-size: clamp(12px, 1.67vw + 0.12rem, 16px);
+        }
+
+        .tagBox{
+            display:flex;
+          padding: 5px 10px;
+          height: 30px;
+          min-width: fit-content;
+            background-color: var(--dark-grey);
+            color: var(--white-pure);
+            justify-content: center;
+            box-sizing: border-box;
+            border-radius: 8px;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .tagTitle{
+            font-size: clamp(12px, 1.67vw + 0.12rem, 16px);
+             margin: 0;
+             box-sizing: border-box;
+             font-weight: 400;
+        }
+
+        .icon{
+            width:12px; height: 12px;
+            width:  clamp(12px, 1.67vw + 0.12rem, 16px);
+            height:  clamp(12px, 1.67vw + 0.12rem, 16px);
+                }
+
+                .starIcon{
+                    width: clamp(12px, 1.67vw + 0.12rem, 16px);
+                    height: clamp(12px, 1.67vw + 0.12rem, 16px);
+                    margin-left: 5px;
+                }
+}

@@ -3,6 +3,7 @@ import HorizontalDivider from '@app/components/Reusables/HorizontalDivider/Horiz
 import Image from 'next/image'
 import { poppins } from '@app/fonts'
 import AddressesList from '@app/components/Dashboard/Addresses/AddressesList/AddressesList'
+import UserAddressesContextProvider from '@app/context/UserAddressesContext'
 
 
 export default function Addresses() {
@@ -18,7 +19,9 @@ export default function Addresses() {
             style={{objectFit: "cover"}}
             className={styles.image} src="/banner-images/lallaPoster.jpg" fill="true" alt="poster-with-model" />
         </div>
-        <AddressesList />
+        <UserAddressesContextProvider>
+            <AddressesList />
+        </UserAddressesContextProvider>
     </main>
   )
 }

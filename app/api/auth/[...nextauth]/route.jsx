@@ -5,7 +5,7 @@ import bcrypt from "bcryptjs";
 
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
-
+import sendWelcomeEmail from "@app/libs/email/sendWelcomeEmail";
 
 export const authOptions = {
     adapter: PrismaAdapter(prisma),
@@ -64,7 +64,13 @@ export const authOptions = {
             session.userName = token.userName;
             
             return session;
-        }
+        },
+        async signIn({user, account}) {
+            if (account.provider === 'google') {
+                sendWelcomeEmail(user?.email, user?.name)
+            }
+            return true
+          },
       },
     secret: process.env.SECRET,
     session: {

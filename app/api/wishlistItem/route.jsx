@@ -11,7 +11,7 @@ export async function GET(request){
     }
 
     try{
-       const wishlistItems = await prisma.wishlistItem.findMany({
+       const wishlistItems = await prisma.wishListItem.findMany({
             where: {
                 userId: session.id
             },
@@ -26,6 +26,6 @@ export async function GET(request){
     }
     catch(error){
         console.log(error);
-        return new Response("Something went wrong", {status: 500});
+        return new Response(JSON.stringify("Something went wrong"), {status: 500});
     }
 }

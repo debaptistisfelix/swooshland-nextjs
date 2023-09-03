@@ -27,7 +27,9 @@ export async function PATCH(request, {params}){
     }
 
     const body = await request.json();
+
     const {id} = params;
+ 
 
 
     const updatedAddress = await prisma.address.update({
@@ -36,8 +38,12 @@ export async function PATCH(request, {params}){
         },
         data: {
             ...body
-        }
+        }, 
+        
+        
     });
+
+    console.log(updatedAddress)
 
     if(!updatedAddress){
         return new Response("Address not found", {status: 404});

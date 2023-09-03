@@ -1,0 +1,29 @@
+.ratingContainer{
+    
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.ratingIcon{
+    width:16px;
+    height: 16px;
+}
+
+@media (max-width:600px){
+
+    .ratingContainer{
+        padding: 5px 10px;
+    }
+    .ratingIcon{
+        width: clamp(14px, 4vw + 0.12rem, 18px);
+        height: clamp(14px, 4vw + 0.12rem, 18px);
+    }
+}
+
+@media (min-width:601px) and (max-width:1023px){
+    .ratingIcon{
+        width: clamp(14px, 2vw + 0.12rem, 16px);
+        height:  clamp(14px, 2vw + 0.12rem, 16px);;
+    }
+}

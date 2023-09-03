@@ -2,7 +2,7 @@ import styles from './page.module.css'
 import HorizontalDivider from '@app/components/Reusables/HorizontalDivider/HorizontalDivider'
 import Image from 'next/image'
 import { poppins } from '@app/fonts'
-import NoSizeCard from '@app/components/ItemCards/NoSizeCard/NoSizeCard'
+import FavoritesList from '@app/components/Dashboard/Addresses/Favorites/FavoritesList/FavoritesList'
 
 
 export default function Favorites() {
@@ -18,19 +18,7 @@ export default function Favorites() {
             style={{objectFit: "cover"}}
             className={styles.image} src="/banner-images/giulyPoster.jpg" fill="true" alt="poster-with-model" />
         </div>
-        <section className={styles.list}>
-          <NoSizeCard />
-          <NoSizeCard />
-          <NoSizeCard />
-          <NoSizeCard />
-          <NoSizeCard />
-          <NoSizeCard />
-          <NoSizeCard />
-          <NoSizeCard />
-          <NoSizeCard />
-          <NoSizeCard />
-        
-        </section>
+        <FavoritesList />
     </main>
   )
 }

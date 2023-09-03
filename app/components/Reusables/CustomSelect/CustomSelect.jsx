@@ -43,7 +43,7 @@ export default function CustomSelect({selectOptions, selectedOption, handleOptio
        <h2 className={styles.selectTitle}>{selectedOption}</h2>
        <FontAwesomeIcon icon={faCaretDown} className={styles.icon} />
         </div>
-       {isOpen &&  <section className={`${styles.optionsBox}  ${ position === "bottom" ? styles.bottomOptionsPosition : styles.rightOptionsPosition}`}>
+       {isOpen &&  <section className={`${styles.optionsBox}  ${ position === "bottom" && styles.bottomOptionsPosition} ${position === "right" && styles.rightOptionsPosition} ${position === "left" && styles.leftOptionsPosition}`}>
     {selectOptions.options.map(option =>{
         return <div key={uuidv4()} className={`${styles.selectOptionBox} ${selectedOption === option && styles.active}`}>
             <p

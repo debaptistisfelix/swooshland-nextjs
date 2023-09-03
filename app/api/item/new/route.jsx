@@ -6,19 +6,24 @@ export async function POST(request){
     const {
         name,
         model,
+        brand,
         category,
         images,
-        paletteColors,
         tag,
         description,
         price,
+        gender,
+        onSale,
+        discountPercentage,
         availableSizes
     } = body;
 
+    console.log(body)
+
     //check if all fields are provided
-    if(!name || !model || !category || !images || !paletteColors || !tag || !description || !price || !availableSizes){
+    /* if(!name || !model || !brand || !images ||  !tag || !description || !price || !availableSizes || gender){
         return new Response("Please provide the necessary infos", {status: 400});
-    }
+    } */
 
     try{
         //create the new item
@@ -26,21 +31,21 @@ export async function POST(request){
             data: {
                 name,
                 model,
+                brand,
                 category,
                 images,
-                paletteColors:{
-                    create: paletteColors,
-                },
                 tag,
                 description,
                 price,
+                gender,
+                onSale,
+                discountPercentage,
                 availableSizes: {
                     create: availableSizes,
                   },
             },
             include:{
                 availableSizes: true,
-                paletteColors: true,
             }
         });
 

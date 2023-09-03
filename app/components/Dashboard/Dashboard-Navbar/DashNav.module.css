@@ -81,7 +81,7 @@
     }
 
     .backBtn{
-        font-size: clamp(12px, 3.58vw + 0,.12rem, 18px);
+        font-size: clamp(12px, 3.58vw + 0.12rem, 18px);
     }
 
     .links{
@@ -96,7 +96,7 @@
 
     .logOutBtn{
         display: block;
-        font-size: clamp(12px, 3.58vw + 0,.12rem, 18px);
+        font-size: clamp(12px, 3.58vw + 0.12rem, 18px);
    
         padding: 0;
     }
@@ -113,6 +113,10 @@
     }
     .links{
         font-size: 14px;
+    }
+
+    .dashboardLink{
+        font-size: clamp(14px, 2vw + 0.12rem, 16px);
     }
 }
 

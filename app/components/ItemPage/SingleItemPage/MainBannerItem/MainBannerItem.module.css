@@ -3,6 +3,7 @@
     height: 500px;
     height: 370px;
     height: clamp(370px, 35.94vw + 0.12rem, 500px);
+  
     display: flex;
 }
 
@@ -36,14 +37,15 @@
 @media (min-width:601px) and (max-width:1023px){
     .banner{
         width: 100%;
-   
-       
-height: clamp(360px, 59.57vw + 0.12rem, 550px);
+        height: clamp(288px,47.59vw + 0.12rem, 440px);
+        
         display: flex;
     }
 
+
+
     .galleryBox{
-      
+    
         width: 50%;
     
     }

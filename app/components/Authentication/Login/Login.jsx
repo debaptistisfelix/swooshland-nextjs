@@ -13,8 +13,7 @@ import { useRouter } from 'next/navigation'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleCheck } from '@fortawesome/free-solid-svg-icons'
 import { faGoogle } from '@fortawesome/free-brands-svg-icons'
-import CircularLoader from '@app/components/Loaders/CircularLoader/CircularLoader'
-
+import ThreeCirclesLoader from '@app/components/Reusables/ThreeCirclesLoader/ThreeCirclesLoader'
 
 
 export default function Register() {
@@ -22,72 +21,121 @@ export default function Register() {
     const [data, setData] = useState({email: "", password: ""})
     const [loading, setLoading] = useState(false);
     const [loggedIn, setLoggedIn] = useState(false);
-    const router = useRouter();
+   
 
     const togglePasswordVisiblity = () => {
         setPasswordShown(!passwordShown);
     }
 
+
+
     const loginUser = async (e)=>{
         e.preventDefault();
+        if(data.email === "" || data.password === ""){
+            toast.error("Please provide email and password", {
+                style: {
+                    backgroundColor: "#191919",
+                    color: "#fff",
+                },
+                iconTheme: {
+                    primary: "#fff",
+                    secondary: "#191919",
+                },
+            })
+            return;
+        }
         setLoading(true);
         signIn("credentials", {
             ...data, 
-            callbackUrl: "/dashboard"
+            redirect:false,
         })
         .then((callback)=>{
+            
             if(callback?.error){
-                toast.error("Login Failed")
+                toast.error("Email or Passowrd not valid.", {
+                    style: {
+                        backgroundColor: "#191919",
+                        color: "#fff",
+                    },
+                    iconTheme: {
+                        primary: "#fff",
+                        secondary: "#191919",
+                    },
+                })
+                setData({email: "", password: ""})
                 setLoading(false);
             }
 
             if(callback?.ok && !callback?.error){
-                toast.success("Login Successful!")
+                
+                toast.success("Login Successful!", {
+                    style: {
+                        backgroundColor: "#191919",
+                        color: "#fff",
+                    },
+                    iconTheme: {
+                        primary: "#fff",
+                        secondary: "#191919",
+                    },
+                })
                 setLoggedIn(true);
                 setLoading(false);
             }
         })
     };
 
- 
 
   return (
     <main className={`${styles.loginPage} ${poppins.className}`}>
         <section className={styles.loginCard}>
            
-            <div className={styles.titleBox}>
+            {loading  && <ThreeCirclesLoader />}
+            {!loading && !loggedIn && <><div className={styles.titleBox}>
                 <h1 className={styles.title}>Welcome Back!</h1>
                 <p className={styles.subtitle}>Log in using your credentials.</p>
             </div>
-            {loading && <CircularLoader />}
-            {!loading && !loggedIn &&  <form className={styles.form} onSubmit={loginUser}>
+            
+             <form className={styles.form} onSubmit={loginUser}>
                 <input
+               
                 onChange={(e)=>{setData({...data, email: e.target.value})}}
-                type="text" placeholder='Email' className={styles.input} />
+                type="text" placeholder='Email' className={`input ${styles.input}`} />
                 
                 <div className={styles.passwordBox}>
                     <input
+                   
                     onChange={(e)=>{setData({...data, password: e.target.value})}}
-                    type={passwordShown ? "text" : "password"} placeholder='Password' className={styles.passwordInput} />
+                    type={passwordShown ? "text" : "password"} placeholder='Password' className={`input ${styles.passwordInput}`} />
                     <FontAwesomeIcon
                     onClick={togglePasswordVisiblity}
                     icon={passwordShown === true ? faEye : faEyeSlash} className={styles.icon} />
+                    <Link href="/forgotPassword" className={`Link ${styles.forgotLink}`}>
+                <p className={styles.forgotPasswordText}>Forgot Password</p></Link>
                 </div>
+                
                 <button
                
-                type="submit" className={styles.loginBtn}>
+                type="submit" className={`${styles.loginBtn} mainButton`}>
                    Sign in
                 </button>
-                <button
-                onClick={()=>{signIn("google", {callbackUrl:"/"})}}
-                className={`${styles.loginBtn} ${styles.googleBtn}`}>
+               
+                
+            </form>
+            <button
+                tyoe="button"
+                onClick={()=>{
+                    signIn("google", {callbackUrl:"/dashboard"});
+                }}
+                className={`mainButton ${styles.googleBtn}`}>
                     <FontAwesomeIcon icon={faGoogle} className={styles.googleIcon} />
                     Sign in with Google</button>
-                <p className={styles.alreadyReg}>Not a member yet??
+                    <p className={styles.alreadyReg}>Not a member yet??
                 <Link className={`Link ${styles.logInLink}`} href="/register">Sign up</Link>
-                </p>
-            </form>}
-            {!loading && loggedIn && <FontAwesomeIcon icon={faCircleCheck} className={styles.checkIcon} />}
+                </p></> }
+            {!loading && loggedIn && <div className={styles.confirmBox}>
+            <FontAwesomeIcon icon={faCircleCheck} className={styles.checkIcon} />
+            <p className={styles.confirmText}>Redirecting to your Dashboard.</p>
+            </div>}
         </section>
     </main>
   )

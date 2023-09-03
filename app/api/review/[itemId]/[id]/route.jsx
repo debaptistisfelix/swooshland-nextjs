@@ -53,8 +53,10 @@ export async function PATCH(request, {params}){
 
 //delete a review of an item
 export async function DELETE(request, {params}){
-    const {id} = params;
+    const {itemId, id} = params;
     const session = await getServerSession(authOptions);
+
+    console.log("itemId", itemId)
 
     try{
         const reviewToDelet = await prisma.review.findUnique({
@@ -64,11 +66,11 @@ export async function DELETE(request, {params}){
         });
 
         if(!reviewToDelet){
-            return new Response("Review not found", {status: 404});
+            return new Response(JSON.stringify("Review not found"), {status: 404});
         }
 
         if(reviewToDelet.userId !== session?.id){   
-            return new Response("You are not authorized to delete this review", {status: 401});
+            return new Response(JSON.stringify("You are not authorized to delete this review"), {status: 401});
         }
 
         const deletedReview = await prisma.review.delete({
@@ -77,10 +79,26 @@ export async function DELETE(request, {params}){
             }
         });
 
-        return new Response("review deleted succesfully!", {status: 200});
+        const item = await prisma.item.findUnique({ where: { id: itemId } });
+
+        const rating = deletedReview.rating;
+        const updatedRatingsQuantity = item.ratingsQuantity - 1;
+        const updatedRatingsSum = item.ratingsAverage * item.ratingsQuantity - rating;
+
+        const updatedRatingsAverage = updatedRatingsQuantity === 0 ? 0 : updatedRatingsSum / updatedRatingsQuantity;
+
+        await prisma.item.update({
+            where: { id: itemId },
+            data: {
+              ratingsQuantity: updatedRatingsQuantity,
+              ratingsAverage: updatedRatingsAverage,
+            },
+          });
+
+        return new Response(JSON.stringify("review deleted succesfully!"), {status: 200});
     }
     catch(error){
         console.log(error);
-        return new Response("Something went wrong", {status: 500});
+        return new Response(JSON.stringify("Something went wrong"), {status: 500});
     }
 }

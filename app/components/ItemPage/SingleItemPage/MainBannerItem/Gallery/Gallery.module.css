@@ -4,6 +4,7 @@
     width: 100%;
  justify-content: space-between;
     display: flex;
+
 }
 
 .smallImagesBox{
@@ -40,9 +41,12 @@ flex-direction: column;
 .mainImageBox{
     height: 100%;
     width: 75%;
-    
     position: relative;
     border-radius: 8px;
+}
+
+.oneImageMainImageBox{
+    transform: translateX(15%);
 }
 
 .mainImg{
@@ -113,15 +117,26 @@ flex-direction: column;
 @media (max-width:600px){
     .galleryBox{
         flex-direction: column;
-        height: 300px;
+   
        height: clamp(300px, 106.43vw + 0.12rem, 600px);
      
+       
+     
+    }
+
+    .oneImageGalleryBox{
+        height: clamp(240px, 85vw + 0.12rem , 480px);
     }
     .mainImageBox{
         width:100%;
         order: 1;
         height: 80%;
         border-radius: 0;
+    }
+
+    .oneImageMainImageBox{
+        height: 100%;
+        transform: translateX(0%);
     }
 
     .mainImg{
@@ -134,10 +149,12 @@ flex-direction: column;
        height: 20%;
        overflow-x: scroll;
        gap: 0;
+       background-color: var(--light-grey);
     }
 
     .smallImgBox{
         min-width: 25%;
+        max-width: 25%;
         border-radius: 0;
     }
 
@@ -208,7 +225,12 @@ flex-direction: column;
        flex-direction: column;
        justify-content: flex-start;
        gap: 10px;
+      
     } 
+
+    .oneImageGalleryBox{
+        height: 100%;
+    }
 
     .smallImagesBox{
         order: 2;
@@ -217,12 +239,24 @@ flex-direction: column;
         height: 19%;
         gap: 0;
         overflow-x: scroll;
+        background-color: var(--light-grey);
+    }
+
+    .smallImgBox{
+        min-width: 25%;
+        max-width: 25%;
+        border-radius: 0;
     }
 
     .mainImageBox{
         order: 1;
         width: 100%;
         height: 75%; 
+    }
+
+    .oneImageMainImageBox{
+        height: 100%;
+        transform: translateX(0%);
     }
 
     .smallImgBox{

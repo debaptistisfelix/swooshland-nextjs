@@ -24,6 +24,8 @@
 .selectTitle{
     margin: 0;
     font-size: 16px;
+  
+    font-size: clamp(14px, 1.18vw + 0.12rem, 16px);
     font-weight: 400;
     
 }
@@ -34,11 +36,13 @@
 
 .optionsBox{
     width:100%;
+    min-width: fit-content;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
     height: fit-content;
     background-color: var(--white-pure);
     border: 1px solid var(--light-grey);
     position: absolute;
-    z-index: 2;
+    z-index: 5;
     display: grid;
     grid-template-rows: auto;
     border-radius: 20px;
@@ -93,6 +97,7 @@
 .option{
     margin: 0;
     padding: 10px 20px;
+    font-size: clamp(14px, 1.18vw + 0.12rem, 16px);
     width: 100%;
     color: var(--light-grey);
     transition: all 0.3s ease-out;
@@ -130,7 +135,8 @@
 
 @media (min-width:601px) and (max-width:1023px){
     .selectTitle{
-        font-size: 14px;
+        font-size:12px;
+        font-size: clamp(12px, 1.67vw + 0.12rem, 14px);
     }
     .icon{  
         width:14px;

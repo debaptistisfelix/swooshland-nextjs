@@ -65,7 +65,7 @@
         background-color: transparent;
         border: none;
         outline: none;
-     
+     color: var(--light-grey);
         padding-left: 20px;
         font-size: clamp(16px, 4.72vw + 0.12rem, 18px);
         border: 1px solid var(--light-grey);
@@ -77,14 +77,14 @@
     }
     
     .searchInput::placeholder{
-        color: var(--medium-grey);
+        color: var(--light-grey);
         font-size: clamp(16px, 4.72vw + 0.12rem, 18px);
     }
 
     .iconBox{
         width: clamp(40px, 13.58vw + 0.12rem, 50px);
         border-radius: 10px;
-        border: 1px solid var(--dark-grey);
+        border: 1px solid var(--light-grey);
         box-sizing: border-box;
         height:clamp(40px, 13.58vw + 0.12rem, 50px);
         display: flex;
@@ -99,7 +99,19 @@
     .icon{
         width: 16px;
         height: 16px;
-       color: var(--dark-grey);
+       color: var(--light-grey);
+    }
+
+    .resultsCount{
+        padding: 10px 0 ;
+        margin: 0;
+        text-align: center;
+        font-size: clamp(14px, 4vw + 0.12rem, 16px);
+        color: var(--light-grey);
+        font-weight: 400;
+        width: 100%;
+        border-bottom: 2px solid var(--thin-grey);
+        letter-spacing: 2px;
     }
 
     .list{

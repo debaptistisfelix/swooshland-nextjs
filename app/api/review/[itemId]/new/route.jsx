@@ -6,7 +6,7 @@ import { authOptions } from "@app/api/auth/[...nextauth]/route"
 export async function POST(request, {params}){
     const {itemId} = params;    
     const body = await request.json();
-    const {comment, rating} = body;
+    const {comment, rating, title} = body;
     const session = await getServerSession(authOptions);
    
   
@@ -38,8 +38,10 @@ export async function POST(request, {params}){
     try {
         const newReview = await prisma.review.create({
             data: {
+                title: title,
                 comment: comment,
                 rating: rating,
+                authorName: user.name,
                 item: {
                     connect: {
                         id: itemId
@@ -58,6 +60,21 @@ export async function POST(request, {params}){
         });
 
         console.log("review", newReview)
+
+
+        const updatedRatingsQuantity = item.ratingsQuantity + 1;
+        const updatedRatingsSum = item.ratingsAverage * item.ratingsQuantity + rating;
+        const updatedRatingsAverage = updatedRatingsSum / updatedRatingsQuantity;
+
+        await prisma.item.update({
+            where: {
+                id: itemId
+            },
+            data: {
+                ratingsQuantity: updatedRatingsQuantity,
+                ratingsAverage: updatedRatingsAverage
+            }
+        });
 
         return new Response(JSON.stringify(newReview), {status: 200});
     } catch (error) {

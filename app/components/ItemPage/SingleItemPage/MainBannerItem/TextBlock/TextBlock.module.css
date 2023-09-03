@@ -9,6 +9,24 @@
  
 }
 
+.headerBox{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+}
+
+.gender{
+    margin: 0;
+    color: var(--white-pure);
+    border-radius: 5px;
+    padding: 5px 10px;
+    box-sizing: border-box;
+    background-color: var(--dark-grey);
+    font-size: 16px;
+   
+}
+
 .title{
     font-size: 30px;
     font-size:  clamp(24px, 2.15vw + 0.12rem, 30px);
@@ -41,10 +59,22 @@
    
 }
 
+.fullStarBox{
+    position: absolute;
+}
+
 .star{
     width: clamp(14px, 1.18vw + 0.12rem, 18px);
     height: clamp(14px, 1.18vw + 0.12rem, 18px);
     color: var(--dark-grey);
+    
+}
+
+.emptyStar{
+    width: clamp(14px, 1.18vw + 0.12rem, 18px);
+    height: clamp(14px, 1.18vw + 0.12rem, 18px);
+    color: var(--light-grey);
+    opacity: 0.5;
 }
 
 .reviewCount{
@@ -105,7 +135,7 @@
     align-items: center;
     justify-content: space-between;
     margin: 5px 0 ;
-    width: 80%;
+    width: 90%;
 
 }
 
@@ -125,7 +155,72 @@
 
 .addBtn{
     width: 80%;
+    position: relative;
+    overflow: hidden;
 }
+
+
+
+.cartAnimationContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    background-color: var(--dark-grey);
+    height: 100%;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    border-radius: 8px;
+    gap: 10px;
+    
+}
+
+.cartAnimationBeginning{
+    animation: slideInFromLeft 1s ease-in-out forwards;
+}
+
+@keyframes slideInFromLeft {
+    0%{
+        left: -100%;
+    }
+    100%{
+        left:0;
+    }
+}
+
+.cartAnimationEnding{
+    animation: slideOutFromRight 1s ease-in-out forwards;
+}
+
+@keyframes slideOutFromRight{
+    0%{
+        left: 0%;
+    }
+    100%{
+        left:100%;
+    }
+}
+
+.cartAnimationText{
+    animation: flickle 1s ease-in-out infinite;
+}
+
+@keyframes flickle {
+    0%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+
+
+
+
 
 .heartBtn{
     width: 15%;
@@ -134,7 +229,21 @@
 .heart{
     width: clamp(16px, 1.37vw + 0.12rem, 18px);
     height: clamp(16px, 1.37vw + 0.12rem, 18px);
+  
 }
+
+ @keyframes spinn {
+    0%{transform: rotateY(0deg);}
+    100%{transform: rotateY(360deg);}
+ }
+
+ .heart.active{
+    animation: spinn 0.5s linear infinite;
+ }
+
+   
+  
+  
 
 @media (max-width:600px){
     .textBox{
@@ -143,11 +252,25 @@
         padding-left: 0px;
         margin:10px 0;
     }
+
+    .headerBox{
+        width: 100%;
+    }
     .title{
      
         font-size: clamp(20px, 6.45vw + 0.12rem, 28px);
         margin:  0;
         width: 100%;
+    }
+
+    .gender{
+        margin: 0;
+        color: var(--white-pure);
+        border-radius: 5px;
+        padding: clamp(3px, 1vw + 0.015rem, 5px) clamp(7px, 1.79vw + 0.12rem, 10px);
+        box-sizing: border-box;
+        background-color: var(--dark-grey);
+        font-size:  clamp(14px, 4vw + 0.12rem, 18px);
     }
 
     .name{
@@ -160,7 +283,7 @@
         font-size: clamp(20px, 6.45vw + 0.12rem, 28px);
     }
 
-    .star{
+    .star, .emptyStar{
      
         width: clamp(14px, 4vw + 0.12rem, 18px);
       
@@ -197,6 +320,12 @@
 
 @media (min-width:601px) and (max-width:1023px){
 
+ 
+
+    .oneImageTextBox{
+        height: 100%;
+    }
+
     .titleBox{
         
         display: flex;
@@ -204,7 +333,7 @@
     }
     .title{
      
-        font-size: clamp(20px, 3vw + 0.12rem, 28px);
+        font-size: clamp(16px, 2.33vw + 0.12rem, 20px);
 
         margin:  0;
         width: 100%;
@@ -213,11 +342,18 @@
 
     .name{
       
-        font-size: clamp(14px, 2vw + 0.12rem, 20px);
+        font-size: clamp(12px, 1.67vw + 0.12rem, 16px);
+    
         margin: 0;
        
         
 
+    }
+
+    .gender{
+     
+        font-size:clamp(12px, 1.67vw + 0.12rem, 16px);
+        padding: 3px 6px;
     }
 
 
@@ -226,32 +362,38 @@
     }
     .star{
       
-    width: clamp(12px, 1.68vw + 0.12rem, 18px);
+    width: clamp(12px, 1.68vw + 0.12rem, 16px);
+  
+        height:clamp(12px, 1.68vw + 0.12rem, 16px);
      
-        height:clamp(12px, 1.68vw + 0.12rem, 18px);
         color: var(--dark-grey);
+    }
+    .emptyStar{
+           
+    width: clamp(12px, 1.68vw + 0.12rem, 18px);
+
+    height:clamp(12px, 1.68vw + 0.12rem, 18px);
+  
     }
     
     .reviewCount{
         margin: 0;
       
-        font-size: clamp(12px, 1.68vw + 0.12rem, 18px);
+        font-size: clamp(10px, 1.634vw + 0.12rem, 14px);
+        
         color: var(--dark-grey);
     }
 
     .priceBox{
-        margin: 3px 0;
+        margin: 0;
     }
 
     .price, .fullPrice{
-        font-size: 16px;
-        font-size: 22px;
-        font-size: clamp(16px, 2.33vw + 0.12rem, 22px);
+        font-size: clamp(16px, 2.33vw + 0.12rem, 20px);
     }
 
     .description{
-        font-size: 12px;
-        font-size:   clamp(12px, 1.68vw + 0.12rem, 16px);
+        font-size: clamp(10px, 1.634vw + 0.12rem, 14px);
         width: 100%;
     }
 
@@ -264,5 +406,12 @@
       
       font-size: clamp(14px, 2vw + 0.12rem, 16x);
     }
+
+
+
+
+
+
+
 
 }

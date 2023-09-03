@@ -3,12 +3,16 @@
 import styles from './NoSizeCard.module.css'
 import Image from 'next/image'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStar, faCartShopping, faTrash } from '@fortawesome/free-solid-svg-icons'
+import { faStar, faStarHalf, faCartShopping, faTrash, faX } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useState, useRef } from 'react'
+import Link from 'next/link'
 
-export default function NoSizeCArd() {
+export default function NoSizeCArd({fav, removeFromFavorites}) {
     const [showDeletModal, setShowDeleteModal] = useState(false)
+    const [isClicked, setIsClicked] = useState(false);
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const refElement = useRef(null)
+    const {item} = fav;
 
     useEffect(() => {
         const handleClickOutside = (e) => {
@@ -16,11 +20,17 @@ export default function NoSizeCArd() {
                 setShowDeleteModal(false);
             }
         }
+        const updateWindowWidth = () => {
+            setWindowWidth(window.innerWidth);
+          }
+      
 
         document.addEventListener("mousedown", handleClickOutside);
+        window.addEventListener('resize', updateWindowWidth);
 
         return () => {
             document.removeEventListener("mousedown", handleClickOutside);
+            window.removeEventListener('resize', updateWindowWidth);
         }
     }, [])
 
@@ -36,30 +46,81 @@ export default function NoSizeCArd() {
         setShowDeleteModal(!showDeletModal)
     }
 
+    const GiveStars = (rating) => {
+        const fullStars = Math.floor(rating);
+        const halfStars = (rating - fullStars) >= 0.5;
+        
+    
+        let stars = [];
+        for(let i = 0; i < rating; i++){
+            stars.push(<FontAwesomeIcon key={i}  icon={faStar} className={styles.star} />)
+           
+        }
+    
+        if(halfStars){
+            stars.push(<FontAwesomeIcon key={rating} icon={faStarHalf} className={styles.star} />)
+           
+        }
+       
+        return stars;
+    };
+
+    console.log(isClicked)
 
   return (
-    <main className={styles.card}>
+   <>
+    <main onMouseEnter={()=>{
+        if(windowWidth > 1023){
+            setIsClicked(true)
+        }
+    }}
+    onMouseLeave={()=>{
+        if(windowWidth > 1023){
+            setIsClicked(false)
+        }
+    }}
+    
+    className={styles.card}>
         <div className={styles.imageBox}>
-            <Image className={styles.image} src="/lust1.jpg" alt="jordan-1-rogue" fill={true}  />
-            <div className={styles.shade}>
-                <div className={`${styles.button} ${styles.shopBtn}`}>
+            <Image className={styles.image} src={`/${item.images[0]}`} alt="jordan-1-rogue" fill={true}  />
+            {item.onSale === true &&  <h3 className={styles.discountTag}>-{item.discountPercentage}%</h3>}
+           {isClicked === true &&  <div className={styles.shade}>
+                <div  className={`${styles.button} ${styles.shopBtn}`}>
+                   <Link className="Link" href={`/item/${item.id}`}>
                    <FontAwesomeIcon className={styles.icon} icon={faCartShopping} />
+                   </Link>
                 </div>
-                <div onClick={toggleDeleteModal} className={`${styles.button} ${styles.deleteBtn}`}>
+                <div onClick={()=>{
+                    toggleDeleteModal();
+                }} className={`${styles.button} ${styles.deleteBtn}`}>
                     <FontAwesomeIcon  className={styles.icon} icon={faTrash} />
                 </div>
-            </div>
+            </div>}
+            
         </div>
         <div className={styles.textBox}>
-            <h2 className={styles.item}>Jordan 1 Mid</h2>
-            <h2 className={styles.price}>$289.90</h2>
-            <h3 className={styles.name}>Sin of Lust</h3>
-            <div className={styles.starsBox}>
-                <FontAwesomeIcon className={styles.star} icon={faStar} />
-                <FontAwesomeIcon className={styles.star} icon={faStar} />
-                <FontAwesomeIcon className={styles.star} icon={faStar} />
-                <FontAwesomeIcon className={styles.star} icon={faStar} />
-                <FontAwesomeIcon className={styles.star} icon={faStar} />
+        <h3 className={styles.product}>{item.model}</h3>
+            <div className={styles.starBox}>
+                <div className={styles.emptyStarBox}>
+                    <FontAwesomeIcon icon={faStar} className={styles.emptyStar} />
+                    <FontAwesomeIcon icon={faStar} className={styles.emptyStar} />
+                    <FontAwesomeIcon icon={faStar} className={styles.emptyStar} />
+                    <FontAwesomeIcon icon={faStar} className={styles.emptyStar} />
+                    <FontAwesomeIcon icon={faStar} className={styles.emptyStar} />
+                    <div className={styles.fullStarBox}>
+                {GiveStars(item.ratingsAverage)}
+                </div>
+                </div>
+                
+            </div>
+            <h3 className={styles.name}>{item.name}</h3>
+            <h3 className={styles.gender}>{item.gender === "Men" ? "MNS" : "WMNS"}</h3>
+            
+            <div className={styles.priceBox}>
+            <h3 className={`${styles.price} ${item.onSale === true && styles.linethrough}`}>${item.price.toFixed(2)}</h3>
+            {item.onSale === true && <h3 className={styles.discountedPrice}>${
+                (item.price - (item.price * (item.discountPercentage / 100))).toFixed(2)
+            }</h3>}
             </div>
         </div>
         {showDeletModal === true && <div className="modalContainer">
@@ -68,10 +129,66 @@ export default function NoSizeCArd() {
                 <p className="modalParag">Would you like to remove it from your favorites?</p>
                 <div className="modalBtnBox">
                     <button onClick={toggleDeleteModal} className="modalButton modalLeftButton">Cancel</button>
-                    <button className="modalButton modalRightButton">Remove</button>
+                    <button onClick={()=>{
+                        setShowDeleteModal(false);
+                        removeFromFavorites(fav.id)
+                    }
+                        } className="modalButton modalRightButton">Remove</button>
                 </div>
             </div>
         </div>}
     </main>
+    
+    
+    <Link href={`/item/${item.id}`} className={` Link ${styles.mobileCard}`}>
+        <div className={styles.imageBox}>
+            <Image className={styles.image} src={`/${item.images[0]}`} alt="jordan-1-rogue" fill={true}  />
+            {item.onSale === true &&  <h3 className={styles.discountTag}>-{item.discountPercentage}%</h3>}
+          
+            <FontAwesomeIcon onClick={()=>{
+                    toggleDeleteModal();
+                }} className={styles.xDelete} icon={faX} />
+        </div>
+        <div className={styles.textBox}>
+        <h3 className={styles.product}>{item.model}</h3>
+            <div className={styles.starBox}>
+                <div className={styles.emptyStarBox}>
+                    <FontAwesomeIcon icon={faStar} className={styles.emptyStar} />
+                    <FontAwesomeIcon icon={faStar} className={styles.emptyStar} />
+                    <FontAwesomeIcon icon={faStar} className={styles.emptyStar} />
+                    <FontAwesomeIcon icon={faStar} className={styles.emptyStar} />
+                    <FontAwesomeIcon icon={faStar} className={styles.emptyStar} />
+                    <div className={styles.fullStarBox}>
+                {GiveStars(item.ratingsAverage)}
+                </div>
+                </div>
+                
+            </div>
+            <h3 className={styles.name}>{item.name}</h3>
+            <h3 className={styles.gender}>{item.gender === "Men" ? "MNS" : "WMNS"}</h3>
+            
+            <div className={styles.priceBox}>
+            <h3 className={`${styles.price} ${item.onSale === true && styles.linethrough}`}>${item.price.toFixed(2)}</h3>
+            {item.onSale === true && <h3 className={styles.discountedPrice}>${
+                (item.price - (item.price * (item.discountPercentage / 100))).toFixed(2)
+            }</h3>}
+            </div>
+        </div>
+        {showDeletModal === true && <div className="modalContainer">
+            <div ref={refElement} className="modal">
+                <h1 className="modalTitle">Remove Item</h1>
+                <p className="modalParag">Would you like to remove it from your favorites?</p>
+                <div className="modalBtnBox">
+                    <button onClick={toggleDeleteModal} className="modalButton modalLeftButton">Cancel</button>
+                    <button onClick={()=>{
+                        setShowDeleteModal(false);
+                        removeFromFavorites(fav.id)
+                    }
+                        } className="modalButton modalRightButton">Remove</button>
+                </div>
+            </div>
+        </div>}
+    </Link>
+    </>
   )
 }

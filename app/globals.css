@@ -77,6 +77,11 @@ ul{
   color: var(--white-pure);
 }
 
+.mainButton:disabled:hover{
+  background-color: unset;
+  color: unset;
+}
+
 /* MAIN FONT SIZES FOR BIG TITLE, SMALLTITLE AND PARAGS */
 
 .bigTitle{
@@ -109,7 +114,7 @@ ul{
   top: 0;
   left: 0;
   bottom: 0;
-  z-index: 100;
+  z-index: 102;
 }
 
 .modal{
@@ -265,6 +270,12 @@ padding: 0 5%;
   color: var(--white-pure);
 }
 
+.mainButton:disabled{
+  opacity: 0.6;
+  background-color: unset;
+  color:unset;
+}
+
 .input{
   font-size: clamp(14px, 4vw + 0.12rem, 16px);
 }
@@ -288,10 +299,13 @@ padding: 0 5%;
 
 /* -------------------------MODAL FOR REMOVEING AND FOR LOG OUT-------------------- */
 
+
+
+
 .modal{
   width: 90%;
   max-width: 350px;
-  min-width: none;
+  min-width: unset;
 }
 .modalTitle{
   margin: 0;
@@ -347,7 +361,7 @@ padding: 0 5%;
 
 .smallNavBackBtn{
     color: var(--light-grey);
-   font-size: clamp(12px, 3.58vw + 0,.12rem, 16px);
+    font-size: clamp(12px, 3.58vw + 0.12rem, 16px);
     font-weight: 400;
    
 }
@@ -388,6 +402,14 @@ padding: 0 5%;
 
   .mainParag{
     font-size: clamp(12px, 1.67vw + 0.12rem, 16px);
+  }
+
+  .smallNavBackBtn{
+    font-size: clamp(14px, 2vw + 0.12rem, 16px);
+  }
+
+  .modalContainer{
+    z-index: 999;
   }
 
  

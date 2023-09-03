@@ -9,6 +9,10 @@
    .card:active{
        background-color: var(--thin-grey);
    }
+
+   .linkContainer{
+    display: flex;
+   }
    
    .imgBox{
        position: relative;
@@ -23,6 +27,20 @@
    .img{
        border-radius: 8px;
    }
+
+   .discountTag{
+    position: absolute;
+    color: var(--white-pure);
+    background-color: var(--dark-grey);
+    background-color: #ff6000;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: 12px;
+    padding: 3px 6px ;
+    top: 10px;
+    right: 0;
+    border-radius: 5px 0 0 5px;
+}
    
    .textBox{
        display: flex;
@@ -42,6 +60,25 @@
        font-size:16px;
        color: var(--dark-grey);
    }
+
+   .discountedPrice{
+    font-size: 16px;
+    color:  #ff6000;
+    margin: 0;
+   }
+
+   .priceBox{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+   }
+
+   .lineThrough{
+    text-decoration: line-through;
+    color: var(--light-grey);
+    font-weight: 400;
+   }
    
    .name{
       
@@ -53,13 +90,26 @@
    
    .starBox{
        display: flex;
+       align-items: center;
        margin: 3px 0 ;
+       position: relative;
+   }
+
+   .fullStarBox{
+    position: absolute;
    }
    
    .star{
-       width: clamp(12px, 3.58vw + 0.12rem, 16px);
-       height:clamp(12px, 3.58vw + 0.12rem, 16px);
+       width: clamp(12px, 3.58vw + 0.12rem, 14px);
+       height:clamp(12px, 3.58vw + 0.12rem, 14px);
        color: var(--dark-grey);
+   }
+
+   .emptyStar{
+    width: clamp(12px, 3.58vw + 0.12rem, 14px);
+    height:clamp(12px, 3.58vw + 0.12rem, 14px);
+    color: var(--light-grey);
+    opacity: 0.5;
    }
    
    @media (min-width:601px) and (max-width:1023px){

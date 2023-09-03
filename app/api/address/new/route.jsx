@@ -8,20 +8,38 @@ export async function POST(request){
     const session = await getServerSession(authOptions);
 
     if(!session){
-        return new Response("You are not authorized to create orders", {status: 401});
+        return new Response("You are not authorized to create Addresses", {status: 401});
     }
+
+    console.log("session: ", session)
 
     const body = await request.json();
     const { name, surname, street, city, state, zip, country, phone} = body;
 
     //check if all fields are provided
     if(!name || !surname || !street || !city || !state || !zip || !country || !phone ){
-        return new Response("Please provide the necessary infos", {status: 400});
+        return new Response("Please provide the all necessary infos", {status: 400});
     }
 
- 
+    
 
     try {
+
+        const existingAddresses = await prisma.address.findMany({
+            where: {
+                user: {
+                    id: session.id
+                }
+            }
+        })
+
+        let defaultAddressValue;
+
+        if(existingAddresses.length === 0){
+            defaultAddressValue = true;
+        } else if(existingAddresses.length > 0){
+            defaultAddressValue = false;
+        }
        //create the new address
         const newAddress = await prisma.address.create({
         data: {
@@ -37,7 +55,8 @@ export async function POST(request){
             state,
             zip,
             country,
-            phone
+            phone,
+            default: defaultAddressValue
         }
     });
 

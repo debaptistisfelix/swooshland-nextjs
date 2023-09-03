@@ -46,6 +46,7 @@
     width: 100%;
     font-weight: bold;
     border-top: 2px solid var(--thin-grey);
+    padding-top: 10px;
 }
 
 @media (max-width:600px){

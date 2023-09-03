@@ -11,6 +11,7 @@
     color: var(--dark-grey);
     font-size: 18px;
     background-color: var(--thin-grey);
+   
     width: 100%;
     text-align: start;
     margin: 0;
@@ -18,6 +19,7 @@
     padding:5px 10px;
     box-sizing: border-box;
     border-radius: 8px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.3);
 
 }
 
@@ -34,6 +36,10 @@
 .boxContainer{
     width: 48%;
     height: 100%;
+}
+
+.mobileBoxContainer{
+    display: none;
 }
 
 .box{
@@ -132,13 +138,25 @@
         font-size: clamp(16px, 4.72vw + 0.12rem, 20px);
         background-color: transparent;
         text-align: center;
+        box-shadow: none;
     }
 
     .box{
         height: 70% ;
     }
 
+    .boxContainer{
+        display: none;
+    }
+
    
+
+    .mobileBoxContainer{
+        width: 48%;
+        height: 100%;
+    display: flex;
+    flex-direction: column;
+    }
 
     .mobileCategTitle{
         display: block;
@@ -172,21 +190,25 @@
     }
 
     .title{
+    
         font-size: 14px;
     }
 
     .categTitle{
-        font-size: 14px;
+
+        font-size: clamp(12px, 1.67vw + 0.12rem, 16px);
     }
 
     .parag{
-        font-size: 10px;
+    
+        font-size: clamp(10px, 1.34vw + 0.12rem, 14px);;
         text-align: center;
         margin: 5px 0 ;
     }
 
     .text{
         width: 100%;
+        gap: clamp(5px, 0.5vw + 0.12rem, 10px);
     }
 
     .btn{
@@ -196,8 +218,8 @@
       
         text-align: center;
         width: 50%;
-        height: clamp(30px, 4.66vw + 0.12rem, 42px);
-          
-        font-size: clamp(14px, 2vw + 0.12rem, 16x);
+        height: fit-content;
+          width: 40%;
+          font-size: clamp(12px, 1.67vw + 0.12rem, 16px);
     }
 }

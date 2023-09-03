@@ -19,18 +19,53 @@
     border-radius: 8px;
 }
 
+.discountTag{
+    position: absolute;
+    color: var(--white-pure);
+    background-color: var(--dark-grey);
+    background-color: #ff6000;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: 14px;
+    padding: 5px 10px ;
+    top: 10px;
+    right: 0;
+    border-radius: 5px 0 0 5px;
+}
+
 .textBox{
     margin-left: 20px;
     color: var(--dark-grey);
     display: flex;
     flex-direction: column;
     justify-content: center;
+    gap: 5px;
+}
+
+.priceBox{
+    display: flex;
+    align-items: center;
     gap: 10px;
 }
 
-.title, .price{
+.title, .price,.discountedPrice{
 font-size: 18px;
 margin: 0;
+}
+
+.discountedPrice{
+  
+    
+    color: #ff6000;
+}
+
+.linethrough{
+    text-decoration: line-through;
+    opacity: 0.75;
+    color: var(--light-grey);
+    font-weight: 400;
+    margin-right: auto;
+    margin-left: unset;
 }
 
 .name{
@@ -38,6 +73,13 @@ margin: 0;
     margin: 0;
     font-size: 16px;
     font-weight: 400;
+}
+
+.gender{
+    color: var(--light-grey);
+    font-weight: 400;
+ font-size: 14px;
+    margin: 0;
 }
 
 .sizeBox{
@@ -144,6 +186,20 @@ background-color: rgba(0,0,0,0.5);
      height: clamp(80px, 27.86vw + 0.12rem, 120px)
  
     }
+
+    .discountTag{
+        position: absolute;
+        color: var(--white-pure);
+        background-color: var(--dark-grey);
+        background-color: #ff6000;
+        margin: 0;
+        box-sizing: border-box;
+        font-size: clamp(10px, 2.86vw + 0.12rem, 18px);
+        padding: 3px 8px ;
+        top: 10px;
+        right: 0;
+        border-radius: 5px 0 0 5px;
+    }
     .textBox{
         margin-left: 10px;
         color: var(--dark-grey);
@@ -153,7 +209,7 @@ background-color: rgba(0,0,0,0.5);
         gap: 0;
     }
 
-    .title, .price{
+    .title, .price, .discountedPrice{
         font-size: 12px;
         font-size: clamp(12px, 3.58vw + 0.12rem, 16px);
      
@@ -167,9 +223,12 @@ background-color: rgba(0,0,0,0.5);
         font-weight: 400;
     }
 
+    .gender{
+        font-size:  clamp(10px, 2.86vw + 0.12rem, 14px);
+    }
+
     .sizeLabel, .actualSize{
-        font-size: 12px;
-        font-size: clamp(12px, 3.58vw + 0.12rem, 16px);
+        font-size:  clamp(10px, 2.86vw + 0.12rem, 14px);
     }
 
     .select{
@@ -248,6 +307,11 @@ background-color: rgba(0,0,0,0.5);
  
     }
 
+    .discountTag{
+      
+        font-size: clamp(8px, 1vw + 0.12rem, 12px);
+    }
+
     
 .textBox{
     margin-left: 10px;
@@ -258,13 +322,13 @@ background-color: rgba(0,0,0,0.5);
     gap: 0px;
 }
 
-.title, .price{
+.title, .price, .discountedPrice{
 font-size: 12px;
 font-size: clamp(12px, 1.67vw + 0.12rem, 16px);
 margin: 0;
 }
 
-.name{
+.name, .gender{
     color: var(--light-grey);
     margin: 0;
     font-size: clamp(12px, 1.67vw + 0.12rem, 16px);

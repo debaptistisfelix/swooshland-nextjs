@@ -17,6 +17,11 @@
     
 }
 
+.reviewInput{
+    background-color: var(--thin-grey);
+    border-radius: 8px;
+}
+
 .textarea{
     border-radius: 8px;
     height: 200px;

@@ -1,0 +1,128 @@
+.section{
+    width: 100%;
+    height: fit-content;
+    position: relative;
+}
+
+.customSelect{
+    width: 100%;
+    border: 1px solid var(--light-grey);
+    border-radius: 20px;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    color: var(--light-grey);
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.customSelect.active{
+    border: 2px solid var(--medium-grey);
+}
+
+.selectTitle{
+    margin: 0;
+    font-size: clamp(14px, 1.18vw + 0.12rem, 16px);
+    font-weight: 400;
+    
+}
+
+.icon{
+    margin-left: auto;
+}
+
+.optionsBox{
+    width: 200px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+    height: fit-content;
+    height: 100%;
+    background-color: var(--white-pure);
+    border: 1px solid var(--light-grey);
+    position: absolute;
+    z-index: 5;
+    display: grid;
+    grid-template-rows: auto;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px ;
+    box-sizing: border-box;
+    
+}
+
+.priceLabel{
+    font-size: clamp(14px, 1.18vw + 0.12rem, 16px);
+    width: fit-content;
+}
+
+.priceInput{
+    width: 40px;
+   height: 100%;
+   font-size: clamp(14px, 1.18vw + 0.12rem, 16px);
+   background-color: var(--thin-grey);
+   border: none;
+   outline: none;
+}
+
+.priceBtn{
+    background-color: var(--dark-grey);
+    color: var(--white-pure);
+    border-radius: 5px;
+    cursor: pointer;
+    height: 100%;
+}
+
+.rightOptionsPosition{
+    left: 100%;
+    transform: translateX(10px);
+    top: 0;
+   
+}
+
+.bottomOptionsPosition{
+    top: 100%;
+    left: 0;
+    transform: translateY(10px);
+}
+
+
+
+
+
+.icon{
+    width: 16px;
+    height: 16px;
+}
+
+@media (max-width:600px){
+    .selectTitle{
+        font-size: clamp(16px, 4.72vw + 0.12rem, 20px)
+    }
+    .icon{  
+        width: clamp(16px, 4.72vw + 0.12rem, 20px);
+        height: clamp(16px, 4.72vw + 0.12rem, 20px);
+    }
+    .option{
+        font-size: clamp(16px, 4.72vw + 0.12rem, 20px)
+    }
+}
+
+@media (min-width:601px) and (max-width:1023px){
+    .selectTitle{
+        font-size: 14px;
+    }
+    .icon{  
+        width:14px;
+        height: 14px
+    }
+    .option{
+        font-size: 14px
+    }
+}
+
+
+
+
+

@@ -1,0 +1,97 @@
+.card{
+  display: flex;
+
+  align-items: center;
+
+  justify-content: flex-start;
+  height: fit-content;
+  margin: 0;
+  box-sizing: border-box;
+ 
+}
+
+.input{
+    margin-right: 10px;
+    margin-bottom: auto;
+    margin-top: 10px;
+}
+
+.container{
+    position: relative;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  
+    margin-bottom: auto;
+}
+
+.input{
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+  }
+
+  .container:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+
+  .container input:checked ~ .checkmark {
+    background-color: var(--medium-grey);
+ 
+  }
+
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+  .container input:checked ~ .checkmark:after {
+    display: block;
+  }
+
+  .container .checkmark:after {
+    top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+  }
+
+  .text{
+    display: flex;
+    flex-direction: column;
+    margin-left: 35px;
+  }
+
+.info{
+    color: var(--light-grey);
+    margin: 0;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+@media (max-width:600px){
+  .info{
+    font-size: clamp(12px, 3.58vw + 0.12rem, 16px);
+}
+.card{
+  width: 80%;
+
+}
+}

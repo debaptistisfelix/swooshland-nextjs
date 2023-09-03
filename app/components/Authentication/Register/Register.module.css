@@ -50,7 +50,7 @@
     width: 100%;
     box-sizing: border-box;
     border: 2px solid var(--light-grey);
-    border-radius: 5px;
+    
     height: 48px;
     padding: 5px 10px;
     font-size: 14px;
@@ -67,7 +67,7 @@
     align-items: center;
     height: 48px;
     border: 2px solid var(--light-grey);
-    border-radius: 5px;
+    border-radius: 12px;
     box-sizing: border-box;
     position: relative;
 }
@@ -113,7 +113,7 @@
     height: 48px;
     background-color: transparent;
     border-radius: 5px;
-    border: 2px solid var(--medium-grey);
+  
     font-weight: 600;
     font-size: 16px;
     cursor: pointer;
@@ -139,8 +139,7 @@
 
 
 .checkIcon{
-    width: 50px;
-    height: 50px;
+    font-size: 80px;
     color: var(--dark-grey);
 }
 
@@ -150,6 +149,7 @@
         height: 100%;
         border-radius: 0;
         box-shadow: 0;
+        max-width: 400px;
     }
 
     
@@ -180,6 +180,9 @@
     color: var(--dark-grey);
     font-size:clamp(14px, 4vw + 0.12rem, 18px);
 }
+.checkIcon{
+    font-size: clamp(60px, 20.72vw + 0.12rem, 80px);
+ }
 }
 
 

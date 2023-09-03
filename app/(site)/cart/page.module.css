@@ -65,6 +65,14 @@ gap: 20px;
    
 }
 
+.checkoutBtn:hover .checkoutBtnLink{
+    color: var(--white-pure);
+}
+
+.checkoutBtnLink{
+    color: var(--light-grey);
+}
+
 @media (max-width:600px){
 
    
@@ -118,11 +126,11 @@ gap: 20px;
     }
 
     .summary{
-        width: 50%;
+        width: 45%;
     }
 
     .checkoutBtn{
-        width: 90%;
+        width: 100%;
         margin-top: 10px;
         cursor: pointer;
         display: flex;

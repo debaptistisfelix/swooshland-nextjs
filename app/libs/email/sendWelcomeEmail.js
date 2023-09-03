@@ -3,6 +3,7 @@ import sgMail from '@sendgrid/mail';
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 const sendWelcomeEmail = async ( email, name) => {
+   
     const msg = {
         to: email,
         from : "swooshlandcustoms@outlook.com",

@@ -24,39 +24,51 @@ export default function Dashboard() {
         Streamline your online retail journey with our comprehensive e-commerce dashboard. Take charge of your orders, manage saved addresses, curate favorite products, and stay updated with personalized newsletters. Enjoy a hassle-free shopping experience tailored to your preferences.
         </p>
         <section className={styles.mobileNav}>
+        <Link href="/dashboard/addresses" className='Link'>
             <div className={styles.navBox}>
-                <Link href="/dashboard/addresses" className='Link'><h3 className={styles.navTitle}>
+               
+                  <h3 className={styles.navTitle}>
                   <FontAwesomeIcon icon={faTruck} className={styles.icon} />
-                  Addresses</h3></Link>
+                  Addresses</h3>
+                 
                 <p className={styles.navParag}>Check your saved shipping addresses or add no ones.</p>
             </div>
+            </Link>
+
+            <Link className='Link' href="/dashboard/favorites">
             <div className={styles.navBox}>
-                <Link className='Link' href="/dashboard/favorites">
+               
                 <h3 className={styles.navTitle}>
                   <FontAwesomeIcon icon={faHeart} className={styles.icon} />
                   Favorites</h3>
-                </Link>
+          
                 <p className={styles.navParag}>Check the items you liked so far on our shop.</p>
             </div>
+            </Link>
+
+            <Link className='Link' href="/dashboard/newsletter">
             <div className={styles.navBox}>
-                <Link className='Link' href="/dashboard/newsletter">
+               
                 <h3 className={styles.navTitle}>
                   <FontAwesomeIcon icon={faEnvelope} className={styles.icon} />
                   Newsletter</h3>
-                </Link>
+               
                 <p className={styles.navParag}>
                 Handle your Swooshland Newsletter subscriptiion.
 
                  </p>
             </div>
+            </Link>
+            <Link className='Link' href="/dashboard/orders">
             <div className={styles.navBox}>
-              <Link className='Link' href="/dashboard/orders">
+             
               <h3 className={styles.navTitle}>
                   <FontAwesomeIcon icon={faList} className={styles.icon} />
                   Orders</h3>
-              </Link>
+             
                 <p className={styles.navParag}> Check the status/tracking of  your new orders, or take a look at your old ones.</p>
             </div>
+            </Link>
             
         </section>
     </main>

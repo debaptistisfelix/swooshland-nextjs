@@ -6,14 +6,25 @@ import { authOptions } from "@app/api/auth/[...nextauth]/route"
 export async function POST(request){
     const session = await getServerSession(authOptions);
     const body = await request.json();
-    const {itemId, chosenSize} = body;
+    const {itemId} = body;
 
     if(!session){
-        return new Response("You are not authorized to create a wishlist item", {status: 401});
+        return new Response(JSON.stringify("You are not authorized to create a wishlist item"), {status: 401});
+    }
+
+    const alreadyExistingFav = await prisma.wishListItem.findFirst({
+        where: {
+            userId: session.id,
+            itemId: itemId
+        }
+    })
+
+    if(alreadyExistingFav){
+        return new Response(JSON.stringify("Item already exists in wishlist"), {status: 400});
     }
 
     try{
-        const newWishlistItem = await prisma.wishlistItem.create({
+        const newWishlistItem = await prisma.wishListItem.create({
             data: {
                 user: {
                     connect: {
@@ -25,7 +36,6 @@ export async function POST(request){
                         id: itemId
                     }
                 },
-                chosenSize: chosenSize
             }
         
         });
@@ -34,6 +44,6 @@ export async function POST(request){
     }
     catch(error){
         console.log(error);
-        return new Response("Something went wrong", {status: 500});
+        return new Response(JSON.stringify("Something went wrong"), {status: 500});
     }
 }

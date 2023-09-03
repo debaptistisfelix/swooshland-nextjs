@@ -145,6 +145,10 @@
         object-position: 0px -40px;
     }
 
+    .bannerTextBox{
+      z-index: 3;
+    }
+
     .bannerTitle{
         font-size: 24px;
         margin: 0;

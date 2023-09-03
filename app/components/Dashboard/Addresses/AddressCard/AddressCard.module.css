@@ -6,6 +6,7 @@
     box-sizing: border-box;
     border-bottom: 2px solid var(--thin-grey);
     height:fit-content;
+    position: relative;
  
 }
 
@@ -76,6 +77,40 @@
     display: flex;
     flex-direction: column;
     margin-left: 50px;
+    position: relative;
+  }
+
+  .defaultBox{
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+width: 200px;
+    gap: 10px;
+    margin: 0 auto;;
+    
+  }
+
+  .defaultTag{
+    color: var(--white-pure);
+    margin: 0;
+  background-color: var(--dark-grey);
+    font-size: 14px;
+    font-weight: 700;
+    padding: 5px 10px;
+    border-radius: 8px;
+    box-sizing: border-box
+  
+  }
+
+  .defaultTagMobile{
+display: none;
+  }
+  .defaultParag{
+    color: var(--light-grey);
+    margin: 0;
+    font-size: 14px;
+    font-weight: 400;
+   
   }
 
 .info{
@@ -163,6 +198,23 @@
         width: 16px;
         height: 16px;
     }
+    
+    .defaultBox{
+       display: none;
+    }
+
+    .defaultTagMobile{
+        display: block;
+        margin: 0;
+        font-size: clamp(14px, 4vw + 0.12rem, 18px);
+        border: 2px solid var(--medium-grey);
+        padding: 5px 10px;
+        color: var(--medium-grey);
+        box-sizing:  border-box;
+        margin-bottom: 10px;
+        border-radius: 8px;
+    }
+
 
     
 

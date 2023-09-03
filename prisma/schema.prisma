@@ -33,6 +33,13 @@ model User {
   orders Order[]
 }
 
+model SubscribedEmailAddress{
+  id          String  @id @default(auto()) @map("_id") @db.ObjectId
+  email       String  @unique
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
 enum Role {
   USER
   ADMIN
@@ -50,6 +57,7 @@ model Address{
   country     String
   zip         String
   phone       String
+  default     Boolean @default(false)
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
   orders      Order[]
@@ -81,15 +89,20 @@ model Account {
 model Item{
   id          String  @id @default(auto()) @map("_id") @db.ObjectId
   name        String
+  fullName    String
   model       String
-  category    String
+  brand        String?
+  category   String?
   ratingsAverage Float @default(0)
   ratingsQuantity Int @default(0)
   images     Json[]
-  paletteColors PaletteColors[]
+  stripe     Json?
   tag        String
   description String
   price       Float
+  gender     String
+  onSale     Boolean @default(false)
+  discountPercentage Float @default(0)
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
   availableSizes AvailableSize[]
@@ -99,31 +112,26 @@ model Item{
  
 }
 
-model PaletteColors{
-   id       String   @id @default(auto()) @map("_id") @db.ObjectId
-  hex      String
-  name     String
-  item     Item     @relation(fields: [itemId], references: [id], onDelete: Cascade)
-  itemId   String   @db.ObjectId
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
+
 
 model AvailableSize {
   id          String  @id @default(auto()) @map("_id") @db.ObjectId
-  EUsize      String
-  availability Float
-  reserved    Float @default(0)
+  EUsize      Int
+  availability Int
+  reserved    Int @default(0)
   item        Item @relation(fields: [itemId], references: [id], onDelete: Cascade)
   itemId      String    @db.ObjectId
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
+  cartItems CartItem[]
 }
 
 model Review{
   id          String  @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
   rating      Int
   comment     String
+  authorName      String
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
 
@@ -138,8 +146,6 @@ model WishListItem{
   id          String  @id @default(auto()) @map("_id") @db.ObjectId
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
-  chosenSize  Float
-
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId      String  @db.ObjectId
   item Item @relation(fields: [itemId], references: [id], onDelete: Cascade)
@@ -150,10 +156,12 @@ model CartItem{
   id          String  @id @default(auto()) @map("_id") @db.ObjectId
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
-  chosenSize  Float
 
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId      String  @db.ObjectId
+  availableSize AvailableSize @relation(fields: [availableSizeId], references: [id], onDelete: Cascade)
+  availableSizeId      String  @db.ObjectId
+  guestUser  String?
+  user User? @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      String?  @db.ObjectId
   item Item @relation(fields: [itemId], references: [id], onDelete: Cascade)
   itemId      String  @db.ObjectId
   order Order? @relation(fields: [orderId], references: [id], onDelete: Cascade)
@@ -167,21 +175,27 @@ model Order{
   subTotal    Float
   shipping    Float
   total       Float
-  status      Status @default(PENDING)
+  status      Status @default(pending)
   cartItems CartItem[]
-  address    Address  @relation(fields: [addressId], references: [id], onDelete: Cascade)
-  addressId      String  @db.ObjectId
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId      String  @db.ObjectId
-  
+  boughtItems Json[]
+  address    Address?  @relation(fields: [addressId], references: [id], onDelete: Cascade)
+  addressId      String?  @db.ObjectId
+  user User? @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      String?  @db.ObjectId
+  orderAddress Json?
+  confirmed  Boolean @default(false)
 }
 
+
+
 enum Status{
-  PENDING
-  SHIPPED
-  DELIVERED
-  CANCELLED
+  pending
+  confirmed
+  shipped
+  delivered
+  failed
 }
+
 
 
 

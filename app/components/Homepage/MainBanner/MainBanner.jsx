@@ -13,7 +13,7 @@ export default function MainBanner() {
       </div>
       <div className={styles.mobileParagBox}>
         <p className={`${styles.parag} ${styles.mobileParag}`}>"A scarlett Rock&Roll soul that makes anyone fall in love at first sight."</p>
-        <button className={`${styles.rogueBtn} ${styles.mobileRogueBtn}`}>Add</button>
+        <button className={`${styles.rogueBtn} ${styles.mobileRogueBtn}`}>Shop</button>
         </div>
       <div className={styles.textBox}>
         <div className={styles.brandBox}>

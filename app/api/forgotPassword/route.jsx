@@ -15,7 +15,7 @@ export async function POST(request){
         })
 
         if(!user){
-            return new Response("User not found", {status: 404});
+            return new Response(JSON.stringify("User not found"), {status: 404});
         }
 
         const token = crypto.randomBytes(20).toString('hex');

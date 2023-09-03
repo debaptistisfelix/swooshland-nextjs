@@ -1,15 +1,36 @@
-
+"use client"
 
 import Link from 'next/link'
 import styles from './page.module.css'
 import Image from 'next/image'
 import { poppins } from '@app/fonts'
 import SneakerListing from '@app/components/ItemPage/Sneakers/SneakersListing/SneakerListing'
-import BackBtnWithArrow from '@app/components/Reusables/BackBtnWithArrow/BackBtnWithArrow'
+import { useState, useEffect } from 'react'
 import SneakersContextProvider from '@app/context/SneakersPageContext'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import { faSliders } from '@fortawesome/free-solid-svg-icons'
 
 export default function SneakersPage() {
-  const sneakers = [
+  const [mobileFiltersOpen, setMobileFiltersOpen] = useState(null);
+
+  useEffect(() => {
+    if(mobileFiltersOpen === true){
+        document.body.style.overflow = "hidden"
+    }else {
+        document.body.style.overflow = "unset"
+    }
+}, [mobileFiltersOpen])
+
+  const toggleMobileFilters = ()=>{
+    setMobileFiltersOpen(!mobileFiltersOpen);
+} 
+
+
+
+
+
+ /*  const sneakers = [
     {
       model: "Nike air force 1",
       name: "Dragon V1",
@@ -17,7 +38,8 @@ export default function SneakersPage() {
       price: 189.90,
       date: "2023-01-15",
       rating: 5,
-      onSale: false
+      onSale: false,
+      for: "Men"
     },
     {
       model: "Nike air force 1",
@@ -26,7 +48,8 @@ export default function SneakersPage() {
       price: 189.90,
       date: "2023-02-28",
       rating: 4,
-      onSale: false
+      onSale: false,
+      for: "Men"
     },
     {
       model: "Nike air force 1",
@@ -35,7 +58,8 @@ export default function SneakersPage() {
       price: 189.90,
       date: "2023-03-10",
       rating: 4,
-      onSale: false
+      onSale: false,
+      for: "Men"
     },
     {
       model: "Nike air force 1",
@@ -44,7 +68,8 @@ export default function SneakersPage() {
       price: 189.90,
       date: "2023-04-05",
       rating: 3,
-      onSale: false
+      onSale: false,
+      for: "Men"
     },
     {
       model: "Nike air force 1",
@@ -53,7 +78,8 @@ export default function SneakersPage() {
       price: 189.90,
       date: "2023-05-20",
       rating: 4,
-      onSale: false
+      onSale: false,
+      for: "Men"
     },
     {
       model: "Nike air force 1",
@@ -62,7 +88,8 @@ export default function SneakersPage() {
       price: 189.90,
       date: "2023-06-08",
       rating: 5,
-      onSale: false
+      onSale: false,
+      for: "Women"
     },
     {
       model: "Nike air force 1",
@@ -71,7 +98,8 @@ export default function SneakersPage() {
       price: 189.90,
       date: "2023-07-16",
       rating: 3,
-      onSale: false
+      onSale: false,
+      for: "Women"
     },
     {
       model: "Nike air force 1",
@@ -80,7 +108,8 @@ export default function SneakersPage() {
       price: 189.90,
       date: "2023-08-22",
       rating: 5,
-      onSale: false
+      onSale: false,
+      for: "Women"
     },
     {
       model: "Jordan 1 Mid",
@@ -89,7 +118,8 @@ export default function SneakersPage() {
       price: 289.90,
       date: "2023-01-15",
       rating: 4,
-      onSale: true
+      onSale: true,
+      for: "Women"
     },
     {
       model: "Jordan 1 Mid",
@@ -98,7 +128,8 @@ export default function SneakersPage() {
       price: 289.90,
       date: "2023-02-28",
       rating: 4,
-      onSale: false
+      onSale: false,
+      for: "Men"
     },
     {
       model: "Jordan 1 Mid",
@@ -107,7 +138,8 @@ export default function SneakersPage() {
       price: 289.90,
       date: "2023-03-10",
       rating: 5,
-      onSale: false
+      onSale: false,
+      for: "Men"
     },
     {
       model: "Jordan 1 Mid",
@@ -116,7 +148,8 @@ export default function SneakersPage() {
       price: 289.90,
       date: "2023-04-05",
       rating: 4,
-      onSale: true
+      onSale: true,
+      for: "Men"
     },
     {
       model: "Jordan 1 Mid",
@@ -125,7 +158,8 @@ export default function SneakersPage() {
       price: 289.90,
       date: "2023-05-20",
       rating: 5,
-      onSale: true
+      onSale: true,
+      for: "Women"
     },
     {
       model: "Jordan 1 Mid",
@@ -134,7 +168,8 @@ export default function SneakersPage() {
       price: 289.90,
       date: "2023-06-08",
       rating: 4,
-      onSale: false
+      onSale: false,
+      for: "Men"
     },
     {
       model: "Jordan 1 Mid",
@@ -143,7 +178,8 @@ export default function SneakersPage() {
       price: 289.90,
       date: "2023-07-16",
       rating: 3,
-      onSale: true
+      onSale: true,
+      for: "Men"
     },
     {
       model: "Jordan 1 Mid",
@@ -152,7 +188,8 @@ export default function SneakersPage() {
       price: 289.90,
       date: "2023-08-22",
       rating: 5,
-      onSale: false
+      onSale: false,
+      for: "Men"
     },
     {
       model: "Puma Cali",
@@ -161,7 +198,8 @@ export default function SneakersPage() {
       price: 189.90,
       date: "2023-08-01",
       rating: 3,
-      onSale: false
+      onSale: false,
+      for: "Women"
     },
     {
       model: "Adidas Superstar",
@@ -170,7 +208,8 @@ export default function SneakersPage() {
       price: 189.90,
       date: "2023-01-22",
       rating: 2,
-      onSale: true
+      onSale: true,
+      for: "Men"
     },
     {
       model: "Adidas Superstar",
@@ -179,7 +218,8 @@ export default function SneakersPage() {
       price: 189.90,
       date: "2022-05-16",
       rating: 2,
-      onSale: false
+      onSale: false,
+      for: "Men"
     },
     {
       model: "Fila Raptor",
@@ -188,18 +228,24 @@ export default function SneakersPage() {
       price: 189.90,
       date: "2020-11-10",
       rating: 1,
-      onSale: false
+      onSale: false,
+      for: "Women"
     },
     
     
-  ];
+  ]; */
   
-
   return (
     <main className={`${styles.sneakerPage} ${poppins.className}`}>
-        <BackBtnWithArrow path="/" text="Back to Home"/>
+         <section className={styles.container}>
+        <Link href="/" className="Link smallNavBackBtnBox">
+            <FontAwesomeIcon icon={faArrowLeft} className="smallNavLeftArrowIcon" />
+            <span className="smallNavBackBtn">Back to Home</span>
+        </Link>
+        <FontAwesomeIcon onClick={toggleMobileFilters} icon={faSliders} className={`smallNavRightArrowIcon ${styles.filtersIcon}`} />
+        
+   </section>
         <div className={styles.banner}>
-          
             <Image alt="nikeaf1" fill="true" className={styles.image} src="/kraken.jpg" />
             <div className={styles.shader}>
                 <div className={styles.text}>
@@ -208,7 +254,7 @@ export default function SneakersPage() {
             </div>
         </div>
         <SneakersContextProvider>
-        <SneakerListing sneakers={sneakers} />
+        <SneakerListing  toggleMobileFilters={toggleMobileFilters} mobileFiltersOpen={mobileFiltersOpen} />
         </SneakersContextProvider>
     
     </main>

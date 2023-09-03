@@ -40,10 +40,11 @@ export default function CustomFilterSelect({ filterOptions, selectedFilter, hand
         </div>
         {isOpen &&  <section className={`${styles.optionsBox}  ${ position === "bottom" ? styles.bottomOptionsPosition : styles.rightOptionsPosition}`}>
         {filterOptions.options.map(option =>{
-        return <div key={uuidv4()} className={`${styles.selectOptionBox} ${selectedFilter === option && styles.active}`}>
-        <p
-        onClick={()=>{handleFilterOptionChange(option); closeSelect()}}
-        className={`${styles.option} ${selectedFilter === option && styles.active}`}>{option}</p>
+        return <div key={uuidv4()} className={`${styles.selectOptionBox} ${selectedFilter === option.value && styles.active}`}>
+        <span
+        onClick={()=>{handleFilterOptionChange(option.value); closeSelect()}}
+        className={`${styles.option} ${selectedFilter === option.value && styles.active}`}>{option.label}
+        </span>
         </div>
         })}
         </section>}

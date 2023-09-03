@@ -7,14 +7,37 @@
 
 }
 
-.card:hover .shade{
-   opacity: 1;
+.mobileCard{
+    width: 200px;
+   
+    height: 230px;
+display: none;
+    margin: 10px auto;
 }
+
+
 
 .imageBox{
     position: relative;
     width: 100%;
     height:    75%;
+}
+
+.xDelete{
+    display: none;
+}
+.discountTag{
+    position: absolute;
+    color: var(--white-pure);
+    background-color: var(--dark-grey);
+    background-color: #ff6000;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: 14px;
+    padding: 5px 10px ;
+    top: 10px;
+    right: 0;
+    border-radius: 5px 0 0 5px;
 }
 
 .shade{
@@ -27,7 +50,7 @@
     align-items: center;
     justify-content: center;
     gap: 20px;
-    opacity: 0;
+    opacity: 1;
     transition: all 0.3s ease-in-out;
 }
 
@@ -40,12 +63,32 @@
     justify-content: center;
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
     cursor: pointer;
+    animation: bounceIn 1s ease-in-out forwards;
+   
 }
+
+@keyframes bounceIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.3);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+    70% {
+      transform: scale(0.9);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
 
 
 .shopBtn{
     color: var(--dark-grey);
     background-color: var(--white-pure);
+   
 }
 
 .deleteBtn{
@@ -67,46 +110,105 @@
     margin-top: 5px;
 }
 
-.item{
-    font-size: 14px;
-    text-align: left;
-    width: 50%;
+.name, .product, .price, .discountedPrice, .gender{
     margin: 0;
+}
+
+
+.product{
+    color: var(--dark-grey);
+  
+    font-size: clamp(14px, 1.18vw + 0.12rem, 16px);
+}
+
+.product{
+    width: 65%;
+   
+}
+
+
+
+.name{
+    font-size: clamp(12px, 1vw + 0.113rem, 16px);
+    color: var(--light-grey);
+    font-style: italic;
+    font-weight: 400;
+  
+    width: 65%;
+}
+
+.gender{
+    width: 30%;
+    text-align: end;
+    color: var(--light-grey);
+    font-size: clamp(12px, 1vw + 0.113rem, 16px);;
+    font-weight: 400;
+    margin-left: auto;
+}
+
+
+
+.starBox{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 33%;
+  margin-left: auto;
+   position: relative;
+}
+
+.emptyStarBox{
+    position: absolute;
+    display: flex;
+ 
+}
+
+.fullStarBox{
+    position: absolute;
+    display: flex;
+    justify-content: flex-start;
+  
+    
+}
+
+.star, .emptyStar{
+    width: clamp(12px, 1vw + 0.113rem, 14px);
+    height: clamp(12px, 1vw + 0.113rem, 14px);
+    color: var(--dark-grey);
+}
+
+.emptyStar{
+    color: var(--thin-grey);
+}
+
+.priceBox{
+    display:flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.discountedPrice{
+    font-size: clamp(12px, 1vw + 0.113rem, 16px);
+    
+    color: #ff6000;
 }
 
 .price{
-    font-size: 14px;
-    text-align: right;width: 50%;
-    margin: 0;
+    margin-left: auto;
+    font-size: clamp(12px, 1vw + 0.113rem, 16px);
+    
 }
 
-.name{
-    font-size: 14px;
-    text-align: left;
-    width: 50%;
-    font-style: italic;
+.linethrough{
+    text-decoration: line-through;
+    opacity: 0.75;
     color: var(--light-grey);
     font-weight: 400;
-    margin: 0;
+    margin-right: auto;
+    margin-left: unset;
 }
-
-.starsBox{
-width: 40%;
-display: flex;
-flex-direction: row;
-justify-content: flex-end;
-align-items: flex-start;
-height: fit-content;
-
-margin-left: auto;
-}
-
-.star{
-    width:14px;
-    height: 14px;
-}
-
-
 
 @media (max-width:600px){
     .card{
@@ -116,10 +218,24 @@ margin-left: auto;
       
         height: clamp(150px, 52.86vw + 0.12rem, 280px);
         margin:  10px auto;
-      
+        display: none;
    
        
     }
+
+    .mobileCard{
+        width: 170px;
+        width: 90%;
+      
+     
+        height: clamp(150px, 52.86vw + 0.12rem, 280px);
+        margin:  10px auto;
+        display: block;
+    }
+
+   
+
+    
 
   
     .imageBox{
@@ -128,54 +244,66 @@ margin-left: auto;
         height: 75%;
     }
 
+    .xDelete{
+        display: block;
+        position: absolute;
+        top: 5%;
+        left: 5%;
+        color: var(--light-grey);
+      
+        width: clamp(10px, 2.86vw + 0.12rem, 18px);
+     
+        height: clamp(10px, 2.86vw + 0.12rem, 18px);
+    }
+
     .image{
         object-fit: cover;
     }
       
-.item{
-  
-    font-size: clamp(10px, 2.86vw + 0.12rem, 18px);
-    text-align: left;
-    width: 60%;
-    margin: 0;
+
+
+    .discountTag{
+        position: absolute;
+        color: var(--white-pure);
+        background-color: var(--dark-grey);
+        background-color: #ff6000;
+        margin: 0;
+        box-sizing: border-box;
+        font-size: clamp(10px, 2.86vw + 0.12rem, 18px);
+        padding: 3px 8px ;
+        top: 10px;
+        right: 0;
+        border-radius: 5px 0 0 5px;
+    }
+    .product{
+        color: var(--dark-grey);
+        font-size: 10px;
+        font-size: clamp(10px, 2.86vw + 0.12rem, 16px);
+        width: fit-content;
+    }
+
+
+.textBox{
+    max-width: unset;
 }
 
-.price{
-    font-size: clamp(10px, 2.86vw + 0.12rem, 18px);
-    text-align: right;
-    width: 40%;
-    margin: 0;
-}
+    .name, .price, .discountedPrice, .gender{
+       
+        font-size: clamp(8px, 2.15vw + 0.12rem, 16px);
+       
+    }
 
-.name{
-    font-size: 8px;
-    font-size: 16px;
-    font-size: clamp(8px, 2.15vw + 0.12rem, 16px);
-    text-align: left;
-    width: 50%;
-    font-style: italic;
-    color: var(--light-grey);
-    font-weight: 400;
-    margin: 0;
-}
+    
 
-.starsBox{
-width: 40%;
-display: flex;
-flex-direction: row;
-justify-content: flex-end;
-align-items: flex-start;
-height: fit-content;
+    .star, .emptyStar{
+        width: clamp(8px, 2.15vw + 0.12rem, 16px);
+        height: clamp(8px, 2.15vw + 0.12rem, 16px);
+    }
 
-margin-left: auto;
-}
+    .emptyStar{
+        color: var(--thin-grey);
+    }
 
-.star{
-    width:8px;
-    width: clamp(8px, 2.15vw + 0.12rem, 16px);
-    height: 8px;
-    height: clamp(8px, 2.15vw + 0.12rem, 16px);
-}
 
 .button{
     width: clamp(30px, 10vw + 0.12rem, 50px);
@@ -201,8 +329,15 @@ margin-left: auto;
         width: 120px;
       
         height: 150px;
+    display: none;
     
-    
+    }
+
+    .mobileCard{
+        width: 120px;
+      
+        height: 150px;
+        display: block;
     }
     
     .card:hover .shade{
@@ -214,46 +349,59 @@ margin-left: auto;
         width: 100%;
         height:    75%;
     }
-    
-.item{
-    font-size: 10px;
-    text-align: left;
-    width: 60%;
-    margin: 0;
+
+    .textBox{
+        display: flex;
+        width: 100%;
+        flex-wrap: wrap;
+        justify-content: space-between;
+     
+    }
+
+    .discountTag{
+      
+        font-size: clamp(8px, 1vw + 0.12rem, 12px);
+    }
+        
+.product{
+    color: var(--dark-grey);
+    font-size: 8px;
+    font-size: clamp(8px, 1vw + 0.12rem, 12px);
+ 
+}
+
+.product{
+  
+    width: fit-content;
 }
 
 .price{
-    font-size: 10px;
-    text-align: right;
-    width: 40%;
-    margin: 0;
+    width: fit-content;
+    text-align: end;
+    font-size: clamp(8px, 1vw + 0.12rem, 12px);
 }
-
 .name{
-    font-size: 10px;
-    text-align: left;
-    width: 50%;
-    font-style: italic;
+    font-size: clamp(8px, 1vw + 0.12rem, 12px);
+  
     color: var(--light-grey);
+    font-style: italic;
     font-weight: 400;
-    margin: 0;
+   
+    width: 65%;
 }
 
-.starsBox{
-width: 40%;
-display: flex;
-flex-direction: row;
-justify-content: flex-end;
-align-items: flex-start;
-height: fit-content;
-
-margin-left: auto;
+.gender, .discountedPrice{
+    font-size: clamp(8px, 1vw + 0.12rem, 12px);
 }
 
-.star{
-    width:10px;
-    height: 10px;
+.star, .emptyStar{
+    width: clamp(8px, 1vw + 0.12rem, 12px);
+   
+    height: clamp(8px, 1vw + 0.12rem, 12px);
+  
+    
 }
+
 .shade{
     position: absolute;
     width: 100%;

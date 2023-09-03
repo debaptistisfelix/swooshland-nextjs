@@ -19,9 +19,9 @@
 }
 
 .list{
-    width: 80%;
+    width: 70%;
     max-width: 1150px;
-   
+ 
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 1fr;
@@ -65,7 +65,7 @@
 
     .title{
         font-size: clamp(14px, 2vw + 0.12rem, 16px);
-        margin-bottom: 20px;
+        margin-bottom: 10px;
     }
     .list{
         width: 90%;
