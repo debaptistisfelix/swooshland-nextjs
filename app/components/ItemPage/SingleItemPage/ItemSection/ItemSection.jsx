@@ -17,7 +17,6 @@ export default async function ItemSection({promise, relatedPromise}) {
     let item;
    
     const [isLoading, setIsLoading] = useState({
-      fetchingItem: false,
       updatingReviews: false,
       updatingFavoriteState: false,
     })

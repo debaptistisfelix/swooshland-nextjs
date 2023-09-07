@@ -27,7 +27,8 @@ export const CartProvider = ({children}) => {
         fetchingCartItems: true,
         addingItemToCartItems: null,
         removingCartItem: false,
-        checkingAvailability: false
+        checkingAvailability: false,
+        updatingFavoriteState: false,
     })
     const [chosenSize, setChosenSize] = useState(null);
 
@@ -542,9 +543,69 @@ export const CartProvider = ({children}) => {
         }
     };
 
+    const addToFavorites = async (item) => {
+      
+        setCartLoading("updatingFavoriteState", true);
+        try{
+            const response = await fetch(`/api/wishlistItem/new`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    itemId: item.id,
+                }),
+            })
+            const data = await response.json();
+            console.log(data);
+            if(response.status === 200){
+                setCartLoading("updatingFavoriteState", false);
+                toast.success(`${item.model} - ${item.name} added to favorites`, {
+                    style: {
+                        backgroundColor: "#2fbf71",
+                        color: "#fff",
+                    },
+                    iconTheme: {
+                        primary: "#fff",
+                        secondary: "#2fbf71",
+                    },
+                })
+              
+            } else if(response.status === 400){
+               
+                setCartLoading("updatingFavoriteState", false);
+                toast.error("Already added to Favorites previously", {
+                    style: {
+                        backgroundColor: "#d00000",
+                        color: "#fff",
+                    },
+                    iconTheme: {
+                        primary: "#fff",
+                        secondary: "#d00000",
+                    },
+                })
+               
+            }
+        } catch(error){
+            console.log(error)
+            setCartLoading("updatingFavoriteState", false);
+            toast.error("Error while adding to wishlist. Retry again.", {
+                style: {
+                    backgroundColor: "#d00000",
+                    color: "#fff",
+                },
+                iconTheme: {
+                    primary: "#fff",
+                    secondary: "#d00000",
+                },
+            })
+        }
+    }
+
   
     return (
         <CartContext.Provider value={{
+            setCartLoading,
             isCartLoading,
             cartItems,
             setCartItems,
@@ -566,9 +627,8 @@ export const CartProvider = ({children}) => {
             itemsAvailabilityWasChecked,
             setItemsAvailabilityWasChecked,
             deletedCartItemsBeforeCheckout,
-            setDeletedCartItemsBeforeCheckout
-        
-
+            setDeletedCartItemsBeforeCheckout,
+            addToFavorites
         }}>
             {children}
         </CartContext.Provider>

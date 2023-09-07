@@ -48,6 +48,8 @@ export default function Gallery({item }) {
         {item !== null && item?.images.map((img, i) =>{
           return <div className={styles.smallImgBox} key={uuidv4()}>
             <Image
+            placeholder="blur"
+            blurDataURL="/loading-image.png"
             onClick={() => setAsMainImage(img)}
             className={`${styles.smallImg} ${mainImage === img && styles.active}`} alt="small-image" fill={true} src={`/${img}`} />
           </div>
@@ -56,6 +58,8 @@ export default function Gallery({item }) {
     <section className={`${styles.mainImageBox} ${item?.images.length === 1 && styles.oneImageMainImageBox}`}>
     <FontAwesomeIcon  onClick={() => setZommedImg(true)} className={styles.zoomIcon} icon={faMagnifyingGlassPlus} />
         <Image
+        placeholder="blur"
+        blurDataURL="/loading-image.png"
         ref={refElement}
          onClick={() => setZommedImg(true)}
         className={styles.mainImg} alt="main-image" fill={true} src={`/${mainImage}`} />

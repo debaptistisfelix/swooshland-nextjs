@@ -65,6 +65,8 @@
     transform: scale(0);
 }
 
+
+
 .bugDetectorForm.active{
     animation: bounceIn 0.75s ease-in-out forwards;
 }
@@ -196,6 +198,26 @@
     letter-spacing: 2px;
 
 }
+
+.noShow{
+    opacity: 0;
+}
+
+.noShowTitle{
+    color: var(--white-pure);
+}
+
+.noShowBackground{
+  background-color: #ff6000;
+}
+
+.loaderContainer{
+    height:100%;
+    position: absolute;
+display: flex;
+align-items: center;
+justify-content: center;
+width: 100%;}
 
 @media (max-width:600px){
     .bugDetectorContainer{

@@ -4,7 +4,7 @@ import styles from './TextBlock.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar, faHeart, faStarHalf, faCartShopping } from '@fortawesome/free-solid-svg-icons'
 import SizeTableContainer from './SizeTable/SizeTableContainer'
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import { CartContext } from '@app/context/CartContext'
 import { toast } from 'react-hot-toast'
 import { useSession } from 'next-auth/react'
@@ -14,7 +14,12 @@ export default function TextBlock({item, isLoading, setLoading}) {
     const {name, model,  price, onSale, discountPercentage, description, gender, ratingsAverage, ratingsQuantity, id} = item;
     const {data: session, status} = useSession();
     const router = useRouter();
-    const {addItemToCartItems, isCartLoading} = useContext(CartContext);
+    const {addItemToCartItems, isCartLoading, addToFavorites, setCartLoading} = useContext(CartContext);
+
+    useEffect(()=>{
+setCartLoading("updatingFavoriteState", false)
+setCartLoading("addingItemToCartItems", null)
+    },[])
   
 
     const GiveStars = (rating) => {
@@ -36,70 +41,11 @@ export default function TextBlock({item, isLoading, setLoading}) {
         return stars;
     };
 
-    const [isFavorited, setIsFavorited] = useState(false);
+  
 
    
 
   
-
-    const addToFavorites = async () => {
-        setLoading("updatingFavoriteState", true);
-        try{
-            const response = await fetch(`/api/wishlistItem/new`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    itemId: item.id,
-                }),
-            })
-            const data = await response.json();
-            console.log(data);
-            if(response.status === 200){
-                setIsFavorited(true);
-                setLoading("updatingFavoriteState", false);
-                toast.success(`${item.model} - ${item.name} added to favorites`, {
-                    style: {
-                        backgroundColor: "#2fbf71",
-                        color: "#fff",
-                    },
-                    iconTheme: {
-                        primary: "#fff",
-                        secondary: "#2fbf71",
-                    },
-                })
-            } else if(response.status === 400){
-                setIsFavorited(false);
-                setLoading("updatingFavoriteState", false);
-                toast.error("Already added to Favorites previously", {
-                    style: {
-                        backgroundColor: "#d00000",
-                        color: "#fff",
-                    },
-                    iconTheme: {
-                        primary: "#fff",
-                        secondary: "#d00000",
-                    },
-                })
-            }
-        } catch(error){
-            console.log(error)
-          setLoading("updatingFavoriteState", false); 
-            toast.error("Error while adding to wishlist. Retry again.", {
-                style: {
-                    backgroundColor: "#d00000",
-                    color: "#fff",
-                },
-                iconTheme: {
-                    primary: "#fff",
-                    secondary: "#d00000",
-                },
-            })
-        }
-    }
-
-
 
   
 
@@ -153,18 +99,18 @@ export default function TextBlock({item, isLoading, setLoading}) {
                     Add to Cart
                    <div className={`${styles.cartAnimationContainer}  ${isCartLoading.addingItemToCartItems === true && styles.cartAnimationBeginning}  ${isCartLoading.addingItemToCartItems === false && styles.cartAnimationEnding}`}>
                     <p className={styles.cartAnimationText}>Adding to Cart</p>
-                    <FontAwesomeIcon icon={faCartShopping} className={`${styles.cart} ${isLoading.addingToCart === true && styles.active}`} />
+                    <FontAwesomeIcon icon={faCartShopping} className={`${styles.cart} ${isCartLoading.addingItemToCartItems === true && styles.active}`} />
                    </div>
                     </button>
                 <button onClick={()=>{
                     if(session === null){
                         router.push("/login");
                     } else {
-                        addToFavorites();
+                        addToFavorites(item);
                     }
                     
                 }} className={styles.heartBtn}>
-                    <FontAwesomeIcon icon={faHeart} className={`${styles.heart}  ${isLoading.updatingFavoriteState === true && styles.active}`} />
+                    <FontAwesomeIcon icon={faHeart} className={`${styles.heart}  ${isCartLoading.updatingFavoriteState === true && styles.active}`} />
                 </button>
             </section>
         </section>

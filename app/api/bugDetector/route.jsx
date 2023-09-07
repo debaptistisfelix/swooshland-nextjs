@@ -8,14 +8,14 @@ export async function POST(request){
 
     console.log("path: ", path)
 
-  /*  try{
+ try{
         sendBugDetectorMail(email, name, description, path)
         return new Response(JSON.stringify({message: "success"}), {status: 200})
     }
     catch(error){
         console.log(error)
         return new Response(JSON.stringify("Something went wrong"), {status: 500})
-    }  */
+    } 
     return new Response(JSON.stringify({message: "success"}), {status: 200})
   
     
