@@ -14,7 +14,7 @@ export async function GET(request, {params}){
     });
     
     if(!product){
-        return new Response("Item not found", {status: 404});
+        return new Response(JSON.stringify("Item not found"), {status: 404});
     }
 
     //Find all Items
@@ -27,7 +27,7 @@ export async function GET(request, {params}){
    
 
     if(!allItems){
-        return new Response("Items not found", {status: 404});
+        return new Response(JSON.stringify("Items not found"), {status: 404});
     }
 
     // filter out to remove same name and same brand items
@@ -48,7 +48,7 @@ export async function GET(request, {params}){
     return new Response(JSON.stringify(relatedItems), {status: 200}); 
     } catch (error) {
         console.log(error);
-        return new Response("Something went wrong", {status: 500});
+        return new Response(JSON.stringify("Something went wrong"), {status: 500});
     } 
 
 }

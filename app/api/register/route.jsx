@@ -9,7 +9,7 @@ export async function POST(request){
     
 
     if(!name || !email || !password){
-        return new Response("Please provide username, email and password", {status: 400});
+        return new Response(JSON.stringify("Please provide username, email and password"), {status: 400});
     }
 
     const exists = await prisma.user.findUnique({
@@ -19,7 +19,7 @@ export async function POST(request){
     })
 
     if(exists){
-        return new Response("Email already registered", {status: 400});
+        return new Response(JSON.stringify("Email already registered"), {status: 400});
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);

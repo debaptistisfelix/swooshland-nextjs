@@ -8,7 +8,7 @@ export async function POST(request){
     const body = await request.json();
     const {subtotal, shipping, total, cartItems, orderAddress, boughtItems} = body;
 
-    console.log("boughtItems:", boughtItems)
+    
 
     if(!session){
         try{
@@ -43,7 +43,7 @@ export async function POST(request){
         }
         catch(error){
             console.log(error);
-            return new Response("Something went wrong", {status: 500});
+            return new Response(JSON.stringify("Something went wrong"), {status: 500});
         }
     } else if(session ){
         try{
@@ -82,7 +82,7 @@ export async function POST(request){
         }
         catch(error){
             console.log(error);
-            return new Response("Something went wrong", {status: 500});
+            return new Response(JSON.stringify("Something went wrong"), {status: 500});
         }
     }
 

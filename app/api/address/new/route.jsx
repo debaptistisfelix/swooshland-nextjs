@@ -8,7 +8,7 @@ export async function POST(request){
     const session = await getServerSession(authOptions);
 
     if(!session){
-        return new Response("You are not authorized to create Addresses", {status: 401});
+        return new Response(JSON.stringify("You are not authorized to create Addresses"), {status: 401});
     }
 
     console.log("session: ", session)
@@ -18,7 +18,7 @@ export async function POST(request){
 
     //check if all fields are provided
     if(!name || !surname || !street || !city || !state || !zip || !country || !phone ){
-        return new Response("Please provide the all necessary infos", {status: 400});
+        return new Response(JSON.stringify("Please provide the all necessary infos"), {status: 400});
     }
 
     
@@ -64,6 +64,6 @@ export async function POST(request){
         return new Response(JSON.stringify(newAddress), {status: 200}); 
     } catch (error) {
         console.log(error)
-        return new Response("Something went wrong", {status: 500});
+        return new Response(JSON.stringify("Something went wrong"), {status: 500});
     }
 }

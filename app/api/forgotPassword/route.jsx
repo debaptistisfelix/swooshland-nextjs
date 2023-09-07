@@ -38,6 +38,6 @@ export async function POST(request){
         return new Response(JSON.stringify({message: "Email inviata correttamente"}), {status: 200})
     } catch(error){
         console.log(error);
-        return new Response("Something went wrong", {status: 500});
+        return new Response(SON.stringify("Something went wrong"), {status: 500});
     }
 }

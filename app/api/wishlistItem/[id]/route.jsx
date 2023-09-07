@@ -8,7 +8,7 @@ export async function GET(request, {params}){
     const session = await getServerSession(authOptions);
 
     if(!session){
-        return new Response("You are not authorized to get wishlst items", {status: 401});
+        return new Response(JSON.stringify("You are not authorized to get wishlst items"), {status: 401});
     }
 
     try{
@@ -22,14 +22,14 @@ export async function GET(request, {params}){
         });
 
         if(!wishlistItem){
-            return new Response("Wishlist item not found", {status: 404});
+            return new Response(JSON.stringify("Wishlist item not found"), {status: 404});
         }
 
         return new Response(JSON.stringify(wishlistItem), {status: 200});
     }
     catch(error){
         console.log(error);
-        return new Response("Something went wrong", {status: 500});
+        return new Response(JSON.stringify("Something went wrong"), {status: 500});
     }
 }
 

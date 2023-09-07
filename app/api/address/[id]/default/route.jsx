@@ -7,7 +7,7 @@ export async function PATCH(request, {params}){
     const session = await getServerSession(authOptions);
 
     if(!session){
-        return new Response("You are not authorized to update addresses", {status: 401});
+        return new Response(JSON.stringify("You are not authorized to update addresses"), {status: 401});
     }
 
     const updatedNotDefaultAddresses = await prisma.address.updateMany({
@@ -31,7 +31,7 @@ export async function PATCH(request, {params}){
     })
 
     if(!updatedNewDefaultAddress){
-        return new Response("Address not found", {status: 404});
+        return new Response(JSON.stringify("Address not found"), {status: 404});
     }
 
     return new Response(JSON.stringify(updatedNewDefaultAddress), {status: 200});

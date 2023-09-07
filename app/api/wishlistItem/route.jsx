@@ -7,7 +7,7 @@ export async function GET(request){
     const session = await getServerSession(authOptions);
 
     if(!session){
-        return new Response("You are not authorized to get cart items", {status: 401});
+        return new Response(JSON.stringify("You are not authorized to get cart items"), {status: 401});
     }
 
     try{

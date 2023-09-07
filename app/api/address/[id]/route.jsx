@@ -12,7 +12,7 @@ export async function GET(request, {params}){
     });
 
     if(!address){
-        return new Response("Address not found", {status: 404});
+        return new Response(JSON.stringify("Address not found"), {status: 404});
     }
 
     return new Response(JSON.stringify(address), {status: 200});
@@ -23,7 +23,7 @@ export async function PATCH(request, {params}){
     const session = await getServerSession(authOptions);
 
     if(!session){
-        return new Response("You are not authorized to update addresses", {status: 401});
+        return new Response(JSON.stringify("You are not authorized to update addresses"), {status: 401});
     }
 
     const body = await request.json();
@@ -46,7 +46,7 @@ export async function PATCH(request, {params}){
     console.log(updatedAddress)
 
     if(!updatedAddress){
-        return new Response("Address not found", {status: 404});
+        return new Response(JSON.stringify("Address not found"), {status: 404});
     }
 
     return new Response(JSON.stringify(updatedAddress), {status: 200});
@@ -57,7 +57,7 @@ export async function DELETE(request, {params}){
     const session = await getServerSession(authOptions);
 
     if(!session){
-        return new Response("You are not authorized to update addresses", {status: 401});
+        return new Response(JSON.stringify("You are not authorized to update addresses"), {status: 401});
     }
     const {id} = params;
 
@@ -69,8 +69,8 @@ export async function DELETE(request, {params}){
     });
 
     if(!deletedAddress){
-        return new Response("Address not found", {status: 404});
+        return new Response(JSON.stringify("Address not found"), {status: 404});
     }
 
-    return new Response("Address deleted from db", {status: 200});
+    return new Response(JSON.stringify("Address deleted from db"), {status: 200});
 };

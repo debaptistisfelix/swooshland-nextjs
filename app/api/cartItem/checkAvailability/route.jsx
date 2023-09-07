@@ -35,8 +35,6 @@ export  async function POST(request) {
             });
         }
 
-        console.log("cartItemQuantities:",cartItemQuantities)
-        console.log("cartItemDetails:",cartItemDetails)
 
         const cartItemsToDelete = [];
 
@@ -55,7 +53,7 @@ export  async function POST(request) {
             }
         }
 
-        console.log("cartItemsToDelete:",cartItemsToDelete)
+     
 
         // Prepare response
         return new Response(JSON.stringify({
@@ -66,5 +64,5 @@ export  async function POST(request) {
         console.log(error)
         return new Response(JSON.stringify(error),{status:500} )
     } 
-    return new Response(JSON.stringify("hello"),{status:200} )
+  
 }

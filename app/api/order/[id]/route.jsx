@@ -17,15 +17,15 @@ export async function PATCH(request, {params}){
     })
 
     if(!order){
-        return new Response("Order not found", {status: 404});
+        return new Response(JSON.stringify("Order not found"), {status: 404});
     }
 
     if(!session){
-        return new Response("You are not authorized to update this order", {status: 401});
+        return new Response(JSON.stringify("You are not authorized to update this order"), {status: 401});
     }
 
     if(order.userId !== session.id){
-        return new Response("You are not authorized to update this order", {status: 401});
+        return new Response(JSON.stringify("You are not authorized to update this order"), {status: 401});
     }
 
     try {
@@ -51,6 +51,6 @@ export async function PATCH(request, {params}){
     }
     catch(error){
         console.log(error);
-        return new Response("Something went wrong", {status: 500});
+        return new Response(JSON.stringify("Something went wrong"), {status: 500});
     }
 }

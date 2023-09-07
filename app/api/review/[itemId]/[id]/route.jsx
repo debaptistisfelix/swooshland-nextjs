@@ -17,7 +17,7 @@ export async function GET(request, {params}){
     }
     catch(error){
         console.log(error);
-        return new Response("Something went wrong", {status: 500});
+        return new Response(JSON.stringify("Something went wrong"), {status: 500});
     }
 }
 
@@ -36,18 +36,18 @@ export async function PATCH(request, {params}){
         });
 
         if(!updatedReview){
-            return new Response("Review not found", {status: 404});
+            return new Response(JSON.stringify("Review not found"), {status: 404});
         }
 
         if(updatedReview.userId !== session?.id){
-            return new Response("You are not authorized to update this review", {status: 401});
+            return new Response(JSON.stringify("You are not authorized to update this review"), {status: 401});
         }
 
         return new Response(JSON.stringify(updatedReview), {status: 200});
     }
     catch(error){
         console.log(error);
-        return new Response("Something went wrong", {status: 500});
+        return new Response(JSON.stringify("Something went wrong"), {status: 500});
     }
 }
 

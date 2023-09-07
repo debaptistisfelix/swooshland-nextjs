@@ -24,13 +24,12 @@ export async function POST(request, {params}){
     })
 
     console.log("item", item)
-
     if(!item){
-        return new Response("Item not found", {status: 404});
+        return new Response(JSON.stringify("Item not found"), {status: 404});
     }
 
     if(!user){
-        return new Response("User not found", {status: 404});
+        return new Response(JSON.stringify("User not found"), {status: 404});
     }
 
     

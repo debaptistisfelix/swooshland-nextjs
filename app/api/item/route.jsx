@@ -43,7 +43,7 @@ export async function GET(request){
        
     } catch (error) {
         console.log(error);
-        return new Response("Something went wrong", {status: 500});
+        return new Response(JSON.stringify("Something went wrong"), {status: 500});
     }
 };
 

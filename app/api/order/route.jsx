@@ -7,7 +7,7 @@ export async function GET(request){
     const session = await getServerSession(authOptions);
 
     if(!session){
-        return new Response("You are not authorized to get orders", {status: 401});
+        return new Response(JSON.stringify("You are not authorized to get orders"), {status: 401});
     }
 
     try{
@@ -31,6 +31,6 @@ export async function GET(request){
     }
     catch(error){
         console.log(error);
-        return new Response("Something went wrong", {status: 500});
+        return new Response(JSON.stringify("Something went wrong"), {status: 500});
     }
 }
