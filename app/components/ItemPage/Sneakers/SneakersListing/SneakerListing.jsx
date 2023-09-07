@@ -9,10 +9,10 @@ import ThreeCirclesLoader from '@app/components/Reusables/ThreeCirclesLoader/Thr
 import MobileFilterPage from '../SneakerFilterBar/MobileFilterPage/MobileFilterPage'
 import MobileFilterTagsContainer from '../SneakerFilterBar/MobileFilterTags/MobileFilterTagsContainer/MobileFilterTagsContainer'
 import ListingShopCard from '@app/components/ItemCards/ShopItemCard/ListingShopCard/ListingShopCard'
-import { usePathname, useParams, useSearchParams } from 'next/navigation'
+import {  useSearchParams } from 'next/navigation'
+import { Suspense } from 'react'
 
-
-export default function SneakerListing({location,  mobileFiltersOpen, toggleMobileFilters}) {
+export default function SneakerListing({sneakersList,location,  mobileFiltersOpen, toggleMobileFilters}) {
     const {
         applySorting,
         handleSortChange,
@@ -47,21 +47,11 @@ export default function SneakerListing({location,  mobileFiltersOpen, toggleMobi
        const [sneakers, setSneakers] = useState([])
        
        useEffect(()=>{
-        
-        fetchSneakers();
+        setSneakers(sneakersList);
+       
        },[])
 
-        const fetchSneakers = async ()=>{
-            try{
-              const response = await fetch("/api/item");
-              const data = await response.json();
-              const filteredData = data.filter(item => item.tag === "sneakers")
-              setSneakers(filteredData);
-              setIsLoading(false)
-            } catch(error){
-              console.log(error)
-            }
-        }
+  
        
         useEffect(()=>{
           
@@ -84,7 +74,7 @@ export default function SneakerListing({location,  mobileFiltersOpen, toggleMobi
         }
        
        
-     },[selectedSorting])
+     },[selectedSorting, filtersAppliedToSneakers])
 
     useEffect(()=>{
       
@@ -133,49 +123,35 @@ export default function SneakerListing({location,  mobileFiltersOpen, toggleMobi
 
 
        
-       {isLoading === false ? <section className={`${styles.listAndBtnContainer} ${filtersAppliedToSneakers === true && styles.moveDown} ${filtersAppliedToSneakers === false && styles.moveUp}`}> 
+      <Suspense fallback={<ThreeCirclesLoader />}>
+      <section className={`${styles.listAndBtnContainer} ${filtersAppliedToSneakers === true && styles.moveDown} ${filtersAppliedToSneakers === false && styles.moveUp}`}> 
 
-       <h1 className={`${styles.itemsCount}  `}>
-            ({filtersAppliedToSneakers ? filteredVisibleItems.length : visibleItems.length} Sneakers out of {filtersAppliedToSneakers ? filteredItems.length : sneakers?.length} Results)
-            </h1>
+<h1 className={`${styles.itemsCount}  `}>
+     ({filtersAppliedToSneakers ? filteredVisibleItems.length : visibleItems.length} Sneakers out of {filtersAppliedToSneakers ? filteredItems.length : sneakers?.length} Results)
+     </h1>
 
-       <section className={`${styles.sneakerList}`}>
-         
-       
+<section className={`${styles.sneakerList}`}>
+  
 
-            {filtersAppliedToSneakers ? filteredVisibleItems.map(sneaker =>{
-               /*  return <div className={styles.shoe} key={sneaker.name}>
-                    <h3 className={styles.shish}>{sneaker.name} </h3>
-                    <h3 className={styles.shish}> {sneaker.price}</h3>
-                    <h3 className={styles.shish}>{sneaker.date}</h3>
-                    <h3 className={styles.shish}>{sneaker.brand}</h3>
-                    <h3 className={styles.shish}>  {sneaker.rating}</h3>
-                    <h3 className={styles.shish}> {sneaker.onSale === true ? "On Sale" : "Not on Sale"}</h3>
-                    <h3 className={styles.shish}>  {sneaker.for}</h3>
-                </div> */ return <ListingShopCard sneaker={sneaker} key={sneaker.id} />
-            }) : visibleItems.map(sneaker =>{
-                /* return <div className={styles.shoe} key={sneaker.name}>
-                    <h3 className={styles.shish}>{sneaker.name} </h3>
-                    <h3 className={styles.shish}> {sneaker.price}</h3>
-                    <h3 className={styles.shish}>{sneaker.date}</h3>
-                    <h3 className={styles.shish}>{sneaker.brand}</h3>
-                    <h3 className={styles.shish}>  {sneaker.rating}</h3>
-                    <h3 className={styles.shish}> {sneaker.onSale === true ? "On Sale" : "Not on Sale"}</h3>
-                    <h3 className={styles.shish}>  {sneaker.for}</h3>
-                </div> */ return <ListingShopCard sneaker={sneaker} key={sneaker.id} />
-            })}
 
-    
-            </section>
+     {filtersAppliedToSneakers ? filteredVisibleItems.map(sneaker =>{
+        return <ListingShopCard sneaker={sneaker} key={sneaker.id} />
+     }) : visibleItems.map(sneaker =>{
+        return <ListingShopCard sneaker={sneaker} key={sneaker.id} />
+     })}
 
-            {filtersAppliedToSneakers ? (
-            filteredItems.length > filteredVisibleItems.length && <button onClick={()=>{handleLoadMore(filteredItems, true)}} className={`${styles.loadMoreBtn}  `}>Load more</button>
-            ) : (
-            visibleItems.length < sneakers?.length && <button onClick={()=>{handleLoadMore(sneakers, false)}} className={`${styles.loadMoreBtn}`}>Load more</button>
-            )}
 
-        </section> : 
-            <ThreeCirclesLoader />}
+     </section>
+
+     {filtersAppliedToSneakers ? (
+     filteredItems.length > filteredVisibleItems.length && <button onClick={()=>{handleLoadMore(filteredItems, true)}} className={`${styles.loadMoreBtn}  `}>Load more</button>
+     ) : (
+     visibleItems.length < sneakers?.length && <button onClick={()=>{handleLoadMore(sneakers, false)}} className={`${styles.loadMoreBtn}`}>Load more</button>
+     )}
+
+ </section> 
+        </Suspense>
+           
             
        
     </main>

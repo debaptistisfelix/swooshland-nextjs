@@ -1,0 +1,126 @@
+.card{
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.errorCard{
+    width: 60%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon{
+    width: 60px;
+    height: 60px;
+    color: var(--dark-grey  );
+}
+
+.title{
+    color: var(--dark-grey);
+}
+
+.parag{
+    font-size: 16px;
+    color: var(--dark-grey);
+}
+
+.details{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    gap: 20px;
+    margin: 20px 0 ;
+    box-sizing: border-box;
+}
+
+.detailLine{
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    height: fit-content;
+    width: 100%;
+}
+
+.detailLabel{
+    margin: 0;
+    color: var(--light-grey);
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.detailInfo{
+    margin: 0;
+    color: var(--dark-grey);
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.shippingInfo{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.productsInfo{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.itemBox{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+@media (max-width:600px){
+    .card{
+        width: 95%;
+        margin-bottom: unset;
+    }
+
+    .title{
+        margin-top: 0;
+        font-size: clamp(18px, 5.72vw + 0.12rem, 20px)
+    }
+    .parag{
+        font-size: clamp(14px, 4vw + 0.12rem, 16px);
+        width: 100%;
+        text-align: start;
+    }
+    .details{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 20px;
+        margin: 20px 0 ;
+        box-sizing: border-box;
+    }
+
+    .detailLabel, .detailInfo{
+        font-size: clamp(14px, 4vw + 0.12rem, 16px);
+    }
+}
+
+@media (min-width:601px) and (max-width:1023px){
+    .card{
+        width: 70%;
+    }
+
+    .title{
+        font-size: clamp(18px, 2.67vw + 0.12rem, 20px);
+    }
+    .parag{
+        font-size: clamp(14px, 2vw + 0.12rem, 16px);
+    }
+    .detailLabel, .detailInfo{
+        font-size: clamp(14px, 2vw + 0.12rem, 16px);
+    }
+}

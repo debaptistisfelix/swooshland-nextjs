@@ -64,23 +64,23 @@ export default function UserAddressesContextProvider({ children }) {
             fetchAddresses();
             toast.success("Default address updated successfully!",  {
               style: {
-                  backgroundColor: "#191919",
+                  backgroundColor: "#2fbf71",
                   color: "#fff",
               },
               iconTheme: {
                   primary: "#fff",
-                  secondary: "#191919",
+                  secondary: "#2fbf71",
               },
           })
           } else {
             toast.error("Error updating default address",  {
               style: {
-                  backgroundColor: "#191919",
+                  backgroundColor: "#d00000",
                   color: "#fff",
               },
               iconTheme: {
                   primary: "#fff",
-                  secondary: "#191919",
+                  secondary: "#d00000",
               },
           })
           }
@@ -88,12 +88,12 @@ export default function UserAddressesContextProvider({ children }) {
           console.log(error)
           toast.error("Error updating default address",  {
             style: {
-                backgroundColor: "#191919",
+                backgroundColor: "#d00000",
                 color: "#fff",
             },
             iconTheme: {
                 primary: "#fff",
-                secondary: "#191919",
+                secondary: "#d00000",
             },
         })
         }
@@ -113,11 +113,29 @@ export default function UserAddressesContextProvider({ children }) {
             selectDefaultAddress(data.find((address) => address.default === true))
             setIsLoading({...isLoading, fetchingAddresses: false})
           } else {
-            toast.error("Error fetching addresses")
+            toast.error("Error fetching addresses",  {
+              style: {
+                  backgroundColor: "#d00000",
+                  color: "#fff",
+              },
+              iconTheme: {
+                  primary: "#fff",
+                  secondary: "#d00000",
+              },
+          })
             setIsLoading({...isLoading, fetchingAddresses: false})
           }
         } catch(error){
-          toast.error("Network Error:", error)
+          toast.error("Network Error:", error,  {
+            style: {
+                backgroundColor: "#d00000",
+                color: "#fff",
+            },
+            iconTheme: {
+                primary: "#fff",
+                secondary: "#d00000",
+            },
+        })
           setIsLoading({...isLoading, fetchingAddresses: false})
         }
       }
@@ -133,23 +151,23 @@ export default function UserAddressesContextProvider({ children }) {
             setIsLoading({...isLoading, removingAddress: false})
             toast.success("Address deleted successfully!",  {
               style: {
-                  backgroundColor: "#191919",
+                  backgroundColor: "#2fbf71",
                   color: "#fff",
               },
               iconTheme: {
                   primary: "#fff",
-                  secondary: "#191919",
+                  secondary: "#2fbf71",
               },
           })
           } else {
             toast.error("Error deleting address. Please retry",  {
               style: {
-                  backgroundColor: "#191919",
+                  backgroundColor: "#d00000",
                   color: "#fff",
               },
               iconTheme: {
                   primary: "#fff",
-                  secondary: "#191919",
+                  secondary: "#d00000",
               },
           })
             setIsLoading({...isLoading, removingAddress: false})
@@ -157,12 +175,12 @@ export default function UserAddressesContextProvider({ children }) {
         } catch(error){
           toast.error("Network Error",  {
             style: {
-                backgroundColor: "#191919",
+                backgroundColor: "#d00000",
                 color: "#fff",
             },
             iconTheme: {
                 primary: "#fff",
-                secondary: "#191919",
+                secondary: "#d00000",
             },
         })
           setIsLoading({...isLoading, removingAddress: false})
@@ -203,12 +221,12 @@ export default function UserAddressesContextProvider({ children }) {
         ){
           return toast.error("Please provide all the necessary infos",  {
             style: {
-                backgroundColor: "#191919",
+                backgroundColor: "#d00000",
                 color: "#fff",
             },
             iconTheme: {
                 primary: "#fff",
-                secondary: "#191919",
+                secondary: "#d00000",
             },
         })
         }
@@ -227,24 +245,24 @@ export default function UserAddressesContextProvider({ children }) {
             setIsLoading({...isLoading, addingNewAddress: false})
             toast.success("Address added successfully!",  {
               style: {
-                  backgroundColor: "#191919",
+                  backgroundColor: "#2fbf71",
                   color: "#fff",
               },
               iconTheme: {
                   primary: "#fff",
-                  secondary: "#191919",
+                  secondary: "#2fbf71",
               },
           })
             resetInputs();
           } else {
             toast.error('Error submitting form',  {
               style: {
-                  backgroundColor: "#191919",
+                  backgroundColor: "#d00000",
                   color: "#fff",
               },
               iconTheme: {
                   primary: "#fff",
-                  secondary: "#191919",
+                  secondary: "#d00000",
               },
           })
             setIsLoading({...isLoading, addingNewAddress: false})
@@ -252,12 +270,12 @@ export default function UserAddressesContextProvider({ children }) {
         } catch(error){
           toast.error('Network error while posting address',  {
             style: {
-                backgroundColor: "#191919",
+                backgroundColor: "#d00000",
                 color: "#fff",
             },
             iconTheme: {
                 primary: "#fff",
-                secondary: "#191919",
+                secondary: "#d00000",
             },
         })
           setIsLoading({...isLoading, addingNewAddress: false})
@@ -338,12 +356,12 @@ export default function UserAddressesContextProvider({ children }) {
     } else {
       toast.error("Please provide all the necessary infos to confirm the address", {
         style: {
-          backgroundColor: "#191919",
+          backgroundColor: "#d00000",
           color: "#fff",
       },
       iconTheme: {
           primary: "#fff",
-          secondary: "#191919",
+          secondary: "#d00000",
       },
       })
     }
@@ -355,24 +373,24 @@ export default function UserAddressesContextProvider({ children }) {
     if(checkBoxValue === false){
       toast.error("Please accept Terms & Conditions to proceed to payment",  {
         style: {
-            backgroundColor: "#191919",
+            backgroundColor: "#d00000",
             color: "#fff",
         },
         iconTheme: {
             primary: "#fff",
-            secondary: "#191919",
+            secondary: "#d00000",
         },
     })
     } else if (checkBoxValue === true){
       if(checkoutAddress === null){
         toast.error("Please provide an address to proceed to payment",  {
           style: {
-              backgroundColor: "#191919",
+              backgroundColor: "#d00000",
               color: "#fff",
           },
           iconTheme: {
               primary: "#fff",
-              secondary: "#191919",
+              secondary: "#d00000",
           },
          })
         console.log("checkoutAddress", checkoutAddress)
@@ -392,12 +410,12 @@ export default function UserAddressesContextProvider({ children }) {
         } else if(itemsAvailabilityWasChecked === true){
           toast.success("Moving to Payment",  {
             style: {
-                backgroundColor: "#191919",
+                backgroundColor: "#2fbf71",
                 color: "#fff",
             },
             iconTheme: {
                 primary: "#fff",
-                secondary: "#191919",
+                secondary: "#2fbf71",
             },
         })
         }      

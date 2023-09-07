@@ -34,5 +34,14 @@ export async function POST(request){
 
     await sendWelcomeEmail(email, user.name);
 
+    await prisma.user.update({
+        where: {
+            id: user.id
+        },
+        data: {
+            welcomeEmailSent : true
+        }
+    })
+
     return new Response(JSON.stringify(user), {status: 200});
 }

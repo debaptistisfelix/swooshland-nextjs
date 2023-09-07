@@ -111,7 +111,16 @@ export default function NavbarSearch({isSearchOpen}) {
         const response = await fetch(`/api/item?query=${searchQuery}`);
         const data = await response.json();
         console.log(data);
-        setSearchResults(data);
+        const alphabeticOrderedList = data.sort((a, b) => {
+          if(a.name.toLowerCase() < b.name.toLowerCase()){
+            return -1;
+          }
+          if(a.name.toLowerCase() > b.name.toLowerCase()){
+            return 1;
+          }
+          return 0;
+        })
+        setSearchResults(alphabeticOrderedList);
         setSearchResultsCount(data.length);
         setIsLoadingResults(false);
       } catch (error) {
@@ -140,27 +149,32 @@ export default function NavbarSearch({isSearchOpen}) {
       {
         id: 1,
         src: "/PosterLeoKawaii.jpg",
-        alt: "Poster-leo-kawaii"
+        alt: "Poster-leo-kawaii",
+        href:"/item/64f5995e2c7ea59ac36818e5"
       },
       {
         id: 2,
         src: "/PosterOgOrange.jpg",
-        alt: "Poster-Og-Orange"
+        alt: "Poster-Og-Orange",
+        href:"/item/64f4c91ac1af1593c3f0325c"
       },
       {
         id: 3,
         src: "/banner-images/fabioPoster.jpg",
-        alt: "Poster-Nike-af1-kraken"
+        alt: "Poster-Nike-af1-kraken",
+        href:"/item/64f590312c7ea59ac3681832"
       },
       {
         id: 4,
         src: "/PosterDior.jpg",
-        alt: "Poster-Dior"
+        alt: "Poster-Dior",
+        href:"/item/64f4c431c1af1593c3f0323f"
       },
       {
         id: 5,
         src: "/PosterLeo.jpg",
-        alt: "Poster-leo"
+        alt: "Poster-leo",
+        href:"/item/64f598332c7ea59ac36818d6"
       }
 
     ]
@@ -183,11 +197,11 @@ export default function NavbarSearch({isSearchOpen}) {
         <section className={styles.brandsBox}>
           <Image className={styles.img} fill={true} alt={randomImage.alt}  src={randomImage.src}  />
           <section className={styles.commercialText}>
-            {randomImage.src === "/PosterLeoKawaii.jpg" && <KawaiiPoster/>}
-            {randomImage.src === "/PosterOgOrange.jpg" && <OrangePoster />}
-            {randomImage.src === "/banner-images/fabioPoster.jpg" && <KrakenPoster />}
-            {randomImage.src === "/PosterDior.jpg" && <DiorPoster/>}
-            {randomImage.src === "/PosterLeo.jpg" && <LeoPoster/>} 
+            {randomImage.src === "/PosterLeoKawaii.jpg" && <KawaiiPoster closeSearchBox={closeSearchBox} />}
+            {randomImage.src === "/PosterOgOrange.jpg" && <OrangePoster closeSearchBox={closeSearchBox} />}
+            {randomImage.src === "/banner-images/fabioPoster.jpg" && <KrakenPoster closeSearchBox={closeSearchBox}/>}
+            {randomImage.src === "/PosterDior.jpg" && <DiorPoster closeSearchBox={closeSearchBox}/>}
+            {randomImage.src === "/PosterLeo.jpg" && <LeoPoster closeSearchBox={closeSearchBox}/>} 
         
           </section>
         </section>

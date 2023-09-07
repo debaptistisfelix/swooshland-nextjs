@@ -6,14 +6,11 @@ import ToastContext from './context/ToastContext'
 import Navbar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer'
 import OrderContextProvider from './context/OrderContext'
+import BugDetector from './components/BugDetector/BugDetector'
 
 const inter = Inter({ subsets: ['latin'] })
 
 
-export const metadata = {
-  title: 'Swooshland Customs',
-  description: 'Custom Sneakers and Accessories',
-}
 
 export default function RootLayout({ children }) {
   return (
@@ -24,6 +21,7 @@ export default function RootLayout({ children }) {
           <ToastContext/>
             <CartProvider>
              <Navbar/>
+             <BugDetector/>
               {children}
             </CartProvider>
             </OrderContextProvider>

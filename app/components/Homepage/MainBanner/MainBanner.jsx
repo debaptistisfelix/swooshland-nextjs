@@ -1,6 +1,7 @@
 import styles from './MainBanner.module.css';
 import Image from 'next/image';
 import { montserrat } from '@app/fonts';
+import Link from 'next/link';
 
 export default function MainBanner() {
   return (
@@ -25,7 +26,9 @@ export default function MainBanner() {
           <h3 className={styles.lust}>Sin of Lust</h3>
           <p className={styles.parag}>"A scarlett Rock&Roll soul that makes anyone fall in love at first sight."</p>
         </div>
-        <button className={styles.rogueBtn}>Shop</button>
+        <button className={`${styles.rogueBtn}`}>
+          <Link className={`Link ${styles.link}`} href="/item/64d4f2a72862dff874b44775">Shop</Link>
+        </button>
       </div>
    </main>
   )

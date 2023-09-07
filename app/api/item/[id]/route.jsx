@@ -18,7 +18,7 @@ export async function GET(request, {params}){
     }
     catch(error){
         console.log(error)
-        return new Response("Something went wrong", {status: 500});
+        return new Response(JSON.stringify(JSON.stringify("Something went wrong")), {status: 500});
     }
 }
 
@@ -38,7 +38,7 @@ export async function PATCH(request, {params}){
         });
 
         if(!updatedItem){
-            return new Response("Item not found", {status: 404});
+            return new Response(JSON.stringify("Item not found"), {status: 404});
         }
 
         return new Response(JSON.stringify(updatedItem), {status: 200});
@@ -46,7 +46,7 @@ export async function PATCH(request, {params}){
 
     }catch(error){
         console.log(error)
-        return new Response("Something went wrong", {status: 500});
+        return new Response(JSON.stringify("Something went wrong"), {status: 500});
     }
 }
 
@@ -62,12 +62,12 @@ export async function DELETE(request, {params}){
         });
 
         if(!deletedItem){
-            return new Response("Item not found", {status: 404});
+            return new Response(JSON.stringify("Item not found"), {status: 404});
         }
 
-        return new Response("Item Deleted succesfully!", {status: 200});
+        return new Response(JSON.stringify("Item Deleted succesfully!"), {status: 200});
     }catch(error){
         console.log(error)
-        return new Response("Something went wrong", {status: 500});
+        return new Response(JSON.stringify("Something went wrong"), {status: 500});
     }
 }

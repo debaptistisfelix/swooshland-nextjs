@@ -7,7 +7,7 @@ import styles from "@app/components/ItemPage/Sneakers/SneakerFilterBar/DesktopFi
 export const SneakersContext = createContext();
 
 export default function SneakersContextProvider({children}) {
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
     /* Sorting state */
     const [selectedSorting, setSelectedSorting] = useState("Newest");
     /* Filtering states */
@@ -23,7 +23,7 @@ export default function SneakersContextProvider({children}) {
     const [selectedSex, setSelectedSex] = useState("Any genre");
     const [isOnSale, setIsOnSale] = useState(null);
     /* Pagination states */
-    const itemsPerPage = 10;
+    const itemsPerPage = 25;
     const [visibleItems, setVisibleItems] = useState([]);
     
     const calculateEffectivePrice = (item) =>{
@@ -67,7 +67,7 @@ export default function SneakersContextProvider({children}) {
  
         }
 
-        const slicedItems = sortedItems.slice(0, itemsPerPage)
+        const slicedItems = sortedItems/* .slice(0, itemsPerPage) */
         filtersAppliedToSneakers ? setFilteredVisibleItems(slicedItems) : setVisibleItems(slicedItems) ;
        
        
@@ -262,8 +262,10 @@ export default function SneakersContextProvider({children}) {
         setVisibleItems(nextItems); */
         if(isFiltered){
             setFilteredVisibleItems(nextItems)
+            applySorting(nextItems)
         } else {
             setVisibleItems(nextItems)
+            applySorting(nextItems)
         }
        
     }

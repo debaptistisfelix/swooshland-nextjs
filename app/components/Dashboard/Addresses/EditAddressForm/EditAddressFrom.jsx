@@ -55,24 +55,24 @@ const submitUpdatedAddress = async (address) => {
       toggleEditModal()
       toast.success("Address updated successfully!",  {
         style: {
-            backgroundColor: "#191919",
+            backgroundColor: "#2fbf71",
             color: "#fff",
         },
         iconTheme: {
             primary: "#fff",
-            secondary: "#191919",
+            secondary: "#2fbf71",
         },
     })
     }
   } catch(error){
-    toast.error("Network Error:",  {
+    toast.error("Network Error. Please retry.",  {
       style: {
-          backgroundColor: "#191919",
+          backgroundColor: "#d00000",
           color: "#fff",
       },
       iconTheme: {
           primary: "#fff",
-          secondary: "#191919",
+          secondary: "#d00000",
       },
   })
     setIsLoading({...isLoading, updateingAddress:false})

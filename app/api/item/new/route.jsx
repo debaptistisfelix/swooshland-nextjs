@@ -6,6 +6,7 @@ export async function POST(request){
     const {
         name,
         model,
+        fullName,
         brand,
         category,
         images,
@@ -31,6 +32,7 @@ export async function POST(request){
             data: {
                 name,
                 model,
+                fullName,
                 brand,
                 category,
                 images,

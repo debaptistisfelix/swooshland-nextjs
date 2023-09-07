@@ -6,6 +6,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Link from 'next/link'
 import { faEnvelope, faTruck, faHeart, faList } from '@fortawesome/free-solid-svg-icons'
 
+export const metadata = {
+    title: 'Dahsboard - Swooshland Customs',
+    description: 'Manage your orders, addresses, favorites and newsletter subscription.',
+  } 
+
 export default function Dashboard() {
   return (
     <main className={`${styles.dashboardPage} ${poppins.className}`}>

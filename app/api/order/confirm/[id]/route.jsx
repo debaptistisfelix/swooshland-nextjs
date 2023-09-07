@@ -1,4 +1,5 @@
 import prisma from "@app/libs/prismaDB";
+import sendOrderConfirmMail from "@app/libs/email/sendOrderConfirmMail";
 
 export async function PATCH(request, {params}){
     const {id} = params;  
@@ -73,6 +74,10 @@ export async function PATCH(request, {params}){
                 status: "confirmed"
             }
         });
+
+        // Send confirmation email
+        const email = order.orderAddress.email;
+        await sendOrderConfirmMail(email, order);
 
         return new Response(JSON.stringify(updatedOrder), {status: 200});
     } catch (error) {

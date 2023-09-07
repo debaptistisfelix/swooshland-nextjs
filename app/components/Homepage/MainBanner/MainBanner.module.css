@@ -114,6 +114,11 @@ margin-bottom: 0;
     letter-spacing: 2px;
     font-size: clamp(14px, 1.18vw + 0.12rem, 18px);
     transition: all 0.3s ease-in-out;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.link{
+    color: white;
 }
 
 .rogueBtn:hover{

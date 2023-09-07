@@ -17,10 +17,10 @@ export default function BoughtItemCard({boughtItem}) {
             <h4 className={styles.product}>{model}</h4>
             <h6 className={styles.name}>{name}</h6>
             <div className={styles.priceBox}>
-           {discountPercentage > 0 &&  <h5 className={styles.discountedPrice}>$ {discountedPrice}</h5>}
-            <h5 className={`${styles.price} ${discountPercentage > 0 && styles.lineThrough}`}>$ 289.90</h5>
+           {discountPercentage > 0 &&  <h5 className={styles.discountedPrice}>$ {discountedPrice.toFixed(2)}</h5>}
+            <h5 className={`${styles.price} ${discountPercentage > 0 && styles.lineThrough}`}>$ {price.toFixed(2)}</h5>
             </div>
-            <h6 className={styles.size}>Size: <b className={styles.bolder}>EU {size}</b></h6>
+            <h6 className={styles.size}>Size: <b className={styles.bolder}>EU {size !== 0 ? size : "OS"}</b></h6>
         </div>
     </main>
   )

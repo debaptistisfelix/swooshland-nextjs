@@ -4,6 +4,10 @@ import Image from 'next/image'
 import { poppins } from '@app/fonts'
 import OrderList from '@app/components/Dashboard/OrderPage/OrderList/OrderList'
 
+export const metadata = {
+  title: 'Dahsboard - Orders',
+  description: 'Manage your Orders. Track and manage your purchases.',
+} 
 
 export default function Orders() {
   return (

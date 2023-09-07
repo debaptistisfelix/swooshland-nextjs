@@ -10,11 +10,21 @@ export default function SizeTableContainer({item}) {
     const [sizeFormat, setSizeFormat] = useState("EU")
     const {availableSizes, gender} = item;
     const {chosenSize, setChosenSize} = useContext(CartContext);
- console.log(item)
+
 
     const changeFromat = (e) => {
         setSizeFormat(e.target.innerText)
     };
+
+    const sortedAvailableSizes = availableSizes.sort((a, b) => {
+      if (a.EUsize < b.EUsize) {
+        return -1;
+      }
+      if (a.EUsize > b.EUsize) {
+        return 1;
+      }
+      return 0;
+    });
 
   return (
     <main className={`${styles.card} ${poppins.className}`}>
@@ -29,7 +39,8 @@ export default function SizeTableContainer({item}) {
           </section>}
 
         <section className={styles.sizeTable}>
-            {availableSizes.length > 1 && availableSizes.map((size, i) =>{
+            {availableSizes.length > 1 && sortedAvailableSizes.map((size, i) =>{
+          
                 return <button onClick={()=>{
                   if(chosenSize === size){
                     setChosenSize(null);

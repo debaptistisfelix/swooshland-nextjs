@@ -67,7 +67,17 @@ export const authOptions = {
         },
         async signIn({user, account}) {
             if (account.provider === 'google') {
-                sendWelcomeEmail(user?.email, user?.name)
+                console.log("user:", user)
+                if(user.welcomeEmailSent === false){
+                    await prisma.user.update({
+                        where: {
+                            id: user.id
+                        },
+                        data: {
+                            welcomeEmailSent: true
+                        }});
+                    sendWelcomeEmail(user?.email, user?.name)
+                }
             }
             return true
           },

@@ -1,0 +1,13 @@
+.NewsletterSection{
+    width: 100%;
+ 
+    display: flex;
+
+    justify-content: center;
+}
+
+@media (min-width:601px) and (max-width:1023px){
+    .NewsletterSection{
+        width: 95%;
+    }
+}

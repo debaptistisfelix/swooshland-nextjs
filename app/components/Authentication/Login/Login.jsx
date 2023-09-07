@@ -9,11 +9,12 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { toast } from 'react-hot-toast'
 import { signIn } from 'next-auth/react'
-import { useRouter } from 'next/navigation'
+import { redirect, useRouter } from 'next/navigation'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleCheck } from '@fortawesome/free-solid-svg-icons'
 import { faGoogle } from '@fortawesome/free-brands-svg-icons'
 import ThreeCirclesLoader from '@app/components/Reusables/ThreeCirclesLoader/ThreeCirclesLoader'
+import { useParams } from 'next/navigation'
 
 
 export default function Register() {
@@ -21,7 +22,9 @@ export default function Register() {
     const [data, setData] = useState({email: "", password: ""})
     const [loading, setLoading] = useState(false);
     const [loggedIn, setLoggedIn] = useState(false);
-   
+   const params = useParams();
+   const itemId = params.itemId;
+
 
     const togglePasswordVisiblity = () => {
         setPasswordShown(!passwordShown);
@@ -29,7 +32,14 @@ export default function Register() {
 
 
 
+
     const loginUser = async (e)=>{
+        let redirectUrl;
+        if(!itemId){
+            redirectUrl = "/dashboard";
+        } else {
+            redirectUrl = `/reviewPage/${itemId}`;
+        }
         e.preventDefault();
         if(data.email === "" || data.password === ""){
             toast.error("Please provide email and password", {
@@ -48,6 +58,7 @@ export default function Register() {
         signIn("credentials", {
             ...data, 
             redirect:false,
+            callbackUrl: redirectUrl,
         })
         .then((callback)=>{
             
@@ -124,7 +135,13 @@ export default function Register() {
             <button
                 tyoe="button"
                 onClick={()=>{
-                    signIn("google", {callbackUrl:"/dashboard"});
+                    let redirectUrl;
+                    if(!itemId){
+                        redirectUrl = "/dashboard";
+                    } else {
+                        redirectUrl = `/reviewPage/${itemId}`;
+                    }
+                    signIn("google", {callbackUrl:redirectUrl});
                 }}
                 className={`mainButton ${styles.googleBtn}`}>
                     <FontAwesomeIcon icon={faGoogle} className={styles.googleIcon} />

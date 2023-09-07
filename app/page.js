@@ -1,12 +1,23 @@
-"use client"
+
 import styles from "@app/page.module.css"
 import MainBanner from "./components/Homepage/MainBanner/MainBanner"
 import Categories from "./components/Homepage/sneakerCategs/Categories"
 import ShopByCategories from "./components/Homepage/ShopByCategories/ShopByCategories"
 import TrendingItems from "./components/Homepage/TrendingItems/TrendingItems"
 import Sales from "./components/Homepage/Sales/Sales"
+import getTrendingItems from "./libs/FetchingData/FetchingHomepage/fetchTrendingItems"
+
+
+export const metadata = {
+  title: 'Swooshland Customs - Homepage',
+  description: 'Custom Sneakers and Accessories',
+} 
+
+
+
 
 export default function Home() {
+  const trendingItems = getTrendingItems()
 
   return (
    <main className={styles.homepage}>
@@ -17,7 +28,7 @@ export default function Home() {
         <Sales />
       </div>
       <div className={styles.horizontalTop}>
-        <TrendingItems />     
+         <TrendingItems promise={trendingItems} />   
       </div>
       <div className={styles.horizontalBottom}>
         <ShopByCategories />

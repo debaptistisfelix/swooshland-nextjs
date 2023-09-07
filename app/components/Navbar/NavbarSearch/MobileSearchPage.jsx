@@ -56,7 +56,17 @@ export default function MobileSearchPage({closeSearchBox, isSearchOpen}) {
       const response = await fetch(`/api/item?query=${searchQuery}`);
       const data = await response.json();
       console.log(data);
-      setSearchResults(data);
+      const alphabeticOrderedList = data.sort((a, b) => {
+        if(a.name.toLowerCase() < b.name.toLowerCase()){
+          return -1;
+        }
+        if(a.name.toLowerCase() > b.name.toLowerCase()){
+          return 1;
+        }
+        return 0;
+      })
+      setSearchResults(alphabeticOrderedList);
+      
       setSearchResultsCount(data.length);
       setIsLoadingResults(false);
     } catch (error) {

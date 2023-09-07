@@ -59,14 +59,14 @@ export default function TextBlock({item, isLoading, setLoading}) {
             if(response.status === 200){
                 setIsFavorited(true);
                 setLoading("updatingFavoriteState", false);
-                toast.success("Added to favorites", {
+                toast.success(`${item.model} - ${item.name} added to favorites`, {
                     style: {
-                        backgroundColor: "#191919",
+                        backgroundColor: "#2fbf71",
                         color: "#fff",
                     },
                     iconTheme: {
                         primary: "#fff",
-                        secondary: "#191919",
+                        secondary: "#2fbf71",
                     },
                 })
             } else if(response.status === 400){
@@ -74,12 +74,12 @@ export default function TextBlock({item, isLoading, setLoading}) {
                 setLoading("updatingFavoriteState", false);
                 toast.error("Already added to Favorites previously", {
                     style: {
-                        backgroundColor: "#191919",
+                        backgroundColor: "#d00000",
                         color: "#fff",
                     },
                     iconTheme: {
                         primary: "#fff",
-                        secondary: "#191919",
+                        secondary: "#d00000",
                     },
                 })
             }
@@ -88,12 +88,12 @@ export default function TextBlock({item, isLoading, setLoading}) {
           setLoading("updatingFavoriteState", false); 
             toast.error("Error while adding to wishlist. Retry again.", {
                 style: {
-                    backgroundColor: "#191919",
+                    backgroundColor: "#d00000",
                     color: "#fff",
                 },
                 iconTheme: {
                     primary: "#fff",
-                    secondary: "#191919",
+                    secondary: "#d00000",
                 },
             })
         }

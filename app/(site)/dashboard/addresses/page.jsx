@@ -5,6 +5,10 @@ import { poppins } from '@app/fonts'
 import AddressesList from '@app/components/Dashboard/Addresses/AddressesList/AddressesList'
 import UserAddressesContextProvider from '@app/context/UserAddressesContext'
 
+export const metadata = {
+  title: 'Dahsboard - Addresses',
+  description: 'Manage your addresses. Add, remove and edit your shipping addresses.',
+} 
 
 export default function Addresses() {
   return (

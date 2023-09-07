@@ -15,7 +15,7 @@ model User {
   id             String    @id @default(auto()) @map("_id") @db.ObjectId
   name           String?   
   email          String?   @unique
-  emailVerified  DateTime?
+  welcomeEmailSent Boolean @default(false)
   image          String?
   hashedPassword String?
   createdAt      DateTime  @default(now())
@@ -117,8 +117,7 @@ model Item{
 model AvailableSize {
   id          String  @id @default(auto()) @map("_id") @db.ObjectId
   EUsize      Int
-  availability Int
-  reserved    Int @default(0)
+  availability Int @default(3)
   item        Item @relation(fields: [itemId], references: [id], onDelete: Cascade)
   itemId      String    @db.ObjectId
   createdAt   DateTime  @default(now())

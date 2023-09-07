@@ -1,3 +1,4 @@
+"use client"
 import styles from './Categories.module.css'
 import { poppins } from '@app/fonts'
 import CategBox from './CategBox'

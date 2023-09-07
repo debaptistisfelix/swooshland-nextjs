@@ -26,7 +26,7 @@ export default function SearchCard({item, closeSearchBox}) {
     };
 
 
-    const {model, name, price, images, ratingsAverage, onSale, discountPercentage, id} = item;
+    const {model, name, price, images, ratingsAverage, onSale, discountPercentage, id, gender} = item;
 
 
   return (
@@ -51,8 +51,9 @@ export default function SearchCard({item, closeSearchBox}) {
             </div>
            <div className={styles.priceBox}>
            {onSale === true && <h1 className={styles.discountedPrice}>${(price - (price * (discountPercentage / 100))).toFixed(2)}</h1>}
-           <h1 className={`${styles.price} ${onSale === true && styles.lineThrough}`}>$289.90</h1>
+           <h1 className={`${styles.price} ${onSale === true && styles.lineThrough}`}>${price.toFixed(2)}</h1>
            </div>
+           <h3 className={`${styles.genderTag} ${gender === "Men" ? styles.menGender : styles.womenGender}`}>{gender === "Men" ? "MNS" : "WMNS"}</h3>
         </section>
        </Link>
    </main>

@@ -7,7 +7,7 @@ import { faStar, faStarHalf } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
 
 export default function SearchCardMobile({item, closeSearchBox, closeAndResetSearchBox}) {
-    const {model, name, price, images, ratingsAverage, onSale, discountPercentage, id} = item;
+    const {model, name, price, images, ratingsAverage, onSale, discountPercentage, id, gender} = item;
 
     const GiveStars = (rating) => {
         const fullStars = Math.floor(rating);
@@ -54,6 +54,7 @@ export default function SearchCardMobile({item, closeSearchBox, closeAndResetSea
            {onSale === true && <h1 className={styles.discountedPrice}>${(price - (price * (discountPercentage / 100))).toFixed(2)}</h1>}
            <h1 className={`${styles.price} ${onSale === true && styles.lineThrough}`}>${price.toFixed(2)}</h1>
            </div>
+           <h3 className={`${styles.genderTag} ${gender === "Men" ? styles.menGender : styles.womenGender}`}>{gender === "Men" ? "MNS" : "WMNS"}</h3>
         </section>
        
        </Link>

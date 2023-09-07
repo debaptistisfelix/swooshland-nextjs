@@ -46,12 +46,12 @@ export default function FavoritesList() {
                 setLoading("updatingFavs", false);
                 toast.success("Removed from favorites", {
                     style: {
-                        backgroundColor: "#191919",
+                        backgroundColor: "#2fbf71",
                         color: "#fff",
                     },
                     iconTheme: {
                         primary: "#fff",
-                        secondary: "#191919",
+                        secondary: "#2fbf71",
                     },
                 })
             }
@@ -60,12 +60,12 @@ export default function FavoritesList() {
             setLoading("updatingFavs", false);
             toast.error("Error while removing item from favorites. Retry again.", {
                 style: {
-                    backgroundColor: "#191919",
+                    backgroundColor: "#d00000",
                     color: "#fff",
                 },
                 iconTheme: {
                     primary: "#fff",
-                    secondary: "#191919",
+                    secondary: "#d00000",
                 },
             })
         }

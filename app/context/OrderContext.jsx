@@ -39,12 +39,12 @@ export default function OrderContextProvider({ children }) {
                 setIsLoading({ creatingOrder: false });
                 toast.success("Redirecting to Payment",  {
                     style: {
-                        backgroundColor: "#191919",
+                        backgroundColor: "#2fbf71",
                         color: "#fff",
                     },
                     iconTheme: {
                         primary: "#fff",
-                        secondary: "#191919",
+                        secondary: "#2fbf71",
                     },
                 });
            
@@ -52,14 +52,14 @@ export default function OrderContextProvider({ children }) {
         catch(error){
             console.log(error);
             setIsLoading({ creatingOrder: false });
-            toast.error("Error while creating order", {
+            toast.error("Error while creating order. please retry.", {
                 style: {
-                    backgroundColor: "#191919",
+                    backgroundColor: "#d00000",
                     color: "#fff",
                 },
                 iconTheme: {
                     primary: "#fff",
-                    secondary: "#191919",
+                    secondary: "#d00000",
                 },
             });
         }

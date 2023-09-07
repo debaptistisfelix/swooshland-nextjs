@@ -9,8 +9,9 @@ import FilterBar from '../AccessoriesFilterBar/DesktopFilterBar/FilterBar'
 import MobileFilterPage from '../AccessoriesFilterBar/MobileFilterPage/MobileFilterPage'
 import MobileFilterTagsContainer from '../AccessoriesFilterBar/MobileFilterTags/MobileFilterTagsContainer'
 import ListingShopCard from '@app/components/ItemCards/ShopItemCard/ListingShopCard/ListingShopCard'
+import { Suspense } from 'react'
 
-export default function AccessoriesListing({ mobileFiltersOpen, toggleMobileFilters}) {
+export default function AccessoriesListing({accessoriesList, mobileFiltersOpen, toggleMobileFilters}) {
     const {
         applySorting,
         handleSortChange,
@@ -37,7 +38,7 @@ export default function AccessoriesListing({ mobileFiltersOpen, toggleMobileFilt
     const [accessories, setAccessories] = useState([])
 
 
-    const fetchAccessories = async ()=>{
+   /*  const fetchAccessories = async ()=>{
         try{
           const response = await fetch("/api/item");
           const data = await response.json();
@@ -47,10 +48,10 @@ export default function AccessoriesListing({ mobileFiltersOpen, toggleMobileFilt
         } catch(error){
           console.log(error)
         }
-    }
+    } */
 
     useEffect(()=>{
-        fetchAccessories();
+        setAccessories(accessoriesList);
         }, [])
 
     useEffect(()=>{
@@ -103,33 +104,35 @@ export default function AccessoriesListing({ mobileFiltersOpen, toggleMobileFilt
            />
 
     
-    {isLoading === false ? <section className={`${styles.listAndBtnContainer} ${filtersAppliedToAccessories === true && styles.moveDown} ${filtersAppliedToAccessories === false && styles.moveUp}`}>
+ <Suspense fallback={<ThreeCirclesLoader />}>
+ <section className={`${styles.listAndBtnContainer} ${filtersAppliedToAccessories === true && styles.moveDown} ${filtersAppliedToAccessories === false && styles.moveUp}`}>
         
-    <h1 className={`${styles.itemsCount}  
-             `}>
-         ({filtersAppliedToAccessories ? filteredVisibleItems.length : visibleItems.length} Accessories out of {filtersAppliedToAccessories ? filteredItems.length : accessories.length} Results)
-         </h1>
-        
-         <section className={`${styles.accessoriesList} `}>
-      
-         
-    {filtersAppliedToAccessories ? filteredVisibleItems.map(accessory =>{
-                return <ListingShopCard sneaker={accessory} key={accessory.id} />
-            }) : visibleItems.map(accessory =>{
-                return <ListingShopCard sneaker={accessory} key={accessory.id} />
-            })}
-
-
- 
-     </section>
-
-     {filtersAppliedToAccessories ? (
-         filteredItems.length > filteredVisibleItems.length && <button onClick={()=>{handleLoadMore(filteredItems, true)}} className={`${styles.loadMoreBtn}`}>Load more</button>
-     ) : (
-         visibleItems.length < accessories.length && <button onClick={()=>{handleLoadMore(accessories, false)}} className={`${styles.loadMoreBtn}`}>Load more</button>
-     )}
-
-     </section> :  <ThreeCirclesLoader />}
+        <h1 className={`${styles.itemsCount}  
+                 `}>
+             ({filtersAppliedToAccessories ? filteredVisibleItems.length : visibleItems.length} Accessories out of {filtersAppliedToAccessories ? filteredItems.length : accessories.length} Results)
+             </h1>
+            
+             <section className={`${styles.accessoriesList} `}>
+          
+             
+        {filtersAppliedToAccessories ? filteredVisibleItems.map(accessory =>{
+                    return <ListingShopCard sneaker={accessory} key={accessory.id} />
+                }) : visibleItems.map(accessory =>{
+                    return <ListingShopCard sneaker={accessory} key={accessory.id} />
+                })}
+    
+    
+     
+         </section>
+    
+         {filtersAppliedToAccessories ? (
+             filteredItems.length > filteredVisibleItems.length && <button onClick={()=>{handleLoadMore(filteredItems, true)}} className={`${styles.loadMoreBtn}`}>Load more</button>
+         ) : (
+             visibleItems.length < accessories.length && <button onClick={()=>{handleLoadMore(accessories, false)}} className={`${styles.loadMoreBtn}`}>Load more</button>
+         )}
+    
+         </section> 
+          </Suspense>
         
     
  </main>

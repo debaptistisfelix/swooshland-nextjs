@@ -25,6 +25,7 @@ export async function POST(request){
                     boughtItems: boughtItems.map((boughtItem) => ({
                         item: boughtItem.item,
                         size: boughtItem.size,
+                        finalPrice: boughtItem.finalPrice.toFixed(2)
                       })),
                 },
                 include: {
@@ -59,6 +60,7 @@ export async function POST(request){
                     boughtItems: boughtItems.map((boughtItem) => ({
                         item: boughtItem.item,
                         size: boughtItem.size,
+                        finalPrice: boughtItem.finalPrice.toFixed(2)
                       })),
                     user: {
                         connect: {

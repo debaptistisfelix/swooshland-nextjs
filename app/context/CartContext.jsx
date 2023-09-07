@@ -133,7 +133,7 @@ export const CartProvider = ({children}) => {
                     setCartItems(data)
                     console.log(data)
                     setCartLoading("fetchingCartItems", false)
-                    toast.success("cartItems fetched",  {
+                    /* toast.success(`You have ${data.length} items in your cart.`,  {
                         style: {
                             backgroundColor: "#191919",
                             color: "#fff",
@@ -142,17 +142,17 @@ export const CartProvider = ({children}) => {
                             primary: "#fff",
                             secondary: "#191919",
                         },
-                    })
+                    }) */
                 } else {
                     setCartLoading("fetchingCartItems", false)
                     toast.error("error while fetching cartItems",  {
                         style: {
-                            backgroundColor: "#191919",
+                            backgroundColor: "#d00000",
                             color: "#fff",
                         },
                         iconTheme: {
                             primary: "#fff",
-                            secondary: "#191919",
+                            secondary: "#d00000",
                         },
                     })
                 }
@@ -161,12 +161,12 @@ export const CartProvider = ({children}) => {
                 setCartLoading("fetchingCartItems", false)
                 toast.error("error while fetching cartItems", {
                     style: {
-                        backgroundColor: "#191919",
+                        backgroundColor: "#d00000",
                         color: "#fff",
                     },
                     iconTheme: {
                         primary: "#fff",
-                        secondary: "#191919",
+                        secondary: "#d00000",
                     },
                 })
             }
@@ -186,7 +186,7 @@ export const CartProvider = ({children}) => {
                     setCartItems(data)
                     console.log(data)
                     setCartLoading("fetchingCartItems", false)
-                    toast.success(" Guest cartItems fetched",  {
+                   /*  toast.success(`You have ${data.length} items in your cart.`,  {
                         style: {
                             backgroundColor: "#191919",
                             color: "#fff",
@@ -195,17 +195,17 @@ export const CartProvider = ({children}) => {
                             primary: "#fff",
                             secondary: "#191919",
                         },
-                    })
+                    }) */
                 } else {
                     setCartLoading("fetchingCartItems", false)
                     toast.error("error while fetching cartItems",  {
                         style: {
-                            backgroundColor: "#191919",
+                            backgroundColor: "#d00000",
                             color: "#fff",
                         },
                         iconTheme: {
                             primary: "#fff",
-                            secondary: "#191919",
+                            secondary: "#d00000",
                         },
                     })
                 }
@@ -214,12 +214,12 @@ export const CartProvider = ({children}) => {
                 setCartLoading("fetchingCartItems", false)
                 toast.error("error while fetching cartItems", {
                     style: {
-                        backgroundColor: "#191919",
+                        backgroundColor: "#d00000",
                         color: "#fff",
                     },
                     iconTheme: {
                         primary: "#fff",
-                        secondary: "#191919",
+                        secondary: "#d00000",
                     },
                 })
             }
@@ -249,14 +249,14 @@ export const CartProvider = ({children}) => {
                     console.log(data)
                     setCartLoading("addingItemToCartItems", false)
                     setTimeout(()=>{setCartLoading("addingItemToCartItems", null)}, 1000)
-                    toast.success("Item added to cart",  {
+                    toast.success(`${data.item.model} - ${data.item.name} added to cart`,  {
                         style: {
-                            backgroundColor: "#191919",
+                            backgroundColor: "#2fbf71",
                             color: "#fff",
                         },
                         iconTheme: {
                             primary: "#fff",
-                            secondary: "#191919",
+                            secondary: "#2fbf71",
                         },
                     })
                 } else if(response.status !== 200){
@@ -266,12 +266,12 @@ export const CartProvider = ({children}) => {
                     setTimeout(()=>{setCartLoading("addingItemToCartItems", null)}, 1000)
                     toast.error(data,  {
                         style: {
-                            backgroundColor: "#191919",
+                            backgroundColor: "#d00000",
                             color: "#fff",
                         },
                         iconTheme: {
                             primary: "#fff",
-                            secondary: "#191919",
+                            secondary: "#d00000",
                         },
                     })
                 } else {
@@ -281,12 +281,12 @@ export const CartProvider = ({children}) => {
                     setTimeout(()=>{setCartLoading("addingItemToCartItems", null)}, 1000)
                     toast.error("error while adding item to cart",  {
                         style: {
-                            backgroundColor: "#191919",
+                            backgroundColor: "#d00000",
                             color: "#fff",
                         },
                         iconTheme: {
                             primary: "#fff",
-                            secondary: "#191919",
+                            secondary: "#d00000",
                         },
                     })
                 }
@@ -297,12 +297,12 @@ export const CartProvider = ({children}) => {
                 setTimeout(()=>{setCartLoading("addingItemToCartItems", null)}, 1000)
                 toast.error("error while adding item to cart",  {
                     style: {
-                        backgroundColor: "#191919",
+                        backgroundColor: "#d00000",
                         color: "#fff",
                     },
                     iconTheme: {
                         primary: "#fff",
-                        secondary: "#191919",
+                        secondary: "#d00000",
                     },
                 })
                 console.log(error)
@@ -310,12 +310,12 @@ export const CartProvider = ({children}) => {
         } else {
             toast.error("Please select a size",  {
                 style: {
-                    backgroundColor: "#191919",
+                    backgroundColor: "#d00000",
                     color: "#fff",
                 },
                 iconTheme: {
                     primary: "#fff",
-                    secondary: "#191919",
+                    secondary: "#d00000",
                 },
             })
         }
@@ -336,24 +336,24 @@ export const CartProvider = ({children}) => {
                 setCartLoading("removingCartItem", false)
                 toast.success(`${item.model} - ${item.name} removed from cart`,  {
                     style: {
-                        backgroundColor: "#191919",
+                        backgroundColor: "#2fbf71",
                         color: "#fff",
                     },
                     iconTheme: {
                         primary: "#fff",
-                        secondary: "#191919",
+                        secondary: "#2fbf71",
                     },
                 })
             } else {
                 setCartLoading("removingCartItem", false)
                 toast.error("error while removing item from cart",  {
                     style: {
-                        backgroundColor: "#191919",
+                        backgroundColor: "#d00000",
                         color: "#fff",
                     },
                     iconTheme: {
                         primary: "#fff",
-                        secondary: "#191919",
+                        secondary: "#d00000",
                     },
                 })
             }
@@ -362,12 +362,12 @@ export const CartProvider = ({children}) => {
             setCartLoading("removingCartItem", false)
             toast.error("error while removing item from cart", {
                 style: {
-                    backgroundColor: "#191919",
+                    backgroundColor: "#d00000",
                     color: "#fff",
                 },
                 iconTheme: {
                     primary: "#fff",
-                    secondary: "#191919",
+                    secondary: "#d00000",
                 },
             }) 
         }
@@ -397,24 +397,24 @@ export const CartProvider = ({children}) => {
                 }, 30000)
                 toast.success("Removed Cart Items that are no more available",  {
                     style: {
-                        backgroundColor: "#191919",
+                        backgroundColor: "#d00000",
                         color: "#fff",
                     },
                     iconTheme: {
                         primary: "#fff",
-                        secondary: "#191919",
+                        secondary: "#d00000",
                     },
                 })
             } else {
                 setCartLoading("removingCartItem", false)
                 toast.error("Error while removing items",  {
                     style: {
-                        backgroundColor: "#191919",
+                        backgroundColor: "#d00000",
                         color: "#fff",
                     },
                     iconTheme: {
                         primary: "#fff",
-                        secondary: "#191919",
+                        secondary: "#d00000",
                     },
                 })
             }
@@ -424,12 +424,12 @@ export const CartProvider = ({children}) => {
             setCartLoading("removingCartItem", false)
             toast.error("Error while requesting items deleting",  {
                 style: {
-                    backgroundColor: "#191919",
+                    backgroundColor: "#d00000",
                     color: "#fff",
                 },
                 iconTheme: {
                     primary: "#fff",
-                    secondary: "#191919",
+                    secondary: "#d00000",
                 },
             })
 
@@ -461,12 +461,12 @@ export const CartProvider = ({children}) => {
                 setCartLoading("checkingAvailability", false)
                 toast.error("Some Items are not more available in the chosen size and will be removed from your cart", {
                     style: {
-                        backgroundColor: "#191919",
+                        backgroundColor: "#d00000",
                         color: "#fff",
                     },
                     iconTheme: {
                         primary: "#fff",
-                        secondary: "#191919",
+                        secondary: "#d00000",
                     },
                 }) 
                 setDeletedCartItemsBeforeCheckout(data.cartItemsToDelete);
@@ -486,12 +486,12 @@ export const CartProvider = ({children}) => {
               
                 toast.success("All items are still available. Click the button again to Complete Order", {
                     style: {
-                        backgroundColor: "#191919",
+                        backgroundColor: "#2fbf71",
                         color: "#fff",
                     },
                     iconTheme: {
                         primary: "#fff",
-                        secondary: "#191919",
+                        secondary: "#2fbf71",
                     },
                 }) 
             }
@@ -501,12 +501,12 @@ export const CartProvider = ({children}) => {
             setCartLoading("checkingAvailability", false)
             toast.error("Error while checking the items availability before checkout. Retry.", {
                 style: {
-                    backgroundColor: "#191919",
+                    backgroundColor: "#d00000",
                     color: "#fff",
                 },
                 iconTheme: {
                     primary: "#fff",
-                    secondary: "#191919",
+                    secondary: "#d00000",
                 },
             }) 
             setItemsAvailabilityWasChecked(false)
@@ -516,14 +516,14 @@ export const CartProvider = ({children}) => {
     const moveBackToCartIfCartWasEmptied = () => {
         
         router.push("/cart")
-        toast.success("Your Cart is empty. You've been redirected to the Cart Page", {
+        toast.error("Your Cart is empty. You've been redirected to the Cart Page", {
             style: {
-                backgroundColor: "#191919",
+                backgroundColor: "#d00000",
                 color: "#fff",
             },
             iconTheme: {
                 primary: "#fff",
-                secondary: "#191919",
+                secondary: "#d00000",
             },
         })
     };

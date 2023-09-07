@@ -1,24 +1,16 @@
-"use client"
 
 import styles from './page.module.css'
-import { useEffect } from 'react'
-import Register from '@app/components/Authentication/Register/Register'
-import { useSession } from 'next-auth/react'
-import { useRouter } from 'next/navigation'
+import RegisterSection from '@app/components/Authentication/Register/RegisterSection/RegisterSection'
+
+export const metadata = {
+  title: 'Sign Up - Swooshland Customs',
+  description: 'Manage your cart items here. Add, remove, and update your cart items.',
+} 
 
 export default function RegisterPage(){
-    const session = useSession()
-    const router = useRouter()
-   
-    useEffect(()=>{
-        if(session.status === 'authenticated'){
-            router.push('/dashboard')
-        }
-    })
-
     return (
-        <main className={styles.registerPage}>
-            <Register />
-        </main>
+      <main className={styles.registerPageContainer}>
+            <RegisterSection />
+      </main>
     )
 }

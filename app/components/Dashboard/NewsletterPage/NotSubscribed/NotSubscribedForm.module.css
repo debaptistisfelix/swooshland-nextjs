@@ -1,6 +1,7 @@
 .unsubscribedUser{
     display: flex;
     flex-direction: column;
+ 
 }
 .parag{
     font-size: 16px;

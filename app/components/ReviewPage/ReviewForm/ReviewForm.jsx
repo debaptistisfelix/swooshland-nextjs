@@ -49,12 +49,12 @@ export default function ReviewForm({changeReviewSubmittedStatus, setLoading}) {
           setLoading("submittingReview", false)
           toast.success("Review Posted",  {
             style: {
-                backgroundColor: "#191919",
+                backgroundColor: "#2fbf71",
                 color: "#fff",
             },
             iconTheme: {
                 primary: "#fff",
-                secondary: "#191919",
+                secondary: "#2fbf71",
             },
         })
           changeReviewSubmittedStatus(true)
@@ -62,17 +62,29 @@ export default function ReviewForm({changeReviewSubmittedStatus, setLoading}) {
          }
          catch(error){
              console.log(error)
-             toast.error("Error while posting review",  {
+             setLoading("submittingReview", false)
+             toast.error("Error while posting review. Retry in a few minutes.",  {
               style: {
-                  backgroundColor: "#191919",
+                  backgroundColor: "#d00000",
                   color: "#fff",
               },
               iconTheme: {
                   primary: "#fff",
-                  secondary: "#191919",
+                  secondary: "#d00000",
               },
           })
          }
+    } else {
+      toast.error("Please fill out all fields",  {
+        style: {
+            backgroundColor: "#d00000",
+            color: "#fff",
+        },
+        iconTheme: {
+            primary: "#fff",
+            secondary: "#d00000",
+        },
+    })
     }
   }
 

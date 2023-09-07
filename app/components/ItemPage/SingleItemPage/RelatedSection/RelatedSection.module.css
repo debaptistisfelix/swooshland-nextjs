@@ -10,6 +10,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 .title{
@@ -29,6 +30,14 @@
     height: 70%;
 }
 
+.loaderBox{
+    width: 70%;
+    max-width: 1150px;
+    height: 100%;
+    background-color: transparent;
+    position: absolute;
+}
+
 @media (max-width:600px){
     .section{
         height:fit-content;
@@ -36,6 +45,8 @@
         box-sizing: border-box;
       /*  order: 3; */
        margin: 50px 0;
+       min-height: 200px;
+       justify-content: unset;
     }
 
     .title{
@@ -52,6 +63,8 @@
         width: 90%;
         height: 90%;
     }
+
+   
 }
 
 @media (min-width:601px) and (max-width:1023px){

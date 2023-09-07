@@ -1,3 +1,5 @@
+
+"use client"
 import styles from './Sales.module.css';
 import { poppins } from '@app/fonts';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -16,7 +18,7 @@ export default function Sales() {
       img: '/orange5.jpg',
       oldPrice: '$289.90',
       newPrice: '$202.93',
-     url: "/item/64d757f6255966da41acf53b"
+     url: "/item/64f4c91ac1af1593c3f0325c"
     },
     {
       title: 'Wallet Naruto',

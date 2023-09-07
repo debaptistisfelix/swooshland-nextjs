@@ -10,7 +10,7 @@ import { useState, useEffect } from 'react';
 
 export default function ShopItemCard({sneaker}) {
   const [isClicked, setIsClicked] = useState(false);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [windowWidth, setWindowWidth] = useState(null);
 
   useEffect(()=>{
     const updateWindowWidth = () => {

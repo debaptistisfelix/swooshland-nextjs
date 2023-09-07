@@ -35,9 +35,17 @@ export default function CheckoutPaymentMethod() {
         return cartItem.item.stripe;
       })
       const boughtItems = cartItems.map(cartItem => {
+        let finalPrice;
+        if(cartItem.item.onSale === true){
+          finalPrice = cartItem.item.price - (cartItem.item.price * (cartItem.item.discountPercentage / 100))
+        } else {
+          finalPrice = cartItem.item.price;
+        }
         return {
-          item: cartItem.item,
-          size: cartItem.availableSize.EUsize
+          item: cartItem?.item,
+          size: cartItem?.availableSize?.EUsize,
+          finalPrice: finalPrice,
+          onSale: cartItem?.item?.onSale,
         }
       });
      /*  const shipping =cartSummary.shipping */
@@ -87,22 +95,21 @@ console.log("ordersInfo:",orderInfos)
 
    const handleCheckoutSessionStripe = async ()=>{
     if(order !== null){
-      const stripeItems = orderInfos.stripeCartItems
+      const stripeItems = orderInfos?.stripeCartItems
+      let hasOnSaleItem;
+      if(orderInfos?.boughtItems.some(item => item.onSale === true)){
+        hasOnSaleItem = true;
+      } else {
+        hasOnSaleItem = false;
+      }
       try{
         const stripe = await stripePromise;
-       /*  const response = await fetch('/api/checkoutSession', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({items: stripeItems})
-        }); */
         const response = await fetch(`/api/checkoutSession/${order}`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({items: stripeItems})
+          body: JSON.stringify({items: stripeItems, hasOnSaleItem: hasOnSaleItem})
         });
         const session = await response.json();
         const result = await stripe.redirectToCheckout({
@@ -147,9 +154,7 @@ console.log("ordersInfo:",orderInfos)
       if(itemsAvailabilityWasChecked === false) {
         checkValidationBeforePayment(checked);
       } else if(itemsAvailabilityWasChecked === true){
-        await createOrder(orderInfos);
-        /* handleCheckoutSessionStripe(); */
-       
+        await createOrder(orderInfos);   
       }
       }}   className={`mainButton ${styles.completeBtn}`}>
         {itemsAvailabilityWasChecked === false ? "Check Availability" : "Complete Order"}

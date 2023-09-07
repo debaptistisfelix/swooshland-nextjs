@@ -4,6 +4,10 @@ import Image from 'next/image'
 import { poppins } from '@app/fonts'
 import FavoritesList from '@app/components/Dashboard/Addresses/Favorites/FavoritesList/FavoritesList'
 
+export const metadata = {
+  title: 'Dahsboard - Favorites',
+  description: 'Manage your Favorite custom Items. Add, remove and edit your wishlist.',
+} 
 
 export default function Favorites() {
   return (

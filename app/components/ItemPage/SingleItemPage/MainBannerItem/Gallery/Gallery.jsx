@@ -43,7 +43,7 @@ export default function Gallery({item }) {
   }
   return (
    <>
-    <section className={`${styles.galleryBox} ${item?.images.length === 1 && styles.oneImageGalleryBox}`}>
+    <section className={`${styles.galleryBox} ${item?.images?.length === 1 && styles.oneImageGalleryBox}`}>
     {item && item.images.length > 1 && <section className={styles.smallImagesBox}>
         {item !== null && item?.images.map((img, i) =>{
           return <div className={styles.smallImgBox} key={uuidv4()}>

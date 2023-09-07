@@ -9,10 +9,10 @@ import { useState, useEffect, useContext } from 'react';
 import { toast } from 'react-hot-toast'
 import ThreeCirclesLoader from '@app/components/Reusables/ThreeCirclesLoader/ThreeCirclesLoader';
 import { UserAddressesContext } from '@app/context/UserAddressesContext';
+import { useSession } from 'next-auth/react';
 
 
-
-export default function AddressesList() {
+export default async function AddressesList() {
   const {
     showFormToAddAddress,
     addresses,
@@ -39,6 +39,7 @@ export default function AddressesList() {
   }, [])
 
  
+
 
   return (
    <main className={styles.list}>
