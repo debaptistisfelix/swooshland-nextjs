@@ -17,7 +17,7 @@ export const metadata = {
 
 
 export default function Home() {
-  const trendingItems = getTrendingItems() || null
+  const trendingItems = getTrendingItems()
 
   return (
    <main className={styles.homepage}>
