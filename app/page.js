@@ -1,4 +1,3 @@
-
 import styles from "@app/page.module.css"
 import MainBanner from "./components/Homepage/MainBanner/MainBanner"
 import Categories from "./components/Homepage/sneakerCategs/Categories"
@@ -17,23 +16,23 @@ export const metadata = {
 
 
 export default function Home() {
-  /* const trendingItems = getTrendingItems() */
+  const trendingItems = getTrendingItems()
 
   return (
    <main className={styles.homepage}>
- {/*    <MainBanner />
+    <MainBanner />
     <section className={styles.homepageSectionsBox}>
       <Categories />
       <div className={styles.lateralLong}>
         <Sales />
       </div>
       <div className={styles.horizontalTop}>
-         <TrendingItems promise={trendingItems} />   
+        <TrendingItems promise={trendingItems} /> 
       </div>
       <div className={styles.horizontalBottom}>
         <ShopByCategories />
       </div>
-    </section> */}
+    </section>
    </main>
   )
 }
