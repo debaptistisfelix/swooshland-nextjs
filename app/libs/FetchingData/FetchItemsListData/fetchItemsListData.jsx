@@ -3,9 +3,9 @@
 export default async function getItemsListData(tag){
   const baseUrl =  `https://${process.env.VERCEL_URL}`  || `${process.env.BASE_URL}` 
     const response = await fetch(`${baseUrl}/api/item`)
-    console.log("response: ", response)
-    console.log("responseOK: ", response.ok)
-    console.log("responseStatus: ", response.status)
+    console.log("list data - response: ", response)
+    console.log("list data - responseOK: ", response.ok)
+    console.log("list data - responseStatus: ", response.status)
     if(!response.ok){
       throw new Error("Error while requesting Sneakers from server")
     }

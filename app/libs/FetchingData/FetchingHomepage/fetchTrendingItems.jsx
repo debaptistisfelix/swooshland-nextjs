@@ -3,7 +3,7 @@
 export default async function getTrendingItems() {
  const baseUrl =  `https://${process.env.VERCEL_URL}`  || `${process.env.BASE_URL}` 
   const response = await fetch(`${baseUrl}/api/item/trending`);
-  console.log("TRENDING-Resposnse: ", response.status)
+  console.log("TRENDING-response: ", response.status)
   console.log("TRENDING-response: ", response)
   console.log("TRENDING-responseOK: ", response.ok)
   if (!response.ok) {
