@@ -6,6 +6,7 @@ import ThreeCirclesLoader from '@app/components/Reusables/ThreeCirclesLoader/Thr
 import FetchingDataError from '@app/components/Errors/FetchingDataError/FetchingDataError'
 import getItemsListData from '@app/libs/FetchingData/FetchItemsListData/fetchItemsListData'
 
+
 export async function generateMetadata({ params, searchParams }, parent) {
   // read route params
   const id = params.id
@@ -35,12 +36,12 @@ export default async function page({ params: { id } }) {
   try {
     const item = await getItemData(id)
     const relatedItems =  getItemRelated(id)
-    const itemsList = getItemsListData("accessories")
+   
 
     return (
       <main className="pageLoaderContainer">
         <Suspense fallback={<ThreeCirclesLoader />}>
-          <ItemSection itemsList={itemsList} item={item} relatedPromise={relatedItems} />
+          <ItemSection item={item} relatedPromise={relatedItems} />
         </Suspense>
       </main>
     )

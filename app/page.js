@@ -12,7 +12,6 @@ export default async function page() {
   try {
     const trendingItems = await getTrendingItems()
 
-    console.log("trendingItems from page component", trendingItems)
 
   return (
    <main className={styles.homepage}>
