@@ -7,11 +7,12 @@ import Sales from "./components/Homepage/Sales/Sales"
 import getTrendingItems from "./libs/FetchingData/FetchingHomepage/fetchTrendingItems"
 import FetchingDataError from "./components/Errors/FetchingDataError/FetchingDataError"
 import { Suspense } from "react"
+import getItemData from "./libs/FetchingData/FetchingSinglItemData/FetchingSingleItem/fetchItem"
 
 export default async function page() {
   try {
     const trendingItems = await getTrendingItems()
-
+    const itemData = await getItemData("64d4f2a72862dff874b44775")
 
   return (
    <main className={styles.homepage}>
