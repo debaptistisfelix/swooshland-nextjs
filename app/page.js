@@ -7,34 +7,16 @@ import Sales from "./components/Homepage/Sales/Sales"
 import getTrendingItems from "./libs/FetchingData/FetchingHomepage/fetchTrendingItems"
 import FetchingDataError from "./components/Errors/FetchingDataError/FetchingDataError"
 import { Suspense } from "react"
-import getItemData from "./libs/FetchingData/FetchingSinglItemData/FetchingSingleItem/fetchItem"
 
 export default async function page() {
-/*   return (
-    <main className={styles.homepage}>
-    <MainBanner />
-    <section className={styles.homepageSectionsBox}>
-      <Categories />
-      <div className={styles.lateralLong}>
-        <Sales />
-      </div>
-      <div className={styles.horizontalTop}>
-       <TrendingItems /> 
-      </div>
-      <div className={styles.horizontalBottom}>
-        <ShopByCategories />
-      </div>
-    </section>
-   </main>
-  ) */
   try {
-    const trendingItems = await getItemData("64f4c91ac1af1593c3f0325c")
+    const trendingItems = await getTrendingItems()
 
     console.log("trendingItems from page component", trendingItems)
 
   return (
    <main className={styles.homepage}>
-   {/*  <MainBanner />
+    <MainBanner />
     <section className={styles.homepageSectionsBox}>
       <Categories />
       <div className={styles.lateralLong}>
@@ -48,7 +30,7 @@ export default async function page() {
       <div className={styles.horizontalBottom}>
         <ShopByCategories />
       </div>
-    </section> */}
+    </section>
    </main>
   )
   } catch (error) {
