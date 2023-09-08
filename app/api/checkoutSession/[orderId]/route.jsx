@@ -12,9 +12,11 @@ export  async function POST(request, {params}){
         payment_method_types: ['card'],
         line_items: items,
         mode: 'payment',
-        success_url: `http://localhost:3000/orderCompleted/${orderId}`,
-        cancel_url: `http://localhost:3000/orderFailed/${orderId}`
+        success_url: `https://${process.env.VERCEL_URL}/orderCompleted/${orderId}`,
+        cancel_url: `https://${process.env.VERCEL_URL}/orderFailed/${orderId}`
     }
+
+    `https://${process.env.VERCEL_URL}`
 
     if(hasOnSaleItem === true){
         sessionData.discounts = [
