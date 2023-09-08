@@ -4,6 +4,7 @@ import getItemRelated from '@app/libs/FetchingData/FetchingSinglItemData/fetchIt
 import { Suspense } from 'react'
 import ThreeCirclesLoader from '@app/components/Reusables/ThreeCirclesLoader/ThreeCirclesLoader'
 import FetchingDataError from '@app/components/Errors/FetchingDataError/FetchingDataError'
+import getItemsListData from '@app/libs/FetchingData/FetchItemsListData/fetchItemsListData'
 
 export async function generateMetadata({ params, searchParams }, parent) {
   // read route params
@@ -34,11 +35,12 @@ export default async function page({ params: { id } }) {
   try {
     const item = await getItemData(id)
     const relatedItems =  getItemRelated(id)
+    const itemsList = getItemsListData("accessories")
 
     return (
       <main className="pageLoaderContainer">
         <Suspense fallback={<ThreeCirclesLoader />}>
-          <ItemSection item={item} relatedPromise={relatedItems} />
+          <ItemSection itemsList={itemsList} item={item} relatedPromise={relatedItems} />
         </Suspense>
       </main>
     )

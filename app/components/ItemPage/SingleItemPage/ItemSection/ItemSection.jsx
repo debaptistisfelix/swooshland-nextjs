@@ -13,7 +13,7 @@ import ThreeCirclesLoader from '@app/components/Reusables/ThreeCirclesLoader/Thr
 import { poppins } from '@app/fonts'
 
 
-export default async function ItemSection({item, relatedPromise}) {
+export default async function ItemSection({item, relatedPromise, itemsList}) {
 
    
     const [isLoading, setIsLoading] = useState({
@@ -22,7 +22,7 @@ export default async function ItemSection({item, relatedPromise}) {
     })
     const [category, setCategory] = useState("")
   
-    
+    console.log("Accessories::", itemsList)
   
     const setLoading = (key, value) => {
       setIsLoading((prevState) => ({ ...prevState, [key]: value }))
