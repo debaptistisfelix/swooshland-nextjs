@@ -20,7 +20,7 @@ export default function page() {
         <Sales />
       </div>
       <div className={styles.horizontalTop}>
-        <TrendingItems promise={trendingItems}  /> 
+        
       </div>
       <div className={styles.horizontalBottom}>
         <ShopByCategories />
