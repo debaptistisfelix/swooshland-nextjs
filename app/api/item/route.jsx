@@ -1,5 +1,5 @@
 import prisma from "@app/libs/prismaDB";
-
+import { NextResponse } from "next/server";
 
 
 //to get ALL items
@@ -28,6 +28,8 @@ export async function GET(request){
                 }
             })
 
+            console.log("searchResults: ", searchResults)
+
             return new Response(JSON.stringify(searchResults), {status: 200});
         } else {
             const items = await prisma.item.findMany({
@@ -36,8 +38,11 @@ export async function GET(request){
                     reviews: true
                 }
             });
+
+            console.log("items: ", items)
     
-            return new Response(JSON.stringify(items), {status: 200});
+            /* return new Response(JSON.stringify(items), {status: 200}); */
+            return NextResponse.json({items}, {status: 200});
         }
 
        
