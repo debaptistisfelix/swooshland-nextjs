@@ -21,9 +21,10 @@ export default async function AccessoriesPage() {
   )
  } catch (error) {
   console.log(error)
+  const errorObject ={...error}
     return (
       <main className={`pageLoaderContainer`}>
-         <FetchingDataError error={error} />
+         <FetchingDataError error={errorObject} />
       </main>
     )
  }
