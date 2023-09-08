@@ -5,11 +5,12 @@ import ShopByCategories from "./components/Homepage/ShopByCategories/ShopByCateg
 import TrendingItems from "./components/Homepage/TrendingItems/TrendingItems"
 import Sales from "./components/Homepage/Sales/Sales"
 import getTrendingItems from "./libs/FetchingData/FetchingHomepage/fetchTrendingItems"
+import FetchingDataError from "./components/Errors/FetchingDataError/FetchingDataError"
+import { Suspense } from "react"
 
-
-
-export default function page() {
-  const trendingItems = getTrendingItems()
+export default async function page() {
+  try {
+    const trendingItems = await getTrendingItems()
 
   return (
    <main className={styles.homepage}>
@@ -20,7 +21,9 @@ export default function page() {
         <Sales />
       </div>
       <div className={styles.horizontalTop}>
-        
+       <Suspense fallback={<div>Loading...</div>}>
+       <TrendingItems sneakers={trendingItems}  /> 
+        </Suspense>
       </div>
       <div className={styles.horizontalBottom}>
         <ShopByCategories />
@@ -28,4 +31,23 @@ export default function page() {
     </section>
    </main>
   )
+  } catch (error) {
+    return (
+      <main className={styles.homepage}>
+       <MainBanner />
+       <section className={styles.homepageSectionsBox}>
+         <Categories />
+         <div className={styles.lateralLong}>
+           <Sales />
+         </div>
+         <div className={styles.horizontalTop}>
+           <FetchingDataError />
+         </div>
+         <div className={styles.horizontalBottom}>
+           <ShopByCategories />
+         </div>
+       </section>
+      </main>
+     )
+  }
 }

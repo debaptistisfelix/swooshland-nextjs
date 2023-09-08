@@ -8,7 +8,20 @@ import NavSearchLoader from '@app/components/Navbar/NavbarSearch/NavSearchLoader
 import { Suspense } from "react"
 import FetchingDataError from '@app/components/Errors/FetchingDataError/FetchingDataError';
 
-export default async  function TrendingItems({promise}) {
+export default async  function TrendingItems({sneakers}) {
+  return (
+    <main className={`${styles.section} ${poppins.className}`}>
+        <h2 className={styles.title}>Trending Products</h2>
+        <section className={styles.list}>
+            {sneakers.length > 0  && sneakers.map((sneaker, index)=>{
+                return <ShopItemCard key={index} sneaker={sneaker}/>
+            })}
+        </section>
+    </main>
+  )
+} 
+
+/* export default async  function TrendingItems({promise}) {
   try {
     const sneakers = await promise
   return (
@@ -37,7 +50,7 @@ export default async  function TrendingItems({promise}) {
       </main>
     )
   }
-} 
+}  */
 
 /* export default async  function TrendingItems() {
  const [sneakers, setSneakers] = useState([])
