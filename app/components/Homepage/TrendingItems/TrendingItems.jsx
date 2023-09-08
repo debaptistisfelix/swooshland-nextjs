@@ -9,7 +9,8 @@ import { Suspense } from "react"
 import FetchingDataError from '@app/components/Errors/FetchingDataError/FetchingDataError';
 import getTrendingItems from '@app/libs/FetchingData/FetchingHomepage/fetchTrendingItems';
 
-/* export default async  function TrendingItems({sneakers}) {
+export default async  function TrendingItems({sneakers}) {
+  console.log("sneakers: ", sneakers)
   return (
     <main className={`${styles.section} ${poppins.className}`}>
         <h2 className={styles.title}>Trending Products</h2>
@@ -20,7 +21,7 @@ import getTrendingItems from '@app/libs/FetchingData/FetchingHomepage/fetchTrend
         </section>
     </main>
   )
-}  */
+} 
 
 /* export default async  function TrendingItems({promise}) {
   try {
@@ -53,7 +54,7 @@ import getTrendingItems from '@app/libs/FetchingData/FetchingHomepage/fetchTrend
   }
 }  */
 
-export default async  function TrendingItems() {
+/* export default async  function TrendingItems() {
  const [sneakers, setSneakers] = useState([])
  const [isLoading, setIsLoading] = useState(false)
  const [error, setError] = useState(true)
@@ -99,3 +100,4 @@ useEffect(() => {
 
   )
 } 
+ */

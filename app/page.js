@@ -9,7 +9,7 @@ import FetchingDataError from "./components/Errors/FetchingDataError/FetchingDat
 import { Suspense } from "react"
 
 export default async function page() {
-  return (
+/*   return (
     <main className={styles.homepage}>
     <MainBanner />
     <section className={styles.homepageSectionsBox}>
@@ -25,9 +25,11 @@ export default async function page() {
       </div>
     </section>
    </main>
-  )
-  /* try {
+  ) */
+  try {
     const trendingItems = await getTrendingItems()
+
+    console.log("trendingItems", trendingItems)
 
   return (
    <main className={styles.homepage}>
@@ -49,6 +51,7 @@ export default async function page() {
    </main>
   )
   } catch (error) {
+    console.log("error", error)
     return (
       <main className={styles.homepage}>
        <MainBanner />
@@ -66,5 +69,5 @@ export default async function page() {
        </section>
       </main>
      )
-  } */
+  }
 }
