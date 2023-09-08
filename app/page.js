@@ -16,11 +16,11 @@ export const metadata = {
 
 
 export default function Home() {
- /*  const trendingItems = getTrendingItems() */
+/*   const trendingItems = getTrendingItems() */
 
   return (
- /*   <main className={styles.homepage}>
-    <MainBanner />
+   <main className={styles.homepage}>
+   {/*  <MainBanner />
     <section className={styles.homepageSectionsBox}>
       <Categories />
       <div className={styles.lateralLong}>
@@ -32,7 +32,7 @@ export default function Home() {
       <div className={styles.horizontalBottom}>
         <ShopByCategories />
       </div>
-    </section> */
+    </section> */}
    </main>
   )
 }
