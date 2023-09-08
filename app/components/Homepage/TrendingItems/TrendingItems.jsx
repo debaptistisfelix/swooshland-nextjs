@@ -7,10 +7,8 @@ import { useState, useEffect } from 'react';
 import NavSearchLoader from '@app/components/Navbar/NavbarSearch/NavSearchLoader/NavSearchLoader';
 import { Suspense } from "react"
 import FetchingDataError from '@app/components/Errors/FetchingDataError/FetchingDataError';
-import getTrendingItems from '@app/libs/FetchingData/FetchingHomepage/fetchTrendingItems';
 
 export default async  function TrendingItems({promise}) {
-  console.log("fuuuuuck")
   try {
     const sneakers = await promise
   return (

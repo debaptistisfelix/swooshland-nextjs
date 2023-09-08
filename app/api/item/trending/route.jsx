@@ -4,7 +4,6 @@ export async function GET(request){
     try {
         const items = await prisma.item.findMany({});
         const trendingItems = items.slice(0, 6);
-        console.log("trending items", trendingItems)
         return new Response(JSON.stringify(trendingItems), {status: 200});
 
     } catch (error) {
