@@ -6,6 +6,7 @@ export default async function getTrendingItems() {
   console.log("TRENDING-response: ", response.status)
   console.log("TRENDING-response: ", response)
   console.log("TRENDING-responseOK: ", response.ok)
+  console.log("TRENDING-responseBody: ", response.body)
   if (!response.ok) {
     throw new Error("Error while fetching item");
   }

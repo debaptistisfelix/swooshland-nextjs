@@ -6,6 +6,7 @@ export default async function getItemsListData(tag){
     console.log("list data - response: ", response)
     console.log("list data - responseOK: ", response.ok)
     console.log("list data - responseStatus: ", response.status)
+    console.log("list data - responseBody: ", response.body)
     if(!response.ok){
       throw new Error("Error while requesting Sneakers from server")
     }

@@ -6,6 +6,7 @@ export default async function getItemData(id){
     console.log("Single item - response: ", response)
     console.log("Single item - responseOK: ", response.ok)
     console.log("Single item - responseStatus: ", response.status)
+    console.log("Single item - responseBody: ", response.body)
     if(!response.ok){
       throw new Error("Error while requesting Item from server")
     }

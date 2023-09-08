@@ -7,6 +7,7 @@ export default async function getItemRelated(id){
     console.log("Related fetch - response: ", response)
     console.log("Related fetch - responseOK: ", response.ok)
     console.log("Related fetch - responseStatus: ", response.status)
+    console.log("Related fetch - responseBody: ", response.body)
     if(!response.ok){
       throw new Error("Error while fetching item")
     }
