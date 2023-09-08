@@ -58,18 +58,26 @@ export default async  function TrendingItems() {
  const [isLoading, setIsLoading] = useState(false)
  const [error, setError] = useState(true)
 
-useEffect(() => {
+ const fetchTrendingItems = async () => {
   setIsLoading(true)
-  getTrendingItems().then((data)=>{
-    console.log(data)
-    setSneakers(data)
-    setIsLoading(false)
+  try {
+    const response = await fetch(`/api/item/trending`);
+    console.log("response: ", response)
+    const data = await response.json();
+    console.log("data: ", data)
     setError(false)
-  }).catch((error)=>{
-    console.log(error)
-    setError(true)
     setIsLoading(false)
-  })
+    setSneakers(data)
+  } catch (error) {
+    setIsLoading(false)
+    setError(true)
+    setSneakers([])
+    console.log("error: ", error)
+  }
+ }
+
+useEffect(() => {
+  fetchTrendingItems();
 },[])
 
 
