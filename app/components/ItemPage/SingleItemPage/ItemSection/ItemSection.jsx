@@ -13,8 +13,8 @@ import ThreeCirclesLoader from '@app/components/Reusables/ThreeCirclesLoader/Thr
 import { poppins } from '@app/fonts'
 
 
-export default async function ItemSection({promise, relatedPromise}) {
-    let item;
+export default async function ItemSection({item, relatedPromise}) {
+   /*  let item; */
    
     const [isLoading, setIsLoading] = useState({
       updatingReviews: false,
@@ -33,7 +33,7 @@ export default async function ItemSection({promise, relatedPromise}) {
       setCategory(item.tag)
     },[]);
 
-     item = await promise
+     /* item =  promise */
 
   
 

@@ -32,7 +32,7 @@ export async function generateMetadata({ params, searchParams }, parent) {
 
 
 
-export default async function page({ params: { id }, props }) {
+export default async function page({ params: { id } }) {
   try {
     const item = await getItemData(id)
     const relatedItems =  getItemRelated(id)
@@ -40,7 +40,7 @@ export default async function page({ params: { id }, props }) {
     return (
       <main className="pageLoaderContainer">
         <Suspense fallback={<ThreeCirclesLoader />}>
-          <ItemSection promise={item} relatedPromise={relatedItems} />
+          <ItemSection item={item} relatedPromise={relatedItems} />
         </Suspense>
       </main>
     )
