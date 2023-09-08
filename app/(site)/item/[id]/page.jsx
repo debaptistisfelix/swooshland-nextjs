@@ -1,5 +1,3 @@
-
-
 import ItemSection from '@app/components/ItemPage/SingleItemPage/ItemSection/ItemSection'
 import getItemData from '@app/libs/FetchingData/FetchingSinglItemData/FetchingSingleItem/fetchItem'
 import getItemRelated from '@app/libs/FetchingData/FetchingSinglItemData/fetchItemRelated'

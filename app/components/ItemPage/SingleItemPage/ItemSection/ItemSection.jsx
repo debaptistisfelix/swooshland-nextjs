@@ -14,7 +14,7 @@ import { poppins } from '@app/fonts'
 
 
 export default async function ItemSection({item, relatedPromise}) {
-   /*  let item; */
+
    
     const [isLoading, setIsLoading] = useState({
       updatingReviews: false,
@@ -33,7 +33,7 @@ export default async function ItemSection({item, relatedPromise}) {
       setCategory(item.tag)
     },[]);
 
-     /* item =  promise */
+    
 
   
 
