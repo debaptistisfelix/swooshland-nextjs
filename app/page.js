@@ -7,32 +7,24 @@ import Sales from "./components/Homepage/Sales/Sales"
 import getTrendingItems from "./libs/FetchingData/FetchingHomepage/fetchTrendingItems"
 
 
-export const metadata = {
-  title: 'Swooshland Customs - Homepage',
-  description: 'Custom Sneakers and Accessories',
-} 
-
-
-
-
-export default function Home() {
-/*   const trendingItems = getTrendingItems() */
+export default function page() {
+  const trendingItems = getTrendingItems()
 
   return (
    <main className={styles.homepage}>
-   {/*  <MainBanner />
+    <MainBanner />
     <section className={styles.homepageSectionsBox}>
       <Categories />
       <div className={styles.lateralLong}>
         <Sales />
       </div>
       <div className={styles.horizontalTop}>
-        <TrendingItems promise={trendingItems} /> 
+        
       </div>
       <div className={styles.horizontalBottom}>
         <ShopByCategories />
       </div>
-    </section> */}
+    </section>
    </main>
   )
 }

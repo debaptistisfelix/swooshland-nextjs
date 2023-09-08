@@ -10,7 +10,10 @@ import BugDetector from './components/BugDetector/BugDetector'
 
 const inter = Inter({ subsets: ['latin'] })
 
-
+export const metadata = {
+  title: 'Swooshland Customs - Homepage',
+  description: 'Custom Sneakers and Accessories',
+} 
 
 export default function RootLayout({ children }) {
   return (

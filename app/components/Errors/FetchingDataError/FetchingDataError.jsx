@@ -4,8 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCircleExclamation } from "@fortawesome/free-solid-svg-icons"
 import { poppins } from "@app/fonts"
 
-export default function FetchingDataError({error}) {
-  console.log("error:",error)
+export default function FetchingDataError() {
+
     const reset = () => window.location.reload()
   return (
     <main className={`errorContainer ${poppins.className}`}>
