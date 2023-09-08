@@ -41,7 +41,7 @@ export async function GET(request){
 
             console.log("items: ", items)
     
-            return new Response(items, {status: 200});
+            return new Response(JSON.stringify(items), {status: 200});
             /* return NextResponse.json({items}, {status: 200}); */
         }
 

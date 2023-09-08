@@ -3,6 +3,7 @@
 export default async function getTrendingItems() {
  const baseUrl =  `https://${process.env.VERCEL_URL}`  || `${process.env.BASE_URL}` 
   const response = await fetch(`${baseUrl}/api/item/trending`, {
+    cache: "no-store",
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',

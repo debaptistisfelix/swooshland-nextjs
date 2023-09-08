@@ -3,6 +3,7 @@
 export default async function getItemsListData(tag){
   const baseUrl =  `https://${process.env.VERCEL_URL}`  || `${process.env.BASE_URL}` 
     const response = await fetch(`${baseUrl}/api/item`, {
+      cache: "no-store",
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -13,7 +14,7 @@ export default async function getItemsListData(tag){
     console.log("list data - responseOK: ", response.ok)
     console.log("list data - responseStatus: ", response.status)
     console.log("list data - responseBody: ", response.body)
-    const responseBody = await response.json();
+    const responseBody = await response.text();
     console.log("list data - responseBodyJSON: ", responseBody)
     if(!response.ok){
       throw new Error("Error while requesting Sneakers from server")
