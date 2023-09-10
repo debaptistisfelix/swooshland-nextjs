@@ -41,10 +41,12 @@ flex-direction: column;
     min-height: 27%;
     border-radius: 8px;
     cursor: pointer;
+    background-color: var(--thin-grey);
 }
 
 .smallImg{
     border-radius: 8px;
+    opacity: 0;
 }
 
 .smallImg.active{
@@ -57,6 +59,7 @@ flex-direction: column;
     position: relative;
     border-radius: 8px;
     animation: moveDown 1s ease-in-out forwards;
+    background-color: var(--thin-grey);
 }
 @keyframes moveDown {
     0%{
@@ -77,7 +80,20 @@ flex-direction: column;
     border-radius: 8px;
     object-fit: cover;
     cursor: zoom-in;
+    opacity: 0;
 }
+
+.showImg{
+    animation: showImgAfterLoad 0.3s ease-in-out forwards;
+ }
+ 
+ @keyframes showImgAfterLoad {
+     0%{
+         opacity: 0;
+     } 100%{
+         opacity: 1;
+     }
+ }
 
 .discountTag{
     position: absolute;

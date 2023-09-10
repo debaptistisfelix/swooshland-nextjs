@@ -6,6 +6,7 @@ import { faX } from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react'
 import { useEffect, useRef } from 'react'
 import { poppins } from '@app/fonts'
+import ImageLoader from '@app/components/Reusables/ImageLoader/ImageLoader'
 
 export default function CartCard({cartItem, deleteCartItemFromCart}) {
     const [isDeleting, setIsDeleting] = useState(false)
@@ -42,7 +43,10 @@ export default function CartCard({cartItem, deleteCartItemFromCart}) {
   return (
    <main className={`${styles.card} ${poppins.className} `}>
     <section className={styles.imgBox}>
-        <Image className={styles.img} src={`/${item?.images[0]}`} alt="shoe" fill={true} />
+        <ImageLoader />
+        <Image
+         onLoadingComplete={(img)=>{img.classList.add(styles.showImg)}} 
+        className={styles.img} src={`/${item?.images[0]}`} alt="shoe" fill={true} />
         {item.onSale === true &&  <h3 className={styles.discountTag}>-{item.discountPercentage}%</h3>}
     </section>
    

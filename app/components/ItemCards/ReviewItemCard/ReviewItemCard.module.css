@@ -9,12 +9,29 @@
     width: 120px;
     height: 120px;
     border-radius: 8px;
+    background-color: var(--thin-grey);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .img{
     object-fit: cover;
     border-radius: 8px;
+    opacity: 0;
 }
+
+.showImg{
+    animation: showImgAfterLoad 0.3s ease-in-out forwards;
+ }
+ 
+ @keyframes showImgAfterLoad {
+     0%{
+         opacity: 0;
+     } 100%{
+         opacity: 1;
+     }
+ }
 
 .textBox{
     display: flex;

@@ -11,8 +11,11 @@
     position: relative;
     height: 250px;
     width: 100%;
-    
+    background-color: var(--thin-grey);
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .mobileImgBox{
@@ -29,7 +32,54 @@
 
 .img{
     object-fit: cover;;
+    opacity: 0;
 }
+
+.showImg{
+   animation: showImgAfterLoad 0.3s ease-in-out forwards;
+}
+
+@keyframes showImgAfterLoad {
+    0%{
+        opacity: 0;
+    } 100%{
+        opacity: 1;
+    }
+}
+
+.loaderBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    animation: shine 1s ease-in-out infinite;
+}
+
+.loaderIcon{
+    color: var(--light-grey);
+    width: 40px;
+    height: 40px;
+}
+
+.loaderText{
+    color: var(--light-grey);
+    font-size: 14px;
+ 
+}
+
+@keyframes shine {
+    0%{
+        opacity: 1;
+    }50%{
+        opacity: 0.3;
+    }100%{
+        opacity: 1;
+    }
+}
+    
+
 
 .discountTag{
     position: absolute;
@@ -60,7 +110,7 @@
    display: none;
    transition: all 0.3s ease-in-out;
    border-radius: 8px;
-   animation: shaderAppears 0.3s ease-in-out forwards;
+   animation: shaderAppears 0.5s ease-in-out forwards;
    z-index: 3;
 }
 
@@ -212,11 +262,48 @@
         position: relative;
         height: clamp(140px, 49.29vw + 0.12rem, 260px);
       height: clamp(120px, 42.15vw + 0.12rem, 250px);
-   
+      background-color: var(--thin-grey);
         width: 100%;
         display: block;
         cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
+
+   
+.mobileLoaderBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    animation: shine 1s ease-in-out infinite;
+    gap: 10px;
+}
+
+.mobileLoaderIcon{
+    color: var(--light-grey);
+    width: clamp(20px, 6.45vw + 0.12rem, 30px);
+    height: clamp(20px, 6.45vw + 0.12rem, 30px);
+}
+
+.mobileLoaderText{
+    color: var(--light-grey);
+    font-size: clamp(10px, 2.86vw + 0.12rem, 16px);
+ margin: 0;
+}
+
+@keyframes shine {
+    0%{
+        opacity: 1;
+    }50%{
+        opacity: 0.3;
+    }100%{
+        opacity: 1;
+    }
+}
 
     .imgBox:hover .shader{
         display: none;
@@ -287,10 +374,44 @@
         width: 100%;
         display: block;
         cursor: pointer;
+        background-color: var(--thin-grey);
     }
 
     .imgBox:hover .shader{
         display: none;
+    }
+
+    .mobileLoaderBox{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        flex-direction: column;
+        animation: shine 1s ease-in-out infinite;
+        gap: 10px;
+    }
+    
+    .mobileLoaderIcon{
+        color: var(--light-grey);
+        width: clamp(20px, 6.45vw + 0.12rem, 30px);
+        height: clamp(20px, 6.45vw + 0.12rem, 30px);
+    }
+    
+    .mobileLoaderText{
+        color: var(--light-grey);
+        font-size: clamp(10px, 2.86vw + 0.12rem, 16px);
+     margin: 0;
+    }
+    
+    @keyframes shine {
+        0%{
+            opacity: 1;
+        }50%{
+            opacity: 0.3;
+        }100%{
+            opacity: 1;
+        }
     }
 
     .textBox{

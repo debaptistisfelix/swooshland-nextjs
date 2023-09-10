@@ -22,12 +22,29 @@
       
        height:100px;
        border-radius: 8px;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       background-color: var(--thin-grey);
      
    }
    
    .img{
        border-radius: 8px;
+       opacity: 0;
    }
+
+   .showImg{
+    animation: showImgAfterLoad 0.3s ease-in-out forwards;
+ }
+ 
+ @keyframes showImgAfterLoad {
+     0%{
+         opacity: 0;
+     } 100%{
+         opacity: 1;
+     }
+ }
 
    .discountTag{
     position: absolute;

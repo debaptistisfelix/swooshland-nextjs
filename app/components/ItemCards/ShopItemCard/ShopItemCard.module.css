@@ -17,7 +17,10 @@
     width: 100%;
     height: 80%;
     border-radius: 8px;
-;
+    background-color: var(--thin-grey);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .mobileImgBox{
@@ -26,11 +29,59 @@
     width: 100%;
     height: 80%;
     border-radius: 8px;
+    background-color: var(--thin-grey);
 }
+
+.loaderBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    animation: shine 1s ease-in-out infinite;
+}
+
+.loaderIcon{
+    color: var(--light-grey);
+    width: 40px;
+    height: 40px;
+}
+
+.loaderText{
+    color: var(--light-grey);
+    font-size: 14px;
+ 
+}
+
+@keyframes shine {
+    0%{
+        opacity: 1;
+    }50%{
+        opacity: 0.3;
+    }100%{
+        opacity: 1;
+    }
+}
+
+
 
 .image{
     border-radius: 8px;
+    opacity: 0;
 }
+
+.showImg{
+    animation: showImgAfterLoad 0.3s ease-in-out forwards;
+ }
+ 
+ @keyframes showImgAfterLoad {
+     0%{
+         opacity: 0;
+     } 100%{
+         opacity: 1;
+     }
+ }
 
 .imgBox:hover .shader{
     display: flex;
@@ -222,13 +273,48 @@
         width: 100%;
         height: 75% ;
         display: block;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .imgBox:hover .shader{
         display: none;
     }
+   
+    
+.mobileLoaderBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    animation: shine 1s ease-in-out infinite;
+    gap: 10px;
+}
 
- 
+.mobileLoaderIcon{
+    color: var(--light-grey);
+    width: clamp(20px, 6.45vw + 0.12rem, 30px);
+    height: clamp(20px, 6.45vw + 0.12rem, 30px);
+}
+
+.mobileLoaderText{
+    color: var(--light-grey);
+    font-size: clamp(10px, 2.86vw + 0.12rem, 16px);
+ margin: 0;
+}
+
+@keyframes shine {
+    0%{
+        opacity: 1;
+    }50%{
+        opacity: 0.3;
+    }100%{
+        opacity: 1;
+    }
+}
 
     .discountTag{
         position: absolute;
@@ -293,12 +379,48 @@
         display: none;
     }
 
+
+
     .mobileImgBox{
         display: block;
         position: relative;
         width: 100%;
         height: 80%;
         border-radius: 8px;
+        background-color: var((--thin-grey));
+    }
+
+    .mobileLoaderBox{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        flex-direction: column;
+        animation: shine 1s ease-in-out infinite;
+        gap: 10px;
+    }
+    
+    .mobileLoaderIcon{
+        color: var(--light-grey);
+        width: clamp(20px, 6.45vw + 0.12rem, 30px);
+        height: clamp(20px, 6.45vw + 0.12rem, 30px);
+    }
+    
+    .mobileLoaderText{
+        color: var(--light-grey);
+        font-size: clamp(10px, 2.86vw + 0.12rem, 16px);
+     margin: 0;
+    }
+    
+    @keyframes shine {
+        0%{
+            opacity: 1;
+        }50%{
+            opacity: 0.3;
+        }100%{
+            opacity: 1;
+        }
     }
 
     .imgBox:hover .shader{

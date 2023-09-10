@@ -1,8 +1,8 @@
 import styles from './ListingShopCard.module.css'
 import Image from 'next/image'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStar, faStarHalf, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
-
+import { faStar, faStarHalf, faShoppingCart, faFileArrowDown } from '@fortawesome/free-solid-svg-icons'
+import ImageLoader from '@app/components/Reusables/ImageLoader/ImageLoader'
 import Link from 'next/link'
 
 export default function ListingShopCard({sneaker}) {
@@ -32,7 +32,8 @@ export default function ListingShopCard({sneaker}) {
   return (
     <main className={styles.card}>
         <div className={styles.imgBox}>
-            <Image className={styles.img} src={`/${sneaker.images[0]}`} fill={true} alt="sneaker-img"/>
+        <ImageLoader />
+            <Image loading="lazy"  onLoadingComplete={(img)=>{img.classList.add(styles.showImg)}}  className={styles.img} src={`/${sneaker.images[0]}`} fill={true} alt="sneaker-img"/>
            {sneaker.onSale === true &&  <h3 className={styles.discountTag}>-{sneaker.discountPercentage}%</h3>}
             <div  className={styles.shader}>
                     <Link className={`Link ${styles.shopLink}`} href={`/item/${sneaker.id}`}>Shop</Link>
@@ -40,7 +41,8 @@ export default function ListingShopCard({sneaker}) {
         </div>
         <div   className={styles.mobileImgBox}>
                 <Link className={`Link ${styles.mobileShopLink}`} href={`/item/${sneaker.id}`}>
-                <Image className={styles.image} src={`/${sneaker.images[0]}`} alt="shoe" fill={true}  />
+                <ImageLoader />
+                <Image   onLoadingComplete={(img)=>{img.classList.add(styles.showImg)}}   loading="lazy" className={styles.img} src={`/${sneaker.images[0]}`} alt="shoe" fill={true}  />
                 {sneaker.onSale === true &&  <h3 className={styles.discountTag}>-{sneaker.discountPercentage}%</h3>}
                 </Link>
                 

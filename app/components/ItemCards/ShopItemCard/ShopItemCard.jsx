@@ -4,9 +4,10 @@ import styles from './ShopItemCard.module.css';
 import { poppins } from '@app/fonts';
 import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar, faStarHalf, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { faStar, faStarHalf, faShoppingCart, faFileArrowDown } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import ImageLoader from '@app/components/Reusables/ImageLoader/ImageLoader';
 
 export default function ShopItemCard({sneaker}) {
   const [isClicked, setIsClicked] = useState(false);
@@ -53,7 +54,9 @@ export default function ShopItemCard({sneaker}) {
   return (
     <main className={`${styles.section} ${poppins.className}`}>
             <div   className={styles.imgBox}>
+           <ImageLoader />
                 <Image 
+               onLoadingComplete={(img)=>{img.classList.add(styles.showImg)}} 
                 sizes="100vw"
                 srcset="
                   /_next/image?url=%2Flust1.jpg&w=640&q=75 640w,
@@ -74,7 +77,9 @@ export default function ShopItemCard({sneaker}) {
             </div>
            <div   className={styles.mobileImgBox}>
                 <Link className={`Link ${styles.mobileShopLink}`} href={`/item/${sneaker.id}`}>
+                <ImageLoader />
                 <Image
+                onLoadingComplete={(img)=>{img.classList.add(styles.showImg)}} 
                 sizes="100vw"
                 srcset="
                   /_next/image?url=%2Flust1.jpg&w=640&q=75 640w,

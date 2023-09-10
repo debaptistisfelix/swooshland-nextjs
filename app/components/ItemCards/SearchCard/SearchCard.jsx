@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faStarHalf } from '@fortawesome/free-solid-svg-icons';
 import Image from 'next/image';
 import Link from 'next/link';
+import ImageLoader from '@app/components/Reusables/ImageLoader/ImageLoader';
 
 export default function SearchCard({item, closeSearchBox}) {
     const GiveStars = (rating) => {
@@ -33,7 +34,10 @@ export default function SearchCard({item, closeSearchBox}) {
     <main className={`${styles.card} ${poppins.className}`}>
        <Link onClick={closeSearchBox} className={`Link ${styles.linkContainer}`} href={`/item/${id}`}>
        <section className={styles.imgBox}>
-            <Image className={styles.img} src={`/${images[0]}`} fill={true} alt="sneaker" />
+        <ImageLoader />
+            <Image
+              onLoadingComplete={(img)=>{img.classList.add(styles.showImg)}} 
+            className={styles.img} src={`/${images[0]}`} fill={true} alt="sneaker" />
             {onSale === true &&  <h3 className={styles.discountTag}>-{discountPercentage}%</h3>}
         </section>
         <section className={styles.textBox}>

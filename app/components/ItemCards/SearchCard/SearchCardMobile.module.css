@@ -22,12 +22,29 @@ width: 100%;
    
     height: clamp(80px, 27.89vw + 0.12rem, 120px);
     border-radius: 8px;
+    background-color: var(--thin-grey);
+    display: flex;
+    justify-content: center;
+    align-items: center;
   
 }
 
 .img{
     border-radius: 8px;
+    opacity: 0;
 }
+
+.showImg{
+    animation: showImgAfterLoad 0.3s ease-in-out forwards;
+ }
+ 
+ @keyframes showImgAfterLoad {
+     0%{
+         opacity: 0;
+     } 100%{
+         opacity: 1;
+     }
+ }
 
 .discountTag{
     position: absolute;

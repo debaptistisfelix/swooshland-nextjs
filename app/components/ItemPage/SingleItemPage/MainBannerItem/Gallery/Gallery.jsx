@@ -6,7 +6,7 @@ import Image from 'next/image'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faX, faMagnifyingGlassPlus, faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons'
 import { v4 as uuidv4 } from 'uuid';
-import ImageLoader from '@app/components/ItemPage/SingleItemPage/MainBannerItem/Gallery/ImageLoader/ImageLoader'
+import ImageLoader from '@app/components/Reusables/ImageLoader/ImageLoader'
 import ThreeCirclesLoader from '@app/components/Reusables/ThreeCirclesLoader/ThreeCirclesLoader'
 
 
@@ -63,8 +63,9 @@ export default function Gallery({item }) {
     {item && item.images.length > 1 && <section className={styles.smallImagesBox}>
         {item !== null && item?.images.map((img, i) =>{
           return <div className={styles.smallImgBox} key={uuidv4()}>
+            <ImageLoader />
            <Image
-         
+          onLoadingComplete={(img)=>{img.classList.add(styles.showImg)}} 
             onClick={() => setAsMainImage(img, i)}
             className={`${styles.smallImg} ${mainImage === img && styles.active}`} alt="small-image" fill={true} src={`/${img}`} />
           </div>
@@ -72,10 +73,10 @@ export default function Gallery({item }) {
     </section>}
     <section className={`${styles.mainImageBox} ${item?.images.length === 1 && styles.oneImageMainImageBox}`}>
     <FontAwesomeIcon  onClick={() => setZommedImg(true)} className={styles.zoomIcon} icon={faMagnifyingGlassPlus} />
+    <ImageLoader />
         <Image
-     /*    placeholder="blur"
-        blurDataURL="/loading-image.png" */
-        
+      onLoadingComplete={(img)=>{img.classList.add(styles.showImg)}} 
+        priority={true}
          onClick={() => setZommedImg(true)}
         className={styles.mainImg} alt="main-image" fill={true} src={`/${mainImage}`} />
        {item && item.onSale === true &&  <div className={styles.discountTag}>-{item.discountPercentage}%</div>}

@@ -7,6 +7,7 @@ import { faStar, faStarHalf, faCartShopping, faTrash, faX } from '@fortawesome/f
 import { useEffect, useState, useRef } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import ImageLoader from '@app/components/Reusables/ImageLoader/ImageLoader'
 
 export default function NoSizeCArd({fav, removeFromFavorites}) {
     const [showDeletModal, setShowDeleteModal] = useState(false)
@@ -82,7 +83,10 @@ export default function NoSizeCArd({fav, removeFromFavorites}) {
    <>
     <main  className={styles.card}>
         <div className={styles.imageBox}>
-            <Image className={styles.image} src={`/${item.images[0]}`} alt="jordan-1-rogue" fill={true}  />
+            <ImageLoader /> 
+            <Image
+              onLoadingComplete={(img)=>{img.classList.add(styles.showImg)}} 
+            className={styles.image} src={`/${item.images[0]}`} alt="jordan-1-rogue" fill={true}  />
             {item.onSale === true &&  <h3 className={styles.discountTag}>-{item.discountPercentage}%</h3>}
           <div className={styles.shade}>
                 <div  className={`${styles.button} ${styles.shopBtn}`}>
@@ -148,7 +152,11 @@ export default function NoSizeCArd({fav, removeFromFavorites}) {
     }}
     className={` Link ${styles.mobileCard}`}>
         <div className={styles.imageBox}>
-            <Image ref={imageRef} className={styles.image} src={`/${item.images[0]}`} alt="jordan-1-rogue" fill={true}  />
+            <ImageLoader />
+            
+            <Image
+              onLoadingComplete={(img)=>{img.classList.add(styles.showImg)}} 
+             ref={imageRef} className={styles.image} src={`/${item.images[0]}`} alt="jordan-1-rogue" fill={true}  />
             {item.onSale === true &&  <h3 className={styles.discountTag}>-{item.discountPercentage}%</h3>}
           
             <FontAwesomeIcon
