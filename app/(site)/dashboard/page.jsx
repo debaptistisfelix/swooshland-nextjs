@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Link from 'next/link'
 import { faEnvelope, faTruck, faHeart, faList } from '@fortawesome/free-solid-svg-icons'
+import BannerImg from "@/public/banner-images/fabioPoster.jpg"
 
 export const metadata = {
     title: 'Dahsboard - Swooshland Customs',
@@ -24,7 +25,7 @@ export default function Dashboard() {
             priority={true}
             sizes="(min-width: 1040px) calc(83.42vw - 173px), (min-width: 620px) calc(82.5vw - 104px), 100vw"
             style={{objectFit: "cover"}}
-            className={styles.image} src="/banner-images/fabioPoster.jpg" fill="true" alt="poster-with-model" />
+            className={styles.image} src={BannerImg} placeholder='blur' fill="true" alt="poster-with-model" />
         </div>
         <p className={styles.parag}>
 

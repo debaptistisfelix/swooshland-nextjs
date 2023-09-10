@@ -2,6 +2,7 @@ import styles from './page.module.css'
 import Image from 'next/image'
 import { poppins } from '@app/fonts'
 import NewsletterSection from '@app/components/Dashboard/NewsletterPage/NewsletterSection/NewsletterSection'
+import BannerImage from "@/public/banner-images/fabiPoster.jpg"
 
 export const metadata = {
   title: 'Dahsboard - Newsletter',
@@ -21,7 +22,7 @@ export default function NewsletterPage() {
             priority={true}
             sizes="(min-width: 1040px) calc(83.42vw - 173px), (min-width: 620px) calc(82.5vw - 104px), 100vw"
             style={{objectFit: "cover"}}
-            className={styles.image} src="/banner-images/fabiPoster.jpg" fill="true" alt="poster-with-model" />
+            className={styles.image} src={BannerImage} placeholder='blur' fill="true" alt="poster-with-model" />
         </div>
         <NewsletterSection />
     </main>
