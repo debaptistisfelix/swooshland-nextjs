@@ -166,6 +166,7 @@ flex-direction: column;
     display: none;
 }
 
+
 .galleryCount{
     position: absolute;
     bottom: -8%;
@@ -174,6 +175,11 @@ flex-direction: column;
     color: var(--white-pure);
     letter-spacing: 4px;
     font-size: 14px;
+}
+
+.mobileGalleryCount{
+      
+   display: none;
 }
 
 @media (max-width:600px){
