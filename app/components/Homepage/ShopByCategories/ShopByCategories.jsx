@@ -1,6 +1,7 @@
 import styles from './ShopByCategories.module.css';
 import Link from 'next/link';
 import { poppins } from '@app/fonts';
+import Image from 'next/image';
 
 export default function ShopByCategories() {
   return (
@@ -9,7 +10,10 @@ export default function ShopByCategories() {
        <section className={styles.categBox}>
 
        <div className={styles.boxContainer}>
-        <div className={`${styles.box} ${styles.sneakerBox}`}>
+        <div className={`${styles.box}`}>
+            <Image className={styles.sneakerImage}
+            	style={{objectFit: "cover"}}
+            src="/banner-images/lallaPoster.jpg" fill={true} loading='lazy' alt="sneakers-graphic" />
             <div className={styles.shader}>
                 <div className={styles.text}>
                     <h3 className={styles.categTitle}>
@@ -24,7 +28,10 @@ export default function ShopByCategories() {
        </div>
 
        <Link href="/sneakers" className={`Link ${styles.mobileBoxContainer}`}>
-        <div className={`${styles.box} ${styles.sneakerBox}`}>
+        <div className={`${styles.box}`}>
+        <Image className={styles.sneakerImage}
+            	style={{objectFit: "cover"}}
+            src="/banner-images/lallaPoster.jpg" fill={true} loading='lazy' alt="sneakers-graphic" />
          </div>
          <h3 className={styles.mobileCategTitle}>
                         Sneakers
@@ -34,7 +41,10 @@ export default function ShopByCategories() {
       
        
        <div className={styles.boxContainer}>
-            <div className={`${styles.box} ${styles.accessoriesBox}`}>
+            <div className={`${styles.box} `}>
+            <Image className={styles.accessoriesImage}
+            	style={{objectFit: "cover"}}
+            src="/wallets.jpg" fill={true} loading='lazy' alt="sneakers-graphic" />
             <div className={styles.shader}>
                 <div className={styles.text}>
                     <h3 className={styles.categTitle}>
@@ -49,7 +59,10 @@ export default function ShopByCategories() {
        </div>
 
        <Link href="/accessories" className={`Link ${styles.mobileBoxContainer}`}>
-        <div className={`${styles.box} ${styles.accessoriesBox}`}>
+        <div className={`${styles.box}`}>
+        <Image className={styles.accessoriesImage}
+            	style={{objectFit: "cover"}}
+            src="/wallets.jpg" fill={true} loading='lazy' alt="sneakers-graphic" />
          </div>
          <h3 className={styles.mobileCategTitle}>
                         Accessories

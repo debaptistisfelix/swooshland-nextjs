@@ -2,13 +2,26 @@ import styles from './MainBanner.module.css';
 import Image from 'next/image';
 import { montserrat } from '@app/fonts';
 import Link from 'next/link';
+import JordanImage from '@/public/lustRogue.png';
 
 export default function MainBanner() {
   return (
    <main className={`${styles.banner} ${montserrat.className}`}>
       
       <div className={styles.imgBox}>
-        <Image priority={true} src="/lustRogue.png" alt="jordan-1-mid-rogue" fill={true} style={{objectFit: "contain"}}  />
+        <Image
+        sizes="100vw"
+        srcset="
+          /_next/image?url=%2F_next%2Fstatic%2Fmedia%2FlustRogue.3ce4afbd.png&w=640&q=75 640w,
+          /_next/image?url=%2F_next%2Fstatic%2Fmedia%2FlustRogue.3ce4afbd.png&w=750&q=75 750w,
+          /_next/image?url=%2F_next%2Fstatic%2Fmedia%2FlustRogue.3ce4afbd.png&w=828&q=75 828w,
+          /_next/image?url=%2F_next%2Fstatic%2Fmedia%2FlustRogue.3ce4afbd.png&w=1080&q=75 1080w,
+          /_next/image?url=%2F_next%2Fstatic%2Fmedia%2FlustRogue.3ce4afbd.png&w=1200&q=75 1200w,
+          /_next/image?url=%2F_next%2Fstatic%2Fmedia%2FlustRogue.3ce4afbd.png&w=1920&q=75 1920w,
+          /_next/image?url=%2F_next%2Fstatic%2Fmedia%2FlustRogue.3ce4afbd.png&w=2048&q=75 2048w,
+          /_next/image?url=%2F_next%2Fstatic%2Fmedia%2FlustRogue.3ce4afbd.png&w=3840&q=75 3840w
+        "
+        priority={true} src={JordanImage}  alt="jordan-1-mid-rogue" fill={true} style={{objectFit: "contain"}}  />
       
         
       </div>

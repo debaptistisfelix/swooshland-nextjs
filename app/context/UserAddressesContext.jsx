@@ -9,7 +9,7 @@ export const UserAddressesContext = createContext();
 
 export default function UserAddressesContextProvider({ children }) {
     /* AddressListing State Variables */
-    const [showFormToAddAddress, setShowFormToAddAddress] = useState(true)
+    const [showFormToAddAddress, setShowFormToAddAddress] = useState(false)
     const [addresses, setAddresses] = useState([]);
     const [defaultAddress, setDefaultAddress] = useState(null)
     const [checkoutAddress, setCheckoutAddress] = useState(null)

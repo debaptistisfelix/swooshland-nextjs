@@ -31,7 +31,7 @@ export async function POST(request){
             }
         })
 
-        const resetUrl = `http://localhost:3000/resetPassword/${token}` ;
+        const resetUrl = `https://${process.env.VERCEL_URL}/resetPassword/${token}` ;
 
         await sendPasswordForgotEmail(email, user.name, resetUrl);
 

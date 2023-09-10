@@ -13,24 +13,24 @@ export default function Categories() {
        
         {
             name: 'Puma',
-            logo: "/puma-logo.png",
+            logo: "puma-logo.png",
         },
         {
             name: 'Nike',
-            logo: "/nike-logo.png",
+            logo: "nike-logo.png",
 
         },
         {
             name: 'Adidas',
-            logo: "/adidaslogo.png",
+            logo: "adidaslogo.png",
         },
         {
             name:"Jordan",
-            logo: "/jordan-logo.png",
+            logo: "jordan-logo.png",
         },
         {
             name: 'Fila',
-            logo: "/fila-logo.png",
+            logo: "fila-logo.png",
         }
     ]
 
