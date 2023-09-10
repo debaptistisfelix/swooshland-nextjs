@@ -37,7 +37,19 @@ export default function AccessoriesSection({accessories}) {
         
    </section>
         <div className={styles.banner}>
-            <Image alt="nikeaf1" fill="true" className={styles.image} src="/walletSu.jpg" />
+
+            <Image priority={true}
+            srcset="
+            /_next/image?url=%2FwalletSu.jpg&w=640&q=75 640w,
+            /_next/image?url=%2FwalletSu.jpg&w=750&q=75 750w,
+            /_next/image?url=%2FwalletSu.jpg&w=828&q=75 828w,
+            /_next/image?url=%2FwalletSu.jpg&w=1080&q=75 1080w,
+            /_next/image?url=%2FwalletSu.jpg&w=1200&q=75 1200w,
+            /_next/image?url=%2FwalletSu.jpg&w=1920&q=75 1920w,
+            /_next/image?url=%2FwalletSu.jpg&w=2048&q=75 2048w,
+            /_next/image?url=%2FwalletSu.jpg&w=3840&q=75 3840w
+          "
+            sizes="(min-width: 620px) 90vw, 100vw" alt="nikeaf1" fill="true" className={styles.image} src="/walletSu.jpg" />
             <div className={styles.shader}>
                 <div className={styles.text}>
                     <h1 className={styles.title}>Complete your Unique Style</h1>
