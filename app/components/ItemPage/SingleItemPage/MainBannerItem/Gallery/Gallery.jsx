@@ -6,13 +6,18 @@ import Image from 'next/image'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faX, faMagnifyingGlassPlus } from '@fortawesome/free-solid-svg-icons'
 import { v4 as uuidv4 } from 'uuid';
+import ImageLoader from '@app/components/ItemPage/SingleItemPage/MainBannerItem/Gallery/ImageLoader/ImageLoader'
 import ThreeCirclesLoader from '@app/components/Reusables/ThreeCirclesLoader/ThreeCirclesLoader'
+
 
 export default function Gallery({item }) {
   const [mainImage, setMainImage] = useState(null)
   const [zommedImg, setZommedImg] = useState(false)
+ 
   
   const refElement = useRef(null);
+
+ 
  
 
   useEffect(() => {
@@ -41,15 +46,15 @@ export default function Gallery({item }) {
   const setAsMainImage = (img) => {
     setMainImage(img)
   }
+  
   return (
    <>
     <section className={`${styles.galleryBox} ${item?.images?.length === 1 && styles.oneImageGalleryBox}`}>
     {item && item.images.length > 1 && <section className={styles.smallImagesBox}>
         {item !== null && item?.images.map((img, i) =>{
           return <div className={styles.smallImgBox} key={uuidv4()}>
-            <Image
-            placeholder="blur"
-            blurDataURL="/loading-image.png"
+           <Image
+         
             onClick={() => setAsMainImage(img)}
             className={`${styles.smallImg} ${mainImage === img && styles.active}`} alt="small-image" fill={true} src={`/${img}`} />
           </div>
@@ -58,8 +63,8 @@ export default function Gallery({item }) {
     <section className={`${styles.mainImageBox} ${item?.images.length === 1 && styles.oneImageMainImageBox}`}>
     <FontAwesomeIcon  onClick={() => setZommedImg(true)} className={styles.zoomIcon} icon={faMagnifyingGlassPlus} />
         <Image
-        placeholder="blur"
-        blurDataURL="/loading-image.png"
+     /*    placeholder="blur"
+        blurDataURL="/loading-image.png" */
         ref={refElement}
          onClick={() => setZommedImg(true)}
         className={styles.mainImg} alt="main-image" fill={true} src={`/${mainImage}`} />

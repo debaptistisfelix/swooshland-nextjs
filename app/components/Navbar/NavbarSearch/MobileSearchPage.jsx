@@ -33,9 +33,9 @@ export default function MobileSearchPage({closeSearchBox, isSearchOpen}) {
       document.body.style.overflowY = 'visible';
     }
 
-    if(isSearchOpen === true){
+   /*  if(isSearchOpen === true){
       inputRef.current.focus();
-    }
+    } */
 
     if(searchQuery === ""){
       setSearchResultsCount(null);

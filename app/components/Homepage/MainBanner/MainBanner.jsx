@@ -8,13 +8,15 @@ export default function MainBanner() {
    <main className={`${styles.banner} ${montserrat.className}`}>
       
       <div className={styles.imgBox}>
-        <Image src="/lustRogue.png" alt="jordan-1-mid-rogue" fill={true} style={{objectFit: "contain"}}  />
+        <Image priority={true} src="/lustRogue.png" alt="jordan-1-mid-rogue" fill={true} style={{objectFit: "contain"}}  />
       
         
       </div>
       <div className={styles.mobileParagBox}>
         <p className={`${styles.parag} ${styles.mobileParag}`}>"A scarlett Rock&Roll soul that makes anyone fall in love at first sight."</p>
-        <button className={`${styles.rogueBtn} ${styles.mobileRogueBtn}`}>Shop</button>
+        <button className={`${styles.rogueBtn} ${styles.mobileRogueBtn}`}>
+        <Link className={`Link ${styles.link}`} href="/item/64d4f2a72862dff874b44775">Shop</Link>
+        </button>
         </div>
       <div className={styles.textBox}>
         <div className={styles.brandBox}>
