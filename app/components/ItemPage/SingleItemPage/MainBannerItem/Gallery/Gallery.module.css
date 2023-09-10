@@ -345,7 +345,7 @@ flex-direction: column;
     }
 
     .mobileGalleryCount{
-      
+        display: block;
         color: var(--white-pure);
         letter-spacing: 4px;
         font-size: 14px;

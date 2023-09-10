@@ -22,13 +22,14 @@ model User {
   updatedAt      DateTime  @updatedAt
   newsLetterSub  Boolean   @default(false)
   role           Role      @default(USER)
+   emailVerified  DateTime?
   passwordChangedAt DateTime?
   passwordResetToken String?
   passwordResetExpires DateTime?
-  addresses Address[]
+  addresses Address[] 
   reviews Review[]
   accounts Account[]
-  wishlistItems WishListItem[]
+  wishlistItems WishListItem[] 
   cartItems CartItem[]
   orders Order[]
 }
