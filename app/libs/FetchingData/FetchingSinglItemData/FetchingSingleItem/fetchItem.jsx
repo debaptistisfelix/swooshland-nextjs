@@ -2,7 +2,7 @@
 
 export default async function getItemData(id){
   const baseUrl =  `https://${process.env.VERCEL_URL}`  || `${process.env.BASE_URL}` 
-/*  const baseUrl = `${process.env.BASE_URL}` */
+ /* const baseUrl = `${process.env.BASE_URL}` */
     const response = await fetch(`${baseUrl}/api/item/${id}`,{
       cache: "no-store",
       method: 'GET',

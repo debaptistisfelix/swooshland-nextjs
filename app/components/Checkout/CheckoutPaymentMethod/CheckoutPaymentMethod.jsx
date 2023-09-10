@@ -78,7 +78,8 @@ export default function CheckoutPaymentMethod() {
   }, [itemsAvailabilityWasChecked, cartItems]) 
 
    
-console.log("ordersInfo:",orderInfos)
+/* console.log("ordersInfo:",orderInfos)
+console.log("cartItems:",cartItems) */
 
 
     const toggleCheckBox = ()=>{

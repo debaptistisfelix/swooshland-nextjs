@@ -171,13 +171,14 @@ export default function OrderCompleted() {
                 <h2 className={styles.detailLabel}>Products details:</h2>
                 <div className={styles.productsInfo}>
                   {order && order?.boughtItems?.map(product => {
+                    console.log(product)
                     return  <div key={uuidv4()} className={styles.itemBox}>
                     <h2 className={styles.detailInfo}>{product?.item?.model}</h2>
                     <h2 className={styles.detailInfo}>{product?.item?.name}</h2>
                     <h2 className={styles.detailInfo}>${
                       product?.item?.discountPercentage !== 0 ? (product?.item?.price - (product?.item?.price * (product?.item?.discountPercentage / 100))).toFixed(2) : product?.item?.price.toFixed(2)
                     }</h2>
-                    <h2 className={styles.detailInfo}>EU {product?.size}</h2>
+                    <h2 className={styles.detailInfo}>{product?.size !== 0 ? `EU ${product?.size}` : "OS"}</h2>
                     <h2 className={styles.detailInfo}>{product?.item?.gender === "Men" ? "MNS" : "WMNS"}</h2>
                 </div>
                   })}

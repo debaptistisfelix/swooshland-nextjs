@@ -6,7 +6,6 @@ import { authOptions } from "@app/api/auth/[...nextauth]/route"
 //Get all the cart items for a user
 export async function GET(request){
     const session = await getServerSession(authOptions);
-    console.log("session:", session)
     if(!session){
         try{
             const cartItems = await prisma.cartItem.findMany({
@@ -18,6 +17,8 @@ export async function GET(request){
                     availableSize: true
                 }
             })
+
+            
     
             return new Response(JSON.stringify(cartItems), {status: 200});
         }

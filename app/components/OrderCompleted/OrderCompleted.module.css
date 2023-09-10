@@ -84,6 +84,7 @@
     .card{
         width: 95%;
         margin-bottom: unset;
+        margin-top: 30px;
     }
 
     .title{
@@ -106,6 +107,11 @@
 
     .detailLabel, .detailInfo{
         font-size: clamp(14px, 4vw + 0.12rem, 16px);
+    }
+
+    .shippingInfo{
+        
+        min-width: 60%
     }
 }
 
