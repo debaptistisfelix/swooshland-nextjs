@@ -10,17 +10,7 @@ export default function MainBanner() {
       
       <div className={styles.imgBox}>
         <Image
-        sizes="100vw"
-        srcset="
-          /_next/image?url=%2F_next%2Fstatic%2Fmedia%2FlustRogue.3ce4afbd.png&w=640&q=75 640w,
-          /_next/image?url=%2F_next%2Fstatic%2Fmedia%2FlustRogue.3ce4afbd.png&w=750&q=75 750w,
-          /_next/image?url=%2F_next%2Fstatic%2Fmedia%2FlustRogue.3ce4afbd.png&w=828&q=75 828w,
-          /_next/image?url=%2F_next%2Fstatic%2Fmedia%2FlustRogue.3ce4afbd.png&w=1080&q=75 1080w,
-          /_next/image?url=%2F_next%2Fstatic%2Fmedia%2FlustRogue.3ce4afbd.png&w=1200&q=75 1200w,
-          /_next/image?url=%2F_next%2Fstatic%2Fmedia%2FlustRogue.3ce4afbd.png&w=1920&q=75 1920w,
-          /_next/image?url=%2F_next%2Fstatic%2Fmedia%2FlustRogue.3ce4afbd.png&w=2048&q=75 2048w,
-          /_next/image?url=%2F_next%2Fstatic%2Fmedia%2FlustRogue.3ce4afbd.png&w=3840&q=75 3840w
-        "
+        sizes="(min-width: 1040px) 48.01vw, (min-width: 660px) 54.17vw, (min-width: 400px) 357px, calc(62.5vw + 113px)" 
         priority={true} src={JordanImage}  alt="jordan-1-mid-rogue" fill={true} style={{objectFit: "contain"}}  />
       
         

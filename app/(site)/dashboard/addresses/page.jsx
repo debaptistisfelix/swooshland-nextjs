@@ -20,6 +20,8 @@ export default function Addresses() {
                 <p className={styles.bannerSubtitle}>Conveniently Manage Your Shipping Addresses</p>
             </div>
             <Image
+              priority={true}
+              sizes="(min-width: 1040px) calc(83.42vw - 173px), (min-width: 620px) calc(82.5vw - 104px), 100vw"
             style={{objectFit: "cover"}}
             className={styles.image} src="/banner-images/lallaPoster.jpg" fill="true" alt="poster-with-model" />
         </div>

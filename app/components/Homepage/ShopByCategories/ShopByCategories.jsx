@@ -12,6 +12,7 @@ export default function ShopByCategories() {
        <div className={styles.boxContainer}>
         <div className={`${styles.box}`}>
             <Image className={styles.sneakerImage}
+            sizes="28.78vw"
             	style={{objectFit: "cover"}}
             src="/banner-images/lallaPoster.jpg" fill={true} loading='lazy' alt="sneakers-graphic" />
             <div className={styles.shader}>
@@ -30,6 +31,7 @@ export default function ShopByCategories() {
        <Link href="/sneakers" className={`Link ${styles.mobileBoxContainer}`}>
         <div className={`${styles.box}`}>
         <Image className={styles.sneakerImage}
+        sizes="45.67vw"
             	style={{objectFit: "cover"}}
             src="/banner-images/lallaPoster.jpg" fill={true} loading='lazy' alt="sneakers-graphic" />
          </div>
@@ -44,6 +46,7 @@ export default function ShopByCategories() {
             <div className={`${styles.box} `}>
             <Image className={styles.accessoriesImage}
             	style={{objectFit: "cover"}}
+                sizes="28.78vw"
             src="/wallets.jpg" fill={true} loading='lazy' alt="sneakers-graphic" />
             <div className={styles.shader}>
                 <div className={styles.text}>
@@ -62,6 +65,7 @@ export default function ShopByCategories() {
         <div className={`${styles.box}`}>
         <Image className={styles.accessoriesImage}
             	style={{objectFit: "cover"}}
+                sizes="45.67vw"
             src="/wallets.jpg" fill={true} loading='lazy' alt="sneakers-graphic" />
          </div>
          <h3 className={styles.mobileCategTitle}>

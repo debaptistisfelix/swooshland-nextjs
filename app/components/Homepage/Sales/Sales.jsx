@@ -19,8 +19,9 @@ export default function Sales() {
       oldPrice: '$289.90',
       newPrice: '$202.93',
      url: "/item/64f4c91ac1af1593c3f0325c",
-     srcSet:"/_next/image?url=%2Forange5.jpg&w=640&q=75 640w, /_next/image?url=%2Forange5.jpg&w=750&q=75 750w,    /_next/image?url=%2Forange5.jpg&w=828&q=75 828w,     /_next/image?url=%2Forange5.jpg&w=1080&q=75 1080w,     /_next/image?url=%2Forange5.jpg&w=1200&q=75 1200w,     /_next/image?url=%2Forange5.jpg&w=1920&q=75 1920w,     /_next/image?url=%2Forange5.jpg&w=2048&q=75 2048w,     /_next/image?url=%2Forange5.jpg&w=3840&q=75 3840w",
-     mobileSrcSet:"/_next/image?url=%2Forange5.jpg&w=640&q=75 640w,     /_next/image?url=%2Forange5.jpg&w=750&q=75 750w,     /_next/image?url=%2Forange5.jpg&w=828&q=75 828w,     /_next/image?url=%2Forange5.jpg&w=1080&q=75 1080w,     /_next/image?url=%2Forange5.jpg&w=1200&q=75 1200w,     /_next/image?url=%2Forange5.jpg&w=1920&q=75 1920w,     /_next/image?url=%2Forange5.jpg&w=2048&q=75 2048w,     /_next/image?url=%2Forange5.jpg&w=3840&q=75 3840w"
+     sizes:"23.99vw",
+     mobileSizes:""
+     
     },
     {
       title: 'Wallet Naruto',
@@ -29,8 +30,9 @@ export default function Sales() {
       oldPrice: '$69.90',
       newPrice: '$48.93',
       url:"/item/64d757f6255966da41acf53b",
-      srcSet:"/_next/image?url=%2FwalletSteso.jpg&w=640&q=75 640w,      /_next/image?url=%2FwalletSteso.jpg&w=750&q=75 750w,      /_next/image?url=%2FwalletSteso.jpg&w=828&q=75 828w,      /_next/image?url=%2FwalletSteso.jpg&w=1080&q=75 1080w,      /_next/image?url=%2FwalletSteso.jpg&w=1200&q=75 1200w,      /_next/image?url=%2FwalletSteso.jpg&w=1920&q=75 1920w,      /_next/image?url=%2FwalletSteso.jpg&w=2048&q=75 2048w,      /_next/image?url=%2FwalletSteso.jpg&w=3840&q=75 3840w",
-      mobileSrcSet:"/_next/image?url=%2FwalletSteso.jpg&w=640&q=75 640w,      /_next/image?url=%2FwalletSteso.jpg&w=750&q=75 750w,      /_next/image?url=%2FwalletSteso.jpg&w=828&q=75 828w,      /_next/image?url=%2FwalletSteso.jpg&w=1080&q=75 1080w,      /_next/image?url=%2FwalletSteso.jpg&w=1200&q=75 1200w,      /_next/image?url=%2FwalletSteso.jpg&w=1920&q=75 1920w,      /_next/image?url=%2FwalletSteso.jpg&w=2048&q=75 2048w,      /_next/image?url=%2FwalletSteso.jpg&w=3840&q=75 3840w"    },
+      sizes:"23.99vw",
+     mobileSizes:""
+    }
   ]
 
   const [isLoading, setIsLoading] = useState(false);
