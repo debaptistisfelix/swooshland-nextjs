@@ -22,7 +22,7 @@ model User {
   updatedAt      DateTime  @updatedAt
   newsLetterSub  Boolean   @default(false)
   role           Role      @default(USER)
-   emailVerified  DateTime?
+  emailVerified  DateTime?
   passwordChangedAt DateTime?
   passwordResetToken String?
   passwordResetExpires DateTime?
