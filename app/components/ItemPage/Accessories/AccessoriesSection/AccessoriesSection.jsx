@@ -9,7 +9,7 @@ import { faSliders } from '@fortawesome/free-solid-svg-icons'
 import { poppins } from '@app/fonts'
 import AccessoriesContextProvider from '@app/context/AccessoriesContext'
 import AccessoriesListing from '@app/components/ItemPage/Accessories/AccessoriesListing/AccessoriesListing'
-
+import AccessoriesBanner from '@/public/walletSu.jpg';
 
 export default function AccessoriesSection({accessories}) {
     const [mobileFiltersOpen, setMobileFiltersOpen] = useState(null);
@@ -39,6 +39,7 @@ export default function AccessoriesSection({accessories}) {
         <div className={styles.banner}>
 
             <Image priority={true}
+            placeholder='blur'
             srcset="
             /_next/image?url=%2FwalletSu.jpg&w=640&q=75 640w,
             /_next/image?url=%2FwalletSu.jpg&w=750&q=75 750w,
@@ -49,7 +50,7 @@ export default function AccessoriesSection({accessories}) {
             /_next/image?url=%2FwalletSu.jpg&w=2048&q=75 2048w,
             /_next/image?url=%2FwalletSu.jpg&w=3840&q=75 3840w
           "
-            sizes="(min-width: 620px) 90vw, 100vw" alt="nikeaf1" fill="true" className={styles.image} src="/walletSu.jpg" />
+            sizes="(min-width: 620px) 90vw, 100vw" alt="nikeaf1" fill="true" className={styles.image} src={AccessoriesBanner} />
             <div className={styles.shader}>
                 <div className={styles.text}>
                     <h1 className={styles.title}>Complete your Unique Style</h1>

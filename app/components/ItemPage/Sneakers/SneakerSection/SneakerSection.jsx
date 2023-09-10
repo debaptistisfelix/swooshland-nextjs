@@ -9,7 +9,7 @@ import SneakersContextProvider from '@app/context/SneakersPageContext'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { faSliders } from '@fortawesome/free-solid-svg-icons'
-
+import SneakerBanner from '@/public/kraken.jpg';
 
 
 export default function SneakerSection({sneakers}) {
@@ -39,6 +39,7 @@ export default function SneakerSection({sneakers}) {
    </section>
         <div className={styles.banner}>
             <Image priority={true}
+            placeholder='blur'
             sizes="(min-width: 620px) 90vw, 100vw"
             srcset="
 		/_next/image?url=%2Fkraken.jpg&w=640&q=75 640w,
@@ -50,7 +51,7 @@ export default function SneakerSection({sneakers}) {
 		/_next/image?url=%2Fkraken.jpg&w=2048&q=75 2048w,
 		/_next/image?url=%2Fkraken.jpg&w=3840&q=75 3840w
 	"
-            alt="nikeaf1" fill="true" className={styles.image} src="/kraken.jpg" />
+            alt="nikeaf1" fill="true" className={styles.image} src={SneakerBanner} />
             <div className={styles.shader}>
                 <div className={styles.text}>
                     <h1 className={styles.title}>Get the Hottest Kickz</h1>
