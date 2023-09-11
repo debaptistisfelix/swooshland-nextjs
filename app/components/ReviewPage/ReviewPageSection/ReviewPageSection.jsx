@@ -34,7 +34,7 @@ export default function ReviewPageSection() {
     const fetchItem = async () => {
       try {
         setLoading('loadingItem', true)
-       const res = await fetch(`http://localhost:3000/api/item/${itemId}`)
+       const res = await fetch(`/api/item/${itemId}`)
        const data = await res.json()
        setItem(data)
        setLoading('loadingItem', false)

@@ -15,6 +15,11 @@ import DiorPoster from './Advertising/DiorAdvertising/DiorPoster';
 import LeoPoster from './Advertising/LeoAdvertising/LeoPoster';
 import KrakenPoster from './Advertising/KrakenAdvertising/KrakenPoster';
 import OrangePoster from './Advertising/OrangeAdvertising/OrangePoster';
+import KawaiiPosterImg from '@/public/PosterLeoKawaii.jpg';
+import LeopardPosterImg from '@/public/PosterLeo.jpg';
+import KrakenPosterImg from '@/public/banner-images/fabioPoster.jpg';
+import DiorPosterImg from '@/public/PosterDior.jpg';
+import OrangePosterImg from '@/public/PosterOgOrange.jpg';
 
 
 export default function NavbarSearch({isSearchOpen}) {
@@ -95,8 +100,8 @@ export default function NavbarSearch({isSearchOpen}) {
     useEffect(()=>{
       if(openSearch === true){
         const randomIndex = Math.floor(Math.random() * posterImages.length);
-        const randomImgToDIsplay = posterImages[randomIndex];
-        setRandomImage(randomImgToDIsplay);
+        const randomImgToDisplay = posterImages[randomIndex];
+        setRandomImage(randomImgToDisplay);
       }
 
     }, [openSearch])
@@ -144,35 +149,37 @@ export default function NavbarSearch({isSearchOpen}) {
       return () => clearTimeout(delayTimer);
     },[searchQuery])
 
+   
+
 
     const posterImages = [
       {
         id: 1,
-        src: "/PosterLeoKawaii.jpg",
+        src: KawaiiPosterImg,
         alt: "Poster-leo-kawaii",
         href:"/item/64f5995e2c7ea59ac36818e5"
       },
       {
         id: 2,
-        src: "/PosterOgOrange.jpg",
+        src: OrangePosterImg,
         alt: "Poster-Og-Orange",
         href:"/item/64f4c91ac1af1593c3f0325c"
       },
       {
         id: 3,
-        src: "/banner-images/fabioPoster.jpg",
+        src: KrakenPosterImg,
         alt: "Poster-Nike-af1-kraken",
         href:"/item/64f590312c7ea59ac3681832"
       },
       {
         id: 4,
-        src: "/PosterDior.jpg",
+        src: DiorPosterImg,
         alt: "Poster-Dior",
         href:"/item/64f4c431c1af1593c3f0323f"
       },
       {
         id: 5,
-        src: "/PosterLeo.jpg",
+        src: LeopardPosterImg,
         alt: "Poster-leo",
         href:"/item/64f598332c7ea59ac36818d6"
       }
@@ -195,7 +202,7 @@ export default function NavbarSearch({isSearchOpen}) {
     {openSearch === true && searchQuery !== "" && <section  className={`${styles.searchResults} ${poppins.className}`}>
       <section ref={refElement} className={styles.resultsPage}>
         <section className={styles.brandsBox}>
-          <Image className={styles.img} fill={true} alt={randomImage.alt}  src={randomImage.src}  />
+          <Image placeholder='blur' className={styles.img} fill={true} alt={randomImage.alt}  src={randomImage.src}  />
           <section className={styles.commercialText}>
             {randomImage.src === "/PosterLeoKawaii.jpg" && <KawaiiPoster closeSearchBox={closeSearchBox} />}
             {randomImage.src === "/PosterOgOrange.jpg" && <OrangePoster closeSearchBox={closeSearchBox} />}

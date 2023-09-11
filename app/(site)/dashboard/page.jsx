@@ -32,7 +32,7 @@ export default function Dashboard() {
         Streamline your online retail journey with our comprehensive e-commerce dashboard. Take charge of your orders, manage saved addresses, curate favorite products, and stay updated with personalized newsletters. Enjoy a hassle-free shopping experience tailored to your preferences.
         </p>
         <section className={styles.mobileNav}>
-        <Link href="/dashboard/addresses" className='Link'>
+        <Link href="/dashboard/addresses" className={`Link ${styles.navLinkBox}`}>
             <div className={styles.navBox}>
                
                   <h3 className={styles.navTitle}>
@@ -43,7 +43,7 @@ export default function Dashboard() {
             </div>
             </Link>
 
-            <Link className='Link' href="/dashboard/favorites">
+            <Link className={`Link ${styles.navLinkBox}`} href="/dashboard/favorites">
             <div className={styles.navBox}>
                
                 <h3 className={styles.navTitle}>
@@ -54,7 +54,7 @@ export default function Dashboard() {
             </div>
             </Link>
 
-            <Link className='Link' href="/dashboard/newsletter">
+            <Link className={`Link ${styles.navLinkBox}`} href="/dashboard/newsletter">
             <div className={styles.navBox}>
                
                 <h3 className={styles.navTitle}>
@@ -67,7 +67,7 @@ export default function Dashboard() {
                  </p>
             </div>
             </Link>
-            <Link className='Link' href="/dashboard/orders">
+            <Link className={`Link ${styles.navLinkBox}`} href="/dashboard/orders">
             <div className={styles.navBox}>
              
               <h3 className={styles.navTitle}>
