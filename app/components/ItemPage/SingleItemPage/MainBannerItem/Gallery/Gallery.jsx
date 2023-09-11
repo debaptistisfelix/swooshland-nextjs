@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import styles from './Gallery.module.css'
 import Image from 'next/image'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -51,10 +51,10 @@ export default function Gallery({item }) {
     }
 }, [])
 
-  const setAsMainImage = (img, index) => {
+  const setAsMainImage = useCallback((img, index) => {
     setMainImage(img)
     setCurrentZommedImageIndex(index);
-  }
+  })
 
   
   return (

@@ -204,11 +204,11 @@ export default function NavbarSearch({isSearchOpen}) {
         <section className={styles.brandsBox}>
           <Image placeholder='blur' className={styles.img} fill={true} alt={randomImage.alt}  src={randomImage.src}  />
           <section className={styles.commercialText}>
-            {randomImage.src === "/PosterLeoKawaii.jpg" && <KawaiiPoster closeSearchBox={closeSearchBox} />}
-            {randomImage.src === "/PosterOgOrange.jpg" && <OrangePoster closeSearchBox={closeSearchBox} />}
-            {randomImage.src === "/banner-images/fabioPoster.jpg" && <KrakenPoster closeSearchBox={closeSearchBox}/>}
-            {randomImage.src === "/PosterDior.jpg" && <DiorPoster closeSearchBox={closeSearchBox}/>}
-            {randomImage.src === "/PosterLeo.jpg" && <LeoPoster closeSearchBox={closeSearchBox}/>} 
+            {randomImage.src === KawaiiPosterImg && <KawaiiPoster closeSearchBox={closeSearchBox} />}
+            {randomImage.src === OrangePosterImg && <OrangePoster closeSearchBox={closeSearchBox} />}
+            {randomImage.src === KrakenPosterImg && <KrakenPoster closeSearchBox={closeSearchBox}/>}
+            {randomImage.src === DiorPosterImg && <DiorPoster closeSearchBox={closeSearchBox}/>}
+            {randomImage.src === LeopardPosterImg && <LeoPoster closeSearchBox={closeSearchBox}/>} 
         
           </section>
         </section>
