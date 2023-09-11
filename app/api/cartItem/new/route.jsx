@@ -41,7 +41,8 @@ export async function POST(request){
                     }
                 },
                 include: {
-                    item: true
+                    item: true,
+                    availableSize: true
                 }
             })
     
@@ -89,7 +90,9 @@ export async function POST(request){
                     }
                 },
                 include: {
-                    item: true
+                    item: true,
+                    availableSize: true,
+                    user: true
                 }
             })
     

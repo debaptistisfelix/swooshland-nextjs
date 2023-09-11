@@ -18,7 +18,8 @@ export async function GET(request, {params}){
               
             },
             include: {
-                item: true
+                item: true,
+                availableSize: true
             }
         });
 
@@ -54,7 +55,8 @@ export async function PATCH(request, {params}){
                 chosenSize: body.chosenSize
             },
             include: {
-                item: true
+                item: true,
+                availableSize: true
             }
         });
 
