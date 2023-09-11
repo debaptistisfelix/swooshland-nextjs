@@ -12,7 +12,7 @@ import { UserAddressesContext } from '@app/context/UserAddressesContext';
 import { useSession } from 'next-auth/react';
 
 
-export default async function AddressesList() {
+export default  function AddressesList() {
   const {
     showFormToAddAddress,
     addresses,
@@ -37,6 +37,8 @@ export default async function AddressesList() {
       selectDefaultAddress(defaultAddressChoice)
     }
   }, [])
+
+  console.log("addresses: ", addresses)
 
  
 

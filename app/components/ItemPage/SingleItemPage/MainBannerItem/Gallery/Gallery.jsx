@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faX, faMagnifyingGlassPlus, faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons'
 import { v4 as uuidv4 } from 'uuid';
 import ImageLoader from '@app/components/Reusables/ImageLoader/ImageLoader'
-import ThreeCirclesLoader from '@app/components/Reusables/ThreeCirclesLoader/ThreeCirclesLoader'
+
 
 
 export default function Gallery({item }) {
@@ -17,6 +17,8 @@ export default function Gallery({item }) {
  const totalImages = item?.images?.length || 0;
   
   const refElement = useRef(null);
+
+
 
   const showNextImage = () => {
     setCurrentZommedImageIndex((prevIndex) => (prevIndex + 1) % totalImages);
@@ -51,10 +53,10 @@ export default function Gallery({item }) {
     }
 }, [])
 
-  const setAsMainImage = useCallback((img, index) => {
-    setMainImage(img)
-    setCurrentZommedImageIndex(index);
-  })
+const setAsMainImage = useCallback((img, index) => {
+  setMainImage(img);
+  setCurrentZommedImageIndex(index);
+}, []);
 
   
   return (

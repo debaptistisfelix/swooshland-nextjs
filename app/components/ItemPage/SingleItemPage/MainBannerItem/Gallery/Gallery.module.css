@@ -49,6 +49,8 @@ flex-direction: column;
     opacity: 0;
 }
 
+
+
 .smallImg.active{
     filter: brightness(80%);
 }
