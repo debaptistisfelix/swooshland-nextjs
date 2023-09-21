@@ -3,7 +3,7 @@
 export default async function getItemRelated(id){
 
   const baseUrl =  `https://${process.env.VERCEL_URL}`  || `${process.env.BASE_URL}` 
- /*  const baseUrl = `${process.env.BASE_URL}` */
+  /* const baseUrl = `${process.env.BASE_URL}` */
     const response = await fetch(`${baseUrl}/api/item/related/${id}`, {
       cache: "no-store",
       method: 'GET',

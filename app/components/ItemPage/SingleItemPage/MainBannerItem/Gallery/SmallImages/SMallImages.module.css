@@ -8,6 +8,10 @@
 
 }
 
+.oneImageGalleryBox{
+    justify-content: center;
+}
+
 .smallImagesBox{
     height:100%;
     width: 20%;
@@ -76,6 +80,7 @@ flex-direction: column;
 
 .oneImageMainImageBox{
     transform: translateX(15%);
+
 }
 
 .mainImg{

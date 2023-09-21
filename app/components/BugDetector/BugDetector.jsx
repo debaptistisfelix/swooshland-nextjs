@@ -122,6 +122,8 @@ export default function BugDetector() {
        
     }
 
+   
+
   return (
     <>
     <main onClick={toggleForm} className={styles.bugDetectorContainer}>
@@ -132,15 +134,21 @@ export default function BugDetector() {
    {showingForm === true &&  <section className={styles.shader}>
     </section>}
     <section className={`${poppins.className} ${styles.bugDetectorForm} ${showingForm === true && styles.active} ${showingForm === false && styles.notActive}  ${loading === true && styles.noShowBackground}`}>
-    <h1 className={`${styles.title} ${loading === true && styles.noShowTitle}`}>
+    <h1
+    style ={{display: showingForm === false && "none"}}
+    className={`${styles.title} ${loading === true && styles.noShowTitle}`}>
         BUG 
        
         DETECT <FontAwesomeIcon icon={faMagnifyingGlass} className={styles.magnifyingGlass} />R
     </h1>
-    <p className={`${styles.intro} ${loading === true && styles.noShow}`}>
+    <p
+     style ={{display: showingForm === false && "none"}}
+    className={`${styles.intro} ${loading === true && styles.noShow}`}>
     "Welcome to the Bug Detector! This form allows visitors to notify me if they encounter any bugs or issues while browsing through my portfolio websites. Your feedback is invaluable in helping me improve the functionality and user experience. Please feel free to report any problems you come across, and I'll address them promptly. Thank you for your assistance!"
     </p>
-    <form onSubmit={handleSubmit} className={`${styles.form} ${loading === true && styles.noShow}`}>
+    <form
+     style ={{display: showingForm === false && "none"}}
+    onSubmit={handleSubmit} className={`${styles.form} ${loading === true && styles.noShow}`}>
         <input onChange={handleOnInputChange} value={data.name} name="name" type="text" placeholder="Your Name" className={styles.input} />
         <textarea onChange={handleOnInputChange} value={data.description} name="description" type="text" placeholder={`On this path (${path}) I found this error/bug: `} className={styles.textArea} />
         

@@ -3,7 +3,7 @@ import styles from './SneakerListing.module.css'
 import { useState, useEffect } from 'react'
 import FilterBar from '../SneakerFilterBar/DesktopFilterBar/FilterBar'
 import { useContext } from 'react'
-import queryString from 'query-string';
+import NavSearchLoader from '@app/components/Navbar/NavbarSearch/NavSearchLoader/NavSearchLoader'
 import { SneakersContext } from '@app/context/SneakersPageContext'
 import ThreeCirclesLoader from '@app/components/Reusables/ThreeCirclesLoader/ThreeCirclesLoader'
 import MobileFilterPage from '../SneakerFilterBar/MobileFilterPage/MobileFilterPage'
@@ -37,12 +37,12 @@ export default function SneakerListing({sneakersList,location,  mobileFiltersOpe
       setIsLoading
           } = useContext(SneakersContext)
 
-        
+        const [checkingIfSelectedBrandIsInUrl, setCheckingIfSelectedBrandIsInUrl] = useState(true)
         const searchParams = useSearchParams()
         const brand = searchParams.get("brand")
     
   
-    
+
           
        const [sneakers, setSneakers] = useState([])
        
@@ -58,11 +58,22 @@ export default function SneakerListing({sneakersList,location,  mobileFiltersOpe
             if(brand && sneakers.length > 0){
            
                 setIsLoading(true)
-               setTimeout(()=>{handleMultipleBrandFilterOptionChange(brand); setIsLoading(false)}, 1000)
+               setTimeout(()=>{
+                handleMultipleBrandFilterOptionChange(brand);
+                 setIsLoading(false)
+                 setCheckingIfSelectedBrandIsInUrl(false)
+                }, 1000)
+            } else if(!brand){
+                setCheckingIfSelectedBrandIsInUrl(false)
             }
         },[brand, sneakers])
 
-   
+ 
+        const handleAction = () => {
+            const urlWithoutQuery = window.location.origin + window.location.pathname;
+            console.log(urlWithoutQuery)
+            window.history.replaceState({}, document.title, urlWithoutQuery);
+          };
 
     useEffect(()=>{
         if(filtersAppliedToSneakers){
@@ -71,6 +82,8 @@ export default function SneakerListing({sneakersList,location,  mobileFiltersOpe
         } else {
             
             applySorting(visibleItems)
+            handleAction()
+            
         }
        
        
@@ -107,7 +120,10 @@ export default function SneakerListing({sneakersList,location,  mobileFiltersOpe
 
 
   return (
-    <main className={`${styles.section} ${brand && styles.slowEntrance}`}>
+    <>
+    {checkingIfSelectedBrandIsInUrl === true ? <div className={styles.loaderContainer}>
+        <NavSearchLoader />
+    </div> :     <main className={`${styles.section} ${brand && styles.slowEntrance}`}>
        {/* Mobile Components */}
         <MobileFilterPage mobileFiltersOpen={mobileFiltersOpen} toggleMobileFilters={toggleMobileFilters} />
         <MobileFilterTagsContainer />
@@ -154,6 +170,7 @@ export default function SneakerListing({sneakersList,location,  mobileFiltersOpe
            
             
        
-    </main>
+    </main>}
+    </>
   )
 }

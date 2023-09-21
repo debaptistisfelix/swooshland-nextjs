@@ -9,7 +9,8 @@
 
 @media(min-width:601px) and (max-width:1023px){
     .loginPageCointainer{
-        height: 70vh;
+        height: fit-content;
+        min-height: 70vh;
         padding: 50px 0 ;
         box-sizing: border-box;
     }

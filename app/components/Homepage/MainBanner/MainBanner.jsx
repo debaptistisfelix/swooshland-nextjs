@@ -16,7 +16,7 @@ export default function MainBanner() {
         (min-width: 400px) 357px,
         calc(62.5vw + 113px)
       "
-      srcset="
+      srcSet="
         /_next/image?url=%2F_next%2Fstatic%2Fmedia%2FlustRogue.3ce4afbd.png&w=16&q=75 16w,
         /_next/image?url=%2F_next%2Fstatic%2Fmedia%2FlustRogue.3ce4afbd.png&w=32&q=75 32w,
         /_next/image?url=%2F_next%2Fstatic%2Fmedia%2FlustRogue.3ce4afbd.png&w=48&q=75 48w,

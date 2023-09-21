@@ -7,14 +7,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faX, faMagnifyingGlassPlus, faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons'
 import { v4 as uuidv4 } from 'uuid';
 import ImageLoader from '@app/components/Reusables/ImageLoader/ImageLoader'
-
-
+import SmallImages from './SmallImages/SmallImages'
+import { useContext } from 'react'
+import { GalleryContext } from '@app/context/GalleryContext'
 
 export default function Gallery({item }) {
   const [mainImage, setMainImage] = useState(null)
+
   const [zommedImg, setZommedImg] = useState(false)
   const [currentZommedImageIndex, setCurrentZommedImageIndex] = useState(0)
- const totalImages = item?.images?.length || 0;
+  const totalImages = item?.images?.length || 0;
   
   const refElement = useRef(null);
 
@@ -58,21 +60,34 @@ const setAsMainImage = useCallback((img, index) => {
   setCurrentZommedImageIndex(index);
 }, []);
 
+const handleImageChange = (img) => {
+  setMainImage(img);
+}
+
   
   return (
    <>
     <section className={`${styles.galleryBox} ${item?.images?.length === 1 && styles.oneImageGalleryBox}`}>
     {item && item.images.length > 1 && <section className={styles.smallImagesBox}>
         {item !== null && item?.images.map((img, i) =>{
-          return <div className={styles.smallImgBox} key={uuidv4()}>
+          return <img
+          className={styles.smallImgBox}
+            key={i}
+            src={`/${img}`}
+            alt={`Small Image ${i}`}
+            onClick={() => handleImageChange(img)}
+          /> 
+        })}
+    </section>}
+
+    {/* <div className={styles.smallImgBox} key={uuidv4()}>
             <ImageLoader />
            <Image
           onLoadingComplete={(img)=>{img.classList.add(styles.showImg)}} 
             onClick={() => setAsMainImage(img, i)}
-            className={`${styles.smallImg} ${mainImage === img && styles.active}`} alt="small-image" fill={true} src={`/${img}`} />
-          </div>
-        })}
-    </section>}
+            className={`${styles.smallImg} ${mainImage === img && styles.active} `} alt="small-image" fill={true} src={`/${img}`} />
+          </div> */}
+  
     <section className={`${styles.mainImageBox} ${item?.images.length === 1 && styles.oneImageMainImageBox}`}>
     <FontAwesomeIcon  onClick={() => setZommedImg(true)} className={styles.zoomIcon} icon={faMagnifyingGlassPlus} />
     <ImageLoader />
@@ -88,7 +103,7 @@ const setAsMainImage = useCallback((img, index) => {
             <Image  className={styles.fullscreenImg} alt="main-image" fill={true} src={`/${item?.images[currentZommedImageIndex]}`} />
             <FontAwesomeIcon onClick={() => setZommedImg(false)} className={styles.closeIcon} icon={faX} />
 
-           <div className={styles.navBox} >
+          {totalImages > 1 &&  <div className={styles.navBox} >
           <FontAwesomeIcon onClick={showPreviousImage}  className={styles.navIcon} icon={faCaretLeft} />
           <p onClick={showPreviousImage} className={styles.navParag}>
           <FontAwesomeIcon  className={styles.mobileNavIcon} icon={faCaretLeft} />
@@ -97,7 +112,7 @@ const setAsMainImage = useCallback((img, index) => {
           <p onClick={showNextImage} className={styles.navParag}>Next
           <FontAwesomeIcon  className={styles.mobileNavIcon} icon={faCaretRight} /></p>
           <FontAwesomeIcon onClick={showNextImage}  className={styles.navIcon} icon={faCaretRight} />
-           </div>
+           </div>}
 
            <div className={styles.galleryCount}>{currentZommedImageIndex + 1}/{totalImages}</div>
           </div>
@@ -106,6 +121,35 @@ const setAsMainImage = useCallback((img, index) => {
 </section>
    </>
   )
+
+
+
+ /*  const [mainImage, setMainImage] = useState(item?.images[0]);
+
+  const handleImageClick = (image) => {
+    setMainImage(image);
+  };
+
+  console.log(item?.images)
+
+  return (
+    <div>
+      <img className={styles.bigUselessImage} src={`/${mainImage}`} alt="Main Image" />
+
+      <div>
+        {item?.images.map((image, index) => (
+          <img
+          className={styles.smallUselessImage}
+            key={index}
+            src={`/${image}`}
+            alt={`Small Image ${index}`}
+            onClick={() => handleImageClick(image)}
+          />
+        ))}
+      </div>
+    </div>
+  ); */
+
 }
 
 

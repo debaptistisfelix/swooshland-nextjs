@@ -41,7 +41,7 @@ export default function SneakerSection({sneakers}) {
             <Image priority={true}
             placeholder='blur'
             sizes="(min-width: 620px) 90vw, 100vw"
-            srcset="
+            srcSet="
 		/_next/image?url=%2Fkraken.jpg&w=640&q=75 640w,
 		/_next/image?url=%2Fkraken.jpg&w=750&q=75 750w,
 		/_next/image?url=%2Fkraken.jpg&w=828&q=75 828w,

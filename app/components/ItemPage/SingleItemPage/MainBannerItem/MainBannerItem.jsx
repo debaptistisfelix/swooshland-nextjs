@@ -8,7 +8,7 @@ import { faStar } from '@fortawesome/free-solid-svg-icons'
 import TextBlock from './TextBlock/TextBlock'
 import Gallery from './Gallery/Gallery'
 import { useEffect } from 'react'
-
+import { GalleryProvider } from '@app/context/GalleryContext'
 
 export default function MainBannerItem({item, itemReviews, isLoading, setLoading}) {
 
@@ -16,7 +16,12 @@ export default function MainBannerItem({item, itemReviews, isLoading, setLoading
   return (
     <main className={`${styles.banner} ${poppins.className}`}>
         <section className={styles.galleryBox}>
-           <Gallery item={item} />
+         
+    
+          <GalleryProvider>
+          <Gallery item={item} />
+          </GalleryProvider>
+ 
         </section>
         <section className={styles.textBox}>
             <TextBlock item={item} itemReviews={itemReviews} isLoading={isLoading} setLoading={setLoading} />

@@ -40,7 +40,7 @@ export default function AccessoriesSection({accessories}) {
 
             <Image priority={true}
             placeholder='blur'
-            srcset="
+            srcSet="
             /_next/image?url=%2FwalletSu.jpg&w=640&q=75 640w,
             /_next/image?url=%2FwalletSu.jpg&w=750&q=75 750w,
             /_next/image?url=%2FwalletSu.jpg&w=828&q=75 828w,

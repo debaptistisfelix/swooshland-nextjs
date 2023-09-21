@@ -1,4 +1,15 @@
 
+.smallUselessImage{
+    width: 50px;
+    height: 50px;
+}
+
+.bigUselessImage{
+    width: 200px;
+    height: 200px;
+}
+
+
 .galleryBox{
     height: 100%;
     width: 100%;
@@ -6,6 +17,10 @@
     display: flex;
     overflow: hidden;
 
+}
+
+.oneImageGalleryBox{
+    justify-content: center;
 }
 
 .smallImagesBox{
@@ -76,6 +91,7 @@ flex-direction: column;
 
 .oneImageMainImageBox{
     transform: translateX(15%);
+
 }
 
 .mainImg{

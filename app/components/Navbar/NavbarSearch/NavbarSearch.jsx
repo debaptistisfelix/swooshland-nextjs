@@ -63,11 +63,11 @@ export default function NavbarSearch({isSearchOpen}) {
 
     useEffect(() => {
       //Loginc to make the page not scrollable when the searchComponent is open
-      if(openSearch === true && searchQuery !== ""){
+      /* if(openSearch === true && searchQuery !== ""){
         document.body.style.overflowY = 'hidden';
       } else {
         document.body.style.overflowY = 'visible';
-      }
+      } */
 
       // Keep Input focused when SearchComponent is open
       if(openSearch === true){

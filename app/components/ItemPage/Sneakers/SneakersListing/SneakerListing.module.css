@@ -12,13 +12,13 @@
 
 .loaderContainer{
     width: 100%;
-    width: 100vw;
-    height: 50vh;
-    position: absolute;
-    bottom:0;;
-    
-  
-    z-index: 101;
+
+
+  min-height: 50vh;
+  display: flex;
+    justify-content: center;
+    align-items: center;
+   
    
 }
 
@@ -153,11 +153,7 @@ margin: 30px 0;
         width: 100%;
         width: 100vw;
         height: 70vh;
-        position: absolute;
-        bottom:0;;
-        
       
-        z-index: 101;
        
     }
 
@@ -268,13 +264,9 @@ margin:  0;
 
     .loaderContainer{
         width: 100%;
-        width: 100vw;
-        height: 70vh;
-        position: absolute;
-        bottom:0;;
-        
       
-        z-index: 101;
+        height: 70vh;
+       
        
     }
 
