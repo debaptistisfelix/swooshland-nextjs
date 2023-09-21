@@ -7,9 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faX, faMagnifyingGlassPlus, faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons'
 import { v4 as uuidv4 } from 'uuid';
 import ImageLoader from '@app/components/Reusables/ImageLoader/ImageLoader'
-import SmallImages from './SmallImages/SmallImages'
-import { useContext } from 'react'
-import { GalleryContext } from '@app/context/GalleryContext'
+
 
 export default function Gallery({item }) {
   const [mainImage, setMainImage] = useState(null)
