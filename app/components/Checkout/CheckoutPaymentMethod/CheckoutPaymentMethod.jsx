@@ -130,9 +130,7 @@ console.log("cartItems:",cartItems)
 
    useEffect(()=>{
     handleCheckoutSessionStripe();
-   },[
-    order
-   ])
+   },[order])
    
  
   

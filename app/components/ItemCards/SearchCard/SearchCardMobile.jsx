@@ -16,7 +16,7 @@ export default function SearchCardMobile({item, closeSearchBox, closeAndResetSea
         
     
         let stars = [];
-        for(let i = 0; i < rating; i++){
+        for(let i = 0; i < fullStars; i++){
             stars.push(<FontAwesomeIcon key={i}  icon={faStar} className={styles.star} />)
            
         }

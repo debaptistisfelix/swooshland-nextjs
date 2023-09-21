@@ -10,7 +10,7 @@ import Gallery from './Gallery/Gallery'
 import { useEffect } from 'react'
 
 
-export default function MainBannerItem({item, isLoading, setLoading}) {
+export default function MainBannerItem({item, itemReviews, isLoading, setLoading}) {
 
   
   return (
@@ -19,7 +19,7 @@ export default function MainBannerItem({item, isLoading, setLoading}) {
            <Gallery item={item} />
         </section>
         <section className={styles.textBox}>
-            <TextBlock item={item} isLoading={isLoading} setLoading={setLoading} />
+            <TextBlock item={item} itemReviews={itemReviews} isLoading={isLoading} setLoading={setLoading} />
         </section>
     </main>
   )

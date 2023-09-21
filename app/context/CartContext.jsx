@@ -443,7 +443,6 @@ export const CartProvider = ({children}) => {
     
 
     const checkItemsAvailability = async () => {
-        console.log("loading:", isCartLoading.checkingAvailability)
         try{
            setCartLoading("checkingAvailability", true)
             const response = await fetch("api/cartItem/checkAvailability", {
@@ -483,7 +482,7 @@ export const CartProvider = ({children}) => {
                 setItemsAvailabilityWasChecked(true) 
                 setTimeout(()=>{
                     setItemsAvailabilityWasChecked(false);
-                }, 30000)
+                }, 10000)
               
                 toast.success("All items are still available. Click the button again to Complete Order", {
                     style: {

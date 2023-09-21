@@ -146,8 +146,10 @@
 
 .text{
     display: flex;
+    width: 100%;
     flex-wrap: wrap;
     justify-content: space-between;
+ 
 }
 
 .product, .price, .name, .gender, .discountedPrice{

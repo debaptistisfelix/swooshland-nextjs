@@ -14,7 +14,12 @@ import { poppins } from '@app/fonts'
 
 
 export default async function ItemSection({item, relatedPromise}) {
+  const {reviews} = item;
+  const [itemReviews, setItemReviews] = useState(reviews)
 
+  const filterItemReviewsAfterDeletingOne = (reviewId) => {
+    setItemReviews((prevState) => prevState.filter(review => review.id !== reviewId))
+  }
    
     const [isLoading, setIsLoading] = useState({
       updatingReviews: false,
@@ -42,12 +47,12 @@ export default async function ItemSection({item, relatedPromise}) {
          <BackBtnWithArrow path={`${category === 'sneakers' ? "/sneakers" : "/accessories"}`} text={`Back to ${category} list`} />
           
      
-            <MainBannerItem item={item} isLoading={isLoading} setLoading={setLoading}  />
+            <MainBannerItem item={item} itemReviews={itemReviews} isLoading={isLoading} setLoading={setLoading}  />
          
           
            <RelatedSection relatedPromise={relatedPromise}/>
            
-            <ReviewSection item={item} isLoading={isLoading} setLoading={setLoading} />
+            <ReviewSection item={item} itemReviews={itemReviews} filterItemReviewsAfterDeletingOne={filterItemReviewsAfterDeletingOne} isLoading={isLoading} setLoading={setLoading} />
           
        
         

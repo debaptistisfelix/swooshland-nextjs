@@ -12,7 +12,7 @@ export default function ReviewOverview({item, itemReviews}) {
     
 
     let stars = [];
-    for(let i = 0; i < rating; i++){
+    for(let i = 0; i < fullStars; i++){
         stars.push(<FontAwesomeIcon key={i}  icon={faStar} className={styles.star} />)
        
     }
@@ -55,10 +55,10 @@ export default function ReviewOverview({item, itemReviews}) {
                 <FontAwesomeIcon icon={faStar} className={styles.emptyStar} />
                 <FontAwesomeIcon icon={faStar} className={styles.emptyStar} />
                 <div className={styles.fullStarBox}>
-                {GiveStars(ratingsAverage)}
+                {GiveStars(calculateRatingsAverage())}
                 </div>
             </div>
-            <p className={styles.count}>({itemReviews.length} reviews)</p>
+            <p className={styles.count}>({itemReviews.length} review{itemReviews.length > 1 && "s"})</p>
         </section>
         <section className={styles.stats}>
             {starCounts.map((star, index) => {

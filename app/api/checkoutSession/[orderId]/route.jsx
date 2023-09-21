@@ -14,8 +14,8 @@ export  async function POST(request, {params}){
         mode: 'payment',
        /*  success_url: `http://localhost:3000/orderCompleted/${orderId}`,
         cancel_url: `http://localhost:3000/orderFailed/${orderId}` */
-        success_url: `https://${process.env.VERCEL_URL}/orderCompleted/${orderId}`,
-        cancel_url: `https://${process.env.VERCEL_URL}/orderFailed/${orderId}`
+        success_url: `https://swooshland-nextjs.vercel.app/orderCompleted/${orderId}`,
+        cancel_url: `https://swooshland-nextjs.vercel.app/orderFailed/${orderId}`
     }
 
     

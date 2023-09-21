@@ -35,7 +35,7 @@ export default function ShopItemCard({sneaker}) {
  
   
       let stars = [];
-      for(let i = 0; i < rating; i++){
+      for(let i = 0; i < fullStars; i++){
           stars.push(<FontAwesomeIcon key={i}  icon={faStar} className={styles.star} />)
       
       }
@@ -58,7 +58,7 @@ export default function ShopItemCard({sneaker}) {
                 <Image 
                onLoadingComplete={(img)=>{img.classList.add(styles.showImg)}} 
                 sizes="100vw"
-                srcset="
+                srcSet="
                   /_next/image?url=%2Flust1.jpg&w=640&q=75 640w,
                   /_next/image?url=%2Flust1.jpg&w=750&q=75 750w,
                   /_next/image?url=%2Flust1.jpg&w=828&q=75 828w,
@@ -81,7 +81,7 @@ export default function ShopItemCard({sneaker}) {
                 <Image
                 onLoadingComplete={(img)=>{img.classList.add(styles.showImg)}} 
                 sizes="100vw"
-                srcset="
+                srcSet="
                   /_next/image?url=%2Flust1.jpg&w=640&q=75 640w,
                   /_next/image?url=%2Flust1.jpg&w=750&q=75 750w,
                   /_next/image?url=%2Flust1.jpg&w=828&q=75 828w,

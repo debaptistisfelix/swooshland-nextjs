@@ -4,14 +4,14 @@ import styles from './TextBlock.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar, faHeart, faStarHalf, faCartShopping } from '@fortawesome/free-solid-svg-icons'
 import SizeTableContainer from './SizeTable/SizeTableContainer'
-import { useState, useContext, useEffect } from 'react'
+import { useState, useContext, useEffect, useCallback } from 'react'
 import { CartContext } from '@app/context/CartContext'
 import { toast } from 'react-hot-toast'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 
-export default function TextBlock({item, isLoading, setLoading}) {
-    const {name, model,  price, onSale, discountPercentage, description, gender, ratingsAverage, ratingsQuantity, id} = item;
+export default function TextBlock({item, itemReviews, isLoading, setLoading}) {
+    const {name, model,  price, onSale, discountPercentage, description, gender, ratingsAverage, ratingsQuantity, id, } = item;
     const {data: session, status} = useSession();
     const router = useRouter();
     const {addItemToCartItems, isCartLoading, addToFavorites, setCartLoading} = useContext(CartContext);
@@ -25,29 +25,49 @@ setCartLoading("addingItemToCartItems", null)
     const GiveStars = (rating) => {
         const fullStars = Math.floor(rating);
         const halfStars = (rating - fullStars) >= 0.5;
+
+       
       
     
         let stars = [];
-        for(let i = 0; i < rating; i++){
+        for(let i = 0; i < fullStars; i++){
             stars.push(<FontAwesomeIcon key={i}  icon={faStar} className={styles.star} />)
           
         }
+
+     
     
         if(halfStars){
             stars.push(<FontAwesomeIcon key={rating} icon={faStarHalf} className={styles.star} />)
             
         }
+
+      
        
         return stars;
     };
 
   
-
    
+    const calculateRatingsAverage = useCallback(() => {
+        let total = 0;
+        if(itemReviews.length === 0){
+            return 0;
+        }
+        for(let i = 0; i < itemReviews.length; i++){
+            total += itemReviews[i].rating;
+        }
+        const newRAtingsAverage = (total / itemReviews.length).toFixed(1);
+        if(newRAtingsAverage === "NaN"){
+            return 0;
+        } else {
+            return newRAtingsAverage;
+        }
+    }, [itemReviews])
 
   
 
-  
+  console.log(itemReviews)
 
   return (
     <section className={`${styles.textBox} ${item?.images.length === 1 && styles.oneImageTextBox}`}>
@@ -67,10 +87,10 @@ setCartLoading("addingItemToCartItems", null)
                     <FontAwesomeIcon icon={faStar} className={styles.emptyStar} />
                     <FontAwesomeIcon icon={faStar} className={styles.emptyStar} />
                     <div className={styles.fullStarBox}>
-                {GiveStars(ratingsAverage)}
+                {GiveStars(calculateRatingsAverage())}
                 </div>
                     </div>
-                    <p className={styles.reviewCount}>({ratingsAverage}/5, {ratingsQuantity} reviews)</p>
+                    <p className={styles.reviewCount}>({calculateRatingsAverage()}/5, out of  {itemReviews?.length} reviews)</p>
                 </div>
             </div>
             <div className={styles.priceBox}>

@@ -11,15 +11,13 @@ import { useSession } from 'next-auth/react';
 import ThreeCirclesLoader from '@app/components/Reusables/ThreeCirclesLoader/ThreeCirclesLoader';
 import { toast } from 'react-hot-toast';
 
-export default function ReviewSection({item, setLoading, isLoading}) {
+export default function ReviewSection({item, itemReviews, filterItemReviewsAfterDeletingOne, setLoading, isLoading}) {
     const [colOne, setColOne] = useState([])
     const [colTwo, setColTwo] = useState([])
     const reviewsPerPage = 4;
     const [visibleReviews, setVisibleReviews] = useState([])
     const [selectedSorting, setSelectedSorting] = useState("Sort by");
     const [selectedFilter, setSelectedFilter] = useState("Filter by");
-    const {reviews} = item;
-    const [itemReviews, setItemReviews] = useState(reviews)
     const {data: session} = useSession();
   
 
@@ -130,7 +128,7 @@ export default function ReviewSection({item, setLoading, isLoading}) {
              method: 'DELETE',
            })
            const data = await response.json();
-           setItemReviews((prevState) => prevState.filter(review => review.id !== reviewId))
+           filterItemReviewsAfterDeletingOne(reviewId)
            setLoading("updatingReviews", false)
             toast.success("Review deleted",  {
                 style: {

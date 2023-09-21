@@ -79,7 +79,15 @@ export async function DELETE(request, {params}){
             }
         });
 
-        const item = await prisma.item.findUnique({ where: { id: itemId } });
+        const item = await prisma.item.findUnique({
+             where: 
+             { id: itemId }, include:{
+                availableSizes: true,
+                reviews: true
+            }
+             });
+
+        console.log("This are the reviews after deleting", item.reviews)
 
         const rating = deletedReview.rating;
         const updatedRatingsQuantity = item.ratingsQuantity - 1;
@@ -94,6 +102,8 @@ export async function DELETE(request, {params}){
               ratingsAverage: updatedRatingsAverage,
             },
           });
+
+        console.log("updated revies count for item: ", item.reviews);
 
         return new Response(JSON.stringify("review deleted succesfully!"), {status: 200});
     }

@@ -136,7 +136,7 @@ position: relative;
         font-size: clamp(14px, 4vw + 0.12rem, 18px);
     }
 
-    .star{
+    .star, .emptyStar{
         width: clamp(18px, 5.72vw + 0.12rem, 24px);
         height:  clamp(18px, 5.72vw + 0.12rem, 24px);
     }
