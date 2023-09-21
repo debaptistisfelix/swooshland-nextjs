@@ -10,7 +10,10 @@ import ImageLoader from '@app/components/Reusables/ImageLoader/ImageLoader'
 
 
 export default function Gallery({item }) {
-  const [mainImage, setMainImage] = useState(null)
+  const [mainImage, setMainImage] = useState({
+    src: "",
+    index: 0
+  })
 
   const [zommedImg, setZommedImg] = useState(false)
   const [currentZommedImageIndex, setCurrentZommedImageIndex] = useState(0)
@@ -58,8 +61,9 @@ const setAsMainImage = useCallback((img, index) => {
   setCurrentZommedImageIndex(index);
 }, []);
 
-const handleImageChange = (img) => {
+const handleImageChange = (img, index) => {
   setMainImage(img);
+  setCurrentZommedImageIndex(index);
 }
 
   
@@ -73,7 +77,7 @@ const handleImageChange = (img) => {
             key={i}
             src={`/${img}`}
             alt={`Small Image ${i}`}
-            onClick={() => handleImageChange(img)}
+            onClick={() => handleImageChange(img, i)}
           /> 
         })}
     </section>}
@@ -92,7 +96,10 @@ const handleImageChange = (img) => {
         <Image
       onLoadingComplete={(img)=>{img.classList.add(styles.showImg)}} 
         priority={true}
-         onClick={() => setZommedImg(true)}
+         onClick={() => {
+          setZommedImg(true);
+          // set also the index to the index of the main image, to do this you need to set both src and index of the small images for the main images and change the code a bit
+         }}
         className={styles.mainImg} alt="main-image" fill={true} src={`/${mainImage}`} />
        {item && item.onSale === true &&  <div className={styles.discountTag}>-{item.discountPercentage}%</div>}
     </section>
