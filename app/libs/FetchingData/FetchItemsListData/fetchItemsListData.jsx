@@ -1,8 +1,13 @@
 // Function to fetch sneakers list data from server 
 
 export default async function getItemsListData(tag){
-  const baseUrl =  `https://${process.env.VERCEL_URL}`  || `${process.env.BASE_URL}` 
-/*    const baseUrl = `${process.env.BASE_URL}` */
+  let baseUrl;
+
+  if(process.env.NODE_ENV === 'development'){
+    baseUrl =  `${process.env.BASE_URL}`
+  } else {
+    baseUrl =  `https://${process.env.VERCEL_URL}`  
+  }
     const response = await fetch(`${baseUrl}/api/item`, {
       cache: "no-store",
       method: 'GET',
@@ -11,12 +16,6 @@ export default async function getItemsListData(tag){
         'Accept': 'application/json'
       },
     })
-   /*  console.log("list data - response: ", response)
-    console.log("list data - responseOK: ", response.ok)
-    console.log("list data - responseStatus: ", response.status)
-    console.log("list data - responseBody: ", response.body)
-    const responseBody = await response.text();
-    console.log("list data - responseBodyJSON: ", responseBody) */
     if(!response.ok){
       throw new Error("Error while requesting Sneakers from server")
     }

@@ -1,5 +1,6 @@
 import prisma from "@app/libs/prismaDB";
 import sendOrderConfirmMail from "@app/libs/email/sendOrderConfirmMail";
+export const dynamic = 'force-dynamic';
 
 export async function PATCH(request, {params}){
     const {id} = params;  

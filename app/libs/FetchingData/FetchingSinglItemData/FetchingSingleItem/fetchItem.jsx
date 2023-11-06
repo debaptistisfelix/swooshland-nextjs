@@ -1,8 +1,13 @@
 // Function to fetch Items data from server 
 
 export default async function getItemData(id){
-  const baseUrl =  `https://${process.env.VERCEL_URL}`  || `${process.env.BASE_URL}` 
-/*  const baseUrl = `${process.env.BASE_URL}` */
+  let baseUrl;
+
+  if(process.env.NODE_ENV === 'development'){
+    baseUrl =  `${process.env.BASE_URL}`
+  } else {
+    baseUrl =  `https://${process.env.VERCEL_URL}`  
+  }
     const response = await fetch(`${baseUrl}/api/item/${id}`,{
       cache: "no-store",
       method: 'GET',
@@ -11,10 +16,6 @@ export default async function getItemData(id){
         'Accept': 'application/json'
       },
     })
-    console.log("Single item - response: ", response)
-    console.log("Single item - responseOK: ", response.ok)
-    console.log("Single item - responseStatus: ", response.status)
-    console.log("Single item - responseBody: ", response.body)
     if(!response.ok){
       throw new Error("Error while requesting Item from server")
     }

@@ -5,6 +5,7 @@
     padding-left: 100px;
     box-sizing: border-box;
     width: 90%;
+    max-width: 1480px;
     min-height: calc(100vh - 100px);
     height: fit-content;
 

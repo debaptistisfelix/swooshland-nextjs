@@ -1,4 +1,5 @@
 import prisma from "@app/libs/prismaDB";
+export const dynamic = 'force-dynamic';
 
 // To get a specific item
 export async function GET(request, {params}){

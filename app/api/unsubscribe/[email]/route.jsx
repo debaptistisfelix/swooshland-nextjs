@@ -2,6 +2,7 @@ import prisma from "@app/libs/prismaDB";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@app/api/auth/[...nextauth]/route"
 import sendUnsubscribedFromNewsletterMail from "@app/libs/email/sendUnsubscribedFromNewsletterMail";
+export const dynamic = 'force-dynamic';
 
 export async function PATCH(request, {params}){
     const {email} = params;

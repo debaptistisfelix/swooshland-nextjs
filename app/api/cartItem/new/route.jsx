@@ -3,6 +3,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@app/api/auth/[...nextauth]/route"
 import { v4 as uuidv4 } from 'uuid';
 import { getCookies, setCookie } from 'cookies-next';
+export const dynamic = 'force-dynamic';
 
 //CREATE A NEW CART ITEM FOR A USER
 export async function POST(request){

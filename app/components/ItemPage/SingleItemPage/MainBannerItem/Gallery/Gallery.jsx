@@ -1,43 +1,31 @@
 "use client"
 
-import { useState, useEffect, useRef, useCallback } from 'react'
+import { useState, useEffect, useRef, useContext } from 'react'
 import styles from './Gallery.module.css'
-import Image from 'next/image'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faX, faMagnifyingGlassPlus, faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons'
-import { v4 as uuidv4 } from 'uuid';
-import ImageLoader from '@app/components/Reusables/ImageLoader/ImageLoader'
-
+import { faX, faCaretLeft, faCaretRight, faImage } from '@fortawesome/free-solid-svg-icons'
+import MainImageContainer from './MainImageContainer/MainImageContainer'
+import SmallImagesContainer from './SmallImagesContainer/SmallImagesContainer'
+import { TouchContext } from '@app/context/TouchContext'
 
 export default function Gallery({item }) {
-  const [mainImage, setMainImage] = useState({
-    src: "",
-    index: 0
-  })
+  const { touchEnd, handleTouchStart, handleTouchEnd, handleSwipe} = useContext(TouchContext);
 
-  const [zommedImg, setZommedImg] = useState(false)
-  const [currentZommedImageIndex, setCurrentZommedImageIndex] = useState(0)
   const totalImages = item?.images?.length || 0;
+
+  const [isFullscreenOpen, setIsFullscreenOpen] = useState(false);
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [isLoading, setIsLoading] = useState(false);
   
   const refElement = useRef(null);
 
 
 
-  const showNextImage = () => {
-    setCurrentZommedImageIndex((prevIndex) => (prevIndex + 1) % totalImages);
-  };
-  
-  const showPreviousImage = () => {
-    setCurrentZommedImageIndex((prevIndex) => (prevIndex - 1 + totalImages) % totalImages);
-  };
- 
- 
-
-  useEffect(() => {
-      if(item !== null){
-        setMainImage(item.images[0], 0)
-      } 
-  }, [item])
+  useEffect(()=>{
+     if(item?.images.length > 1){
+      handleSwipe(handlePrevImage, handleNextImage)
+     }
+  }, [touchEnd]) 
 
 
 
@@ -45,7 +33,7 @@ export default function Gallery({item }) {
   useEffect(() => {
     const handleClickOutside = (e) => {
         if(refElement.current && !refElement.current.contains(e.target)){
-          setZommedImg(false);
+          closeFullScreen();
         }
     }
 
@@ -56,104 +44,87 @@ export default function Gallery({item }) {
     }
 }, [])
 
-const setAsMainImage = useCallback((img, index) => {
-  setMainImage(img);
-  setCurrentZommedImageIndex(index);
-}, []);
+
 
 const handleImageChange = (img, index) => {
-  setMainImage(img);
-  setCurrentZommedImageIndex(index);
+  setCurrentIndex(index);
 }
 
-  
+
+
+const openFullScreen = (index) => {
+  // Check if the clicked index is the same as the current index
+ if (index === currentIndex) {
+   setIsLoading(false); // Reset loading state
+ } else {
+   setIsLoading(true); // Set loading state for a new image
+   setCurrentIndex(index);
+ }
+ setIsFullscreenOpen(true);
+ };
+
+
+ const closeFullScreen = () => {
+   setIsFullscreenOpen(false);
+ };
+
+ 
+ const handlePrevImage = () => {
+   event.stopPropagation();
+   setCurrentIndex((prevIndex) => (prevIndex === 0 ? item?.images.length - 1 : prevIndex - 1));
+ };
+
+ const handleNextImage = () => {
+   event.stopPropagation();
+   setCurrentIndex((prevIndex) => (prevIndex === item?.images.length - 1 ? 0 : prevIndex + 1));
+ };
+
+ useEffect(() => {
+  if(item !== null && item?.images !== null){
+    setIsLoading(true);
+  const image = new Image();
+  image.src = item?.images[currentIndex]
+  image.onload = () => {
+    setIsLoading(false);
+  };
+  }
+}, [currentIndex]);
+
+  console.log("Loaindg: ", isLoading)
   return (
    <>
     <section className={`${styles.galleryBox} ${item?.images?.length === 1 && styles.oneImageGalleryBox}`}>
-    {item && item.images.length > 1 && <section className={styles.smallImagesBox}>
-        {item !== null && item?.images.map((img, i) =>{
-          return <img
-          className={styles.smallImgBox}
-            key={i}
-            src={`/${img}`}
-            alt={`Small Image ${i}`}
-            onClick={() => handleImageChange(img, i)}
-          /> 
-        })}
-    </section>}
+    {item && item.images.length > 1 && <SmallImagesContainer currentIndex={currentIndex} item={item} handleImageChange={handleImageChange} />}
 
-    {/* <div className={styles.smallImgBox} key={uuidv4()}>
-            <ImageLoader />
-           <Image
-          onLoadingComplete={(img)=>{img.classList.add(styles.showImg)}} 
-            onClick={() => setAsMainImage(img, i)}
-            className={`${styles.smallImg} ${mainImage === img && styles.active} `} alt="small-image" fill={true} src={`/${img}`} />
-          </div> */}
-  
-    <section className={`${styles.mainImageBox} ${item?.images.length === 1 && styles.oneImageMainImageBox}`}>
-    <FontAwesomeIcon  onClick={() => setZommedImg(true)} className={styles.zoomIcon} icon={faMagnifyingGlassPlus} />
-    <ImageLoader />
-        <Image
-      onLoadingComplete={(img)=>{img.classList.add(styles.showImg)}} 
-        priority={true}
-         onClick={() => {
-          setZommedImg(true);
-          // set also the index to the index of the main image, to do this you need to set both src and index of the small images for the main images and change the code a bit
-         }}
-        className={styles.mainImg} alt="main-image" fill={true} src={`/${mainImage}`} />
-       {item && item.onSale === true &&  <div className={styles.discountTag}>-{item.discountPercentage}%</div>}
+    {item && item.images.length >= 1 &&<MainImageContainer item={item} currentIndex={currentIndex}  openFullScreen={openFullScreen} handleTouchEnd={handleTouchEnd} handleTouchStart={handleTouchStart}/>}
+   
+      {isFullscreenOpen &&  <div className={styles.shader}>
+              <div className={styles.fullscreenImgBox} ref={refElement}>
+                {isLoading ? <div className={styles.fullImageLoadingDiv}>
+        <FontAwesomeIcon icon={faImage} className={styles.fullScreenLoadingIcon} />
+      </div> : <><img onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd} className={styles.fullscreenImg} alt="main-image" src={`/${item?.images[currentIndex]}`} />
+                <FontAwesomeIcon onClick={closeFullScreen} className={styles.closeIcon} icon={faX} /></>}
+
+              {totalImages > 1 &&  <div className={styles.navBox} >
+              <FontAwesomeIcon onClick={handlePrevImage}  className={styles.navIcon} icon={faCaretLeft} />
+              <p onClick={handlePrevImage} className={styles.navParag}>
+              <FontAwesomeIcon  className={styles.mobileNavIcon} icon={faCaretLeft} />
+              Prev</p>
+              <div className={styles.mobileGalleryCount}>{currentIndex + 1}/{totalImages}</div>
+              <p onClick={handleNextImage} className={styles.navParag}>Next
+              <FontAwesomeIcon  className={styles.mobileNavIcon} icon={faCaretRight} /></p>
+              <FontAwesomeIcon onClick={handleNextImage}  className={styles.navIcon} icon={faCaretRight} />
+              </div>}
+
+              <div className={styles.galleryCount}>{currentIndex + 1}/{totalImages}</div>
+              </div>
+            
+            </div>}
     </section>
-   {zommedImg &&  <div className={styles.shader}>
-          <div className={styles.fullscreenImgBox} ref={refElement}>
-            <Image  className={styles.fullscreenImg} alt="main-image" fill={true} src={`/${item?.images[currentZommedImageIndex]}`} />
-            <FontAwesomeIcon onClick={() => setZommedImg(false)} className={styles.closeIcon} icon={faX} />
-
-          {totalImages > 1 &&  <div className={styles.navBox} >
-          <FontAwesomeIcon onClick={showPreviousImage}  className={styles.navIcon} icon={faCaretLeft} />
-          <p onClick={showPreviousImage} className={styles.navParag}>
-          <FontAwesomeIcon  className={styles.mobileNavIcon} icon={faCaretLeft} />
-          Prev</p>
-          <div className={styles.mobileGalleryCount}>{currentZommedImageIndex + 1}/{totalImages}</div>
-          <p onClick={showNextImage} className={styles.navParag}>Next
-          <FontAwesomeIcon  className={styles.mobileNavIcon} icon={faCaretRight} /></p>
-          <FontAwesomeIcon onClick={showNextImage}  className={styles.navIcon} icon={faCaretRight} />
-           </div>}
-
-           <div className={styles.galleryCount}>{currentZommedImageIndex + 1}/{totalImages}</div>
-          </div>
-        
-        </div>}
-</section>
    </>
   )
 
-
-
- /*  const [mainImage, setMainImage] = useState(item?.images[0]);
-
-  const handleImageClick = (image) => {
-    setMainImage(image);
-  };
-
-  console.log(item?.images)
-
-  return (
-    <div>
-      <img className={styles.bigUselessImage} src={`/${mainImage}`} alt="Main Image" />
-
-      <div>
-        {item?.images.map((image, index) => (
-          <img
-          className={styles.smallUselessImage}
-            key={index}
-            src={`/${image}`}
-            alt={`Small Image ${index}`}
-            onClick={() => handleImageClick(image)}
-          />
-        ))}
-      </div>
-    </div>
-  ); */
 
 }
 

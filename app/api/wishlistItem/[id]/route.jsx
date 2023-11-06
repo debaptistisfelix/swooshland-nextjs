@@ -1,6 +1,7 @@
 import prisma from "@app/libs/prismaDB";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@app/api/auth/[...nextauth]/route"
+export const dynamic = 'force-dynamic';
 
 //Get a specific cart item for a user
 export async function GET(request, {params}){

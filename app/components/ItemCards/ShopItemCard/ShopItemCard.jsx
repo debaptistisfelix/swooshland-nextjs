@@ -57,17 +57,7 @@ export default function ShopItemCard({sneaker}) {
            <ImageLoader />
                 <Image 
                onLoadingComplete={(img)=>{img.classList.add(styles.showImg)}} 
-                sizes="100vw"
-                srcSet="
-                  /_next/image?url=%2Flust1.jpg&w=640&q=75 640w,
-                  /_next/image?url=%2Flust1.jpg&w=750&q=75 750w,
-                  /_next/image?url=%2Flust1.jpg&w=828&q=75 828w,
-                  /_next/image?url=%2Flust1.jpg&w=1080&q=75 1080w,
-                  /_next/image?url=%2Flust1.jpg&w=1200&q=75 1200w,
-                  /_next/image?url=%2Flust1.jpg&w=1920&q=75 1920w,
-                  /_next/image?url=%2Flust1.jpg&w=2048&q=75 2048w,
-                  /_next/image?url=%2Flust1.jpg&w=3840&q=75 3840w
-                "
+               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 loading='lazy'
                 className={styles.image} src={`/${sneaker.images[0]}`} alt="shoe" fill={true}  />
                 {sneaker.onSale === true &&  <h3 className={styles.discountTag}>-{sneaker.discountPercentage}%</h3>}

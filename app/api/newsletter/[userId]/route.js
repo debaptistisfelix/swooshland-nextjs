@@ -1,5 +1,6 @@
 import prisma from "@app/libs/prismaDB";
 import { getServerSession } from "next-auth";
+export const dynamic = 'force-dynamic';
 import { authOptions } from "@app/api/auth/[...nextauth]/route"
 import sendSubscribedToNewsletterMail from "@app/libs/email/sendSubscribedToNewsletterMail";
 import sendUnsubscribedFromNewsletterMail from "@app/libs/email/sendUnsubscribedFromNewsletterMail";

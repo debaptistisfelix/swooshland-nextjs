@@ -132,18 +132,7 @@ export const CartProvider = ({children}) => {
                 const data = await response.json()
                 if(response.ok){
                     setCartItems(data)
-                    console.log(data)
                     setCartLoading("fetchingCartItems", false)
-                    /* toast.success(`You have ${data.length} items in your cart.`,  {
-                        style: {
-                            backgroundColor: "#191919",
-                            color: "#fff",
-                        },
-                        iconTheme: {
-                            primary: "#fff",
-                            secondary: "#191919",
-                        },
-                    }) */
                 } else {
                     setCartLoading("fetchingCartItems", false)
                     toast.error("error while fetching cartItems",  {
@@ -529,13 +518,11 @@ export const CartProvider = ({children}) => {
     };
 
     const checkIfThereAreExpiredCartItems = async () => {
-        console.log("checkinng if old cartItems are present")
         try{
             const response = await fetch("/api/cartItem/cleanUpOldGuestCartItems", {
                 method : "GET"
             }); 
             const data = await response.json()
-            console.log("Old items:",data)
             fetchGuestCartItems()
         }catch(error){
             console.log(error)

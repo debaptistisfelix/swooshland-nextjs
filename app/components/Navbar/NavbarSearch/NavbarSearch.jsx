@@ -8,27 +8,27 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { faX } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useRef } from 'react';
 import SearchCard from '@app/components/ItemCards/SearchCard/SearchCard';
-import Image from 'next/image';
 import NavSearchLoader from './NavSearchLoader/NavSearchLoader';
+
+
 import KawaiiPoster from './Advertising/KawaiiAdvertising/KawaiiPoster';
-import DiorPoster from './Advertising/DiorAdvertising/DiorPoster';
 import LeoPoster from './Advertising/LeoAdvertising/LeoPoster';
 import KrakenPoster from './Advertising/KrakenAdvertising/KrakenPoster';
 import OrangePoster from './Advertising/OrangeAdvertising/OrangePoster';
-import KawaiiPosterImg from '@/public/PosterLeoKawaii.jpg';
-import LeopardPosterImg from '@/public/PosterLeo.jpg';
-import KrakenPosterImg from '@/public/banner-images/fabioPoster.jpg';
-import DiorPosterImg from '@/public/PosterDior.jpg';
-import OrangePosterImg from '@/public/PosterOgOrange.jpg';
+import DiorPoster from './Advertising/DiorAdvertising/DiorPoster';
+
+
+
+
 
 
 export default function NavbarSearch({isSearchOpen}) {
     const [openSearch, setOpenSearch] = useState(null);
     const [searchQuery, setSearchQuery] = useState("");
-    const [randomImage, setRandomImage] = useState('');
+    const [randomImage, setRandomImage] = useState("");
     const [searchResults, setSearchResults] = useState([]);
     const [searchResultsCount, setSearchResultsCount] = useState(null);
-    const [isLoadingResults, setIsLoadingResults] = useState(true);
+    const [isLoadingResults, setIsLoadingResults] = useState(false);
     const refElement = useRef(null);
     const inputRef = useRef(null);
 
@@ -99,12 +99,12 @@ export default function NavbarSearch({isSearchOpen}) {
 
     useEffect(()=>{
       if(openSearch === true){
-        const randomIndex = Math.floor(Math.random() * posterImages.length);
-        const randomImgToDisplay = posterImages[randomIndex];
-        setRandomImage(randomImgToDisplay);
+        const randomIndex = Math.floor(Math.random() * 5);
+        setRandomImage(randomIndex);
       }
 
     }, [openSearch])
+
 
     const handleInputChange = (event) => {
       setSearchQuery(event.target.value);
@@ -152,39 +152,7 @@ export default function NavbarSearch({isSearchOpen}) {
    
 
 
-    const posterImages = [
-      {
-        id: 1,
-        src: KawaiiPosterImg,
-        alt: "Poster-leo-kawaii",
-        href:"/item/64f5995e2c7ea59ac36818e5"
-      },
-      {
-        id: 2,
-        src: OrangePosterImg,
-        alt: "Poster-Og-Orange",
-        href:"/item/64f4c91ac1af1593c3f0325c"
-      },
-      {
-        id: 3,
-        src: KrakenPosterImg,
-        alt: "Poster-Nike-af1-kraken",
-        href:"/item/64f590312c7ea59ac3681832"
-      },
-      {
-        id: 4,
-        src: DiorPosterImg,
-        alt: "Poster-Dior",
-        href:"/item/64f4c431c1af1593c3f0323f"
-      },
-      {
-        id: 5,
-        src: LeopardPosterImg,
-        alt: "Poster-leo",
-        href:"/item/64f598332c7ea59ac36818d6"
-      }
-
-    ]
+  
 
     
 
@@ -199,21 +167,22 @@ export default function NavbarSearch({isSearchOpen}) {
               closeSearchBox();
             }} />}
     </div>
-    {openSearch === true && searchQuery !== "" && <section  className={`${styles.searchResults} ${poppins.className}`}>
+    {openSearch === true  && <section  className={`${styles.searchResults} ${poppins.className}`}>
       <section ref={refElement} className={styles.resultsPage}>
         <section className={styles.brandsBox}>
-          <Image placeholder='blur' className={styles.img} fill={true} alt={randomImage.alt}  src={randomImage.src}  />
+         {/*  <Image className={styles.img} fill={true} alt={randomImage.alt}  src={randomImage === "" ? OrangePoster : randomImage.src}  /> */}
           <section className={styles.commercialText}>
-            {randomImage.src === KawaiiPosterImg && <KawaiiPoster closeSearchBox={closeSearchBox} />}
-            {randomImage.src === OrangePosterImg && <OrangePoster closeSearchBox={closeSearchBox} />}
-            {randomImage.src === KrakenPosterImg && <KrakenPoster closeSearchBox={closeSearchBox}/>}
-            {randomImage.src === DiorPosterImg && <DiorPoster closeSearchBox={closeSearchBox}/>}
-            {randomImage.src === LeopardPosterImg && <LeoPoster closeSearchBox={closeSearchBox}/>} 
+          {randomImage === 0 && <LeoPoster closeSearchBox={closeSearchBox}/>} 
+            {randomImage === 1 && <KawaiiPoster closeSearchBox={closeSearchBox} />}
+            {randomImage === 2 && <OrangePoster closeSearchBox={closeSearchBox} />}
+            {randomImage === 3 && <KrakenPoster closeSearchBox={closeSearchBox}/>}
+            {randomImage === 4&& <DiorPoster closeSearchBox={closeSearchBox}/>}
+            
         
           </section>
         </section>
         <section className={styles.firstResultBox}>
-        <h1 className={styles.resultTitle}>Search results for "{searchQuery}": {isLoadingResults === false && searchResultsCount !== null && searchResultsCount}</h1>
+        <h1 className={styles.resultTitle}>Search results for {`${searchQuery === ''  ? "" : searchQuery}`}: {isLoadingResults === false && searchResultsCount !== null && searchResultsCount}</h1>
         <div className={styles.resultList}>
           {isLoadingResults === true && <NavSearchLoader />}
             {searchResults.length > 0 && isLoadingResults === false && searchResults.map((item) => {

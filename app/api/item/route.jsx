@@ -1,5 +1,6 @@
 import prisma from "@app/libs/prismaDB";
 import { NextResponse } from "next/server";
+export const dynamic = 'force-dynamic';
 
 
 //to get ALL items

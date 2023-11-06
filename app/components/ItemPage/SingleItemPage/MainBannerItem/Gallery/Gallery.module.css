@@ -1,15 +1,3 @@
-
-.smallUselessImage{
-    width: 50px;
-    height: 50px;
-}
-
-.bigUselessImage{
-    width: 200px;
-    height: 200px;
-}
-
-
 .galleryBox{
     height: 100%;
     width: 100%;
@@ -23,52 +11,6 @@
     justify-content: center;
 }
 
-.smallImagesBox{
-    height:100%;
-    width: 20%;
-    gap: 20px;
-display: flex;
-flex-direction: column;
-    overflow-y: scroll;
-    scrollbar-width: none; 
-    -ms-overflow-style: none;
-    animation: moveUp 1s ease-in-out forwards;
-}
-
-@keyframes moveUp {
-    0%{
-      transform: translateY(80%);
-      opacity: 0;
-    }
-    100%{
-      opacity:1;
-      transform: translateY(0%);
-    }
-  }
-
-.smallImagesBox::-webkit-scrollbar {
-    display: none;
-}
-
-.smallImgBox{
-    position: relative;
-    width: 100%;
-    min-height: 27%;
-    border-radius: 8px;
-    cursor: pointer;
-    background-color: var(--thin-grey);
-}
-
-.smallImg{
-    border-radius: 8px;
-    opacity: 0;
-}
-
-
-
-.smallImg.active{
-    filter: brightness(80%);
-}
 
 .mainImageBox{
     height: 100%;
@@ -133,12 +75,29 @@ flex-direction: column;
     height: 100vh;
     width: 100vw;
     z-index: 101;
-    background-color: rgba(0,0,0,0.7);
+    background-color: rgba(0,0,0,0.95);
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 101;
    
+}
+
+.fullImageLoadingDiv{
+    width: 200px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: red;
+    border-radius: 20px;
+}
+
+.fullScreenLoadingIcon{
+    width: 50px;
+    height: 50px;
+    color: lightgray;
+    opacity: 0.25;
 }
 
 .fullscreenImgBox{
@@ -149,6 +108,8 @@ flex-direction: column;
 
 .fullscreenImg{
     object-fit: cover;
+    width: 100%;
+    height: 100%;
 }
 
 .closeIcon{
@@ -244,37 +205,8 @@ flex-direction: column;
     .mainImg{
         border-radius: 0;
     }
-    .smallImagesBox{
-        order: 2;
-        flex-direction: row;
-        width: 100%;
-       height: 20%;
-       overflow-x: scroll;
-       gap: 0;
-       background-color: var(--light-grey);
-       animation: moveRight 1s ease-in-out forwards;
-    }
+   
 
-    @keyframes moveRight {
-        0%{
-            transform: translateX(-80%);
-            opacity: 0;
-        }
-        100%{
-            opacity:1;
-            transform: translateX(0%);
-        }
-    }
-
-    .smallImgBox{
-        min-width: 25%;
-        max-width: 25%;
-        border-radius: 0;
-    }
-
-    .smallImg{
-        border-radius: 0;
-    }
     .shader{
         position: fixed;
         top: 0;
@@ -282,7 +214,7 @@ flex-direction: column;
         height: 100vh;
         width: 100vw;
         z-index: 101;
-        background-color: rgba(0,0,0,0.7);
+            background-color: rgba(0,0,0,0.95);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -399,33 +331,7 @@ flex-direction: column;
         height: 100%;
     }
 
-    .smallImagesBox{
-        order: 2;
-        flex-direction: row;
-        width: 100%;
-        height: 19%;
-        gap: 0;
-        overflow-x: scroll;
-        background-color: var(--light-grey);
-        animation:  moveRight 1s ease-in-out forwards;
-    }
-
-    @keyframes moveRight {
-        0%{
-            transform: translateX(-80%);
-            opacity: 0;
-        }
-        100%{
-            opacity:1;
-            transform: translateX(0%);
-        }
-    }
-
-    .smallImgBox{
-        min-width: 25%;
-        max-width: 25%;
-        border-radius: 0;
-    }
+    
 
     .mainImageBox{
         order: 1;
@@ -441,10 +347,7 @@ flex-direction: column;
         transform: translateX(0%);
     }
 
-    .smallImgBox{
-        min-width: 25%;
-        border-radius: 0;
-    }
+   
 
     .smallImg{
         border-radius: 0;
@@ -493,5 +396,11 @@ flex-direction: column;
         width: clamp(14px, 2vw + 0.12rem, 18px);
         height: clamp(14px, 2vw + 0.12rem, 18px);
        
+    }
+}
+
+@media (hover:none) and (pointer:coarse){
+    .navBox{
+        display: none;
     }
 }

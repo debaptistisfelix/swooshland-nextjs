@@ -133,7 +133,7 @@ export default function Register() {
                 
             </form>
             <button
-                tyoe="button"
+                type="button"
                 onClick={()=>{
                     let redirectUrl;
                     if(!itemId){
@@ -141,6 +141,7 @@ export default function Register() {
                     } else {
                         redirectUrl = `/reviewPage/${itemId}`;
                     }
+                    setLoading(true);
                     signIn("google", {callbackUrl:redirectUrl});
                 }}
                 className={`mainButton ${styles.googleBtn}`}>

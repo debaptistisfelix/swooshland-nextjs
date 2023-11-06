@@ -67,7 +67,7 @@ setCartLoading("addingItemToCartItems", null)
 
   
 
-  console.log(itemReviews)
+
 
   return (
     <section className={`${styles.textBox} ${item?.images.length === 1 && styles.oneImageTextBox}`}>

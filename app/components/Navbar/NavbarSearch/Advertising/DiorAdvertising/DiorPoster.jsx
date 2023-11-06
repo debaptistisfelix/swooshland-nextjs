@@ -2,12 +2,14 @@
 import { poppins } from '@app/fonts'
 import { useRouter } from 'next/navigation'
 import styles from "@app/components/Navbar/NavbarSearch/Advertising/Advertising.module.css"
-
+import Image from 'next/image';
+import DiorPosterImg from '@/public/PosterDior.jpg';
 
 export default function DiorPoster({closeSearchBox}) {
   const router = useRouter()
   return (
     <main className={`${styles.section} ${poppins.className}`}>
+      <Image sizes='400px' placeholder='blur' src={DiorPosterImg} alt="Dior Poster" layout="fill" objectFit="cover" className={styles.advertisementPoster} />
        <div className={styles.buttonBox}>
         <button onClick={()=>{
           closeSearchBox();

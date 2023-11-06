@@ -1,4 +1,5 @@
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+export const dynamic = 'force-dynamic';
 
 export  async function POST(request, {params}){
     const body = await request.json();

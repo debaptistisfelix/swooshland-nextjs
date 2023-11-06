@@ -7,6 +7,7 @@ import Navbar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer'
 import OrderContextProvider from './context/OrderContext'
 import BugDetector from './components/BugDetector/BugDetector'
+import TouchContextProvider from './context/TouchContext'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -25,7 +26,9 @@ export default function RootLayout({ children }) {
             <CartProvider>
              <Navbar/>
              <BugDetector/>
+             <TouchContextProvider>
               {children}
+              </TouchContextProvider>
             </CartProvider>
             </OrderContextProvider>
           </Provider>

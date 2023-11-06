@@ -35,7 +35,6 @@ export default function Navbar() {
 
 
     useEffect(()=>{
-        console.log("status:", status)
         if(status === 'authenticated'){
             setUserLink('/dashboard')
                 fetchCartItems(); 

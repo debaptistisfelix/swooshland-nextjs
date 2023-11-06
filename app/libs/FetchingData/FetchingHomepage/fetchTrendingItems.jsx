@@ -1,8 +1,14 @@
 // fetch trending items fro homepage
 
 export default async function getTrendingItems() {
- const baseUrl =  `https://${process.env.VERCEL_URL}`  || `${process.env.BASE_URL}`
-   /* const baseUrl = `${process.env.BASE_URL}`  */
+  let baseUrl;
+
+  if(process.env.NODE_ENV === 'development'){
+    baseUrl =  `${process.env.BASE_URL}`
+  } else {
+    baseUrl =  `https://${process.env.VERCEL_URL}`  
+  }
+
   const response = await fetch(`${baseUrl}/api/item/trending`, {
     cache: "no-store",
     method: 'GET',
@@ -11,10 +17,6 @@ export default async function getTrendingItems() {
       'Accept': 'application/json'
     },
   });
-  console.log("TRENDING-response: ", response.status)
-  console.log("TRENDING-response: ", response)
-  console.log("TRENDING-responseOK: ", response.ok)
-  console.log("TRENDING-responseBody: ", response.body)
   if (!response.ok) {
     throw new Error("Error while fetching item");
   }

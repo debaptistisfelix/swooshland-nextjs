@@ -2,7 +2,7 @@ import sgMail from '@sendgrid/mail';
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-const sendBugDetectorMail = async ( email, name, description, path) => {
+const sendBugDetectorMail = async ( email, name, description) => {
    
     const msg = {
         to: email,
@@ -13,7 +13,6 @@ const sendBugDetectorMail = async ( email, name, description, path) => {
             name: name, 
             description: description, 
             website: "Swooshland Customs",
-            path: path
 
         }
     }

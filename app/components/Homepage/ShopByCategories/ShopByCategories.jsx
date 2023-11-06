@@ -2,6 +2,8 @@ import styles from './ShopByCategories.module.css';
 import Link from 'next/link';
 import { poppins } from '@app/fonts';
 import Image from 'next/image';
+import LallaImg from "@/public/banner-images/lallaPoster.jpg";
+import WalletsImg from "@/public/wallets.jpg";
 
 export default function ShopByCategories() {
   return (
@@ -14,7 +16,7 @@ export default function ShopByCategories() {
             <Image className={styles.sneakerImage}
             sizes="28.78vw"
             	style={{objectFit: "cover"}}
-            src="/banner-images/lallaPoster.jpg" fill={true} loading='lazy' alt="sneakers-graphic" />
+            src={LallaImg} fill={true} loading='lazy' alt="sneakers-graphic" placeholder='blur' />
             <div className={styles.shader}>
                 <div className={styles.text}>
                     <h3 className={styles.categTitle}>
@@ -33,7 +35,7 @@ export default function ShopByCategories() {
         <Image className={styles.sneakerImage}
         sizes="45.67vw"
             	style={{objectFit: "cover"}}
-            src="/banner-images/lallaPoster.jpg" fill={true} loading='lazy' alt="sneakers-graphic" />
+            src={LallaImg} fill={true} loading='lazy' alt="sneakers-graphic" placeholder='blur' />
          </div>
          <h3 className={styles.mobileCategTitle}>
                         Sneakers
@@ -47,7 +49,7 @@ export default function ShopByCategories() {
             <Image className={styles.accessoriesImage}
             	style={{objectFit: "cover"}}
                 sizes="28.78vw"
-            src="/wallets.jpg" fill={true} loading='lazy' alt="sneakers-graphic" />
+            src={WalletsImg} fill={true} loading='lazy' alt="sneakers-graphic" placeholder='blur' />
             <div className={styles.shader}>
                 <div className={styles.text}>
                     <h3 className={styles.categTitle}>
@@ -66,7 +68,7 @@ export default function ShopByCategories() {
         <Image className={styles.accessoriesImage}
             	style={{objectFit: "cover"}}
                 sizes="45.67vw"
-            src="/wallets.jpg" fill={true} loading='lazy' alt="sneakers-graphic" />
+            src={WalletsImg} fill={true} loading='lazy' alt="sneakers-graphic" placeholder='blur' />
          </div>
          <h3 className={styles.mobileCategTitle}>
                         Accessories

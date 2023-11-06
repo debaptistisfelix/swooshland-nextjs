@@ -1,4 +1,5 @@
 import prisma from "@app/libs/prismaDB";
+export const dynamic = 'force-dynamic';
 
 //Get related items based on Id
 export async function GET(request, {params}){

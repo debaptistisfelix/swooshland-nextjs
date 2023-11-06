@@ -3,6 +3,7 @@
     align-items: center;
     justify-content: space-between;
     width: 90%;
+    max-width: 1480px;
     height: 100px;
     border-bottom: 2px solid #f0f0f0;
     z-index: 50;
@@ -57,8 +58,8 @@
     justify-content: center;
     text-align: center;
     font-size: 14px;
-    width: 15px;
-    height: 15px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
     padding: 3px;
     background-color: #ff6000;
@@ -150,33 +151,27 @@
     .navbar{
         display: flex;
         align-items: center;
-        flex-wrap: wrap;
         justify-content: space-between;
         width: 90%;
-        height: fit-content;
-        padding-bottom: 20px;
+        height: 80px;
         box-sizing: border-box;
         border-bottom: 2px solid #f0f0f0;
         z-index: 50;
     }
 
     .logoLink{
-        width: 100%;
         display: flex;
         justify-content: center;
+        margin-right: 30px;
     }
     
     .logo{
-        font-weight: bolder;
-        font-size: 24px;
-        width: 100%;
-        min-width: 90%;
+        font-size: 20px;
         text-align: center;
         text-align: center;
         cursor: pointer;
-        background-color: var(--dark-grey);
-        color: var(--white-pure);
-        border-radius: 5px;
+  
+   
     }
     .navLinks{
         margin-left: 0;
@@ -184,7 +179,7 @@
     }
 
     .iconGlassMobile{
-        display: block;
+        display: none;
         color: var(--dark-grey);
     }
 

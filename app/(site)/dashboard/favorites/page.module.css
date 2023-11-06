@@ -7,7 +7,7 @@
     width: 90%;
     min-height: calc(100vh - 100px);
     height: fit-content;
-
+    max-width: 1480px;
 }
 
 .title{

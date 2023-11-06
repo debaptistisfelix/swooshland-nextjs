@@ -23,7 +23,7 @@ export default function SneakersContextProvider({children}) {
     const [selectedSex, setSelectedSex] = useState("Any genre");
     const [isOnSale, setIsOnSale] = useState(null);
     /* Pagination states */
-    const itemsPerPage = 25;
+    const itemsPerPage = 15;
     const [visibleItems, setVisibleItems] = useState([]);
     
     const calculateEffectivePrice = (item) =>{

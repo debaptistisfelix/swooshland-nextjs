@@ -1,4 +1,5 @@
 import prisma from "@app/libs/prismaDB";
+export const dynamic = 'force-dynamic';
 
 //to get ALL REVIEWS OF AN ITEM
 export async function GET(request, {params}){

@@ -1,4 +1,5 @@
 import prisma from "@app/libs/prismaDB";
+export const dynamic = 'force-dynamic';
 
 export async function POST(request){
     //get body from request

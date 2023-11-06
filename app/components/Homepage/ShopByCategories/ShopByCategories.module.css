@@ -53,9 +53,11 @@
    
 }
 
-.sneakerImage{
+.sneakerImage, .accessoriesImage{
     border-radius: 12px;
 }
+
+.accessoriesImage
 
 .accessoriesBox{
     background-image: url(/wallets.jpg);

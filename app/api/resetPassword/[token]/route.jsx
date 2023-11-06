@@ -1,6 +1,7 @@
 import prisma from "@app/libs/prismaDB";
 import { hash } from "bcryptjs";
 import crypto from "crypto";
+export const dynamic = 'force-dynamic';
 
 export async function POST(request, {params}) {
     const body = await request.json();

@@ -6,7 +6,7 @@
     box-sizing: border-box;
     width: 90%;
     height: calc(100vh - 100px);
-
+    max-width: 1480px;
 }
 
 .title{

@@ -1,7 +1,7 @@
 import prisma from "@app/libs/prismaDB";
 import crypto from 'crypto';
 import sendPasswordForgotEmail from "@app/libs/email/sendPasswordForgotEmail";
-
+export const dynamic = 'force-dynamic';
 
 export async function POST(request){
     const body = await request.json();

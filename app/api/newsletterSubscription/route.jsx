@@ -1,6 +1,6 @@
 import prisma from "@app/libs/prismaDB";
 import sendSubscribedToNewsletterMail from "@app/libs/email/sendSubscribedToNewsletterMail";
-
+export const dynamic = 'force-dynamic';
 
 
 export async function POST(request){

@@ -7,7 +7,7 @@
     flex-direction: column;
    margin: auto;
     align-items: center;
- 
+    position: relative;
 }
 
 
@@ -69,6 +69,8 @@
 .image{
     border-radius: 8px;
     opacity: 0;
+    object-fit: cover;
+    object-position: center;
 }
 
 .showImg{
@@ -149,7 +151,7 @@
     width: 100%;
     flex-wrap: wrap;
     justify-content: space-between;
- 
+
 }
 
 .product, .price, .name, .gender, .discountedPrice{
@@ -466,7 +468,7 @@
     font-size: clamp(8px, 1vw + 0.12rem, 12px);
 }
 
-.star{
+.star, .emptyStar{
     width: clamp(8px, 1vw + 0.12rem, 12px);
    
     height: clamp(8px, 1vw + 0.12rem, 12px);

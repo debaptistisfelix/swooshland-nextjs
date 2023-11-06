@@ -13,10 +13,10 @@ export default function SaleCard({product}) {
         <p className={styles.parag}>{product.parag}</p>
     </section>
     <section className={styles.imgBox}>
-        <Image sizes="100vw" srcset={product.srcSet} className={styles.img} src={product.img} alt="sale1" fill={true} loading='lazy'  />
+        <Image sizes="(max-width: 640px) 640px, (max-width: 750px) 750px, (max-width: 828px) 828px, (max-width: 1080px) 1080px, (max-width: 1200px) 1200px, (max-width: 1920px) 1920px, (max-width: 2048px) 2048px, 3840px"  className={styles.img} src={product.img} alt="sale1" fill={true} loading='lazy'  />
     </section>
     <Link href={product.url} className={`${styles.mobileImgBox} Link`}>
-        <Image srcset={product.mobileSrcSet} 	sizes="100vw" className={styles.img} src={product.img} alt="sale1" fill={true} loading='lazy'  />
+        <Image 	sizes="(max-width: 640px) 640px, (max-width: 750px) 750px, (max-width: 828px) 828px, (max-width: 1080px) 1080px, (max-width: 1200px) 1200px, (max-width: 1920px) 1920px, (max-width: 2048px) 2048px, 3840px" className={styles.img} src={product.img} alt="sale1" fill={true} loading='lazy'  />
     </Link>
     <section className={styles.priceBox}>
        <span className={styles.oldPriceBox}>

@@ -7,19 +7,15 @@
     background-color: transparent;
   opacity: 1;
   transition: all 0.3s ease-in-out;
-    
+  background-color: var(--light-grey);
   }
-
-
-
-
 
 
   
   .buttonBox{
       position: absolute;
      bottom: 20px;
-     right: 20px;
+     right: 20px;;
      animation: moveLeft 1s ease-in-out forwards;
 
   }

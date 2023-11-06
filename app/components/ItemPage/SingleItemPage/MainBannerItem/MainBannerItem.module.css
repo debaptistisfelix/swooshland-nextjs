@@ -3,7 +3,6 @@
     height: 500px;
     height: 370px;
     height: clamp(370px, 35.94vw + 0.12rem, 500px);
-  
     display: flex;
 }
 
