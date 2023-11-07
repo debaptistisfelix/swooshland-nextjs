@@ -18,7 +18,7 @@ export default async function getItemData(id){
     })
     if(!response.ok){
       const data = await response.json()
-      console.log(data)
+   
       throw new Error("Error while requesting Item from server")
     }
     const data = await response.json()

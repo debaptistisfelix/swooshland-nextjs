@@ -4,12 +4,14 @@ import styles from './FavoritesList.module.css'
 import NoSizeCard from '@app/components/ItemCards/NoSizeCard/NoSizeCard'
 import ThreeCirclesLoader from '@app/components/Reusables/ThreeCirclesLoader/ThreeCirclesLoader'
 import { toast } from 'react-hot-toast'
+import FetchingDataError from '@app/components/Errors/FetchingDataError/FetchingDataError'
 
 export default function FavoritesList() {
     const [favorites, setFavorites] = useState([]);
     const [isLoading, setIsLoading] = useState({
         fetchingFavs: true,
         updatingFavs: false,
+        isFetchError: true,
     });
 
     const setLoading = (key, value) => {
@@ -19,17 +21,18 @@ export default function FavoritesList() {
     const somethingIsLoading = Object.values(isLoading).some((val) => val === true)
 
     const fetchFavorites = async ()=>{
-        setLoading("fetchingFavs", true);
+        setIsLoading((prevState) => ({ ...prevState, fetchingFavs: true }))
         try{
             const response = await fetch("/api/wishlistItem");
+      
             const data = await response.json();
             setFavorites(data);
-            console.log(data)
-            setLoading("fetchingFavs", false);
+ 
+            setIsLoading((prevState) => ({ ...prevState, fetchingFavs: false, isFetchError:false }))
         }
         catch(error){
             console.log(error)
-            setLoading("fetchingFavs", false);
+            setIsLoading((prevState) => ({ ...prevState, fetchingFavs: false, isFetchError:true }))
         }
     }
 
@@ -40,7 +43,7 @@ export default function FavoritesList() {
                 method: "DELETE",
             });
             const data = await response.json();
-            console.log(data);
+            
             if(response.status === 200){
                 setFavorites((prevState)=> prevState.filter((fav)=> fav.id !== id));
                 setLoading("updatingFavs", false);
@@ -78,12 +81,13 @@ export default function FavoritesList() {
   return (
     <section className={styles.listContainer}>
         <section className={styles.list}>
-        {favorites.length > 0 && isLoading.fetchingFavs === false && favorites.map((fav)=>{
+        {favorites !== null && favorites.length > 0 && isLoading.fetchingFavs === false && isLoading.isFetchError === false && favorites.map((fav)=>{
         return      <NoSizeCard key={fav.item.id} fav={fav} removeFromFavorites={removeFromFavorites} />
        })}
         </section>
-        {somethingIsLoading === true && <ThreeCirclesLoader />}
-        {favorites.length === 0 && isLoading.fetchingFavs === false && <h2 className={styles.noFavs}>You have no favorites yet</h2>}
+        {somethingIsLoading === true && isLoading.isError === false && <ThreeCirclesLoader />}
+        {favorites !== null && favorites.length === 0 && isLoading.fetchingFavs === false && isLoading.isError === false && <h2 className={styles.noFavs}>You have no favorites yet</h2>}
+       {isLoading.isFetchError === true && isLoading.fetchingFavs === false &&  <div className={styles.errorContainer}><FetchingDataError  /></div>}
     </section>
   )
 }

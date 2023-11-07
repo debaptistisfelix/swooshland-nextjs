@@ -3,7 +3,7 @@ import { poppins } from '@app/fonts'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { faSliders } from '@fortawesome/free-solid-svg-icons'
-import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faX } from '@fortawesome/free-solid-svg-icons';
 import { useContext, useState, useEffect } from 'react'
 import { v4 as uuidv4 } from 'uuid';
 import { SneakersContext } from '@app/context/SneakersPageContext'
@@ -49,6 +49,8 @@ export default function MobileFilterPage({mobileFiltersOpen, toggleMobileFilters
           setInputValue("")
       }
   }, [selectedPriceRange])
+
+
       
 
   return (
@@ -154,10 +156,14 @@ export default function MobileFilterPage({mobileFiltersOpen, toggleMobileFilters
            }} type="number" className={styles.priceInput}  />
            <button
            onClick={()=>{
-            handlePriceFilterOptionChange(inputValue)
+            if(selectedPriceRange === "All Prices"){
+              handlePriceFilterOptionChange(inputValue)
+            } else if (selectedPriceRange === inputValue){
+              handlePriceFilterOptionChange("All Prices")
+            }
            }}
-           className={styles.priceBtn}>
-            <FontAwesomeIcon icon={faCheck} className={styles.priceIcon} />
+           className={`${styles.priceBtn} ${selectedPriceRange !== "All Prices" && styles.active}`}>
+            <FontAwesomeIcon icon={selectedPriceRange === "All Prices" ? faCheck : faX} className={styles.priceIcon} />
            </button>
         </div>
       </section>

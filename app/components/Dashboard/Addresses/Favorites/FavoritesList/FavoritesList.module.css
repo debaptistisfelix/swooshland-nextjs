@@ -31,6 +31,10 @@
 
   }
 
+
+  .errorContainer{
+    margin: 30px 0;
+  }
   
  
 @media (max-width:600px){

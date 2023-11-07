@@ -174,7 +174,7 @@ export const CartProvider = ({children}) => {
                 const data = await response.json()
                 if(response.ok){
                     setCartItems(data)
-                    console.log(data)
+             
                     setCartLoading("fetchingCartItems", false)
                    /*  toast.success(`You have ${data.length} items in your cart.`,  {
                         style: {
@@ -236,7 +236,7 @@ export const CartProvider = ({children}) => {
                 if(response.status === 200){
                     setCartItems([...cartItems, data])
                     setChosenSize(null)
-                    console.log(data)
+                
                     setCartLoading("addingItemToCartItems", false)
                     setTimeout(()=>{setCartLoading("addingItemToCartItems", null)}, 1000)
                     toast.success(`${data.item.model} - ${data.item.name} added to cart`,  {
@@ -251,7 +251,7 @@ export const CartProvider = ({children}) => {
                     })
                 } else if(response.status !== 200){
                     setChosenSize(null)
-                    console.log(data)
+               
                     setCartLoading("addingItemToCartItems", false)
                     setTimeout(()=>{setCartLoading("addingItemToCartItems", null)}, 1000)
                     toast.error(data,  {
@@ -265,7 +265,7 @@ export const CartProvider = ({children}) => {
                         },
                     })
                 } else {
-                    console.log(data)
+                   
                     setChosenSize(null)
                     setCartLoading("addingItemToCartItems", false)
                     setTimeout(()=>{setCartLoading("addingItemToCartItems", null)}, 1000)
@@ -320,7 +320,7 @@ export const CartProvider = ({children}) => {
                 method: "DELETE",
             })
             const data = await response.json()
-            console.log(data);
+           
             if(response.ok){
                 setCartItems(cartItems.filter((item) => item.id !== cartItem.id))
                 setCartLoading("removingCartItem", false)
@@ -377,7 +377,7 @@ export const CartProvider = ({children}) => {
                 }) 
             })
             const data = await response.json()
-            console.log(data); 
+            
             if(response.ok){
                 setCartItems(cartItems.filter((cartItem) => !cartItemsIds.includes(cartItem.id)))
                 setCartLoading("removingCartItem", false)
@@ -443,7 +443,7 @@ export const CartProvider = ({children}) => {
                     cartItems
                 })
             })
-            console.log("loading:2", isCartLoading.checkingAvailability)
+            ("loading:2", isCartLoading.checkingAvailability)
             const data = await response.json()
             console.log(data)
             if(response.ok && data.cartItemsToDelet > 0){
@@ -543,7 +543,7 @@ export const CartProvider = ({children}) => {
                 }),
             })
             const data = await response.json();
-            console.log(data);
+           
             if(response.status === 200){
                 setCartLoading("updatingFavoriteState", false);
                 toast.success(`${item.model} - ${item.name} added to favorites`, {

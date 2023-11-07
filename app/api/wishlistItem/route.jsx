@@ -7,6 +7,8 @@ export const dynamic = 'force-dynamic';
 export async function GET(request){
     const session = await getServerSession(authOptions);
 
+    console.log("session: ", session)
+
     if(!session){
         return new Response(JSON.stringify("You are not authorized to get cart items"), {status: 401});
     }

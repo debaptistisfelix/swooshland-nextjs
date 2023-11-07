@@ -115,7 +115,7 @@ export default function NavbarSearch({isSearchOpen}) {
       try {
         const response = await fetch(`/api/item?query=${searchQuery}`);
         const data = await response.json();
-        console.log(data);
+   
         const alphabeticOrderedList = data.sort((a, b) => {
           if(a.name.toLowerCase() < b.name.toLowerCase()){
             return -1;

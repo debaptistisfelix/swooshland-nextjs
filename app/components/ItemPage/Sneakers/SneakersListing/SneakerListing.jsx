@@ -71,7 +71,7 @@ export default function SneakerListing({sneakersList,location,  mobileFiltersOpe
  
         const handleAction = () => {
             const urlWithoutQuery = window.location.origin + window.location.pathname;
-            console.log(urlWithoutQuery)
+   
             window.history.replaceState({}, document.title, urlWithoutQuery);
           };
 
@@ -81,7 +81,7 @@ export default function SneakerListing({sneakersList,location,  mobileFiltersOpe
             applySorting(filteredVisibleItems)
         } else {
             
-            applySorting(visibleItems)
+            applySorting(sneakers)
             handleAction()
             
         }

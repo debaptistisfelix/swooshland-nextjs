@@ -38,7 +38,7 @@ export default  function AddressesList() {
     }
   }, [])
 
-  console.log("addresses: ", addresses)
+
 
  
 

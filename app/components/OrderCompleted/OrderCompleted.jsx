@@ -38,7 +38,7 @@ export default function OrderCompleted() {
         })
         const data = await response.json();
         if(response.status === 200){
-        console.log(data);
+    
         setOrder(data);
         setCartItems([]);
         /* deleteCookie('order'); */
@@ -54,7 +54,7 @@ export default function OrderCompleted() {
           },
       })
         } else if(response.status === 400){
-        console.log(data);
+      
         setOrder(data);
         setCartItems([]);
         /* deleteCookie('order'); */
@@ -171,7 +171,7 @@ export default function OrderCompleted() {
                 <h2 className={styles.detailLabel}>Products details:</h2>
                 <div className={styles.productsInfo}>
                   {order && order?.boughtItems?.map(product => {
-                    console.log(product)
+    
                     return  <div key={uuidv4()} className={styles.itemBox}>
                     <h2 className={styles.detailInfo}>{product?.item?.model}</h2>
                     <h2 className={styles.detailInfo}>{product?.item?.name}</h2>

@@ -18,6 +18,10 @@
 box-sizing: border-box;
 }
 
+.orderContainer{
+    margin: 30px 0;
+}
+
 @media (max-width:600px){
     .list{
         width: 90%;
