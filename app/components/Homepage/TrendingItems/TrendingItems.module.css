@@ -48,6 +48,11 @@
     bottom: 0;
 }
 
+.errorContainer{
+    margin: 30px 0 ;
+    width: 80%;
+}
+
 @media (max-width:600px){
     .title{
         color: var(--dark-grey);
@@ -78,8 +83,7 @@
         justify-content: center;
         align-items: center;
        position: relative;
-       height: 150px;
-    
+       min-height: 150px;
      
     }
     

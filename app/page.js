@@ -9,10 +9,8 @@ import FetchingDataError from "./components/Errors/FetchingDataError/FetchingDat
 import { Suspense } from "react"
 import getItemData from "./libs/FetchingData/FetchingSinglItemData/FetchingSingleItem/fetchItem"
 
-export default async function page() {
-  try {
-    const trendingItems = await getTrendingItems()
-    const itemData = await getItemData("64d4f2a72862dff874b44775")
+export default function page() {
+
 
   return (
    <main className={styles.homepage}>
@@ -23,9 +21,7 @@ export default async function page() {
         <Sales />
       </div>
       <div className={styles.horizontalTop}>
-       <Suspense fallback={<div>Loading...</div>}>
-       <TrendingItems sneakers={trendingItems}  /> 
-        </Suspense>
+       <TrendingItems  /> 
       </div>
       <div className={styles.horizontalBottom}>
         <ShopByCategories />
@@ -33,24 +29,4 @@ export default async function page() {
     </section>
    </main>
   )
-  } catch (error) {
-    console.log("error", error)
-    return (
-      <main className={styles.homepage}>
-       <MainBanner />
-       <section className={styles.homepageSectionsBox}>
-         <Categories />
-         <div className={styles.lateralLong}>
-           <Sales />
-         </div>
-         <div className={styles.horizontalTop}>
-           <FetchingDataError />
-         </div>
-         <div className={styles.horizontalBottom}>
-           <ShopByCategories />
-         </div>
-       </section>
-      </main>
-     )
-  }
 }

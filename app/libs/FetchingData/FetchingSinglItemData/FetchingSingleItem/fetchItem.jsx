@@ -8,7 +8,7 @@ export default async function getItemData(id){
   } else {
     baseUrl =  `https://${process.env.VERCEL_URL}`  
   }
-    const response = await fetch(`${baseUrl}/api/item/${id}`,{
+    const response = await fetch(`/api/item/${id}`,{
       cache: "no-store",
       method: 'GET',
       headers: {
@@ -17,6 +17,8 @@ export default async function getItemData(id){
       },
     })
     if(!response.ok){
+      const data = await response.json()
+      console.log(data)
       throw new Error("Error while requesting Item from server")
     }
     const data = await response.json()

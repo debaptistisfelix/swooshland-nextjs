@@ -6,13 +6,46 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import Image from 'next/image'
 import { faSliders } from '@fortawesome/free-solid-svg-icons'
-import { poppins } from '@app/fonts'
+import getItemsListData from '@app/libs/FetchingData/FetchItemsListData/fetchItemsListData'
 import AccessoriesContextProvider from '@app/context/AccessoriesContext'
 import AccessoriesListing from '@app/components/ItemPage/Accessories/AccessoriesListing/AccessoriesListing'
+import FetchingDataError from '@app/components/Errors/FetchingDataError/FetchingDataError'
 import AccessoriesBanner from '@/public/walletSu.jpg';
+import ThreeCirclesLoader from '@app/components/Reusables/ThreeCirclesLoader/ThreeCirclesLoader'
 
-export default function AccessoriesSection({accessories}) {
+export default function AccessoriesSection() {
     const [mobileFiltersOpen, setMobileFiltersOpen] = useState(null);
+    const [accessories, setAccessories] = useState(null);
+    const [accessoriesLoadingState, setAccessoriesLoadingState] = useState({
+        isLoading: true,
+        isError: false,
+    });
+
+    const fetchAccessories = async () => {
+      try {
+        setAccessoriesLoadingState({
+          isLoading: true,
+          isError: false,
+        })
+        const data = await getItemsListData("accessories");
+        setAccessories(data)
+        setAccessoriesLoadingState({
+          isLoading: false,
+          isError: false,
+        })
+      } catch (error) {
+        console.log(error)
+        setAccessoriesLoadingState({
+          isLoading: false,
+          isError: true,
+        })
+      }
+    }
+
+    useEffect(()=>{
+      fetchAccessories()
+    },[])
+
 
     useEffect(() => {
       if(mobileFiltersOpen === true){
@@ -57,8 +90,11 @@ export default function AccessoriesSection({accessories}) {
                 </div>
             </div>
         </div>
+        {accessoriesLoadingState.isError === true && accessoriesLoadingState.isLoading === false && <div className={styles.errorContainer}>
+          <FetchingDataError/></div>}
+        {accessoriesLoadingState.isLoading === true && accessoriesLoadingState.isError === false && <ThreeCirclesLoader />}
         <AccessoriesContextProvider>
-          <AccessoriesListing accessoriesList={accessories}  mobileFiltersOpen={mobileFiltersOpen} toggleMobileFilters={toggleMobileFilters} />
+         {accessories && accessories.length > 0 && accessoriesLoadingState.isError === false && accessoriesLoadingState.isLoading=== false &&  <AccessoriesListing accessoriesList={accessories}  mobileFiltersOpen={mobileFiltersOpen} toggleMobileFilters={toggleMobileFilters} />}
         </AccessoriesContextProvider>
           </>
   )

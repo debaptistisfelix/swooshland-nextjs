@@ -11,23 +11,13 @@ export const metadata = {
   description: 'Explore our Custom Accessories collection. Wallets, Backpacks, Lunch-boxes and more.',
 } 
 
-export default async function AccessoriesPage() {
- try {
-  const accessories = await getItemsListData("accessories")
-  const item = await getItemData("64d4f2a72862dff874b44775")
+export default function AccessoriesPage() {
+
 
   return (
     <main className={`${styles.accessoriesPage} ${poppins.className}`}>
-     <AccessoriesSection accessories={accessories} />
+     <AccessoriesSection />
     </main>
   )
- } catch (error) {
-  console.error(error)
-  const errorObject ={...error}
-    return (
-      <main className={`pageLoaderContainer`}>
-         <FetchingDataError />
-      </main>
-    )
- }
+ 
 }

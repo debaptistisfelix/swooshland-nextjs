@@ -24,7 +24,7 @@ export async function POST(request, {params}){
         }
     })
 
-    console.log("item", item)
+
     if(!item){
         return new Response(JSON.stringify("Item not found"), {status: 404});
     }

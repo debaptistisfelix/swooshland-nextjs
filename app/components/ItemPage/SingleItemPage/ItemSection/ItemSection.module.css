@@ -38,6 +38,10 @@
     height: 16px;
 }
 
+.errorContainer{
+    margin: 30px 0;
+}
+
 .errorBox{
     display: flex;
     flex-direction: column;

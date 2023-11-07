@@ -7,7 +7,7 @@ import FetchingDataError from '@app/components/Errors/FetchingDataError/Fetching
 import getItemsListData from '@app/libs/FetchingData/FetchItemsListData/fetchItemsListData'
 
 
-export async function generateMetadata({ params, searchParams }, parent) {
+/* export async function generateMetadata({ params, searchParams }, parent) {
   // read route params
   const id = params.id
  const baseUrl = process.env.BASE_URL
@@ -28,29 +28,13 @@ export async function generateMetadata({ params, searchParams }, parent) {
       title: "Error 404 - Swooshland Customs"
     }
   }
-} 
+}  */
 
-
-
-export default async function page({ params: { id } }) {
-  try {
-    const item = await getItemData(id)
-    const relatedItems =  getItemRelated(id)
-   
-
+export default function page({ params: { id } }) {
     return (
       <main className="pageLoaderContainer">
-        <Suspense fallback={<ThreeCirclesLoader />}>
-          <ItemSection item={item} relatedPromise={relatedItems} />
-        </Suspense>
+          <ItemSection id={id} />
       </main>
     )
-  } catch (error) {
-    console.log(error)
-    return (
-    <main className="pageLoaderContainer">
-      <FetchingDataError />
-    </main>
-    )
-  }
+  
 }

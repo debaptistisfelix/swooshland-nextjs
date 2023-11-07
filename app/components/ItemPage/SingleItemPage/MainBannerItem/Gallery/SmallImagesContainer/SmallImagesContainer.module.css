@@ -30,6 +30,8 @@ flex-direction: column;
 .smallImgBox{
     width: 100%;
     height: fit-content;
+    display: flex;
+    align-items: center;
     border-radius: 8px;
     cursor: pointer;
     background-color: var(--thin-grey);
@@ -127,9 +129,8 @@ flex-direction: column;
         flex-direction: row;
         width: 100%;
         height: 5px;
-        gap: 5px;
+        gap: 2px;
         overflow-x: scroll;
-        
         animation:  moveRight 1s ease-in-out forwards;
     }
 
@@ -146,10 +147,10 @@ flex-direction: column;
 
     .smallImgBox{
         min-width: unset;
-       
-        width: auto;
+        width: 20%;
         height: 100%;
-        border-radius: 8px;
+        border-radius: 0px;
+        background-color: var(--thin-grey);
     }
 
     .smallImgBox.active{

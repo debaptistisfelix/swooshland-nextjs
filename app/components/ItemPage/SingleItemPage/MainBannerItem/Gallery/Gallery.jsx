@@ -82,29 +82,30 @@ const openFullScreen = (index) => {
  useEffect(() => {
   if(item !== null && item?.images !== null){
     setIsLoading(true);
-  const image = new Image();
-  image.src = item?.images[currentIndex]
-  image.onload = () => {
-    setIsLoading(false);
-  };
+    const image = new Image();
+    image.src = item?.images[currentIndex]
+    image.onload = () => {
+      setIsLoading(false);
+    };
+
   }
 }, [currentIndex]);
 
-  console.log("Loaindg: ", isLoading)
+
   return (
    <>
     <section className={`${styles.galleryBox} ${item?.images?.length === 1 && styles.oneImageGalleryBox}`}>
     {item && item.images.length > 1 && <SmallImagesContainer currentIndex={currentIndex} item={item} handleImageChange={handleImageChange} />}
 
-    {item && item.images.length >= 1 &&<MainImageContainer item={item} currentIndex={currentIndex}  openFullScreen={openFullScreen} handleTouchEnd={handleTouchEnd} handleTouchStart={handleTouchStart}/>}
+    {item && item.images.length >= 1 &&<MainImageContainer isLoading={isLoading} item={item} currentIndex={currentIndex}  openFullScreen={openFullScreen} handleTouchEnd={handleTouchEnd} handleTouchStart={handleTouchStart} handleNextImage={handleNextImage} handlePrevImage={handlePrevImage} totalImages={totalImages} />}
    
       {isFullscreenOpen &&  <div className={styles.shader}>
               <div className={styles.fullscreenImgBox} ref={refElement}>
-                {isLoading ? <div className={styles.fullImageLoadingDiv}>
-        <FontAwesomeIcon icon={faImage} className={styles.fullScreenLoadingIcon} />
-      </div> : <><img onTouchStart={handleTouchStart}
+              
+   
+            <img onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd} className={styles.fullscreenImg} alt="main-image" src={`/${item?.images[currentIndex]}`} />
-                <FontAwesomeIcon onClick={closeFullScreen} className={styles.closeIcon} icon={faX} /></>}
+                <FontAwesomeIcon onClick={closeFullScreen} className={styles.closeIcon} icon={faX} />
 
               {totalImages > 1 &&  <div className={styles.navBox} >
               <FontAwesomeIcon onClick={handlePrevImage}  className={styles.navIcon} icon={faCaretLeft} />

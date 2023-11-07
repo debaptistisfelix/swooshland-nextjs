@@ -8,7 +8,7 @@ export default async function getItemsListData(tag){
   } else {
     baseUrl =  `https://${process.env.VERCEL_URL}`  
   }
-    const response = await fetch(`${baseUrl}/api/item`, {
+    const response = await fetch(`/api/item`, {
       cache: "no-store",
       method: 'GET',
       headers: {

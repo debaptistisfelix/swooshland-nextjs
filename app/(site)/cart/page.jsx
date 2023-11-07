@@ -13,14 +13,6 @@ export const metadata = {
 
 export default function page() {
   
-
-/*     useEffect(()=>{
-        if(status === 'authenticated'){
-           fetchCartItems(); 
-        } else if(status === 'unauthenticated'){
-            fetchGuestCartItems();
-        }
-    }, [session]) */
    
     
   return (

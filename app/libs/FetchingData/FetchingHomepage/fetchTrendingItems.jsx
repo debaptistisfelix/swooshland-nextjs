@@ -9,7 +9,7 @@ export default async function getTrendingItems() {
     baseUrl =  `https://${process.env.VERCEL_URL}`  
   }
 
-  const response = await fetch(`${baseUrl}/api/item/trending`, {
+  const response = await fetch(`/api/item/trending`, {
     cache: "no-store",
     method: 'GET',
     headers: {

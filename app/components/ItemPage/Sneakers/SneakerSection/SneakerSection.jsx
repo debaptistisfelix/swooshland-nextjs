@@ -10,10 +10,44 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { faSliders } from '@fortawesome/free-solid-svg-icons'
 import SneakerBanner from '@/public/kraken.jpg';
+import ThreeCirclesLoader from '@app/components/Reusables/ThreeCirclesLoader/ThreeCirclesLoader'
+import FetchingDataError from '@app/components/Errors/FetchingDataError/FetchingDataError'
+import getItemsListData from '@app/libs/FetchingData/FetchItemsListData/fetchItemsListData'
 
 
-export default function SneakerSection({sneakers}) {
+
+export default function SneakerSection() {
     const [mobileFiltersOpen, setMobileFiltersOpen] = useState(null);
+    const [sneakers, setSneakers] = useState(null);
+    const [sneakersLoadingState, setSneakersLoadingState] = useState({
+        isLoading: true,
+        isError: false,
+    });
+
+    const fetchSneakers = async () => {
+        setSneakersLoadingState({
+            isLoading: true,
+            isError: false,
+        })
+        try {
+            const data = await getItemsListData("sneakers");
+            setSneakers(data)
+            setSneakersLoadingState({
+                isLoading: false,
+                isError: false,
+            })
+        } catch (error) {
+            console.log(error)
+            setSneakersLoadingState({
+                isLoading: false,
+                isError: true,
+            })
+        }
+    }
+
+    useEffect(()=>{
+        fetchSneakers()
+    },[])
 
     useEffect(() => {
       if(mobileFiltersOpen === true){
@@ -58,8 +92,11 @@ export default function SneakerSection({sneakers}) {
                 </div>
             </div>
         </div>
+        {sneakersLoadingState.isLoading && sneakersLoadingState.isError === false && <ThreeCirclesLoader />}
+        {sneakersLoadingState.isError && <div className={styles.errorContainer}>
+        <FetchingDataError /></div>}
         <SneakersContextProvider>
-        <SneakerListing sneakersList={sneakers}  toggleMobileFilters={toggleMobileFilters} mobileFiltersOpen={mobileFiltersOpen} />
+       {sneakers && sneakersLoadingState.isLoading === false && sneakersLoadingState.isError === false &&  <SneakerListing sneakersList={sneakers}  toggleMobileFilters={toggleMobileFilters} mobileFiltersOpen={mobileFiltersOpen} />}
         </SneakersContextProvider></>
   )
 }
