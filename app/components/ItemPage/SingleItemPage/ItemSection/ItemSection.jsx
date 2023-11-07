@@ -55,9 +55,6 @@ export default function ItemSection() {
       }
     }
 
- 
-    
-    console.log("item: ", item)
    
   
     const setLoading = (key, value) => {

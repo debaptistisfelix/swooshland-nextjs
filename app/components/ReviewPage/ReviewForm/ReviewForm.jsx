@@ -45,7 +45,7 @@ export default function ReviewForm({changeReviewSubmittedStatus, setLoading}) {
             }),
           });
           const data = await response.json();
-          console.log(data)
+   
           setLoading("submittingReview", false)
           toast.success("Review Posted",  {
             style: {
@@ -88,7 +88,7 @@ export default function ReviewForm({changeReviewSubmittedStatus, setLoading}) {
     }
   }
 
-    console.log(reviewText, reviewTitle, selectedRating)
+
   return (
     <main className={`${styles.section} ${poppins.className}`}>
         <form onSubmit={submitReview} className={styles.form}>

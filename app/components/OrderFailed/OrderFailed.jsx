@@ -95,8 +95,7 @@ export default function OrderFailed() {
       }
     },[orderId])
 
-    console.log("loading: ", loading)
-    console.log("error: ", error)
+
   return (
     <section  className="pageContent">
     {loading === true && <ThreeCirclesLoader />}

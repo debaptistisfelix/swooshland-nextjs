@@ -64,7 +64,6 @@ export default function BugDetector() {
                     body: JSON.stringify({...data}),
                 })
                 const responseData = await response.json()
-                    console.log(responseData)
                     if(responseData.message === "success") {
                         
                         toast.success("Thank you for your feedback!", {

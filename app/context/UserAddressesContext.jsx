@@ -393,7 +393,7 @@ export default function UserAddressesContextProvider({ children }) {
               secondary: "#d00000",
           },
          })
-        console.log("checkoutAddress", checkoutAddress)
+       
       } else {
         if(itemsAvailabilityWasChecked === false){
           toast.success("Checking Cart Items Availability",  {

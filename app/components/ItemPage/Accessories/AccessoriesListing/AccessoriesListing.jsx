@@ -72,9 +72,7 @@ export default function AccessoriesListing({accessoriesList, mobileFiltersOpen, 
       }
     },[accessories])
 
-    console.log("visibleItems",visibleItems)
-    console.log("filtered visible items", filteredVisibleItems)
-    console.log("filters applied:", filtersAppliedToAccessories)
+
 
     
 

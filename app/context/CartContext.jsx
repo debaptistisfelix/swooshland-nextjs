@@ -443,9 +443,9 @@ export const CartProvider = ({children}) => {
                     cartItems
                 })
             })
-            ("loading:2", isCartLoading.checkingAvailability)
+       
             const data = await response.json()
-            console.log(data)
+         
             if(response.ok && data.cartItemsToDelet > 0){
                 setCartLoading("checkingAvailability", false)
                 toast.error("Some Items are not more available in the chosen size and will be removed from your cart", {
@@ -460,7 +460,7 @@ export const CartProvider = ({children}) => {
                 }) 
                 setDeletedCartItemsBeforeCheckout(data.cartItemsToDelete);
                 const cartItemsIdsArray = data.cartItemsToDelete.map(cartItem => cartItem.id);
-                console.log("Array of cartItems to delet:", cartItemsIdsArray)
+            
                 deletCartItemsFromAnArray(cartItemsIdsArray)
                 window.scrollTo(0, 0);
                 

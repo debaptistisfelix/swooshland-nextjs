@@ -21,6 +21,6 @@ export default async function getTrendingItems() {
     throw new Error("Error while fetching item");
   }
   const data = await response.json();
-  console.log(data)
+
   return data;
 }

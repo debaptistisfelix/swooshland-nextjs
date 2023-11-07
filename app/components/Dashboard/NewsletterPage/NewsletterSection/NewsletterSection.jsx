@@ -15,7 +15,7 @@ export default function NewsletterSection() {
   })
   const session = useSession()
 
-  console.log(subscribed)
+
 
   const somethingIsLoading = Object.values(isLoading).some((item)=> item === true )
 
@@ -29,7 +29,7 @@ export default function NewsletterSection() {
   
         if(response.ok){
           const data = await response.json()
-          console.log("data form response ",data)
+
          setSubscribed(data)
          setIsLoading({...isLoading, checkingSubscribed: false})
         }

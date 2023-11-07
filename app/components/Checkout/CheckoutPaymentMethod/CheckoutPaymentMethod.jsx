@@ -61,8 +61,7 @@ export default function CheckoutPaymentMethod() {
         shipping = 0;
       }
       total = subtotal + shipping;
-      console.log("subtotal:", subtotal)
-      console.log("total:", total)
+
       const orderAddress = checkoutAddress;
       const orderData = {
         subtotal,
@@ -77,9 +76,7 @@ export default function CheckoutPaymentMethod() {
     }
   }, [itemsAvailabilityWasChecked, cartItems]) 
 
-   
-console.log("ordersInfo:",orderInfos)
-console.log("cartItems:",cartItems)
+
 
 
     const toggleCheckBox = ()=>{

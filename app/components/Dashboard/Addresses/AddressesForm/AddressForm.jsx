@@ -14,7 +14,7 @@ export default function AddressForm() {
     handleSubmit
   } = useContext(UserAddressesContext)
 
-  console.log("formData:", formData)
+
   
   return (
     <form onSubmit={handleSubmit} className={styles.form}>

@@ -28,7 +28,7 @@ export default function UnsubscribeSection() {
                 }
             })
             const data = await response.json();
-            console.log(data);
+
            if(response.status === 404){
             setIsLoading(false);
             setError(false);

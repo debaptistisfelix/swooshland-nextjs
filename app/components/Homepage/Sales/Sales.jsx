@@ -66,7 +66,7 @@ export default function Sales() {
         body: JSON.stringify({email})
       });
       const data = await response.json();
-      console.log(data);
+
     
       if(response.status === 400){
         setIsLoading(false);

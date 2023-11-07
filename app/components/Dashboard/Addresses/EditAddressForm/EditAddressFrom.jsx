@@ -79,8 +79,7 @@ const submitUpdatedAddress = async (address) => {
     console.log(error)
   }
 }
-console.log("address : ", address)
-console.log("address id : ", address.id)
+
   return (
     <form  onSubmit={()=>{submitUpdatedAddress(address)}} className={styles.form}>
         <input value={editData.name} onChange={handleInputChange} name="name" type="text" className={`${styles.input} ${styles.name}`} />

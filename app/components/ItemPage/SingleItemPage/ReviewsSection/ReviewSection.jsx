@@ -32,23 +32,23 @@ export default function ReviewSection({item, itemReviews, filterItemReviewsAfter
     const applySorting = () => {
         if(selectedSorting === "Newest") {
             const sortedReviews = visibleReviews.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
-            console.log(sortedReviews)
+           
             setVisibleReviews(sortedReviews)
             arrangeReviewsColumns()
         } else if(selectedSorting === "Oldest") {
             const sortedReviews = visibleReviews.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt))
             setVisibleReviews(sortedReviews)
-            console.log(sortedReviews)
+           
             arrangeReviewsColumns()
         } else if(selectedSorting === "Highest Rating") {
             const sortedReviews = visibleReviews.sort((a, b) => b.rating - a.rating)
             setVisibleReviews(sortedReviews)
-            console.log(sortedReviews)
+           
             arrangeReviewsColumns()
         } else if(selectedSorting === "Lowest Rating") {
             const sortedReviews = visibleReviews.sort((a, b) => a.rating - b.rating)
             setVisibleReviews(sortedReviews)
-            console.log(sortedReviews)
+           
             arrangeReviewsColumns()
         }
     }
@@ -105,7 +105,7 @@ export default function ReviewSection({item, itemReviews, filterItemReviewsAfter
         const nextReviews = itemReviews.slice(0, nextPageIndex);
         setVisibleReviews(nextReviews);
        
-        console.log(visibleReviews)
+    
        } else {
         const nextReviews = itemReviews.filter(review => review.rating === parseInt(selectedFilter[0])).slice(0, nextPageIndex);
         setVisibleReviews(nextReviews);

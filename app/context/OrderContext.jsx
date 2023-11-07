@@ -18,7 +18,7 @@ export default function OrderContextProvider({ children }) {
 
     const createOrder = async (orderData) => {
         setIsLoading({ creatingOrder: true });
-        console.log("when creating function this is passed to body:", orderData.boughtItems)
+      
         try{
             const response = await fetch("/api/order/new", {
                 method: "POST",

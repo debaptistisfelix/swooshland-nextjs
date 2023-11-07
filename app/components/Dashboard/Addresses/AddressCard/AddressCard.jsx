@@ -54,7 +54,7 @@ export default function AddressCard({address}) {
         }
     }, [showDeleteModal])
 
-    console.log(showDefaultAddressModal)
+
 
   return (
     <main className={styles.card}>
