@@ -45,7 +45,7 @@ export async function POST(request){
             }
         });
 
-        const cancelURL = `http://localhost:3000/unsubscribe/${email}`
+        const cancelURL = `https://swooshland-nextjs.vercel.app/unsubscribe/${email}`
 
         await sendSubscribedToNewsletterMail(email, cancelURL);
         return new Response(JSON.stringify(newNewsletterSubscription), {status: 200});
