@@ -63,7 +63,7 @@ export async function PATCH(request, {params}){
                 }
             })
 
-            const cancelURL = `http://localhost:3000/unsubscribe/${user.email}`
+            const cancelURL = `https://swooshland-nextjs.vercel.app/unsubscribe/${user.email}`
           await sendSubscribedToNewsletterMail(user.email, cancelURL);
         }
         catch(error){
